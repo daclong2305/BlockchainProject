@@ -1,0 +1,12 @@
+.venv/
+.tmp/
+.pytest_cache/
+__pycache__/
+*.egg-info/
+.env
+data/raw/
+data/processed/
+data/documents/
+data/benchmark/
+runs/
+*.log

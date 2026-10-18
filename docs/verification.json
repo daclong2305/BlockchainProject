@@ -1,0 +1,33 @@
+{
+  "checked_at": "2026-10-18T03:00:26.356825+00:00",
+  "pytest": {
+    "passed": 38,
+    "failed": 0
+  },
+  "pip_check": "passed",
+  "compileall": "passed",
+  "streamlit_app_test": "initial render and missing-credential error handling passed",
+  "streamlit_health": {
+    "url": "http://127.0.0.1:8502",
+    "http_status": 200
+  },
+  "real_data_scripted_repair": {
+    "events": 158,
+    "transactions": 107,
+    "repairs": 1,
+    "notice": "Scripted engineering test; not live Bedrock or research result"
+  },
+  "benchmark": {
+    "records": 60,
+    "unique_questions": 60,
+    "dev": 20,
+    "test": 40,
+    "human_review": "pending"
+  },
+  "bedrock": {
+    "region": "us-east-1",
+    "profile": "default",
+    "status": "ProfileNotFound; live inference not validated"
+  },
+  "final_evaluation": "not run; requires approved benchmark and AWS credentials"
+}
