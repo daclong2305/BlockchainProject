@@ -7,8 +7,6 @@ $taskTemp=Join-Path $PSScriptRoot '.tmp'
 New-Item -ItemType Directory -Path $taskTemp -Force | Out-Null
 $env:TEMP=$taskTemp
 $env:TMP=$taskTemp
-$env:AWS_REGION='us-east-1'
-$env:AWS_PROFILE='default'
 if ($Task -eq 'app') { & $taskPython -m streamlit run app.py --server.address localhost }
 elseif ($Task -eq 'test') { & $taskPython -m pytest }
 else { & $taskPython -m aave_analyst.cli $Task }

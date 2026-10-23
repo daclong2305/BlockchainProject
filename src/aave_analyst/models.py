@@ -46,6 +46,7 @@ class Draft:
     usage: list[dict] = field(default_factory=list)
     error: str = ""
     tools: list[dict] = field(default_factory=list)
+    planning: dict = field(default_factory=dict)
 
 
 @dataclass

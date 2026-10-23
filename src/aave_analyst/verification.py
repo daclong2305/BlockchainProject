@@ -3,6 +3,7 @@ import sqlglot
 from sqlglot import exp
 from .models import Issue
 from .evaluation import numeric_equal
+from .planning import runtime_dictionary
 from datetime import datetime,timedelta,timezone
 
 
@@ -59,8 +60,42 @@ def response_issues(value):
     return out
 
 
+def interval_checks(draft):
+    """Compute chronology explicitly; observed bounds never prove complete collection."""
+    relation='unknown'
+    bounds=draft.planning.get('availability',{}).get('liquidation_events',{})
+    def date(value):
+        parsed=datetime.fromisoformat(value.replace('Z','+00:00'))
+        return parsed.replace(tzinfo=timezone.utc) if parsed.tzinfo is None else parsed
+    try:
+        start,end=date(draft.spec.start),date(draft.spec.end)
+        first,last=date(bounds.get('first_event_utc')),date(bounds.get('last_event_utc'))
+        if end>start and last>=first:
+            if start>last:relation='after_last_observation'
+            elif end<=first:relation='before_first_observation'
+            elif start>=first and end<=last:relation='within_observed_bounds'
+            else:relation='overlaps_observed_bounds'
+    except (ValueError,TypeError,AttributeError):pass
+    return {'liquidation_events':{'relation':relation,'proves_complete_collection':False}}
+
+
 def evidence_payload(draft):
-    return {"question":draft.question,"requirements":asdict(draft.spec),"sql":draft.sql,"sql_result":asdict(draft.query_result) if draft.query_result else None,"documents":draft.documents,"answer":draft.answer,"claims":draft.claims,"refused":draft.refused}
+    documents=[{key:doc[key] for key in ('id','title','url','text') if key in doc}
+               for doc in draft.documents]
+    return {"question":draft.question,"requirements":asdict(draft.spec),"sql":draft.sql,"sql_result":asdict(draft.query_result) if draft.query_result else None,"documents":documents,"answer":draft.answer,"claims":draft.claims,"refused":draft.refused,
+            "dictionary":runtime_dictionary(),"availability":draft.planning.get('availability',{}),
+            "interval_checks":interval_checks(draft),
+            "retrieval_runs":[call for call in draft.tools if call.get('tool')=='retrieve']}
+
+
+def sql_review_payload(draft):
+    payload=evidence_payload(draft)
+    # Protocol prose belongs to claim review, not SQL semantics or event coverage.
+    result={key:payload[key] for key in ('question','requirements','sql','sql_result',
+                                       'dictionary','availability','interval_checks')}
+    result['document_review']={'handled_by':'claim_review',
+                               'retrieved_ids':[doc['id'] for doc in draft.documents]}
+    return result
 
 
 def verify_claims(draft,llm,timeout=60.):

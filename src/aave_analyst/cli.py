@@ -6,6 +6,7 @@ from .database import Database
 from .retrieval import Retriever,collect_documents
 from .data import prepare_data
 from .llm import BedrockLLM
+from .config import read_settings
 from .pipeline import Analyst,MODES
 from .benchmark import create_benchmark,save_benchmark,load_benchmark,freeze_benchmark,validate_benchmark
 from .experiments import run_experiments,score_results,summarize,human_audit_sample
@@ -32,10 +33,9 @@ def code_hashes():
 
 
 def doctor(live=False):
-    import boto3
     llm=BedrockLLM();result=llm.config()
     try:
-        session=boto3.Session(profile_name=llm.profile,region_name=llm.region)
+        session=llm.session()
         result["credentials_available"]=session.get_credentials() is not None
     except Exception as exc:result.update(credentials_available=False,credential_error=type(exc).__name__)
     if live:
@@ -47,7 +47,7 @@ def doctor(live=False):
 
 def main(argv=None):
     parser=argparse.ArgumentParser(description="Aave V3 evidence analyst and experiment runner")
-    parser.add_argument("--root",type=Path,default=Path(os.getenv("AAVE_PROJECT_ROOT",".")))
+    parser.add_argument("--root",type=Path,default=Path(read_settings().get("AAVE_PROJECT_ROOT") or "."))
     sub=parser.add_subparsers(dest="command",required=True)
     p=sub.add_parser("prepare",help="Download release, audit and build local DuckDB");p.add_argument("--source",type=Path)
     sub.add_parser("documents",help="Snapshot official Aave documents and build chunks")

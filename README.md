@@ -23,6 +23,12 @@ cd F:\Code\BlockchainProject
 
 Mở địa chỉ Streamlit in trên terminal (thường `http://localhost:8501`). Giao diện cần Bedrock để trả lời. Có thể chạy `powershell -ExecutionPolicy Bypass -File .\run.ps1 app`; script chỉ áp dụng chính sách cho tiến trình hiện tại, không thay đổi chính sách máy.
 
+Giao diện **Aave Lens** hỗ trợ chat nhiều lượt trong một phiên, bốn câu hỏi gợi ý, chọn chế độ phân tích và nút **Cuộc trò chuyện mới**. Mỗi câu trả lời có trạng thái kiểm chứng, phần mở rộng để xem SQL/bảng dữ liệu/tài liệu nguồn và nút tải JSON riêng. Nút **Xuất hội thoại** tải toàn bộ phiên dưới dạng JSON. Các cảnh báo kiểm chứng thường gặp được giải thích bằng tiếng Việt; nhật ký kỹ thuật giữ nguyên để đối chiếu. Lịch sử không được lưu bền vững sau khi đóng hoặc tải lại phiên; bộ phân tích xử lý từng câu hỏi độc lập, nên cần nêu lại tài sản và khoảng thời gian khi hỏi tiếp.
+
+Bước phân tích được cung cấp tài liệu truy xuất sơ bộ và phạm vi quan sát đọc trực tiếp từ database. Câu hỏi định nghĩa dùng tài liệu; câu hỏi kết hợp kiến thức và số liệu dùng cả tài liệu lẫn SQL. Mốc benchmark không được dùng làm giới hạn dữ liệu runtime. Nếu phân tích ban đầu yêu cầu làm rõ, cho rằng không thể trả lời, hoặc mâu thuẫn kiểu dữ liệu/ngày/chỉ số/đơn vị, hệ thống rà soát lại tối đa một lần trước khi tạo SQL. Yêu cầu thực sự thiếu thông tin vẫn được hỏi lại. Phân tích ban đầu và bản sửa nằm trong `draft.planning`; thời gian và token được tính vào cùng ngân sách câu hỏi. Min/max thời điểm quan sát không tự chứng minh dữ liệu liên tục hay đầy đủ.
+
+Bộ kiểm tra SQL nhận câu hỏi, yêu cầu, truy vấn, kết quả và phạm vi database; nội dung tài liệu được kiểm tra riêng ở bước kiểm chứng câu trả lời. Quan hệ giữa khoảng thời gian yêu cầu và mốc sự kiện được code so sánh bằng UTC trong `interval_checks`, tránh suy luận sai thứ tự ngày. Ngày thu thập tài liệu không được xem là ngày chốt dữ liệu giao dịch.
+
 Chạy kiểm thử offline, không gọi AWS và không tiêu token:
 
 ```powershell
@@ -31,21 +37,32 @@ Chạy kiểm thử offline, không gọi AWS và không tiêu token:
 
 ## Kết nối Claude Haiku 4.5
 
-Thiết lập mặc định: AWS region `us-east-1`, profile `default`, model/inference profile `us.anthropic.claude-haiku-4-5-20251001-v1:0`.
+Thiết lập mặc định: AWS region `us-east-1`, model/inference profile `us.anthropic.claude-haiku-4-5-20251001-v1:0`. Chương trình không ép dùng AWS profile khi đã cung cấp key.
 
-1. Cấu hình đăng nhập AWS trên máy bằng cách tài khoản của bạn hỗ trợ, chẳng hạn AWS CLI/SSO. Profile phải có quyền gọi Bedrock và quyền truy cập model/inference profile tương ứng.
-2. Chạy `doctor`: `credentials_available` phải là `true`. Lệnh này không gọi inference và không hiển thị thông tin bí mật.
+1. Đặt file `env` hoặc `.env` trong thư mục project theo mẫu dưới đây (hoặc sao chép `.env.example`). Điền key trên máy, không đưa key vào mã nguồn:
+
+```dotenv
+AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY
+AWS_SECRET_ACCESS_KEY=YOUR_SECRET_KEY
+AWS_SESSION_TOKEN=
+AWS_DEFAULT_REGION=us-east-1
+```
+
+`AWS_SESSION_TOKEN` bắt buộc với credentials tạm thời; để trống với key dài hạn. Cũng có thể để trống các key và đặt `AWS_PROFILE` để dùng AWS CLI/SSO đã cấu hình. Tài khoản cần quyền gọi Bedrock và model/inference profile tương ứng.
+
+2. Chạy `doctor`: `credentials_available` phải là `true`. Lệnh này chỉ kiểm tra tìm thấy credentials, chưa xác thực key hoặc quyền AWS; không gọi inference và không hiển thị thông tin bí mật.
 3. Kiểm tra một lượt thật, có sử dụng API:
 
 ```powershell
 $env:AWS_REGION='us-east-1'
-$env:AWS_PROFILE='default'
 $env:BEDROCK_MODEL_ID='us.anthropic.claude-haiku-4-5-20251001-v1:0'
 .\.venv\Scripts\python.exe -m aave_analyst.cli doctor --live
 .\.venv\Scripts\python.exe -m aave_analyst.cli ask 'Có bao nhiêu giao dịch thanh lý trong tháng 8/2026?' --mode P
 ```
 
-Nếu tài khoản dùng inference profile khác, lấy đúng ID đã được cấp quyền từ Bedrock console và đặt biến `BEDROCK_MODEL_ID`; không tự suy đoán region/profile. `.env.example` chỉ là hướng dẫn, chương trình đọc **biến môi trường**, không tự nạp `.env`. Không gửi key vào chatbot hoặc commit credential.
+Nếu tài khoản dùng inference profile khác, lấy đúng ID đã được cấp quyền từ Bedrock console và đặt biến `BEDROCK_MODEL_ID`; không tự suy đoán region/profile.
+
+CLI và giao diện tự đọc `env` hoặc `.env`: tìm trong thư mục chạy lệnh trước, sau đó thư mục project chứa mã nguồn; nếu có cả hai tên trong cùng thư mục thì dùng `env`. Biến môi trường của tiến trình ưu tiên hơn file. Hỗ trợ cả `AWS_REGION` và `AWS_DEFAULT_REGION` (ưu tiên `AWS_REGION` trong cùng một nguồn), `BEDROCK_MODEL_ID`, `AWS_PROFILE` và `AAVE_PROJECT_ROOT`. Cú pháp file là `KEY=value`, hỗ trợ dòng chú thích `#`, `export KEY=value`, dấu nháy đơn/đôi và UTF-8 BOM; không thực thi lệnh hoặc nội suy biến. Khởi động lại ứng dụng sau khi đổi cấu hình. Cả `env` và `.env` đều bị loại khỏi Git; không gửi key vào chatbot hoặc commit credential.
 
 ## Cài lại trên máy khác
 
@@ -100,7 +117,7 @@ Lệnh khóa hash dữ liệu, tài liệu, benchmark và cấu hình model. N�
 
 Không có `--judge` thì chỉ tính kiểm tra số liệu; độ đúng toàn bộ chưa chấm được để `null`, không xem là 0 hoặc 100%. Judge token được lưu riêng. Chi phí USD để trống đến khi điền giá thực tế của tài khoản, không suy đoán giá.
 
-Sáu cấu hình: B0, B1, P, P-SQL, P-Evidence, P-Repair. Mỗi câu/lần dùng cùng một bản nháp. Chi phí tạo nháp tính cho từng cấu hình khi so sánh. Mỗi cấu hình có tối đa 120 giây đầu cuối, hai vòng sửa chung; mỗi vòng tối đa một truy xuất và hai SQL (hiện một SQL sửa + một kiểm tra coverage). Không sử dụng thời gian chờ giữa các cấu hình làm thời gian xử lý của câu. Lỗi/timeout/từ chối nhầm vẫn lưu và tính.
+Sáu cấu hình: B0, B1, P, P-SQL, P-Evidence, P-Repair. Mỗi câu/lần dùng cùng một bản nháp. Chi phí tạo nháp tính cho từng cấu hình khi so sánh. Mỗi cấu hình có tối đa 120 giây đầu cuối, hai vòng sửa chung; mỗi vòng tối đa một truy xuất và hai SQL (hiện một SQL sửa + một kiểm tra coverage). Nếu mô hình trả JSON sai định dạng, mỗi lệnh gọi được yêu cầu trả lại tối đa một lần trong thời gian còn lại; đây là sửa định dạng, không tăng số vòng sửa nội dung. Token và thời gian của cả hai lần đều được ghi nhận. Chương trình không tự bỏ qua JSON thừa vì có thể làm mất kết quả kiểm chứng. Không sử dụng thời gian chờ giữa các cấu hình làm thời gian xử lý của câu. Lỗi/timeout/từ chối nhầm vẫn lưu và tính.
 
 ## Cấu trúc
 
