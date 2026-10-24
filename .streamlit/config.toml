@@ -1,7 +1,24 @@
 [theme]
 base = "light"
-primaryColor = "#6854C4"
-backgroundColor = "#FAF9FD"
-secondaryBackgroundColor = "#F0EEF8"
-textColor = "#26243D"
-font = "sans serif"
+primaryColor = "#1B6C80"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F4F6F8"
+textColor = "#131416"
+font = "IBM Plex Sans, sans-serif"
+headingFont = "IBM Plex Sans, sans-serif"
+codeFont = "IBM Plex Mono, monospace"
+baseFontSize = 16
+baseRadius = "0.5rem"
+buttonRadius = "0.375rem"
+borderColor = "#7B8992"
+showWidgetBorder = true
+linkColor = "#1B6C80"
+codeBackgroundColor = "#F4F7F8"
+dataframeHeaderBackgroundColor = "#FFFFFF"
+
+[theme.sidebar]
+paddingTop = "0rem"
+backgroundColor = "#F1F5F6"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#131416"
+borderColor = "#7B8992"
