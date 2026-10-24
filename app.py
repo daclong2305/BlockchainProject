@@ -6,6 +6,7 @@ import streamlit as st
 from aave_analyst.cli import analyst_at
 from aave_analyst.config import read_settings
 from aave_analyst.pipeline import MODES
+from aave_analyst.ui import answer_for_display, render_evidence, render_verification
 
 APP_DIR = Path(__file__).resolve().parent
 ROOT = Path(read_settings().get('AAVE_PROJECT_ROOT') or APP_DIR).resolve()
@@ -25,6 +26,9 @@ ISSUE_HELP = {
     'metric_aggregation_mismatch': ('Phép tính chưa khớp câu hỏi', 'Kiểm tra xem câu hỏi cần số lượng, tổng giá trị hay giá trị trung bình.'),
     'grain_event_vs_transaction': ('Cần phân biệt sự kiện và giao dịch', 'Một giao dịch có thể chứa nhiều sự kiện thanh lý; hai cách đếm có thể cho kết quả khác nhau.'),
     'semantic_correctness_unverified': ('Ý nghĩa kết quả chưa được xác minh', 'Truy vấn có thể chạy thành công nhưng chưa chứng minh được rằng kết quả trả lời đúng yêu cầu.'),
+    'time_range': ('Cần đối chiếu khoảng thời gian', 'Kiểm tra mốc bắt đầu, kết thúc và thời gian quan sát trong dữ liệu.'),
+    'coverage': ('Cần kiểm tra phạm vi dữ liệu', 'Đối chiếu khoảng thời gian và tài sản được hỏi với phạm vi dữ liệu đã nạp.'),
+    'document_support': ('Cần đối chiếu tài liệu dẫn chứng', 'Kiểm tra tài liệu hoặc kết quả SQL có hỗ trợ phát biểu đang được dẫn hay không.'),
 }
 SUGGESTIONS = [
     ('01 / THANH LÝ', 'Theo dõi hoạt động thanh lý', 'Có bao nhiêu giao dịch thanh lý trong tháng 8 năm 2026?'),
@@ -32,67 +36,49 @@ SUGGESTIONS = [
     ('03 / DƯ NỢ', 'So sánh nhu cầu vay', 'So sánh dư nợ trung bình của USDC và USDT trong tháng 8 năm 2026.'),
     ('04 / KIẾN THỨC AAVE', 'Hiểu cơ chế của giao thức', 'Health factor là gì và khi nào một vị thế trên Aave có thể bị thanh lý?'),
 ]
-st.set_page_config(page_title='Aave Lens · Trợ lý phân tích Aave V3', page_icon='◈', layout='wide')
+st.set_page_config(page_title='Aave Lens · Nghiên cứu Aave V3', page_icon=':material/travel_explore:', layout='wide')
 st.markdown(f'<style>{(APP_DIR / "assets/chat.css").read_text(encoding="utf-8")}</style>', unsafe_allow_html=True)
 
 
 def reset_chat():
     st.session_state.messages = []
+    st.session_state.pop('_pending_question', None)
 
 
 def render_answer(result, index):
-    draft = result['draft']
-    if draft['answer']:
-        st.markdown(draft['answer'])
-    elif not result.get('error'):
-        st.info('Chưa có nội dung trả lời cho câu hỏi này.')
-    status = result['status']
-    if result.get('error'):
-        st.error(f"Chưa thể hoàn tất câu trả lời. {result['error']}")
-    elif status == 'checks_passed':
-        st.success('Đã vượt qua các bước kiểm tra của hệ thống.', icon=':material/verified:')
-    elif status == 'unverified':
-        st.warning('Chưa xác minh đầy đủ. Xem các điểm cần kiểm tra bên dưới.', icon=':material/fact_check:')
-    elif draft.get('refused'):
-        st.info('Cần làm rõ câu hỏi hoặc bổ sung dữ liệu để trả lời có căn cứ.')
-    else:
-        st.caption('Câu trả lời này chưa được xác nhận qua bộ kiểm chứng đầy đủ.')
-    with st.expander('Bằng chứng & kết quả truy vấn', icon=':material/database:'):
-        query = draft.get('query_result')
-        if query:
-            st.dataframe(query['rows'], width='stretch', hide_index=True)
-            if query.get('truncated'):
-                st.caption('Bảng đang hiển thị một phần kết quả (tối đa 200 dòng).')
-        if draft.get('sql'):
-            st.caption('SQL đã thực thi · [SQL1]')
-            st.code(draft['sql'], language='sql')
-            st.caption('Nguồn: stablecoin-onchain-data · release data-2026-09-15.')
-        documents = draft.get('documents', [])
-        for doc in documents:
-            st.markdown(f"**{doc['id']} · {doc['title']}**")
-            st.markdown(f"[Đọc tài liệu nguồn]({doc['url']})")
-            st.write(doc['text'])
-            st.caption('Thu thập: ' + doc['collected_at'])
-        if not query and not documents:
-            st.caption('Chưa có bảng kết quả hoặc tài liệu được truy xuất cho lượt này.')
-    with st.expander('Chi tiết kiểm chứng', icon=':material/fact_check:'):
-        st.caption('Kết quả kiểm tra tự động không bảo đảm câu trả lời đúng tuyệt đối.')
-        for issue in result.get('issues', []):
-            title, explanation = ISSUE_HELP.get(issue['code'], (issue['code'], issue['message']))
-            st.markdown(f'**{title}**')
-            st.write(explanation)
-        if not result.get('issues'):
-            st.caption('Không có vấn đề được ghi nhận trong lượt này. Xem trạng thái ở trên để biết các bước kiểm chứng đã được áp dụng.')
-        st.caption('Nhật ký kỹ thuật đầy đủ')
-        st.json({'requirements': draft['spec'], 'planning': draft.get('planning', {}), 'status': status, 'issues': result['issues'],
-                 'repairs': result['repairs'], 'trace': result['trace']}, expanded=False)
-    meta, download = st.columns([3, 2])
-    with meta:
-        st.caption(f"{result.get('mode', 'P')} · {result['elapsed']:.1f} giây · {result['repairs']} vòng sửa")
-    with download:
-        st.download_button('Tải câu trả lời', json.dumps(result, ensure_ascii=False, indent=2),
-                           file_name=f'aave-answer-{index + 1}.json', mime='application/json',
-                           key=f'download_{index}', icon=':material/download:', width='stretch')
+    with st.container(horizontal=True, gap='medium', key=f'answer_layout_{index}'):
+        with st.container(width=640, key=f'answer_body_{index}'):
+            st.caption('Aave Lens · ' + result.get('mode', 'P'))
+            draft = result['draft']
+            answer = answer_for_display(result)
+            if answer:
+                st.markdown(answer)
+            elif not result.get('error'):
+                st.info('Chưa có nội dung trả lời cho câu hỏi này.')
+            status = result['status']
+            if result.get('error'):
+                st.error(f"Chưa thể hoàn tất câu trả lời. {result['error']}")
+                st.caption('Gửi lại câu hỏi để thử lại hoặc thu hẹp khoảng thời gian. Ứng dụng không tự gửi lại yêu cầu.')
+            elif status == 'checks_passed':
+                st.success('Đã vượt qua các bước kiểm tra của hệ thống.', icon=':material/check_circle:')
+                st.caption('Trạng thái kiểm tra tự động không khẳng định đáp án đúng tuyệt đối.')
+            elif status == 'unverified':
+                count = len(result.get('issues', []))
+                detail = f'Có {count} điểm cần kiểm tra bên dưới.' if count else 'Xem thông báo kỹ thuật bên dưới.'
+                st.warning(f'Chưa xác minh đầy đủ. {detail}', icon=':material/fact_check:')
+            elif draft.get('refused'):
+                st.info('Cần làm rõ câu hỏi hoặc bổ sung dữ liệu để trả lời có căn cứ.')
+            else:
+                st.caption('Câu trả lời này chưa được xác nhận qua bộ kiểm chứng đầy đủ.')
+            st.caption(f"{result.get('mode', 'P')} · {result['elapsed']:.1f} giây · {result['repairs']} vòng sửa")
+            if result.get('request_id'):
+                st.caption(f"Mã tra log: `{result['request_id']}`")
+            st.download_button('Tải câu trả lời', json.dumps(result, ensure_ascii=False, indent=2),
+                               file_name=f'aave-answer-{index + 1}.json', mime='application/json',
+                               key=f'download_{index}', icon=':material/download:')
+            render_verification(result, ISSUE_HELP)
+        with st.container(width=340, key=f'evidence_panel_{index}'):
+            render_evidence(draft, index, ROOT)
 
 
 if 'messages' not in st.session_state:
@@ -103,77 +89,93 @@ if 'messages' not in st.session_state:
                                      {'role': 'assistant', 'result': previous}]
 ready = (ROOT / 'data/processed/aave.duckdb').exists() and (ROOT / 'data/documents/chunks.json').exists()
 with st.sidebar:
-    st.markdown('''<div class="brand"><span class="brand-mark">◈</span><div><strong>Aave Lens</strong>
-        <span>ON-CHAIN RESEARCH ASSISTANT</span></div></div>''', unsafe_allow_html=True)
+    st.markdown('''<div class="brand"><span class="brand-mark" aria-hidden="true">a.</span>
+        <div><strong>Aave Lens</strong><span>Không gian nghiên cứu</span></div></div>''', unsafe_allow_html=True)
     st.button('Cuộc trò chuyện mới', key='new_chat', icon=':material/add:',
-              on_click=reset_chat, width='stretch', type='primary')
-    st.download_button('Xuất hội thoại', json.dumps(st.session_state.messages, ensure_ascii=False, indent=2),
-                       file_name='aave-conversation.json', mime='application/json', key='export_chat',
-                       disabled=not st.session_state.messages, icon=':material/download:', width='stretch')
-    if st.session_state.messages:
-        count = sum(message['role'] == 'user' for message in st.session_state.messages)
-        st.caption(f'{count} câu hỏi trong phiên hiện tại')
-    st.markdown('<div class="sidebar-label">KHÔNG GIAN NGHIÊN CỨU</div>', unsafe_allow_html=True)
-    st.markdown('**Aave V3 · Ethereum**')
-    st.caption('Phân tích tài sản cung cấp, dư nợ và hoạt động thanh lý bằng dữ liệu có dẫn chứng.')
-    st.markdown('<div class="asset-tags"><span>DAI</span><span>USDC</span><span>USDT</span><span>USDe</span><span>WETH</span></div>', unsafe_allow_html=True)
-    st.divider()
-    st.markdown('**Phương pháp trả lời**')
-    mode = st.selectbox('Chế độ phân tích', list(MODES), index=2, format_func=lambda value: MODE_LABELS[value],
-                        key='analysis_mode', label_visibility='collapsed')
+              on_click=reset_chat, width='stretch')
+    st.caption('Phiên hiện tại')
+    questions = [message['content'] for message in st.session_state.messages if message['role'] == 'user']
+    with st.container(key='current_session'):
+        st.write(questions[-1] if questions else 'Chưa có câu hỏi')
+    if questions:
+        st.caption(f'{len(questions)} câu hỏi trong phiên')
+    mode = st.selectbox('Phương pháp trả lời', list(MODES), index=2,
+                        format_func=lambda value: MODE_LABELS[value], key='analysis_mode',
+                        disabled=bool(st.session_state.get('_pending_question')))
     st.caption(MODE_HELP[mode])
+    st.divider()
+    st.caption('Phạm vi dữ liệu')
+    st.markdown('**Aave V3 · Ethereum**')
+    st.caption('DAI · USDC · USDT · USDe · WETH')
+    st.caption('Dữ liệu lịch sử · UTC')
+    st.caption('Tệp dữ liệu cục bộ: ' + ('đã tìm thấy' if ready else 'chưa đầy đủ'))
     with st.expander('Hướng dẫn đặt câu hỏi'):
         st.write('Ghi rõ tài sản, chỉ số và khoảng thời gian. Ví dụ: dư nợ trung bình của USDC trong tháng 8/2026.')
         st.write('Lịch sử được giữ trong phiên này. Mỗi câu hỏi được phân tích độc lập; hãy ghi lại thông tin cần thiết khi hỏi tiếp.')
         st.write('Thời gian được hiểu theo UTC. Dữ liệu lịch sử không phản ánh thị trường trực tiếp.')
+        st.caption('Tìm thấy tệp không xác nhận kết nối mô hình hay độ đầy đủ dữ liệu.')
     st.divider()
-    st.caption('ĐỀ TÀI C.5 · BLOCKCHAIN & AI')
-    st.caption('Chatbot Aave V3 có dẫn chứng. Phục vụ học tập và nghiên cứu; không phải khuyến nghị đầu tư.')
-st.markdown('''<div class="workspace-bar"><span>WORKSPACE <b>/ AAVE V3</b></span>
-    <span class="dataset-label"><i></i> Dữ liệu lịch sử · Ethereum</span></div>''', unsafe_allow_html=True)
-if not ready:
-    st.warning('Chưa có đủ dữ liệu để bắt đầu hội thoại. Chạy các lệnh prepare và documents theo README.')
+    st.download_button('Xuất hội thoại', json.dumps(st.session_state.messages, ensure_ascii=False, indent=2),
+                       file_name='aave-conversation.json', mime='application/json', key='export_chat',
+                       disabled=not st.session_state.messages, icon=':material/download:', width='stretch')
+    st.caption('Phục vụ học tập và nghiên cứu; không phải khuyến nghị đầu tư.')
+
+st.markdown('''<div class="workspace-bar"><span>Nghiên cứu / Aave V3</span>
+    <span>Ethereum · Dữ liệu lịch sử · UTC</span></div>''', unsafe_allow_html=True)
 suggested = None
-if not st.session_state.messages:
-    st.markdown('''<section class="welcome"><div class="welcome-symbol">◈</div>
-        <div class="eyebrow">AAVE V3 INTELLIGENCE</div>
-        <h1>Dữ liệu on-chain.<br><span>Câu trả lời có dẫn chứng.</span></h1>
-        <p>Khám phá tài sản cung cấp, dư nợ và thanh lý trên Aave V3.<br>
-        Đặt câu hỏi bằng tiếng Việt. Kiểm tra từng câu trả lời bằng dữ liệu.</p>
-        <div class="capabilities"><span>✧ Phân tích bằng SQL</span><span>▤ Tài liệu Aave</span><span>✓ Kiểm chứng có cấu trúc</span></div>
-        </section>''', unsafe_allow_html=True)
-    st.markdown('<div class="suggestion-heading">BẮT ĐẦU TỪ MỘT CÂU HỎI</div>', unsafe_allow_html=True)
-    for row in range(2):
-        columns = st.columns(2)
-        for column, index in zip(columns, range(row * 2, row * 2 + 2)):
-            label, title, question = SUGGESTIONS[index]
-            with column, st.container(border=True):
-                st.caption(label)
-                st.markdown(f'**{title}**')
-                if st.button(question, key=f'suggestion_{index}', width='stretch', disabled=not ready):
-                    suggested = question
-else:
-    st.markdown('### Hội thoại nghiên cứu')
-    st.caption('Mở phần bằng chứng bên dưới mỗi câu trả lời để đối chiếu kết quả.')
-for index, message in enumerate(st.session_state.messages):
-    with st.chat_message(message['role'], avatar=':material/person:' if message['role'] == 'user' else ':material/insights:'):
-        if message['role'] == 'user':
-            st.markdown(message['content'])
-        elif 'result' in message:
-            render_answer(message['result'], index)
-        else:
-            st.error(message['error'])
-typed = st.chat_input('Hỏi về Aave V3 — ghi rõ tài sản và khoảng thời gian…', disabled=not ready, key='question')
+typed = None
+with st.container(key='research_sheet'):
+    st.title('Hội thoại nghiên cứu')
+    st.caption('Aave V3 Ethereum · Câu trả lời gắn với dữ liệu và tài liệu nguồn')
+    if not ready:
+        st.warning('Chưa có đủ dữ liệu để bắt đầu hội thoại. Chạy các lệnh prepare và documents theo README.')
+    if not st.session_state.messages:
+        with st.container(key='welcome_workspace'):
+            st.header('Đi từ câu hỏi đến bằng chứng.')
+            st.write('Hỏi về tài sản cung cấp, dư nợ và thanh lý trên Aave V3. Ghi rõ tài sản và khoảng thời gian bạn muốn phân tích.')
+            with st.container(key='initial_composer'):
+                st.caption('Câu hỏi nghiên cứu')
+                typed = st.chat_input('Hỏi về Aave V3 — ghi rõ tài sản và khoảng thời gian…', disabled=not ready, key='question')
+            st.caption('Một vài điểm bắt đầu')
+            for index, (_, title, question) in enumerate(SUGGESTIONS):
+                with st.container(key=f'starter_row_{index}'):
+                    if st.button(f'**{title}**\n\n{question}', key=f'suggestion_{index}',
+                                 width='stretch', disabled=not ready, icon=':material/north_east:'):
+                        suggested = question
+    for index, message in enumerate(st.session_state.messages):
+        with st.chat_message(message['role'], avatar=':material/person:' if message['role'] == 'user' else ':material/scan:'):
+            if message['role'] == 'user':
+                st.caption('Bạn')
+                st.markdown(message['content'])
+            elif 'result' in message:
+                render_answer(message['result'], index)
+            else:
+                st.error(message['error'])
+                st.caption('Gửi lại câu hỏi để thử lại. Nếu lỗi tiếp diễn, kiểm tra kết nối và cấu hình mô hình.')
+                if message.get('request_id'):
+                    st.caption(f"Mã tra log: `{message['request_id']}`")
+    processing_slot = st.empty()
+
+if st.session_state.messages:
+    typed = st.chat_input('Hỏi về Aave V3 — ghi rõ tài sản và khoảng thời gian…',
+                          disabled=not ready or bool(st.session_state.get('_pending_question')), key='question')
 prompt = typed or suggested
 if prompt and prompt.strip() and ready:
     prompt = prompt.strip()
     st.session_state.messages.append({'role': 'user', 'content': prompt})
-    with st.chat_message('user', avatar=':material/person:'):
-        st.markdown(prompt)
-    with st.chat_message('assistant', avatar=':material/insights:'):
+    # Paint the conversation before starting a potentially slow request. The
+    # inline welcome input has no bottom auto-scroll to reveal content below it.
+    st.session_state['_pending_question'] = {'prompt': prompt, 'mode': mode}
+    st.rerun()
+
+pending = st.session_state.pop('_pending_question', None)
+if pending and ready:
+    with processing_slot.container(), st.chat_message('assistant', avatar=':material/scan:'):
         try:
-            with st.spinner('Đang phân tích câu hỏi, truy xuất dữ liệu và kiểm tra dẫn chứng…'):
-                result = asdict(analyst_at(ROOT).answer(prompt, mode))
+            with st.status('Đang xử lý câu hỏi…', expanded=True) as progress:
+                st.write('Đang phân tích và truy xuất bằng chứng theo chế độ đã chọn. Vui lòng chờ kết quả.')
+                result = asdict(analyst_at(ROOT).answer(pending['prompt'], pending['mode']))
+                progress.update(label='Đã nhận kết quả xử lý', state='complete', expanded=False)
             st.session_state.messages.append({'role': 'assistant', 'result': result})
         except Exception as exc:
             st.session_state.messages.append({'role': 'assistant', 'error': f'Không thể xử lý câu hỏi: {type(exc).__name__}: {exc}'})
