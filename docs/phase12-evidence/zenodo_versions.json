@@ -1,0 +1,6 @@
+{
+  "url": "https://zenodo.org/api/records/18339068/versions?size=100",
+  "collected_at": "2026-10-29T12:50:11.497838+00:00",
+  "status": 400,
+  "body": "{\"status\": 400, \"message\": \"A validation error occurred.\", \"errors\": [{\"field\": \"size\", \"messages\": [\"Page size cannot be greater than 25. Please use authenticated requests to increase the limit to 100.\"]}]}"
+}

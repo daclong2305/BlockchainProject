@@ -1,0 +1,272 @@
+{
+  "collected_at": "2026-10-29T12:20:36.340858+00:00",
+  "python": "3.13.5",
+  "platform": "Windows-11-10.0.22631-SP0",
+  "timezone": [
+    {
+      "timezone": "UTC"
+    }
+  ],
+  "schema": [
+    {
+      "column_name": "asset",
+      "column_type": "VARCHAR",
+      "null": "YES",
+      "key": null,
+      "default": null,
+      "extra": null
+    },
+    {
+      "column_name": "hour",
+      "column_type": "TIMESTAMP WITH TIME ZONE",
+      "null": "YES",
+      "key": null,
+      "default": null,
+      "extra": null
+    },
+    {
+      "column_name": "supplied_usd",
+      "column_type": "DOUBLE",
+      "null": "YES",
+      "key": null,
+      "default": null,
+      "extra": null
+    },
+    {
+      "column_name": "borrowed_usd",
+      "column_type": "DOUBLE",
+      "null": "YES",
+      "key": null,
+      "default": null,
+      "extra": null
+    },
+    {
+      "column_name": "source_timestamp",
+      "column_type": "TIMESTAMP WITH TIME ZONE",
+      "null": "YES",
+      "key": null,
+      "default": null,
+      "extra": null
+    },
+    {
+      "column_name": "source_file",
+      "column_type": "VARCHAR",
+      "null": "YES",
+      "key": null,
+      "default": null,
+      "extra": null
+    },
+    {
+      "column_name": "is_carried",
+      "column_type": "BOOLEAN",
+      "null": "YES",
+      "key": null,
+      "default": null,
+      "extra": null
+    },
+    {
+      "column_name": "source_age_hours",
+      "column_type": "DOUBLE",
+      "null": "YES",
+      "key": null,
+      "default": null,
+      "extra": null
+    },
+    {
+      "column_name": "event_id",
+      "column_type": "VARCHAR",
+      "null": "YES",
+      "key": null,
+      "default": null,
+      "extra": null
+    },
+    {
+      "column_name": "tx_hash",
+      "column_type": "VARCHAR",
+      "null": "YES",
+      "key": null,
+      "default": null,
+      "extra": null
+    },
+    {
+      "column_name": "time",
+      "column_type": "TIMESTAMP WITH TIME ZONE",
+      "null": "YES",
+      "key": null,
+      "default": null,
+      "extra": null
+    },
+    {
+      "column_name": "amount_usd",
+      "column_type": "DOUBLE",
+      "null": "YES",
+      "key": null,
+      "default": null,
+      "extra": null
+    },
+    {
+      "column_name": "market",
+      "column_type": "VARCHAR",
+      "null": "YES",
+      "key": null,
+      "default": null,
+      "extra": null
+    },
+    {
+      "column_name": "log_index",
+      "column_type": "BIGINT",
+      "null": "YES",
+      "key": null,
+      "default": null,
+      "extra": null
+    },
+    {
+      "column_name": "source_file",
+      "column_type": "VARCHAR",
+      "null": "YES",
+      "key": null,
+      "default": null,
+      "extra": null
+    }
+  ],
+  "market": [
+    {
+      "asset": "DAI",
+      "rows": 31847,
+      "start_utc": "2023-01-27 08:00:00+00:00",
+      "end_utc": "2026-09-15 06:00:00+00:00",
+      "duplicate_hours": 0,
+      "internal_missing_hours": 0,
+      "unaligned_hours": 0,
+      "null_supplied": 0,
+      "null_borrowed": 0,
+      "null_source_time": 0,
+      "carried_hours": 7923,
+      "distinct_observations": 23924,
+      "min_age_hours": 0.0002777777777777778,
+      "max_age_hours": 17.290277777777778,
+      "future_observations": 0
+    },
+    {
+      "asset": "USDC",
+      "rows": 31848,
+      "start_utc": "2023-01-27 08:00:00+00:00",
+      "end_utc": "2026-09-15 07:00:00+00:00",
+      "duplicate_hours": 0,
+      "internal_missing_hours": 0,
+      "unaligned_hours": 0,
+      "null_supplied": 0,
+      "null_borrowed": 0,
+      "null_source_time": 0,
+      "carried_hours": 515,
+      "distinct_observations": 31333,
+      "min_age_hours": 0.0002777777777777778,
+      "max_age_hours": 5.236944444444444,
+      "future_observations": 0
+    },
+    {
+      "asset": "USDT",
+      "rows": 31434,
+      "start_utc": "2023-02-13 14:00:00+00:00",
+      "end_utc": "2026-09-15 07:00:00+00:00",
+      "duplicate_hours": 0,
+      "internal_missing_hours": 0,
+      "unaligned_hours": 0,
+      "null_supplied": 0,
+      "null_borrowed": 0,
+      "null_source_time": 0,
+      "carried_hours": 1554,
+      "distinct_observations": 29880,
+      "min_age_hours": 0.0002777777777777778,
+      "max_age_hours": 12.68361111111111,
+      "future_observations": 0
+    },
+    {
+      "asset": "USDe",
+      "rows": 19937,
+      "start_utc": "2024-06-06 15:00:00+00:00",
+      "end_utc": "2026-09-15 07:00:00+00:00",
+      "duplicate_hours": 0,
+      "internal_missing_hours": 0,
+      "unaligned_hours": 0,
+      "null_supplied": 0,
+      "null_borrowed": 0,
+      "null_source_time": 0,
+      "carried_hours": 5057,
+      "distinct_observations": 14880,
+      "min_age_hours": 0.0002777777777777778,
+      "max_age_hours": 26.176944444444445,
+      "future_observations": 0
+    },
+    {
+      "asset": "WETH",
+      "rows": 31848,
+      "start_utc": "2023-01-27 08:00:00+00:00",
+      "end_utc": "2026-09-15 07:00:00+00:00",
+      "duplicate_hours": 0,
+      "internal_missing_hours": 0,
+      "unaligned_hours": 0,
+      "null_supplied": 0,
+      "null_borrowed": 0,
+      "null_source_time": 0,
+      "carried_hours": 243,
+      "distinct_observations": 31605,
+      "min_age_hours": 0.0002777777777777778,
+      "max_age_hours": 3.0636111111111113,
+      "future_observations": 0
+    }
+  ],
+  "events": [
+    {
+      "events": 25121,
+      "transactions": 20159,
+      "duplicate_event_ids": 0,
+      "duplicate_tx_log": 0,
+      "start_utc": "2023-01-30 19:11:47+00:00",
+      "end_utc": "2026-09-15 05:53:59+00:00",
+      "null_time": 0,
+      "null_amount": 0,
+      "invalid_tx": 0,
+      "invalid_id": 0,
+      "null_log_index": 0
+    }
+  ],
+  "carried_flag_mismatches": [
+    {
+      "mismatches": 0
+    }
+  ],
+  "benchmark_market": [
+    {
+      "asset": "DAI",
+      "rows": 14592
+    },
+    {
+      "asset": "USDC",
+      "rows": 14592
+    },
+    {
+      "asset": "USDT",
+      "rows": 14592
+    },
+    {
+      "asset": "USDe",
+      "rows": 14592
+    },
+    {
+      "asset": "WETH",
+      "rows": 14592
+    }
+  ],
+  "benchmark_events": [
+    {
+      "events": 19586,
+      "transactions": 15345
+    }
+  ],
+  "archive_digest": {
+    "expected": "1d4d8025b5aed07707d341b5824b6954d9869b8416e11efa2832ceafeaedf91e",
+    "actual": "1d4d8025b5aed07707d341b5824b6954d9869b8416e11efa2832ceafeaedf91e",
+    "match": true
+  }
+}

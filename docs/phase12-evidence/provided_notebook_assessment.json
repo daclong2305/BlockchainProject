@@ -1,0 +1,17 @@
+{
+  "url": "https://huggingface.co/zhenlong54/qwen-vitext2sql-3b-GGUF.ipynb",
+  "collected_at": "2026-10-28T14:27:00.826773+00:00",
+  "http_status": 200,
+  "body_sha256": "3d3efdeca486f60b31799eedd3789e677793edc2cd80091857385b34599d7b02",
+  "cells": 4,
+  "purpose": "GGUF inference example using llama-cpp-python",
+  "model_repo": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+  "file": "model-q4_k_m.gguf",
+  "source_transformers_checkpoint": null,
+  "training_code": false,
+  "tokenizer_source_revision": null,
+  "dataset_provenance": null,
+  "license": null,
+  "executed": false,
+  "conclusion": "Notebook is accessible but does not resolve source checkpoint provenance."
+}

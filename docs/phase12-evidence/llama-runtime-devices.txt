@@ -1,0 +1,2 @@
+Available devices:
+  Vulkan0: NVIDIA GeForce GTX 1650 (4149 MiB, 3552 MiB free)

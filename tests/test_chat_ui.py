@@ -28,7 +28,7 @@ def chat(monkeypatch, tmp_path):
                 return RunResult(mode, draft, 'unverified', issues=[Issue('metric_unit_mismatch', 'Internal diagnostic', 'answer')], elapsed=1.2)
             return RunResult(mode, draft, 'checks_passed', elapsed=1.2)
 
-    monkeypatch.setattr(aave_analyst.cli, 'analyst_at', lambda root: Analyst())
+    monkeypatch.setattr(aave_analyst.cli, 'analyst_at', lambda root, **kwargs: Analyst())
     return AppTest.from_file(str(Path(__file__).resolve().parents[1] / 'app.py')).run(timeout=15)
 
 
@@ -76,7 +76,7 @@ def test_starter_opens_conversation_before_backend_call(chat, monkeypatch, index
             observed.append(any(f'suggestion_{i}' in ctx.shared.widget_user_keys_this_run for i in range(4)))
             return original_factory(None).answer(question, mode)
 
-    monkeypatch.setattr(aave_analyst.cli, 'analyst_at', lambda root: ObservedAnalyst())
+    monkeypatch.setattr(aave_analyst.cli, 'analyst_at', lambda root, **kwargs: ObservedAnalyst())
     chat.button(key=f'suggestion_{index}').click().run()
     assert not chat.exception
     assert observed == [False]
@@ -157,7 +157,7 @@ def test_research_desk_exposes_evidence_beside_recorded_answer(chat, monkeypatch
     from copy import deepcopy
     chat.chat_input[0].set_value('Một câu hỏi').run()
     before = deepcopy(chat.session_state['messages'])
-    monkeypatch.setattr(aave_analyst.cli, 'analyst_at', lambda root: pytest.fail('UI rerun must not call analyst'))
+    monkeypatch.setattr(aave_analyst.cli, 'analyst_at', lambda root, **kwargs: pytest.fail('UI rerun must not call analyst'))
     chat.selectbox(key='analysis_mode').select('B0').run()
     assert not chat.exception
     assert [tab.label for tab in chat.tabs] == ['Dữ liệu & SQL', 'Tài liệu', 'Dẫn chứng']

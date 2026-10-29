@@ -1,0 +1,17 @@
+{
+  "checked_at": "2026-10-28T14:21:04.399292+00:00",
+  "previous_turn_classification": "progress: inspected and persisted public commit history, initial tree, discussions and author artifacts",
+  "requirements": {
+    "local_environment": "verified: venv, pinned dependencies, pip check, environment freeze",
+    "hardware_and_training_assessment": "verified: hardware evidence and conditional training recommendation; no training attempted",
+    "snapshot_restore": "verified: pinned release and published SHA256 matched",
+    "database_audit": "verified: DuckDB and Parquet artifacts; 24 manifest file hashes rechecked without mismatch",
+    "offline_tests": "verified: 93 passed; stored pytest XML",
+    "vietnamese_reproducible_report": "verified: docs/PHASE12_READINESS_VI.md and scripts",
+    "exact_transformers_source_checkpoint": "unresolved: public repo still contains only .gitattributes and GGUF",
+    "source_tokenizer_revision_and_finetune_licenses": "unresolved: backbone candidate is indirect evidence, not proof of finetuned source"
+  },
+  "blocker": "Exact source checkpoint/tokenizer/training provenance and fine-tune rights are not publicly linked by the supplied GGUF repository. Need source link or author-provided provenance.",
+  "blocking_condition_goal_turns": 3,
+  "status_decision": "blocked; objective not complete"
+}

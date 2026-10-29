@@ -1,0 +1,42 @@
+{
+  "result_path": "C:\\BlockchainProject\\runs\\diagnostics\\qwen-fixed-result-20261029T123135Z.json",
+  "model_config": {
+    "provider": "llama.cpp",
+    "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+    "revision": "579ae3d2f0db23dd25fd83076a57dbab79f68dd9",
+    "artifact_sha256": "b34a028bc6c18d738b57552423bb75ca555d823c19722c4261acc792547a4cd2",
+    "base_url": "http://127.0.0.1:8081",
+    "quantization": "Q4_K_M",
+    "generation_temperature": 0.2,
+    "review_temperature": 0.0,
+    "max_tokens": 4096,
+    "json_format_retries": 1,
+    "role_schema_version": 2
+  },
+  "live_status": "unverified",
+  "elapsed": 150.74338729999909,
+  "sql": "SELECT COUNT(DISTINCT tx_hash) FROM liquidation_events WHERE time >= '2026-08-01' AND time < '2026-09-01'",
+  "rows": [
+    {
+      "count(DISTINCT tx_hash)": 107
+    }
+  ],
+  "independent_reference": [
+    {
+      "transactions": 107
+    }
+  ],
+  "matches_reference": true,
+  "input_hashes": {
+    "data/processed/aave.duckdb": "9069f8c284d9dfbfb9953962a3f0ca0b3ab98a0217636c9af432e55985bd3aef",
+    "data/processed/dictionary.json": "4cd24105faa74b560b28d7fdd536766293b6994f4a0bdaa0df73ead88c544c21",
+    "data/documents/chunks.json": "d89c33e1141ce9937ee04803cd45d4c6e128d74112fb9019555ba123c3fa6ae9"
+  },
+  "upstream_revision_now": "579ae3d2f0db23dd25fd83076a57dbab79f68dd9",
+  "upstream_files_now": [
+    ".gitattributes",
+    "model-q4_k_m.gguf"
+  ],
+  "independent_finetune_source_checkpoint": null,
+  "note": "Single diagnostic, not a benchmark. No Bedrock calls during routing repair. Fine-tune provenance remains unresolved; user selected the GGUF artifact."
+}

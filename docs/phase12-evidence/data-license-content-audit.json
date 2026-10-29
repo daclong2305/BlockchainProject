@@ -1,0 +1,84 @@
+{
+  "checked_at": "2026-10-29T13:09:16.410603+00:00",
+  "zenodo_record": 22994363,
+  "record_url": "https://zenodo.org/api/records/22994363",
+  "publication_date": "2026-09-27",
+  "license_as_declared": {
+    "id": "cc-by-4.0"
+  },
+  "reference_archive": {
+    "sha256": "82d5d74eacb2a89bc75b9321f1a114f1f208ebdde681d68503288cb54cbc68db",
+    "published_md5": "md5:ca330a58ca06df08194bba525c4bf785",
+    "bytes": 35013942
+  },
+  "pinned_archive_sha256": "1d4d8025b5aed07707d341b5824b6954d9869b8416e11efa2832ceafeaedf91e",
+  "market": {
+    "pinned_rows": 146914,
+    "reference_rows": 148127,
+    "missing_pinned_keys": 0,
+    "unequal_cells_by_column": {
+      "supplied_usd": 0,
+      "borrowed_usd": 0,
+      "source_timestamp": 0,
+      "source_file": 0,
+      "is_carried": 0,
+      "source_age_hours": 0
+    },
+    "all_pinned_observations_match": true
+  },
+  "events": {
+    "pinned_rows": 25121,
+    "reference_rows": 25182,
+    "missing_pinned_keys": 0,
+    "unequal_cells_by_column": {
+      "tx_hash": 0,
+      "time": 0,
+      "amount_usd": 0,
+      "market": 0,
+      "log_index": 0,
+      "source_file": 0
+    },
+    "all_pinned_observations_match": true
+  },
+  "runtime_db_vs_parquet": {
+    "market": {
+      "pinned_rows": 146914,
+      "reference_rows": 146914,
+      "missing_pinned_keys": 0,
+      "unequal_cells_by_column": {
+        "supplied_usd": 0,
+        "borrowed_usd": 0,
+        "source_timestamp": 0,
+        "source_file": 0,
+        "is_carried": 0,
+        "source_age_hours": 0
+      },
+      "all_pinned_observations_match": true
+    },
+    "events": {
+      "pinned_rows": 25121,
+      "reference_rows": 25121,
+      "missing_pinned_keys": 0,
+      "unequal_cells_by_column": {
+        "tx_hash": 0,
+        "time": 0,
+        "amount_usd": 0,
+        "market": 0,
+        "log_index": 0,
+        "source_file": 0
+      },
+      "all_pinned_observations_match": true
+    }
+  },
+  "runtime_input_hashes": {
+    "data/processed/aave.duckdb": "9069f8c284d9dfbfb9953962a3f0ca0b3ab98a0217636c9af432e55985bd3aef",
+    "data/processed/dictionary.json": "4cd24105faa74b560b28d7fdd536766293b6994f4a0bdaa0df73ead88c544c21",
+    "data/documents/chunks.json": "d89c33e1141ce9937ee04803cd45d4c6e128d74112fb9019555ba123c3fa6ae9"
+  },
+  "compared_parquet_sha256": {
+    "market_hourly.parquet": "0e6e631d4a68bd640eba077975e458106c51ccbf497eac9bfc1d3fa2096b5c9c",
+    "liquidation_events.parquet": "e9ce1d316b0165967178e4ca3f4ec9c9f45a0b56d7a5cabd1d06e1ebb0560e91"
+  },
+  "runtime_inputs_unchanged": true,
+  "scope": "Exact value comparison of processed runtime observations only. Does not claim byte-identical ZIPs, upstream raw fields not used by runtime, model training provenance or third-party rights."
+}

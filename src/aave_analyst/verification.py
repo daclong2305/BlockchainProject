@@ -5,6 +5,7 @@ from .models import Issue
 from .evaluation import numeric_equal
 from .planning import runtime_dictionary
 from datetime import datetime,timedelta,timezone
+from .intent_guards import question_anchors
 
 
 def coverage_rules(db,spec,timeout=15.):
@@ -25,7 +26,7 @@ def coverage_rules(db,spec,timeout=15.):
     except (ValueError,TypeError) as e:return [Issue("time_range",f"Invalid time requirement: {e}","stop")]
 
 
-def semantic_rules(sql,spec):
+def semantic_rules(sql,spec,question=None):
     if not sql:return []
     try:tree=sqlglot.parse_one(sql,read="duckdb")
     except Exception as e:return [Issue("sql_syntax",str(e),"sql")]
@@ -38,15 +39,17 @@ def semantic_rules(sql,spec):
     if spec.get("metric")=="transactions":
         good=any(isinstance(n.this,exp.Distinct) and any(c.name=="tx_hash" for c in n.find_all(exp.Column)) for n in tree.find_all(exp.Count))
         if not good:issues.append(Issue("transaction_count","Transactions require COUNT(DISTINCT tx_hash), not event rows","sql"))
-    metric=spec.get("metric")
-    if metric in {"borrowed_usd","supplied_usd"} and metric not in cols:issues.append(Issue("metric","Requested measure missing from SQL","sql"))
+    anchors=question_anchors(question)
+    metric=anchors.get('metric',spec.get("metric"))
+    if metric in {"borrowed_usd","supplied_usd"} and metric not in cols:
+        issues.append(Issue('question_metric' if 'metric' in anchors else 'metric',f"Original question requires {metric}; that column is missing from SQL" if 'metric' in anchors else 'Requested measure missing from SQL','sql'))
     literals={x.this for x in tree.find_all(exp.Literal) if x.is_string}
     assets=spec.get("assets",[])
     tables={t.name for t in tree.find_all(exp.Table)}
     if "market_hourly" in tables and assets and not set(assets).issubset(literals):issues.append(Issue("asset_filter","Requested asset literals missing from query","sql"))
     if "liquidation_events" in tables and assets:issues.append(Issue("unverified_mapping","Liquidation filtering by token is not verified","stop"))
     for field in ("start","end"):
-        target=spec.get(field)
+        target=anchors.get(field,spec.get(field))
         if target and not any(str(target)[:10] in value for value in literals):issues.append(Issue("time_filter",f"Missing requested {field} boundary {target}","sql"))
     return issues
 
@@ -95,6 +98,7 @@ def sql_review_payload(draft):
                                        'dictionary','availability','interval_checks')}
     result['document_review']={'handled_by':'claim_review',
                                'retrieved_ids':[doc['id'] for doc in draft.documents]}
+    result['question_anchors']=question_anchors(draft.question)
     return result
 
 

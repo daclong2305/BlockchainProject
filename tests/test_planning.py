@@ -22,6 +22,47 @@ class RecordingLLM(ScriptedLLM):
         return super().complete(role, payload, timeout)
 
 
+def test_numeric_docs_misroute_is_reviewed_before_sql(tmp_path):
+    llm = RecordingLLM({
+        'plan': [{'kind': 'docs', 'metric': 'transactions', 'unit': 'count', 'aggregation': 'count_distinct'}],
+        'plan_review': [{'kind': 'data', 'metric': 'transactions', 'unit': 'count', 'aggregation': 'count_distinct'}],
+        'sql': [{'sql': 'SELECT COUNT(DISTINCT tx_hash) AS value FROM liquidation_events'}],
+        'answer': [{'answer': 'Có 1 giao dịch [SQL1].', 'claims': []}],
+    })
+    draft = Analyst(fixture_db(tmp_path), Retriever([]), llm).make_draft('Có bao nhiêu giao dịch thanh lý?')
+    assert not draft.error
+    assert draft.query_result.rows == [{'value': 1}]
+    assert [role for role, _ in llm.payloads] == ['plan', 'plan_review', 'sql', 'answer']
+
+
+def test_persistent_numeric_docs_misroute_cannot_fabricate_zero(tmp_path):
+    bad = {'kind': 'docs', 'metric': 'transactions', 'unit': 'count'}
+    llm = RecordingLLM({'plan': [bad], 'plan_review': [bad]})
+    draft = Analyst(fixture_db(tmp_path), Retriever([]), llm).make_draft('Đếm giao dịch thanh lý')
+    assert 'Invalid analysis' in draft.error
+    assert draft.answer == '' and draft.query_result is None
+    assert [role for role, _ in llm.payloads] == ['plan', 'plan_review']
+
+
+def test_numeric_answer_scalar_is_rejected(tmp_path):
+    llm = RecordingLLM({'plan': [{'kind': 'docs'}], 'answer': [{'answer': 0, 'claims': []}]})
+    draft = Analyst(fixture_db(tmp_path), Retriever([]), llm).make_draft('Định nghĩa thanh lý')
+    assert 'answer must be a string' in draft.error
+    assert draft.answer == ''
+
+
+def test_unanswerable_cannot_skip_an_available_loaded_transaction_count():
+    from aave_analyst.planning import analysis_errors
+    from aave_analyst.models import QuerySpec
+    spec = QuerySpec(kind='unanswerable', metric='transactions', start='2026-08-01T00:00:00Z',
+                     end='2026-09-01T00:00:00Z')
+    available = {'liquidation_events': {'first_event_utc': '2023-01-30T00:00:00+00:00',
+                                      'last_event_utc': '2026-09-15T00:00:00+00:00'}}
+    assert analysis_errors(spec, available)
+    spec.start, spec.end = '2027-08-01', '2027-09-01'
+    assert not analysis_errors(spec, available)
+
+
 def test_false_health_factor_clarification_is_reviewed_and_documents_reach_answer(tmp_path):
     llm = RecordingLLM({
         'plan': [{'kind': 'unanswerable', 'clarification': 'Provide a wallet address'}],

@@ -7,7 +7,7 @@ name = "aave-evidence-analyst"
 version = "0.1.0"
 description = "Vietnamese Aave V3 analyst with query and evidence verification"
 requires-python = ">=3.11"
-dependencies = ["boto3", "duckdb", "pandas", "pyarrow", "pytz", "sqlglot", "rank-bm25", "streamlit", "beautifulsoup4", "requests"]
+dependencies = ["boto3", "duckdb", "pandas", "pyarrow", "pytz", "sqlglot", "rank-bm25", "streamlit", "beautifulsoup4", "requests", "jsonschema"]
 
 [project.optional-dependencies]
 dev = ["pytest"]

@@ -1,0 +1,10 @@
+{
+  "model_repo": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+  "revision": "579ae3d2f0db23dd25fd83076a57dbab79f68dd9",
+  "model_sha256": "b34a028bc6c18d738b57552423bb75ca555d823c19722c4261acc792547a4cd2",
+  "model_bytes": 1929902496,
+  "runtime_build": "b11962",
+  "runtime_url": "https://github.com/ggml-org/llama.cpp/releases/download/b11962/llama-b11962-bin-win-vulkan-x64.zip",
+  "runtime_sha256": "53341fccc5d29a0e63e5e7d207cb7fc0f28a1830ae5eb73d1825dda6ab3b0ff4",
+  "finetune_status": "User states this model was fine-tuned by another developer; training provenance not independently verified"
+}

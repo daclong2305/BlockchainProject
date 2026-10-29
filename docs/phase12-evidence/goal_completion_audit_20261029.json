@@ -1,0 +1,82 @@
+{
+  "checked_at": "2026-10-29T12:45:20.804446+00:00",
+  "previous_goal_turn": "progress: fixed Qwen SQL routing/dialect, verified a real 107-transaction query and re-audited pinned data",
+  "this_goal_turn": "progress: full embedded tokenizer comparison and runtime parity checks identified NFC/NFD discrepancy, implemented explicit common normalization and verified 126 tests",
+  "requirements": {
+    "selected_gguf_identity": "verified: pinned revision and whole-file SHA256",
+    "source_transformers_checkpoint": "unresolved: candidate backbone is indirect, user-selected fine-tuned GGUF has no public source link",
+    "selected_tokenizer": "verified embedded arrays, merges and chat template against pinned candidate; 8/8 fixed runtime parity samples after explicit NFC policy",
+    "fine_tuning_feasibility": "framework-supported dequantization path documented; artifact conversion/training not attempted; original source rights unresolved",
+    "hardware_environment": "measured GTX1650 4GB, 16GB RAM, Python3.13.5; runtime and isolated tokenizer environment versioned",
+    "pinned_data_database_audit": "verified pinned data-2026-09-15 archive hash, 146914 market rows, 25121 events, DuckDB, UTC/keys/nulls/carried audit and manifests",
+    "offline_tests": "126 passed; pytest-tokenizer-audit.xml",
+    "vietnamese_reproducible_report": "updated PHASE12_READINESS_VI.md with scripts and limitations"
+  },
+  "status_decision": "not complete: data licensing evidence strengthened; source checkpoint/fine-tune provenance of selected model still unresolved",
+  "final_revalidation_at": "2026-10-29T12:47:34.553093+00:00",
+  "final_revalidation": {
+    "data_files_rehashed": 24,
+    "hash_mismatches": 0,
+    "offline_tests": 126,
+    "test_failures": 0,
+    "test_errors": 0,
+    "repo_revision_unchanged": true,
+    "repo_has_source_checkpoint_or_card": false
+  },
+  "resumed_blocker_audit": {
+    "consecutive_goal_turns": 3,
+    "turn_1": "User resumed goal; repaired routing/SQL and independently verified Qwen query. Source provenance remained unresolved.",
+    "turn_2": "Tokenizer metadata/parity and Unicode policy verified; official GGUF hash comparison did not resolve weight provenance.",
+    "turn_3": "Revalidated source API and all independent deliverables; same source checkpoint/fine-tune provenance gap remains.",
+    "remaining_safe_independent_action": "None that can establish the undisclosed checkpoint/training history without author/user source information."
+  },
+  "dataset_license_update": {
+    "record": 22994363,
+    "license": "cc-by-4.0",
+    "all_processed_market_observations_matched": 146914,
+    "all_processed_events_matched": 25121,
+    "unequal_cells": 0,
+    "db_matches_parquet": true,
+    "runtime_unchanged": true,
+    "scope": "Verified correspondence of processed observations with declared licensed publisher content; not model license or complete raw ZIP identity"
+  },
+  "final_post_zenodo_audit": {
+    "checked_at": "2026-10-29T13:12:41.928436+00:00",
+    "source_checkpoint": "still unresolved: public GGUF repo unchanged, no card or source link",
+    "data_files_rehashed": 24,
+    "hash_mismatches": 0,
+    "offline_test_evidence": "126 passed, 0 failures/errors",
+    "licensed_processed_data": "all 146914 market rows and 25121 events match CC-BY-4.0 Zenodo reference; DuckDB matches Parquet",
+    "reports": "present and updated",
+    "code_hashes": {
+      "__init__.py": "2983b5b92e89908b1a1b40fea40a0fab378b030ae1bf9d0ca5dc62c0a2706df9",
+      "benchmark.py": "aa4b85de516c585a5552e7dce22a8900a36f3d337ffdae3c0dd0aeebd0185225",
+      "cli.py": "e95437db35527fd48ecfb4cc10f97683b72cf88aa3fcb571260d8ae5e8819f3e",
+      "comparison.py": "868ca47a5aee6bc96afbec98b1e9959ec498621c1f4839198b8454cd17c9548c",
+      "config.py": "67208f74c76cc45487322083457575ad6407e5a94591fa0b48e28fdaf7eb3041",
+      "data.py": "3fdb88ef7bab27ff871efa1a68814f45893e19c05e4556e8256fe5a1bc2845a9",
+      "database.py": "82a0831488083ef42d5d4f193125031aef2ebbc97e04624597a046830f96f912",
+      "evaluation.py": "56bc29fbd43619dd58355b2e347b38be6d6574d2d7e0074b671d3c9c0ac39fef",
+      "experiments.py": "190c6d209db3ce5c40d5e4a290f8b5bb4ed9362082dd622df4779a0b9f0a1a1a",
+      "llm.py": "662b93ae74c1b731d334062cf9a03d0496ce13b05bd1a7abeb66531c0ea2ca77",
+      "local_llm.py": "f3bcee5b578e78c34778c2a60ca223cc22813830d7aa78c44f1bf092f01a0e81",
+      "models.py": "bd97e8c37915580e822aa218f1371f5cc94f3586c385d77f69581be4ba01d295",
+      "pipeline.py": "d1957015bee5abb04f91be1e761811a2e06a5e0a5e3a43da3506445c5468f502",
+      "planning.py": "f956bd575dd4b2734d88538dd6ba024a0a21f9fe60c4704f9ef42e2e3d640ced",
+      "reporting.py": "85bd5514b1baaa44ed0031013b19e19527b7d390227052f557d4f44dc6128032",
+      "response_schemas.py": "89d0aa1b40598e541f7ec1884c4a32250dfc3623100452f2597438ecb9a659cb",
+      "retrieval.py": "f96f82fe709f1024cc78c0d7c4e794dae3d1073f5e3bf9649f61cf2eecbe14ed",
+      "sql_normalization.py": "4463a8a5d8289cb486eea8611b01c70bfd4d235c81f399f01eb756be52a05751",
+      "stress.py": "3ff0d69d73ebcf99a7a6e3cf7d2fdf55112f57fd31e3950c081771af80cb1106",
+      "ui.py": "4640616fc9b05273f0663324e216d7fcacb420f63df4b7d43d44deae939ebbeb",
+      "verification.py": "a28efd2cb5541cc3349d3b328b74fa611028159f764b732446d6aa4134508f1d"
+    },
+    "resumed_consecutive_turns": 3,
+    "turn_classifications": [
+      "progress: discovered Zenodo license and began archival identity audit",
+      "progress/verified wait: resumed terminally failed download from 33 cached blocks and completed full data/DB correspondence audit",
+      "revalidation: remaining source-checkpoint blocker unchanged; no independent action can establish unpublished training provenance"
+    ],
+    "status_decision": "blocked, not complete; need source checkpoint/adapter/recipe or author-provided provenance"
+  }
+}

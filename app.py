@@ -1,12 +1,14 @@
 """Aave V3 research chat with evidence for each answer."""
 from dataclasses import asdict
 import json
+import logging
 from pathlib import Path
 import streamlit as st
 from aave_analyst.cli import analyst_at
 from aave_analyst.config import read_settings
 from aave_analyst.pipeline import MODES
 from aave_analyst.ui import answer_for_display, render_evidence, render_verification
+from aave_analyst.comparison import PROVIDERS, run_comparison
 
 APP_DIR = Path(__file__).resolve().parent
 ROOT = Path(read_settings().get('AAVE_PROJECT_ROOT') or APP_DIR).resolve()
@@ -49,6 +51,8 @@ def render_answer(result, index):
     with st.container(horizontal=True, gap='medium', key=f'answer_layout_{index}'):
         with st.container(width=640, key=f'answer_body_{index}'):
             st.caption('Aave Lens · ' + result.get('mode', 'P'))
+            if result.get('model_label'):
+                st.caption(result['model_label'])
             draft = result['draft']
             answer = answer_for_display(result)
             if answer:
@@ -91,6 +95,15 @@ ready = (ROOT / 'data/processed/aave.duckdb').exists() and (ROOT / 'data/documen
 with st.sidebar:
     st.markdown('''<div class="brand"><span class="brand-mark" aria-hidden="true">a.</span>
         <div><strong>Aave Lens</strong><span>Không gian nghiên cứu</span></div></div>''', unsafe_allow_html=True)
+    workspace = st.radio('Không gian làm việc', ['Hội thoại', 'So sánh Qwen – Claude'], key='workspace')
+    chat_provider = st.selectbox('Model hội thoại', [None, 'local_qwen', 'bedrock'],
+                                 format_func=lambda value: PROVIDERS.get(value, 'Theo cấu hình khởi động'),
+                                 key='chat_provider', disabled=bool(st.session_state.get('_pending_question')))
+    if chat_provider == 'bedrock':
+        st.caption('Gửi câu hỏi sẽ gọi Bedrock và có phát sinh phí.')
+    ui_timeout = st.number_input('Timeout mỗi model (giây)', min_value=120, max_value=3600, value=600,
+                                 step=60, key='ui_timeout', disabled=bool(st.session_state.get('_pending_question')))
+    st.caption('Áp dụng cho toàn bộ một câu hỏi; khi so sánh, cả hai model dùng cùng mức này.')
     st.button('Cuộc trò chuyện mới', key='new_chat', icon=':material/add:',
               on_click=reset_chat, width='stretch')
     st.caption('Phiên hiện tại')
@@ -122,6 +135,95 @@ with st.sidebar:
 
 st.markdown('''<div class="workspace-bar"><span>Nghiên cứu / Aave V3</span>
     <span>Ethereum · Dữ liệu lịch sử · UTC</span></div>''', unsafe_allow_html=True)
+if workspace == 'So sánh Qwen – Claude':
+    st.title('So sánh Qwen – Claude')
+    st.write(f'Cùng câu hỏi, database, tài liệu, phương pháp và giới hạn {ui_timeout} giây cho mỗi model.')
+    st.caption('Chạy song song Qwen local và Claude qua Bedrock. Bấm Chạy so sánh sẽ gọi Bedrock có phát sinh phí. Không tự chạy khi đổi lựa chọn hoặc tải lại giao diện.')
+    st.caption('Trạng thái kiểm chứng là kiểm tra tự động, không phải điểm đúng/sai hoặc kết luận model nào tốt hơn. Qwen local hiện có thể lỗi hoặc timeout ở luồng đầy đủ.')
+    if not ready:
+        st.warning('Cần chuẩn bị database và tài liệu trước khi so sánh.')
+    with st.form('comparison_form'):
+        comparison_question = st.text_area('Câu hỏi dùng chung', key='comparison_question')
+        comparison_mode = st.selectbox('Phương pháp dùng chung', list(MODES), index=2,
+                                       format_func=lambda value: MODE_LABELS[value], key='comparison_mode')
+        compare_clicked = st.form_submit_button('Chạy so sánh Qwen + Claude', disabled=not ready)
+    if compare_clicked:
+        if not comparison_question.strip():
+            st.warning('Nhập câu hỏi trước khi chạy so sánh.')
+        else:
+            try:
+                with st.status('Đang chạy hai model song song…', expanded=True) as execution_status:
+                    st.caption(f'Hai model bắt đầu đồng thời, mỗi model có tối đa {ui_timeout} giây. Thời gian tổng thường phụ thuộc model chậm hơn, cộng thời gian chuẩn bị. Tiến trình từng model cập nhật riêng bên dưới.')
+                    live_stages={provider:column.empty() for provider,column in zip(PROVIDERS,st.columns(2))}
+                    role_names={'plan':'Phân tích câu hỏi','plan_review':'Rà soát yêu cầu','sql':'Sinh SQL','answer':'Soạn câu trả lời','sql_review':'Kiểm chứng SQL','claim_review':'Kiểm chứng dẫn chứng','generic_review':'Rà soát câu trả lời','repair':'Sửa lỗi'}
+                    def show_progress(event):
+                        model=PROVIDERS[event['provider']]
+                        live_stage=live_stages[event['provider']]
+                        elapsed=event['elapsed_seconds']
+                        if event['event']=='model_started':
+                            live_stage.info(f'{model}: bắt đầu xử lý.')
+                        elif event['event']=='call_started':
+                            live_stage.info(f"{model} · {role_names.get(event['role'],event['role'])} · đã dùng {elapsed:.0f} giây · còn {event['remaining_seconds']:.0f} giây. Đang chờ model xử lý lượt gọi này…")
+                        elif event['event']=='call_finished':
+                            st.write(f"✓ {model} · {role_names.get(event['role'],event['role'])} hoàn tất sau tổng {elapsed:.1f} giây.")
+                        elif event['event']=='model_finished':
+                            live_stage.success(f"{model}: đã kết thúc · {event['status']} · {elapsed:.1f} giây.")
+                    comparison = run_comparison(ROOT, comparison_question, comparison_mode, deadline=float(ui_timeout),progress=show_progress)
+                    execution_status.update(label='Đã kết thúc lượt so sánh — xem kết quả bên dưới',state='complete')
+                st.session_state.setdefault('comparisons', []).append(comparison)
+            except Exception as exc:
+                logging.getLogger(__name__).exception('Comparison failed before rendering results')
+                st.error(f'Không thể chuẩn bị lần so sánh: {type(exc).__name__}. Kiểm tra các tệp dữ liệu và cấu hình.')
+                if isinstance(exc,TypeError):
+                    st.caption('Nếu lỗi xuất hiện sau khi cập nhật ứng dụng, backend cần được khởi động lại để nạp đồng bộ các module.')
+    comparisons = st.session_state.get('comparisons', [])
+    if st.button('Xóa lịch sử so sánh', disabled=not comparisons):
+        st.session_state.comparisons = []
+        st.rerun()
+    for comparison_index, comparison in reversed(list(enumerate(st.session_state.get('comparisons', [])))):
+        st.divider()
+        st.subheader(comparison['question'])
+        st.caption(f"{comparison['mode']} · {comparison['created_at']} · Mã: {comparison['id']}")
+        if not comparison['inputs_unchanged']:
+            st.warning('Dữ liệu hoặc tài liệu thay đổi trong lúc chạy. Không coi hai kết quả có cùng snapshot.')
+        st.download_button('Tải kết quả so sánh JSON', json.dumps(comparison, ensure_ascii=False, indent=2),
+                           file_name=f"aave-comparison-{comparison['id']}.json", mime='application/json',
+                           key=f"comparison_download_{comparison['id']}")
+        for provider_index, (column, provider) in enumerate(zip(st.columns(2), PROVIDERS)):
+            with column:
+                item = comparison['results'][provider]
+                st.markdown(f'### {PROVIDERS[provider]}')
+                config = item.get('config', {})
+                st.caption(config.get('model_id', 'Chưa đọc được cấu hình model'))
+                st.caption(f"{item['wall_seconds']:.1f} giây · {item['model_calls']} lượt gọi · {item['input_tokens']} token vào / {item['output_tokens']} token ra")
+                with st.expander('Trace từng bước model'):
+                    calls = item.get('calls') or item.get('result', {}).get('usage', [])
+                    if calls:
+                        st.dataframe([{'Bước': call.get('role'), 'Lần thử': call.get('format_attempt', 1),
+                                       'Thời gian (giây)': round(call.get('elapsed', 0), 2),
+                                       'Ngân sách còn lại lúc gọi (giây)': call.get('timeout_seconds'),
+                                       'Token vào': call.get('input_tokens', 0), 'Token ra': call.get('output_tokens', 0),
+                                       'Lỗi': call.get('error', '')} for call in calls], hide_index=True, width='stretch')
+                        st.caption('Lượt timeout có thể chưa trả thống kê token; số 0 ở lượt lỗi không có nghĩa model chưa đọc prompt.')
+                    else:
+                        st.caption('Chưa có trace từng bước trong bản ghi này.')
+                if item.get('error'):
+                    st.error(f"Không chạy được model: {item['error']}. Kiểm tra server local hoặc cấu hình/quyền Bedrock.")
+                    continue
+                result = item['result']
+                st.write(answer_for_display(result) or 'Chưa có câu trả lời.')
+                st.caption(f"Trạng thái: {result['status']} · {result['repairs']} vòng sửa")
+                if result.get('error'):
+                    st.error(result['error'])
+                render_verification(result, ISSUE_HELP)
+                render_evidence(result['draft'], 10000 + comparison_index * 2 + provider_index, ROOT)
+        with st.expander('Snapshot và cấu hình của lần so sánh'):
+            st.caption('Log cho lần so sánh mới được lưu tại runs/comparisons/<mã>.json trong project.' if not comparison.get('log_error')
+                       else 'Không lưu được log trên máy; hãy tải JSON để giữ kết quả.')
+            st.json({'input_hashes': comparison['input_hashes'], 'inputs_unchanged': comparison['inputs_unchanged'],
+                     'deadline_seconds_per_model': comparison['deadline_seconds_per_model'],
+                     'models': {provider: item.get('config') for provider, item in comparison['results'].items()}})
+    st.stop()
 suggested = None
 typed = None
 with st.container(key='research_sheet'):
@@ -165,7 +267,7 @@ if prompt and prompt.strip() and ready:
     st.session_state.messages.append({'role': 'user', 'content': prompt})
     # Paint the conversation before starting a potentially slow request. The
     # inline welcome input has no bottom auto-scroll to reveal content below it.
-    st.session_state['_pending_question'] = {'prompt': prompt, 'mode': mode}
+    st.session_state['_pending_question'] = {'prompt': prompt, 'mode': mode, 'provider': chat_provider, 'deadline': float(ui_timeout)}
     st.rerun()
 
 pending = st.session_state.pop('_pending_question', None)
@@ -174,7 +276,12 @@ if pending and ready:
         try:
             with st.status('Đang xử lý câu hỏi…', expanded=True) as progress:
                 st.write('Đang phân tích và truy xuất bằng chứng theo chế độ đã chọn. Vui lòng chờ kết quả.')
-                result = asdict(analyst_at(ROOT).answer(pending['prompt'], pending['mode']))
+                provider = pending.get('provider')
+                analyst = analyst_at(ROOT, provider=provider, deadline=pending['deadline'])
+                result = asdict(analyst.answer(pending['prompt'], pending['mode']))
+                result['deadline_seconds'] = pending['deadline']
+                if provider:
+                    result['model_label'] = PROVIDERS[provider]
                 progress.update(label='Đã nhận kết quả xử lý', state='complete', expanded=False)
             st.session_state.messages.append({'role': 'assistant', 'result': result})
         except Exception as exc:

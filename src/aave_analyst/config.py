@@ -2,6 +2,12 @@
 import os
 from pathlib import Path
 import re
+import unicodedata
+
+
+def normalize_model_text(text):
+    """Use one explicit Unicode policy for model inputs; keep source records intact."""
+    return unicodedata.normalize('NFC', text)
 
 
 def read_settings():

@@ -1,0 +1,6 @@
+{
+  "url": "https://huggingface.co/api/models/zhenlong54/qwen-vitext2sql-3b-GGUF/tree/5d2a9cdb68b731ad877b6d6ceb027f1bb1c99c36?recursive=true",
+  "collected_at": "2026-10-28T14:19:57.117227+00:00",
+  "status": 200,
+  "body": "[{\"type\":\"file\",\"oid\":\"a6344aac8c09253b3b630fb776ae94478aa0275b\",\"size\":1519,\"path\":\".gitattributes\"}]"
+}

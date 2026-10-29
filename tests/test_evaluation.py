@@ -33,3 +33,12 @@ def test_ablation_flags_are_distinct():
     assert not MODES["P-SQL"].sql_check
     assert not MODES["P-Evidence"].evidence_check
     assert not MODES["P-Repair"].repair
+def test_proposal_numeric_tolerance_boundaries():
+    from aave_analyst.evaluation import benchmark_numeric_equal
+    assert benchmark_numeric_equal('100.5', 100)
+    assert not benchmark_numeric_equal('100.50001', 100)
+    assert benchmark_numeric_equal('-100.5', -100)
+    assert benchmark_numeric_equal(0, 0)
+    assert not benchmark_numeric_equal('0.001', 0)
+    assert not benchmark_numeric_equal('100.1', 100, 'count')
+    assert not benchmark_numeric_equal('NaN', 100)

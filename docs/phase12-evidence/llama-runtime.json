@@ -1,0 +1,8 @@
+{
+  "build": "b11962",
+  "archive": "llama-b11962-bin-win-vulkan-x64.zip",
+  "sha256": "53341fccc5d29a0e63e5e7d207cb7fc0f28a1830ae5eb73d1825dda6ab3b0ff4",
+  "upstream_digest_verified": true,
+  "backend": "Vulkan",
+  "detected_device": "NVIDIA GeForce GTX 1650"
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "record_id": 22749379,
+    "status": 206,
+    "content_range": "bytes 34759378-34890449/34890450",
+    "bytes_read": 131072,
+    "local_file_count": 13,
+    "remote_file_count": 13,
+    "same_crc_size": [],
+    "changed_crc_size": [
+      "data/AAVE/aave_v2_dai_eth.parquet",
+      "data/AAVE/aave_v2_usdc_eth.parquet",
+      "data/AAVE/aave_v2_usdt_eth.parquet",
+      "data/AAVE/aave_v2_weth_eth.parquet",
+      "data/AAVE/aave_v3_dai_eth.parquet",
+      "data/AAVE/aave_v3_usdc_eth.parquet",
+      "data/AAVE/aave_v3_usde_eth.parquet",
+      "data/AAVE/aave_v3_usdt_eth.parquet",
+      "data/AAVE/aave_v3_weth_eth.parquet",
+      "data/AAVE/liquidations/aave_v2_eth_liquidation_events.parquet",
+      "data/AAVE/liquidations/aave_v2_eth_liquidations_hourly.parquet",
+      "data/AAVE/liquidations/aave_v3_eth_liquidation_events.parquet",
+      "data/AAVE/liquidations/aave_v3_eth_liquidations_hourly.parquet"
+    ],
+    "local_only": [],
+    "remote_only": [],
+    "note": "CRC32 and size are a preliminary content check, not a cryptographic identity proof."
+  },
+  {
+    "record_id": 22994363,
+    "status": 206,
+    "content_range": "bytes 34882870-35013941/35013942",
+    "bytes_read": 131072,
+    "local_file_count": 13,
+    "remote_file_count": 13,
+    "same_crc_size": [],
+    "changed_crc_size": [
+      "data/AAVE/aave_v2_dai_eth.parquet",
+      "data/AAVE/aave_v2_usdc_eth.parquet",
+      "data/AAVE/aave_v2_usdt_eth.parquet",
+      "data/AAVE/aave_v2_weth_eth.parquet",
+      "data/AAVE/aave_v3_dai_eth.parquet",
+      "data/AAVE/aave_v3_usdc_eth.parquet",
+      "data/AAVE/aave_v3_usde_eth.parquet",
+      "data/AAVE/aave_v3_usdt_eth.parquet",
+      "data/AAVE/aave_v3_weth_eth.parquet",
+      "data/AAVE/liquidations/aave_v2_eth_liquidation_events.parquet",
+      "data/AAVE/liquidations/aave_v2_eth_liquidations_hourly.parquet",
+      "data/AAVE/liquidations/aave_v3_eth_liquidation_events.parquet",
+      "data/AAVE/liquidations/aave_v3_eth_liquidations_hourly.parquet"
+    ],
+    "local_only": [],
+    "remote_only": [],
+    "note": "CRC32 and size are a preliminary content check, not a cryptographic identity proof."
+  }
+]

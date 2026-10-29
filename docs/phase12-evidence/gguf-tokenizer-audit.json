@@ -1,0 +1,220 @@
+{
+  "collected_at": "2026-10-29T12:45:53.426566+00:00",
+  "gguf_sha256": "b34a028bc6c18d738b57552423bb75ca555d823c19722c4261acc792547a4cd2",
+  "reference_candidate": "Qwen/Qwen2.5-Coder-3B-Instruct",
+  "reference_revision": "488639f1ff808d1d3d0ba301aef8c11461451ec5",
+  "reference_files": {
+    "tokenizer.json": {
+      "url": "https://huggingface.co/Qwen/Qwen2.5-Coder-3B-Instruct/resolve/488639f1ff808d1d3d0ba301aef8c11461451ec5/tokenizer.json",
+      "bytes": 7031645,
+      "sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539"
+    },
+    "tokenizer_config.json": {
+      "url": "https://huggingface.co/Qwen/Qwen2.5-Coder-3B-Instruct/resolve/488639f1ff808d1d3d0ba301aef8c11461451ec5/tokenizer_config.json",
+      "bytes": 7305,
+      "sha256": "959e7f1d9a1b7641a6d6ce05ca97b75c7894fcb66cbe5a040406458fb1128ee4"
+    }
+  },
+  "gguf_header": {
+    "version": 3,
+    "tensors": 434,
+    "metadata_bytes": 5931230
+  },
+  "gguf_token_count": 151936,
+  "reference_assigned_ids": 151665,
+  "mismatched_assigned_ids": 0,
+  "mismatch_examples": [],
+  "gguf_unassigned_reference_ids": 271,
+  "unassigned_tokens_all_named_padding": true,
+  "extra_token_examples": [
+    {
+      "id": 151665,
+      "token": "[PAD151665]"
+    },
+    {
+      "id": 151666,
+      "token": "[PAD151666]"
+    },
+    {
+      "id": 151667,
+      "token": "[PAD151667]"
+    },
+    {
+      "id": 151668,
+      "token": "[PAD151668]"
+    },
+    {
+      "id": 151669,
+      "token": "[PAD151669]"
+    },
+    {
+      "id": 151670,
+      "token": "[PAD151670]"
+    },
+    {
+      "id": 151671,
+      "token": "[PAD151671]"
+    },
+    {
+      "id": 151672,
+      "token": "[PAD151672]"
+    },
+    {
+      "id": 151673,
+      "token": "[PAD151673]"
+    },
+    {
+      "id": 151674,
+      "token": "[PAD151674]"
+    }
+  ],
+  "merges_match_exactly": true,
+  "reference_merge_count": 151387,
+  "gguf_merge_count": 151387,
+  "reference_merges_sha256": "24fa2ae2a398e50784a1fff678482094af4f63e6783d35686726abacda8dc371",
+  "gguf_merges_sha256": "24fa2ae2a398e50784a1fff678482094af4f63e6783d35686726abacda8dc371",
+  "chat_template_matches_exactly": true,
+  "reference_chat_template_sha256": "2e2d2512cfe46af53dc1eed45368ecaab26ac4461c480e6b69fe571cf0ceaa75",
+  "gguf_chat_template_sha256": "2e2d2512cfe46af53dc1eed45368ecaab26ac4461c480e6b69fe571cf0ceaa75",
+  "gguf_tokens_sha256": "e2fadeac783c911f535d21f858f43127672a1d261af510d3f895e34bd2f6fb10",
+  "added_token_comparison": {
+    "151643": {
+      "reference": "<|endoftext|>",
+      "reference_special": true,
+      "gguf_type": 3,
+      "content_matches": true
+    },
+    "151644": {
+      "reference": "<|im_start|>",
+      "reference_special": true,
+      "gguf_type": 3,
+      "content_matches": true
+    },
+    "151645": {
+      "reference": "<|im_end|>",
+      "reference_special": true,
+      "gguf_type": 3,
+      "content_matches": true
+    },
+    "151646": {
+      "reference": "<|object_ref_start|>",
+      "reference_special": true,
+      "gguf_type": 3,
+      "content_matches": true
+    },
+    "151647": {
+      "reference": "<|object_ref_end|>",
+      "reference_special": true,
+      "gguf_type": 3,
+      "content_matches": true
+    },
+    "151648": {
+      "reference": "<|box_start|>",
+      "reference_special": true,
+      "gguf_type": 3,
+      "content_matches": true
+    },
+    "151649": {
+      "reference": "<|box_end|>",
+      "reference_special": true,
+      "gguf_type": 3,
+      "content_matches": true
+    },
+    "151650": {
+      "reference": "<|quad_start|>",
+      "reference_special": true,
+      "gguf_type": 3,
+      "content_matches": true
+    },
+    "151651": {
+      "reference": "<|quad_end|>",
+      "reference_special": true,
+      "gguf_type": 3,
+      "content_matches": true
+    },
+    "151652": {
+      "reference": "<|vision_start|>",
+      "reference_special": true,
+      "gguf_type": 3,
+      "content_matches": true
+    },
+    "151653": {
+      "reference": "<|vision_end|>",
+      "reference_special": true,
+      "gguf_type": 3,
+      "content_matches": true
+    },
+    "151654": {
+      "reference": "<|vision_pad|>",
+      "reference_special": true,
+      "gguf_type": 3,
+      "content_matches": true
+    },
+    "151655": {
+      "reference": "<|image_pad|>",
+      "reference_special": true,
+      "gguf_type": 3,
+      "content_matches": true
+    },
+    "151656": {
+      "reference": "<|video_pad|>",
+      "reference_special": true,
+      "gguf_type": 3,
+      "content_matches": true
+    },
+    "151657": {
+      "reference": "<tool_call>",
+      "reference_special": false,
+      "gguf_type": 4,
+      "content_matches": true
+    },
+    "151658": {
+      "reference": "</tool_call>",
+      "reference_special": false,
+      "gguf_type": 4,
+      "content_matches": true
+    },
+    "151659": {
+      "reference": "<|fim_prefix|>",
+      "reference_special": false,
+      "gguf_type": 3,
+      "content_matches": true
+    },
+    "151660": {
+      "reference": "<|fim_middle|>",
+      "reference_special": false,
+      "gguf_type": 3,
+      "content_matches": true
+    },
+    "151661": {
+      "reference": "<|fim_suffix|>",
+      "reference_special": false,
+      "gguf_type": 3,
+      "content_matches": true
+    },
+    "151662": {
+      "reference": "<|fim_pad|>",
+      "reference_special": false,
+      "gguf_type": 3,
+      "content_matches": true
+    },
+    "151663": {
+      "reference": "<|repo_name|>",
+      "reference_special": false,
+      "gguf_type": 3,
+      "content_matches": true
+    },
+    "151664": {
+      "reference": "<|file_sep|>",
+      "reference_special": false,
+      "gguf_type": 3,
+      "content_matches": true
+    }
+  },
+  "gguf_special_ids": {
+    "tokenizer.ggml.eos_token_id": 151645,
+    "tokenizer.ggml.padding_token_id": 151645,
+    "tokenizer.ggml.bos_token_id": 151643
+  },
+  "limitation": "Matching tokenizer metadata does not prove weights, fine-tune dataset or exact Transformers checkpoint provenance. Token IDs unassigned in reference are reported without assuming equivalence."
+}

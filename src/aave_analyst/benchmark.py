@@ -13,6 +13,24 @@ CATEGORIES={"mechanism":(4,8),"lookup":(4,8),"analysis":(6,12),"mixed":(4,8),"un
 def _interval(column,start,end):return f"{column} >= TIMESTAMPTZ '{start}' AND {column} < TIMESTAMPTZ '{end}'"
 
 
+def question_scope(question, sql, family, unit):
+    """Expose exact gold predicates for human review, without interpreting them as approved."""
+    import sqlglot
+    from sqlglot import expressions as exp
+    predicates=[]
+    if sql:
+        tree=sqlglot.parse_one(sql,read='duckdb')
+        predicates=[node.this.sql(dialect='duckdb') for node in tree.find_all(exp.Where)]
+    # For unsupported/document-only requests, keep assets actually named in the question.
+    assets=sorted(set(re.findall(r"\b(?:DAI|USDC|USDT|USDe|WETH)\b",sql or question)))
+    literals=list(dict.fromkeys(re.findall(r"TIMESTAMPTZ\s*'([^']+)'",sql,flags=re.I)))
+    return {'chain':'Ethereum','protocol':'Aave V3','metric_family':family,
+            'assets':assets,'unit':unit if sql else 'not_applicable_or_unsupported',
+            'time_zone':'UTC','gold_where_predicates':predicates,'gold_time_literals':literals,
+            'scope_basis':'provisional gold SQL; human must verify against original question' if sql else 'original question; no supported numeric SQL',
+            'benchmark_window':{'start':'2025-01-01','end_exclusive':'2026-09-01'}}
+
+
 def validate_benchmark(rows,final=False):
     seen={};ids=set();questions=set();templates={}
     for r in rows:
@@ -32,7 +50,8 @@ def validate_benchmark(rows,final=False):
         seen[family]=r["split"]
         if final:
             review=r.get("review",{});a=review.get("reviewer_1","").strip();b=review.get("reviewer_2","").strip()
-            if not a or not b or a==b or not review.get("approved"):
+            normalized=[unicodedata.normalize('NFC',' '.join(name.casefold().split())) for name in (a,b)]
+            if not all(normalized) or normalized[0]==normalized[1] or review.get("approved") is not True:
                 raise ValueError(f"Independent human review required: {r['id']}")
             if not r.get("reference_answer") or not r.get("sources"):raise ValueError(f"Missing gold evidence: {r['id']}")
 
@@ -51,7 +70,7 @@ def create_benchmark(db,chunks):
         reference={"required_points":[concept] if concept else [],"sql_result":result.rows if result else None,"limitation":concept if unanswerable else ""}
         sources=([{"id":"SQL1","sql":sql,"rows":result.rows}] if result else [])+selected
         if unanswerable:sources.append({"id":"POLICY","text":"Available fields: hourly supplied_usd/borrowed_usd and liquidation events. No gas, profit, verified token mapping, live data, forecasts or wallet health factors."})
-        rows.append({"id":f"Q{len(rows)+1:03d}","category":category,"family":family,"split":split,"question":q,"sql":sql,"reference_answer":reference,"expected_numeric":numbers,"sources":sources,"expected_refusal":unanswerable,"requires_judge":category in {"mechanism","mixed","unanswerable"},"scope":{"chain":"Ethereum","protocol":"Aave V3","start":"2025-01-01","end_exclusive":"2026-09-01"},"review":{"reviewer_1":"","reviewer_2":"","approved":False,"notes":"Provisional SQL/reference; independently verify before approval."}})
+        rows.append({"id":f"Q{len(rows)+1:03d}","category":category,"family":family,"split":split,"question":q,"sql":sql,"reference_answer":reference,"expected_numeric":numbers,"numeric_relative_tolerance":"0.005","sources":sources,"expected_refusal":unanswerable,"requires_judge":category in {"mechanism","mixed","unanswerable"},"scope":question_scope(q,sql,family,unit),"review":{"reviewer_1":"","reviewer_2":"","approved":False,"notes":"Provisional SQL/reference; independently verify before approval."}})
 
     topics=[
       ("supply_mechanism","dev","SUPPLY","Cung cấp tài sản trên Aave V3 là gì?","Cung cấp token vào pool; phân biệt cung cấp với vay, không bảo đảm mức lãi cố định."),
@@ -59,11 +78,14 @@ def create_benchmark(db,chunks):
       ("health_factor","test","LIQ","Health factor thể hiện điều gì và khi nào vị thế có nguy cơ thanh lý?","Health factor phản ánh mức an toàn của vị thế; dưới 1 có thể bị thanh lý, không đồng nghĩa chắc chắn bị thanh lý ngay lập tức."),
       ("liquidation_process","test","LIQ","Cơ chế thanh lý trên Aave V3 hoạt động như thế nào?","Thanh lý hoàn trả một phần nợ và nhận tài sản thế chấp theo cơ chế/điều kiện của giao thức; phân biệt điều kiện đủ với thời điểm thực hiện."),
       ("borrow_interest","test","BORROW","Người vay trên Aave V3 phải lưu ý gì về lãi vay?","Nợ vay chịu lãi; cần kiểm tra chính xác nội dung trang nguồn, không suy diễn lãi suất lịch sử từ tài liệu cơ chế."),
-      ("withdraw_supply","test","SUPPLY","Việc rút tài sản đã cung cấp phụ thuộc vào điều kiện nào?","Rút phụ thuộc thanh khoản và mức an toàn nếu tài sản đang bảo đảm khoản vay; xác minh điều kiện theo nguồn."),
+      ("supply_interest","test","SUPPLY","Lãi của người cung cấp tài sản trên Aave V3 hình thành và thay đổi như thế nào?","Lãi tích lũy vào số dư theo thời gian; mức lãi phụ thuộc hoạt động sử dụng vốn và các tham số giao thức, không phải cam kết lãi cố định."),
     ]
+    # These mechanism families were already used in interactive diagnostics.
+    topics=[(family,'dev' if family in {'health_factor','liquidation_process'} else 'test',key,q,concept)
+            for family,split,key,q,concept in topics]
     for family,split,key,q,concept in topics:
         for suffix in [""," Hãy trả lời ngắn gọn và dẫn nguồn."]:add("mechanism",family,split,q+suffix,concept=concept,source=key)
-    for i,(family,split) in enumerate([("supply_snapshot","dev"),("debt_snapshot","dev"),("transaction_count","test"),("event_count","test"),("liquidation_value","test"),("debt_peak","test")]):
+    for i,(family,split) in enumerate([("supply_snapshot","test"),("debt_snapshot","test"),("transaction_count","dev"),("event_count","dev"),("liquidation_value","test"),("debt_peak","test")]):
         for j in range(2):
             asset=["USDC","WETH"][j];month=["2026-08","2025-08"][j];start=month+"-01";end=["2026-09-01","2025-09-01"][j]
             unit="USD"
@@ -75,7 +97,7 @@ def create_benchmark(db,chunks):
             elif family in {"transaction_count","event_count","liquidation_value"}:
                 expression={"transaction_count":"count(DISTINCT tx_hash)","event_count":"count(*)","liquidation_value":"sum(amount_usd)"}[family]
                 label={"transaction_count":"giao dịch thanh lý","event_count":"sự kiện thanh lý","liquidation_value":"giá trị thanh lý USD"}[family]
-                sql=f"SELECT {expression} AS value FROM liquidation_events WHERE {_interval('time',start,end)}";q=f"Trong tháng {month} UTC có bao nhiêu {label} trên Aave V3 Ethereum?";unit="USD" if family=="liquidation_value" else "count"
+                sql=f"SELECT {expression} AS value FROM liquidation_events WHERE {_interval('time',start,end)}";q=(f"Tổng giá trị USD thanh lý trên Aave V3 Ethereum trong tháng {month} UTC là bao nhiêu?" if family=="liquidation_value" else f"Trong tháng {month} UTC có bao nhiêu {label} trên Aave V3 Ethereum?");unit="USD" if family=="liquidation_value" else "count"
             else:
                 sql=f"SELECT max(borrowed_usd) AS value FROM market_hourly WHERE asset='{asset}' AND {_interval('hour',start,end)}";q=f"Dư nợ {asset} lớn nhất theo quan sát giờ trong tháng {month} là bao nhiêu USD?"
             add("lookup",family,split,q,sql,unit)
@@ -97,13 +119,15 @@ def create_benchmark(db,chunks):
                 sql=f"SELECT sum(CASE WHEN time>=TIMESTAMPTZ '{month}-01' THEN amount_usd ELSE 0 END)-sum(CASE WHEN time<TIMESTAMPTZ '{month}-01' THEN amount_usd ELSE 0 END) AS value FROM liquidation_events WHERE {_interval('time','2026-05-01',end)}";q=f"Tổng USD thanh lý tháng {month} trừ tổng USD từ 2026-05-01 đến trước {month}-01 UTC bằng bao nhiêu?"
             add("analysis",family,split,q,sql,unit)
     for family,split,key,concept in [("debt_explanation","dev","BORROW","Dư nợ là số dư tại thời điểm; không coi là tổng số tiền vay mới trong tháng."),("supply_explanation","dev","SUPPLY","Giá trị cung cấp là số dư, không phải lợi nhuận thu được."),("liquidation_explanation","test","LIQ","Số sự kiện không chứng minh mọi vị thế có health factor dưới 1 đều đã được thanh lý."),("transactions_explanation","test","LIQ","Một giao dịch có thể có nhiều sự kiện thanh lý; số đếm khác nhau không nhất thiết là lỗi dữ liệu."),("debt_change_explanation","test","BORROW","Biến động dư nợ USD không đủ kết luận nguyên nhân từ lãi vay hoặc hành vi người dùng."),("supply_risk_explanation","test","SUPPLY","Giá trị tài sản cung cấp không chứng minh tài sản đó không có rủi ro hoặc luôn rút được ngay.")]:
+        split = 'dev' if family in {'liquidation_explanation', 'transactions_explanation'} else 'test'
         for j,asset in enumerate(["USDC","WETH"]):
             when=["2026-08-15","2026-07-15"][j]
             if family in {"liquidation_explanation","transactions_explanation"}:
                 expr="count(*)" if family=="liquidation_explanation" else "count(DISTINCT tx_hash)"
                 month,stop=('2026-08','2026-09-01') if j==0 else ('2026-07','2026-08-01')
                 sql=f"SELECT {expr} AS value FROM liquidation_events WHERE {_interval('time',month+'-01',stop)}";unit="count"
-                q=f"Tháng {month} có bao nhiêu {'sự kiện' if family=='liquidation_explanation' else 'giao dịch'} thanh lý? Giải thích: {concept}"
+                explanation=('Số liệu này có đủ kết luận mọi vị thế đủ điều kiện đều đã bị thanh lý không? Vì sao?' if family=='liquidation_explanation' else 'Số sự kiện thanh lý và số giao dịch thanh lý có nhất thiết bằng nhau không? Giải thích.')
+                q=f"Tháng {month} có bao nhiêu {'sự kiện' if family=='liquidation_explanation' else 'giao dịch'} thanh lý? {explanation}"
             else:
                 col="supplied_usd" if "supply" in family else "borrowed_usd";unit="USD"
                 sql=f"SELECT {col} AS value FROM market_hourly WHERE asset='{asset}' AND hour=TIMESTAMPTZ '{when} 00:00:00+00'"
@@ -133,7 +157,9 @@ def load_benchmark(path):return [json.loads(s) for s in Path(path).read_text(enc
 
 
 def freeze_benchmark(path):
-    path=Path(path);rows=load_benchmark(path);validate_benchmark(rows,final=True)
+    path=Path(path)
+    if path.with_suffix('.lock.json').exists():raise FileExistsError('Benchmark already frozen; preserve the original lock and create a new version')
+    rows=load_benchmark(path);validate_benchmark(rows,final=True)
     for category,(dev,test) in CATEGORIES.items():
         if sum(r['category']==category and r['split']=='dev' for r in rows)!=dev or sum(r['category']==category and r['split']=='test' for r in rows)!=test:raise ValueError(f"Wrong benchmark distribution: {category}")
     manifest={"sha256":hashlib.sha256(path.read_bytes()).hexdigest(),"frozen_at":datetime.now(timezone.utc).isoformat(),"records":len(rows)}

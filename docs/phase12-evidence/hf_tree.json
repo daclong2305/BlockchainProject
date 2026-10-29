@@ -1,0 +1,6 @@
+{
+  "url": "https://huggingface.co/api/models/zhenlong54/qwen-vitext2sql-3b-GGUF/tree/579ae3d2f0db23dd25fd83076a57dbab79f68dd9?recursive=true",
+  "collected_at": "2026-10-28T14:14:29.305104+00:00",
+  "status": 200,
+  "body": "[{\"type\":\"file\",\"oid\":\"5f01b5e7eb7f1f29b1538c51ac397c70b57c5261\",\"size\":1573,\"path\":\".gitattributes\"},{\"type\":\"file\",\"oid\":\"932dcb7c5f381f04c48f954add0a22bf92906eb5\",\"size\":1929902496,\"lfs\":{\"oid\":\"b34a028bc6c18d738b57552423bb75ca555d823c19722c4261acc792547a4cd2\",\"size\":1929902496,\"pointerSize\":135},\"xetHash\":\"95d4d472032d778031318a6c44aa8cabb1db1bf63cbf44e40e0575fa6d2682ab\",\"path\":\"model-q4_k_m.gguf\"}]"
+}

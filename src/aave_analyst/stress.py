@@ -1,7 +1,7 @@
 from dataclasses import asdict
 from copy import deepcopy
 import time
-from .models import QuerySpec,Draft
+from .models import QuerySpec,Draft,RunResult
 from .verification import semantic_rules,response_issues
 from .data import DICTIONARY
 
@@ -37,20 +37,28 @@ def create_stress(db):
     return rows
 
 
-def evaluate_stress(rows,analyst):
+def evaluate_stress(rows,analyst,on_result=None):
     results=[]
     for row in rows:
         for label,sql in [('wrong',row['wrong_sql']),('correct',row['correct_sql'])]:
             started=time.perf_counter();usage_start=len(analyst.llm.calls);tools_start=len(analyst.db.calls)
-            req=analyst.llm.complete('plan',{'question':row['question'],'dictionary':DICTIONARY})
-            spec=QuerySpec(**{k:v for k,v in req.items() if k in QuerySpec.__dataclass_fields__})
-            draft=Draft(question=row['question'],spec=spec,sql=sql,query_result=analyst.db.query(sql))
-            analyst._answer(draft,started+analyst.deadline)
+            draft=Draft(question=row['question'],spec=QuerySpec(),sql=sql)
+            try:
+                req=analyst.llm.complete('plan',{'question':row['question'],'dictionary':DICTIONARY},timeout=analyst.deadline)
+                draft.spec=QuerySpec(**{k:v for k,v in req.items() if k in QuerySpec.__dataclass_fields__})
+                remaining=analyst.deadline-(time.perf_counter()-started)
+                if remaining<=0:raise TimeoutError('Question deadline exceeded')
+                draft.query_result=analyst.db.query(sql,timeout=min(15,remaining))
+                analyst._answer(draft,started+analyst.deadline)
+            except Exception as exc:
+                draft.error=f'{type(exc).__name__}: {exc}'
             draft.elapsed=time.perf_counter()-started
             draft.usage=deepcopy(analyst.llm.calls[usage_start:]);draft.tools=deepcopy(analyst.db.calls[tools_start:])
             for mode in ['B1','P']:
                 # Detection/repaired answer are logged separately. Gold is not
                 # passed to the runtime checker or repair loop.
-                result=analyst.continue_draft(draft,mode)
-                results.append(dict(asdict(result),stress_id=row['id'],error_type=row['error_type'],injected=label,reference_rows=row['reference_rows']))
+                result=RunResult(mode,draft,'error',elapsed=draft.elapsed,usage=draft.usage,error=draft.error,tools=draft.tools) if draft.error else analyst.continue_draft(draft,mode)
+                output=dict(asdict(result),stress_id=row['id'],error_type=row['error_type'],injected=label,reference_rows=row['reference_rows'],reference_sql=row['correct_sql'])
+                results.append(output)
+                if on_result:on_result(output)
     return results

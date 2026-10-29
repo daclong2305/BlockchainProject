@@ -16,6 +16,21 @@ def response(text):
     }
 
 
+def test_bedrock_input_uses_same_nfc_policy_without_mutating_question(bedrock):
+    import unicodedata
+    llm, stubber = bedrock
+    original = unicodedata.normalize('NFD', 'Dữ liệu tiếng Việt')
+    payload = {'question': original}
+    normalized = {'question': unicodedata.normalize('NFC', original)}
+    stubber.add_response('converse', response('{"sql":"SELECT 1"}'), {
+        'modelId': llm.model_id, 'system': ANY, 'inferenceConfig': ANY,
+        'messages': [{'role': 'user', 'content': [{'text': json.dumps(normalized, ensure_ascii=False, default=str)}]}],
+    })
+    assert llm.complete('sql', payload) == {'sql': 'SELECT 1'}
+    assert payload['question'] == original
+    assert llm.config()['input_normalization'] == 'NFC'
+
+
 @pytest.fixture
 def bedrock(monkeypatch):
     session = boto3.Session(aws_access_key_id='test', aws_secret_access_key='test', region_name='us-east-1')

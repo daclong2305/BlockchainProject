@@ -1,0 +1,14 @@
+{
+  "scope": "Second live SQL smoke after changing GPU offload; same question and prompt; not a benchmark",
+  "server": {
+    "gpu_layers": 99,
+    "batch_size": 512,
+    "micro_batch_size": 128,
+    "context_size": 8192
+  },
+  "result": "failed",
+  "error_type": "DuckDB BinderException",
+  "error": "Date values were double-quoted and treated as column identifiers. SQL also used COUNT(*) instead of COUNT(DISTINCT tx_hash).",
+  "sql_excerpt": "select count ( * ) from liquidation_events where \"time\" between \"2026-08-01T00:00:00Z\" and \"2026-08-31T23:59:59Z\"",
+  "notes": "Captured from command traceback; full generated response and timing were not persisted by the initial smoke script. Script now saves success and failure separately."
+}

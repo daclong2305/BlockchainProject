@@ -4,6 +4,7 @@ import time
 from .models import Draft,QuerySpec,RunResult,Issue
 from .planning import planning_context,analysis_errors,runtime_dictionary
 from .verification import semantic_rules,response_issues,verify_claims,evidence_payload,coverage_rules,sql_review_payload
+from .sql_normalization import normalize_datetime_quotes
 
 
 @dataclass(frozen=True)
@@ -27,14 +28,31 @@ class Analyst:
         return remaining
 
     def _call(self,role,payload,end):
+        progress=getattr(self,'progress',None)
+        if progress:progress({'event':'call_started','role':role,'remaining_seconds':self.remaining(end)})
+        if role in {'plan', 'plan_review'} and 'question' in payload:
+            payload = dict(payload)
+            payload['question'] = payload.pop('question')
         value=self.llm.complete(role,payload,timeout=self.remaining(end))
+        if progress:progress({'event':'call_finished','role':role,'remaining_seconds':max(0,end-time.perf_counter())})
         self.remaining(end)
         return value
 
     def _answer(self,draft,end):
+        if draft.spec.kind in {'data','mixed'} and draft.sql and draft.query_result is None:
+            draft.answer='Chưa có kết quả truy vấn hợp lệ để trả lời phần số liệu. Cần sửa và thực thi SQL thành công trước.'
+            draft.claims=[];draft.refused=True
+            return
         value=self._call("answer",evidence_payload(draft),end)
-        draft.answer=str(value.get("answer",""));draft.claims=value.get("claims",[]);draft.refused=bool(value.get("refused",False))
+        if not isinstance(value.get('answer'), str):raise ValueError('Malformed answer response: answer must be a string, not a fabricated scalar')
+        draft.answer=value['answer'];draft.claims=value.get("claims",[]);draft.refused=bool(value.get("refused",False))
         if not draft.answer or not isinstance(draft.claims,list):raise ValueError("Malformed answer response")
+
+    def _set_sql(self, draft, sql):
+        normalized, changes = normalize_datetime_quotes(sql)
+        draft.sql = normalized
+        if changes:
+            draft.planning.setdefault('sql_normalizations', []).append({'raw_sql': sql, 'executed_sql': normalized, 'changes': changes})
 
     def make_draft(self,question):
         start=time.perf_counter();end=start+self.deadline;usage_start=len(self.llm.calls)
@@ -45,14 +63,14 @@ class Analyst:
             requirements=self._call("plan",context,end)
             spec=QuerySpec(**{k:v for k,v in requirements.items() if k in QuerySpec.__dataclass_fields__})
             draft.planning={'initial':asdict(spec),'availability':context['availability']}
-            reasons=analysis_errors(spec)
+            reasons=analysis_errors(spec, context['availability'])
             if spec.clarification:reasons.append('Check whether clarification is genuinely needed instead of refusing an answerable question')
             if spec.kind=='unanswerable':reasons.append('Check available document evidence and data before declaring the question unsupported')
             if reasons:
                 reviewed=self._call('plan_review',dict(context,proposed_requirements=asdict(spec),review_reasons=reasons),end)
                 spec=QuerySpec(**{k:v for k,v in reviewed.items() if k in QuerySpec.__dataclass_fields__})
                 draft.planning.update(review_reasons=reasons,revised=asdict(spec))
-            errors=analysis_errors(spec)
+            errors=analysis_errors(spec, context['availability'])
             if errors:raise ValueError('Invalid analysis: '+'; '.join(errors))
             draft.spec=spec
             if spec.clarification:
@@ -60,7 +78,7 @@ class Analyst:
             else:
                 if spec.kind in {"docs","mixed"}:draft.documents=self.retriever.search(spec.retrieval_query or question)
                 if spec.kind in {"data","mixed"}:
-                    draft.sql=self._call("sql",{"question":question,"requirements":asdict(spec),"schema":self.db.schema(),"dictionary":runtime_dictionary()},end)["sql"]
+                    self._set_sql(draft,self._call("sql",{"question":question,"requirements":asdict(spec),"schema":self.db.schema(),"dictionary":runtime_dictionary()},end)["sql"])
                     try:draft.query_result=self.db.query(draft.sql,timeout=min(15,self.remaining(end)))
                     except Exception as exc:draft.issues=[Issue("sql_execution",str(exc),"sql")]
                 draft.tools=deepcopy(self.db.calls[sql_start:]+self.retriever.calls[retrieval_start:])
@@ -87,7 +105,7 @@ class Analyst:
                         issues.extend(response_issues(self._call("generic_review",evidence_payload(draft),end)))
                     else:
                         if flags.sql_check and draft.sql:
-                            issues.extend(semantic_rules(draft.sql,asdict(draft.spec)))
+                            issues.extend(semantic_rules(draft.sql,asdict(draft.spec),question=draft.question))
                             issues.extend(coverage_rules(self.db,draft.spec,timeout=min(15,self.remaining(end))))
                             payload=sql_review_payload(draft)
                             issues.extend(response_issues(self._call("sql_review",payload,end)))
@@ -102,10 +120,10 @@ class Analyst:
                     fix=self._call("repair",dict(evidence_payload(draft),issues=[asdict(i) for i in issues],schema=self.db.schema()),end)
                     repairs+=1
                     new_sql=fix.get("sql","")
-                    if new_sql and new_sql!=draft.sql:
-                        draft.sql=new_sql;draft.query_result=None;draft.issues=[];draft.claims=[];draft.answer=""
+                    if new_sql and normalize_datetime_quotes(new_sql)[0]!=draft.sql:
+                        self._set_sql(draft,new_sql);draft.query_result=None;draft.issues=[];draft.claims=[];draft.answer=""
                         # First SQL call of this repair; one optional auxiliary call remains.
-                        try:draft.query_result=self.db.query(new_sql,timeout=min(15,self.remaining(end)))
+                        try:draft.query_result=self.db.query(draft.sql,timeout=min(15,self.remaining(end)))
                         except Exception as exc:draft.issues=[Issue("sql_execution",str(exc),"sql")]
                     query=fix.get("retrieval_query","")
                     if query:

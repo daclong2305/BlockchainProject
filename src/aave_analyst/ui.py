@@ -64,6 +64,12 @@ def render_evidence(draft, index, root):
                 st.caption('SQL không đúng định dạng văn bản. Xem bản gốc trong JSON tải về.')
             st.code(display_sql, language='sql')
             st.caption('SQL được định dạng để đọc. Bản gốc được giữ nguyên trong JSON tải về.')
+            normalizations = (draft.get('planning') or {}).get('sql_normalizations', [])
+            if normalizations:
+                with st.expander('SQL model sinh trước khi điều chỉnh cú pháp ngày'):
+                    st.caption('Chỉ đổi định danh có dạng ngày ISO thành chuỗi ngày ở phép so sánh thời gian. SQL thực thi hiển thị bên trên; không tự sửa phép đếm hoặc mốc ngày.')
+                    for item in normalizations:
+                        st.code(item['raw_sql'], language='sql')
             with st.expander('Nguồn dữ liệu', icon=':material/database:'):
                 st.caption('Database cục bộ của workspace; kết quả lượt hỏi không lưu mã phiên bản tệp dữ liệu.')
                 try:

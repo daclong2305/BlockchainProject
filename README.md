@@ -16,7 +16,7 @@
 Mở PowerShell:
 
 ```powershell
-cd F:\Code\BlockchainProject
+cd C:\BlockchainProject
 .\.venv\Scripts\python.exe -m aave_analyst.cli doctor
 .\.venv\Scripts\python.exe -m streamlit run app.py --server.address localhost
 ```
@@ -141,3 +141,44 @@ docs/               Kế hoạch, tiến độ, quy trình thực nghiệm
 ## Giới hạn cần báo cáo
 
 Quy tắc SQL không chứng minh truy vấn đúng tuyệt đối. LLM có thể trích xuất yêu cầu sai hoặc kiểm chứng sai. Haiku được dùng ở nhiều vai trò nên judge có thể có thiên lệch tương quan; mẫu hai người chấm độc lập là cần thiết. Kho ba trang không bao phủ toàn bộ Aave. 40 câu test là phạm vi thí nghiệm nhỏ; ba lần chạy cùng câu không tạo ra ba câu độc lập. `checks_passed` chỉ là trạng thái của bộ kiểm tra, không phải nhãn đúng của benchmark.
+
+## Dùng Qwen ViText2SQL GGUF local
+
+Model người dùng chọn: `zhenlong54/qwen-vitext2sql-3b-GGUF`, revision `579ae3d2f0db23dd25fd83076a57dbab79f68dd9`, file Q4_K_M. Trạng thái đã fine-tune do người dùng cung cấp; chưa có recipe/checkpoint nguồn để tái lập phần fine-tune đó.
+
+```powershell
+cd C:\BlockchainProject
+.\.venv\Scripts\python.exe scripts/setup_local_qwen.py
+.\run-qwen.ps1 doctor
+.\run-qwen.ps1 app
+```
+
+Setup tải khoảng 1,93 GB model và runtime llama.cpp b11962 Vulkan, kiểm tra SHA-256 trước khi dùng. `run-qwen.ps1` chọn local_qwen cho tất cả vai trò runtime, tự khởi động server 127.0.0.1:8081 với context 8192, offload toàn bộ layers, batch 512 và micro-batch 128; không cần cài CUDA. Server tiếp tục chạy để tái sử dụng sau khi đóng app. PID và log ở `.tmp/qwen-server.*`; muốn dừng, kiểm tra PID thuộc llama-server rồi dừng tiến trình đó.
+
+Có thể khởi động server thủ công bằng `scripts/start_local_qwen.ps1 -GpuLayers 0` để dùng CPU khi VRAM không đủ; đặt AAVE_LLM_PROVIDER=local_qwen và QWEN_BASE_URL=http://127.0.0.1:8081 trong terminal gọi CLI/app. `run.ps1` cũ vẫn dùng cấu hình provider hiện tại (mặc định Bedrock); dùng `run-qwen.ps1` để chọn Qwen rõ ràng. Chấm điểm bằng `score --judge` vẫn chọn Bedrock riêng và có phí; không chạy trong bước này.
+
+Thử một câu SQL cục bộ sau khi server sẵn sàng:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/smoke_local_qwen.py
+```
+
+Đây là smoke test riêng, không phải benchmark và không tạo bộ train/test. Qwen 3B có thể chưa theo tốt schema JSON hoặc các vai trò kiểm chứng dài; cần đánh giá riêng trước khi kết luận chất lượng. Timeout tương tác UI mặc định 600 giây/model, điều chỉnh từ 120 đến 3600 giây trong sidebar. CLI/benchmark vẫn mặc định 120 giây. Model/runtime/dữ liệu và logs bị loại khỏi Git.
+
+Kết quả smoke trên máy này: một truy vấn Qwen trả đúng 107 giao dịch tháng 8/2026; lần sinh khác lỗi SQL. Luồng P dùng Qwen cho mọi vai trò chưa đạt (planning sai routing và timeout 120 giây). Đường local đã kết nối được nhưng hiện là lựa chọn thử nghiệm; xem docs/PHASE12_READINESS_VI.md, mục 11. Không coi kết quả này là benchmark hay bằng chứng Qwen thay thế đầy đủ Claude.
+
+## So sánh Qwen – Claude trên UI
+
+Trong sidebar, chọn **Không gian làm việc → So sánh Qwen – Claude**, nhập một câu hỏi và chọn phương pháp dùng chung (B0/B1/P/...). Bấm **Chạy so sánh Qwen + Claude** để thực hiện. Mỗi lần bấm chạy sẽ gọi Qwen local và Claude qua Bedrock; **Bedrock có phát sinh phí**. Đổi lựa chọn, tải JSON hoặc repaint giao diện không tự gửi yêu cầu mới.
+
+Hai bên dùng cùng database, kho tài liệu, câu hỏi, phương pháp, prompts/runtime và deadline dùng chung do người dùng chọn (mặc định 600 giây/model); chạy lần lượt Qwen rồi Claude. UI hiển thị câu trả lời, SQL/bảng kết quả, tài liệu/dẫn chứng, trạng thái kiểm chứng, số vòng sửa, thời gian, số lượt gọi và token vào/ra cạnh nhau. Lỗi hoặc timeout giữ nguyên trên bên bị lỗi, bên còn lại vẫn được thực hiện; không có fallback model. Snapshot database/dictionary/chunks được hash trước và sau; cảnh báo nếu thay đổi. JSON xuất ra có cấu hình model, input/code hashes và kết quả từng bên. Đây là so sánh từng câu tương tác, không tự tạo/chạy final benchmark hoặc kết luận model thắng.
+
+Khởi động Qwen bằng `run-qwen.ps1 app`; server local cần sẵn sàng ở 127.0.0.1:8081, Claude cần credentials/quyền Bedrock như hướng dẫn bên trên. Trong **Hội thoại**, ô **Model hội thoại** cho chọn Qwen local, Claude Bedrock hoặc theo cấu hình khởi động. Lựa chọn ở hội thoại không thay đổi hai model cố định của phần so sánh. Lịch sử so sánh chỉ giữ trong phiên; tải JSON trước khi đóng trang để lưu kết quả.
+
+Timeout UI áp dụng cho cả hội thoại và so sánh, trên toàn bộ các bước của một câu hỏi; hai model nhận cùng ngân sách. Kết quả so sánh ghi deadline_seconds_per_model; kết quả hội thoại ghi deadline_seconds để phân biệt các lần chạy. Thay đổi mức này không tự chạy lại câu hỏi và không thay protocol benchmark 120 giây. Tăng timeout không sửa lỗi routing/SQL hoặc thiếu credentials Bedrock.
+
+
+Cập nhật 29/10/2026: đã sửa routing bỏ qua SQL bằng role JSON schema/kiểm tra kế hoạch, và chuyển đổi hẹp quote ngày ISO cho DuckDB (có lưu SQL gốc). Kiểm tra thực tế Qwen đã thực thi COUNT(DISTINCT tx_hash) trả 107, khớp truy vấn độc lập; luồng P 150,74 giây, vẫn unverified do reviewer của model. **124 test offline đạt**. Xem docs/QWEN_SQL_ROUTING_FIX_VI.md; các kết quả lỗi ở phần trên là trước sửa, không phải benchmark.
+
+
+Nguồn giấy phép số liệu Aave: [DATA_ATTRIBUTION.md](docs/DATA_ATTRIBUTION.md). Audit đối chiếu toàn bộ các quan sát runtime với một bản Zenodo của cùng publisher khai báo CC BY 4.0; snapshot runtime vẫn pin data-2026-09-15. Xem file này để ghi công và phân biệt giấy phép dataset với model/tài liệu/mã nguồn.

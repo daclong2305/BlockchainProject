@@ -1,0 +1,125 @@
+{
+  "collected_at": "2026-10-29T12:20:36.340858+00:00",
+  "files": [
+    {
+      "path": "data/documents/BORROW.html",
+      "bytes": 63450,
+      "sha256": "6c819d0579466096843a76a5aa030c1a4d77384e7c80d35956c762b2875c3969"
+    },
+    {
+      "path": "data/documents/chunks.json",
+      "bytes": 12833,
+      "sha256": "d89c33e1141ce9937ee04803cd45d4c6e128d74112fb9019555ba123c3fa6ae9"
+    },
+    {
+      "path": "data/documents/LIQ.html",
+      "bytes": 65617,
+      "sha256": "a9790c3a080a31f6e65b21a272b2871b28178c534097dd0ae9f3e019c67e6412"
+    },
+    {
+      "path": "data/documents/SUPPLY.html",
+      "bytes": 59568,
+      "sha256": "da99401278b85a862668aec702a8d219d01a7b75c3e08d3af5ae2c2580ace482"
+    },
+    {
+      "path": "data/processed/aave.duckdb",
+      "bytes": 7352320,
+      "sha256": "9069f8c284d9dfbfb9953962a3f0ca0b3ab98a0217636c9af432e55985bd3aef"
+    },
+    {
+      "path": "data/processed/audit.json",
+      "bytes": 3362,
+      "sha256": "baeac9ff4ea7b387086dc0d926e797bbc697235cb703ff6f96e320d255ef7a95"
+    },
+    {
+      "path": "data/processed/dictionary.json",
+      "bytes": 1437,
+      "sha256": "4cd24105faa74b560b28d7fdd536766293b6994f4a0bdaa0df73ead88c544c21"
+    },
+    {
+      "path": "data/processed/liquidation_events.parquet",
+      "bytes": 3141209,
+      "sha256": "e9ce1d316b0165967178e4ca3f4ec9c9f45a0b56d7a5cabd1d06e1ebb0560e91"
+    },
+    {
+      "path": "data/processed/market_hourly.parquet",
+      "bytes": 4475769,
+      "sha256": "0e6e631d4a68bd640eba077975e458106c51ccbf497eac9bfc1d3fa2096b5c9c"
+    },
+    {
+      "path": "data/raw/aave_data.zip",
+      "bytes": 34902111,
+      "sha256": "1d4d8025b5aed07707d341b5824b6954d9869b8416e11efa2832ceafeaedf91e"
+    },
+    {
+      "path": "data/raw/data/AAVE/aave_v2_dai_eth.parquet",
+      "bytes": 3069507,
+      "sha256": "0561ea63bb494cc770d2064a65499e05744794b892359fa00e7e4b0f70c47299"
+    },
+    {
+      "path": "data/raw/data/AAVE/aave_v2_usdc_eth.parquet",
+      "bytes": 3925289,
+      "sha256": "ef10e76082e1734be91118907b3ea63a1d0d486b28d5d2667b5cd37898d5945f"
+    },
+    {
+      "path": "data/raw/data/AAVE/aave_v2_usdt_eth.parquet",
+      "bytes": 3356218,
+      "sha256": "274fb09b824d1e878c97d5584307552ff35c66c31ada95350da2eab26ed236f7"
+    },
+    {
+      "path": "data/raw/data/AAVE/aave_v2_weth_eth.parquet",
+      "bytes": 3851910,
+      "sha256": "12143dbea19478966ce163978c8b571e9a0d3945c253dc90a0f5c5ba56200396"
+    },
+    {
+      "path": "data/raw/data/AAVE/aave_v3_dai_eth.parquet",
+      "bytes": 2234620,
+      "sha256": "f75e1af04d00bedc332657e9ce89262383c2feb9a2005b1dcf6031f00e02f5a0"
+    },
+    {
+      "path": "data/raw/data/AAVE/aave_v3_usdc_eth.parquet",
+      "bytes": 2724653,
+      "sha256": "adb8b54d3fac1a62759a9c34ba71e9c852222c7f1f514ea559e64afb06ec181c"
+    },
+    {
+      "path": "data/raw/data/AAVE/aave_v3_usde_eth.parquet",
+      "bytes": 1320044,
+      "sha256": "b8f8d419c1921e5faf24a62581b4127e6c8f7b728cd389a303f530ad93940576"
+    },
+    {
+      "path": "data/raw/data/AAVE/aave_v3_usdt_eth.parquet",
+      "bytes": 2614661,
+      "sha256": "94fad98ebf584e3067cd41cebf55873407a46c8d63276efd59fdf35b00617ddd"
+    },
+    {
+      "path": "data/raw/data/AAVE/aave_v3_weth_eth.parquet",
+      "bytes": 2762662,
+      "sha256": "431bc95acd4c62cdafa9d7d8adf2ef6ed21a4e12f9bf7d31d7d1585315ee9ada"
+    },
+    {
+      "path": "data/raw/data/AAVE/liquidations/aave_v2_eth_liquidation_events.parquet",
+      "bytes": 10599848,
+      "sha256": "14681aa36fd23dc1042f34bb3fa9e6bd9b985fc11d6435530815893b7579453d"
+    },
+    {
+      "path": "data/raw/data/AAVE/liquidations/aave_v2_eth_liquidations_hourly.parquet",
+      "bytes": 654116,
+      "sha256": "e8523d972e445af6864b762aa591f98c59acba9ea5deebe364ddf2f7eeb2c5b8"
+    },
+    {
+      "path": "data/raw/data/AAVE/liquidations/aave_v3_eth_liquidation_events.parquet",
+      "bytes": 5658203,
+      "sha256": "cb7bf6aa054eb5ebb14ec553a68cf8aa84ffedfb32b864fc4dac39d52c5003d4"
+    },
+    {
+      "path": "data/raw/data/AAVE/liquidations/aave_v3_eth_liquidations_hourly.parquet",
+      "bytes": 377072,
+      "sha256": "4e4cb3c3d4dc25b7b00e7c5eefbd2a097a19aaf039ea93657103f38fc001669d"
+    },
+    {
+      "path": "data/raw/manifest.json",
+      "bytes": 369,
+      "sha256": "a8507c517253c3488d176ddca6dd39f1d15ac49bf3041441979352a9a29e7db4"
+    }
+  ]
+}

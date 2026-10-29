@@ -1,0 +1,6 @@
+{
+  "url": "https://huggingface.co/api/models?author=zhenlong54&search=qwen&limit=100",
+  "collected_at": "2026-10-28T14:14:29.925553+00:00",
+  "status": 200,
+  "body": "[{\"_id\":\"6ac90118623e8e0017e00bc3\",\"id\":\"zhenlong54/qwen-vitext2sql-3b-GGUF\",\"likes\":0,\"trendingScore\":0,\"private\":false,\"downloads\":55,\"tags\":[\"gguf\",\"endpoints_compatible\",\"region:us\",\"conversational\"],\"createdAt\":\"2026-10-09T14:58:32.000Z\",\"modelId\":\"zhenlong54/qwen-vitext2sql-3b-GGUF\"}]"
+}

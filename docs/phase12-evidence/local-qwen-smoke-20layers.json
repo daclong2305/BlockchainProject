@@ -1,0 +1,38 @@
+{
+  "question": "Trong bộ dữ liệu hiện có, có bao nhiêu giao dịch thanh lý trong tháng 8 năm 2026?",
+  "model": {
+    "provider": "llama.cpp",
+    "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+    "revision": "579ae3d2f0db23dd25fd83076a57dbab79f68dd9",
+    "artifact_sha256": "b34a028bc6c18d738b57552423bb75ca555d823c19722c4261acc792547a4cd2",
+    "base_url": "http://127.0.0.1:8081",
+    "quantization": "Q4_K_M",
+    "generation_temperature": 0.2,
+    "review_temperature": 0.0,
+    "max_tokens": 4096,
+    "json_format_retries": 1
+  },
+  "sql": "select count ( distinct tx_hash ) from liquidation_events where time >= '2026-08-01T00:00:00Z' and time < '2026-09-01T00:00:00Z'",
+  "rows": [
+    {
+      "count(DISTINCT tx_hash)": 107
+    }
+  ],
+  "reference_rows": [
+    {
+      "transactions": 107
+    }
+  ],
+  "matches_reference_values": true,
+  "calls": [
+    {
+      "role": "sql",
+      "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+      "format_attempt": 1,
+      "input_tokens": 968,
+      "output_tokens": 67,
+      "elapsed": 41.596778000000086
+    }
+  ],
+  "scope": "Single local inference smoke test; not a benchmark or training example"
+}

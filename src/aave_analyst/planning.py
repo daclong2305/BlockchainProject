@@ -31,10 +31,11 @@ def planning_context(db, retriever, question, remaining):
                               'Query the requested interval to report counts in the loaded dataset.',
         },
         'document_evidence': [{key: doc[key] for key in ('id', 'title', 'url', 'text')} for doc in candidates],
+        'workflow': 'This is intent analysis BEFORE SQL execution. The database tables and availability above are available to the NEXT SQL stage. Individual transaction rows are deliberately not attached yet. Their absence from document_evidence does NOT mean the database has no transactions. Numerical observations in these tables use data/mixed routing, not docs or unanswerable. Do not answer the question now.',
     }
 
 
-def analysis_errors(spec):
+def analysis_errors(spec, availability=None):
     errors = []
     if not isinstance(spec.kind, str) or spec.kind not in {'docs', 'data', 'mixed', 'unanswerable'}:
         errors.append('kind must be docs, data, mixed or unanswerable')
@@ -56,6 +57,20 @@ def analysis_errors(spec):
             errors.append(f'{key} must be an ISO date or null')
     if len(dates) == 2 and dates['end'] <= dates['start']:
         errors.append('end must be later than start; intervals are [start, end)')
+    if not spec.clarification and spec.kind == 'docs' and spec.metric in {
+            'transactions', 'events', 'supplied_usd', 'borrowed_usd', 'liquidation_usd'}:
+        errors.append('A supported database metric cannot use docs routing. Recheck the ORIGINAL question: use data or mixed for numerical observations, preserve its requested dates, or metric=other for a purely conceptual question')
+    if (not errors and not spec.clarification and spec.kind == 'unanswerable'
+            and spec.metric in {'transactions', 'events', 'liquidation_usd'} and not spec.assets
+            and len(dates) == 2 and availability):
+        observed = availability.get('liquidation_events', {})
+        try:
+            lower = datetime.fromisoformat(observed['first_event_utc'].replace('Z', '+00:00'))
+            upper = datetime.fromisoformat(observed['last_event_utc'].replace('Z', '+00:00'))
+            if lower <= dates['start'] < dates['end'] <= upper:
+                errors.append('Requested loaded-dataset liquidation metric and interval are supported by the database. Transaction rows are obtained in the NEXT SQL step; missing document rows cannot justify unanswerable. Use data/mixed and generate SQL before answering.')
+        except (KeyError, TypeError, ValueError, AttributeError):
+            pass
     if errors or spec.clarification or spec.kind not in {'data', 'mixed'}:
         return errors
     if spec.metric in {'transactions', 'events'} and spec.unit not in {'', 'count'}:
