@@ -1,0 +1,10 @@
+{
+  "seed": 2026,
+  "population_outputs": 60,
+  "eligible_judge_outputs": 29,
+  "sampled": 6,
+  "fraction_of_judged": 0.20689655172413793,
+  "fraction_of_all_outputs": 0.1,
+  "rule": "ceil(20% of successful judge outputs); proportional strata mode/category with largest remainder; report eligible and total populations separately",
+  "note": "Runtime failures and failed judge calls are not successful judge labels; they remain in benchmark/error denominators."
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "role": "judge",
+    "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "format_attempt": 1,
+    "input_tokens": 4311,
+    "output_tokens": 334,
+    "timeout_seconds": 119.99972199999866,
+    "cache_read_input_tokens": 0,
+    "cache_write_input_tokens": 0,
+    "elapsed": 4.157994199998939
+  }
+]

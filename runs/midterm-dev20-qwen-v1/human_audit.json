@@ -1,0 +1,752 @@
+[
+  {
+    "question_id": "Q025",
+    "category": "analysis",
+    "mode": "B0",
+    "repeat": 0,
+    "numeric_value_correct": false,
+    "numeric_expected": true,
+    "numeric_correct": false,
+    "correct": false,
+    "judge": {
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "refusal_correct": true,
+      "numeric_scope_correct": 1,
+      "numeric_error_types": [],
+      "explanation": "Câu trả lời của hệ thống (98282885.63 USD) khớp chính xác với giá trị tham chiếu từ SQL1. Truy vấn SQL của ứng viên tính toán trung bình (AVG) của borrowed_usd cho tài sản DAI trong khoảng thời gian từ 2026-06-01 đến 2026-07-01 (tháng 6 năm 2026), đó chính xác là những gì câu hỏi yêu cầu. Kết quả số (98282885.63031632) nằm trong phạm vi chính xác so với tham chiếu (sai số tương đối USD ≤ 0.005). Không có tài liệu bổ sung được cung cấp, nhưng dữ liệu SQL được xác minh độc lập khớp với kết quả tham chiếu.",
+      "claim_checks": [
+        {
+          "text": "Giá trị dư nợ trung bình theo giờ của DAI trong tháng 2026-06 là 98282885.63 USD",
+          "needs_evidence": true,
+          "citations": [
+            {
+              "id": "SQL1",
+              "supported": true
+            }
+          ]
+        }
+      ]
+    },
+    "judge_error": "",
+    "citation": {
+      "precision": 1.0,
+      "completeness": 1.0
+    },
+    "refused": false,
+    "expected_refusal": false,
+    "elapsed": 44.964540200002375,
+    "input_tokens": 4450,
+    "output_tokens": 243,
+    "sql_calls": 3,
+    "retrieval_calls": 1,
+    "runtime_error": false,
+    "review_context": {
+      "question": "Giá trị dư nợ trung bình theo giờ của DAI trong tháng 2026-06 là bao nhiêu USD?",
+      "reference_answer": {
+        "required_points": [],
+        "sql_result": [
+          {
+            "value": 98282885.63031632
+          }
+        ],
+        "limitation": ""
+      },
+      "sources": [
+        {
+          "id": "SQL1",
+          "sql": "SELECT avg(borrowed_usd) AS value FROM market_hourly WHERE asset='DAI' AND hour >= TIMESTAMPTZ '2026-06-01' AND hour < TIMESTAMPTZ '2026-07-01'",
+          "rows": [
+            {
+              "value": 98282885.63031632
+            }
+          ]
+        }
+      ],
+      "system_answer": "98282885.63",
+      "system_claims": [],
+      "documents": [],
+      "sql": "SELECT AVG(borrowed_usd) FROM market_hourly WHERE asset = 'DAI' AND hour >= '2026-06-01T00:00:00+00:00' AND hour < '2026-07-01T00:00:00+00:00'",
+      "query_result": {
+        "columns": [
+          "avg(borrowed_usd)"
+        ],
+        "rows": [
+          {
+            "avg(borrowed_usd)": 98282885.63031632
+          }
+        ],
+        "truncated": false,
+        "total_rows": 1
+      }
+    },
+    "scope": {
+      "chain": "Ethereum",
+      "protocol": "Aave V3",
+      "metric_family": "avg_debt",
+      "assets": [
+        "DAI"
+      ],
+      "unit": "USD",
+      "time_zone": "UTC",
+      "gold_where_predicates": [
+        "asset = 'DAI' AND hour >= CAST('2026-06-01' AS TIMESTAMPTZ) AND hour < CAST('2026-07-01' AS TIMESTAMPTZ)"
+      ],
+      "gold_time_literals": [
+        "2026-06-01",
+        "2026-07-01"
+      ],
+      "scope_basis": "provisional gold SQL; human must verify against original question",
+      "benchmark_window": {
+        "start": "2025-01-01",
+        "end_exclusive": "2026-09-01"
+      }
+    },
+    "reviewer_1": {
+      "name": "",
+      "answer_correctness": null,
+      "faithfulness": null,
+      "citation_quality": null
+    },
+    "reviewer_2": {
+      "name": "",
+      "answer_correctness": null,
+      "faithfulness": null,
+      "citation_quality": null
+    }
+  },
+  {
+    "question_id": "Q027",
+    "category": "analysis",
+    "mode": "B0",
+    "repeat": 0,
+    "numeric_value_correct": false,
+    "numeric_expected": true,
+    "numeric_correct": false,
+    "correct": false,
+    "judge": {
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "refusal_correct": true,
+      "numeric_scope_correct": 1,
+      "numeric_error_types": [],
+      "explanation": "Câu trả lời của hệ thống (521264061.99 USD) khớp chính xác với giá trị tham chiếu (521264061.9902388 USD) trong phạm vi dung sai USD được chỉ định (±0.5%). Truy vấn SQL được cung cấp tính toán giá trị dư nợ trung bình theo giờ (AVG(borrowed_usd)) cho tài sản USDe trong khoảng thời gian chính xác từ 2026-08-01 đến 2026-09-01 (tháng 8 năm 2026). Kết quả được làm tròn thích hợp đến 2 chữ số thập phân như được chỉ định trong numeric_reference. Không có giới hạn dữ liệu được báo cáo.",
+      "claim_checks": [
+        {
+          "text": "Giá trị dư nợ trung bình theo giờ của USDe trong tháng 2026-08 là 521264061.99 USD",
+          "needs_evidence": true,
+          "citations": [
+            {
+              "id": "SQL1",
+              "supported": true
+            }
+          ]
+        }
+      ]
+    },
+    "judge_error": "",
+    "citation": {
+      "precision": 1.0,
+      "completeness": 1.0
+    },
+    "refused": false,
+    "expected_refusal": false,
+    "elapsed": 38.09887659999731,
+    "input_tokens": 4450,
+    "output_tokens": 244,
+    "sql_calls": 3,
+    "retrieval_calls": 1,
+    "runtime_error": false,
+    "review_context": {
+      "question": "Giá trị dư nợ trung bình theo giờ của USDe trong tháng 2026-08 là bao nhiêu USD?",
+      "reference_answer": {
+        "required_points": [],
+        "sql_result": [
+          {
+            "value": 521264061.9902388
+          }
+        ],
+        "limitation": ""
+      },
+      "sources": [
+        {
+          "id": "SQL1",
+          "sql": "SELECT avg(borrowed_usd) AS value FROM market_hourly WHERE asset='USDe' AND hour >= TIMESTAMPTZ '2026-08-01' AND hour < TIMESTAMPTZ '2026-09-01'",
+          "rows": [
+            {
+              "value": 521264061.9902388
+            }
+          ]
+        }
+      ],
+      "system_answer": "521264061.99",
+      "system_claims": [],
+      "documents": [],
+      "sql": "SELECT AVG(borrowed_usd) FROM market_hourly WHERE asset = 'USDe' AND hour >= '2026-08-01T00:00:00+00:00' AND hour < '2026-09-01T00:00:00+00:00'",
+      "query_result": {
+        "columns": [
+          "avg(borrowed_usd)"
+        ],
+        "rows": [
+          {
+            "avg(borrowed_usd)": 521264061.9902388
+          }
+        ],
+        "truncated": false,
+        "total_rows": 1
+      }
+    },
+    "scope": {
+      "chain": "Ethereum",
+      "protocol": "Aave V3",
+      "metric_family": "avg_debt",
+      "assets": [
+        "USDe"
+      ],
+      "unit": "USD",
+      "time_zone": "UTC",
+      "gold_where_predicates": [
+        "asset = 'USDe' AND hour >= CAST('2026-08-01' AS TIMESTAMPTZ) AND hour < CAST('2026-09-01' AS TIMESTAMPTZ)"
+      ],
+      "gold_time_literals": [
+        "2026-08-01",
+        "2026-09-01"
+      ],
+      "scope_basis": "provisional gold SQL; human must verify against original question",
+      "benchmark_window": {
+        "start": "2025-01-01",
+        "end_exclusive": "2026-09-01"
+      }
+    },
+    "reviewer_1": {
+      "name": "",
+      "answer_correctness": null,
+      "faithfulness": null,
+      "citation_quality": null
+    },
+    "reviewer_2": {
+      "name": "",
+      "answer_correctness": null,
+      "faithfulness": null,
+      "citation_quality": null
+    }
+  },
+  {
+    "question_id": "Q017",
+    "category": "lookup",
+    "mode": "B0",
+    "repeat": 0,
+    "numeric_value_correct": false,
+    "numeric_expected": true,
+    "numeric_correct": false,
+    "correct": false,
+    "judge": {
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "refusal_correct": true,
+      "numeric_scope_correct": 1,
+      "numeric_error_types": [],
+      "explanation": "The system answer of 107 liquidation transactions in August 2026 UTC on Aave V3 Ethereum is correct and complete. The SQL query properly filters for the exact month (2026-08-01 to 2026-09-01 UTC) and counts distinct transaction hashes from liquidation_events. The candidate SQL produces identical results with the same count value. The numeric scope is correct: metric=count of liquidation transactions, aggregation=distinct tx_hash, asset=Aave V3 Ethereum (implied by source table), time=2026-08 UTC, unit=count. The count value of 107 matches the reference exactly, satisfying the 'exact' tolerance policy for counts.",
+      "claim_checks": [
+        {
+          "text": "107 giao dịch thanh lý trong tháng 2026-08 UTC trên Aave V3 Ethereum",
+          "needs_evidence": true,
+          "citations": [
+            {
+              "id": "SQL1",
+              "supported": true
+            }
+          ]
+        }
+      ]
+    },
+    "judge_error": "",
+    "citation": {
+      "precision": 1.0,
+      "completeness": 1.0
+    },
+    "refused": false,
+    "expected_refusal": false,
+    "elapsed": 41.76167689999784,
+    "input_tokens": 4534,
+    "output_tokens": 279,
+    "sql_calls": 3,
+    "retrieval_calls": 1,
+    "runtime_error": false,
+    "review_context": {
+      "question": "Trong tháng 2026-08 UTC có bao nhiêu giao dịch thanh lý trên Aave V3 Ethereum?",
+      "reference_answer": {
+        "required_points": [],
+        "sql_result": [
+          {
+            "value": 107
+          }
+        ],
+        "limitation": ""
+      },
+      "sources": [
+        {
+          "id": "SQL1",
+          "sql": "SELECT count(DISTINCT tx_hash) AS value FROM liquidation_events WHERE time >= TIMESTAMPTZ '2026-08-01' AND time < TIMESTAMPTZ '2026-09-01'",
+          "rows": [
+            {
+              "value": 107
+            }
+          ]
+        }
+      ],
+      "system_answer": "107",
+      "system_claims": [],
+      "documents": [],
+      "sql": "SELECT COUNT(DISTINCT tx_hash) FROM liquidation_events WHERE time >= '2026-08-01T00:00:00+00:00' AND time < '2026-09-01T00:00:00+00:00'",
+      "query_result": {
+        "columns": [
+          "count(DISTINCT tx_hash)"
+        ],
+        "rows": [
+          {
+            "count(DISTINCT tx_hash)": 107
+          }
+        ],
+        "truncated": false,
+        "total_rows": 1
+      }
+    },
+    "scope": {
+      "chain": "Ethereum",
+      "protocol": "Aave V3",
+      "metric_family": "transaction_count",
+      "assets": [],
+      "unit": "count",
+      "time_zone": "UTC",
+      "gold_where_predicates": [
+        "time >= CAST('2026-08-01' AS TIMESTAMPTZ) AND time < CAST('2026-09-01' AS TIMESTAMPTZ)"
+      ],
+      "gold_time_literals": [
+        "2026-08-01",
+        "2026-09-01"
+      ],
+      "scope_basis": "provisional gold SQL; human must verify against original question",
+      "benchmark_window": {
+        "start": "2025-01-01",
+        "end_exclusive": "2026-09-01"
+      }
+    },
+    "reviewer_1": {
+      "name": "",
+      "answer_correctness": null,
+      "faithfulness": null,
+      "citation_quality": null
+    },
+    "reviewer_2": {
+      "name": "",
+      "answer_correctness": null,
+      "faithfulness": null,
+      "citation_quality": null
+    }
+  },
+  {
+    "question_id": "Q048",
+    "category": "mixed",
+    "mode": "B0",
+    "repeat": 0,
+    "numeric_value_correct": false,
+    "numeric_expected": true,
+    "numeric_correct": false,
+    "correct": false,
+    "judge": {
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "refusal_correct": true,
+      "numeric_scope_correct": 1,
+      "numeric_error_types": [],
+      "explanation": "Câu trả lời xác định chính xác: (1) Tháng 2026-07 có 63 sự kiện thanh lý; (2) Số liệu này KHÔNG đủ để kết luận mọi vị thế đủ điều kiện đều đã bị thanh lý. Lý do được giải thích rõ ràng dựa trên tài liệu Aave: thanh lý là quá trình permissionless và cạnh tranh cao, phụ thuộc vào hoạt động của các liquidator. Số sự kiện thanh lý chỉ phản ánh những gì thực tế xảy ra, không phản ánh tổng số vị thế đủ điều kiện (health factor < 1). Tài liệu không cung cấp dữ liệu về tổng số vị thế đủ điều kiện thanh lý trong kỳ này, do đó không thể so sánh.",
+      "claim_checks": [
+        {
+          "text": "Tháng 2026-07 có 63 sự kiện thanh lý",
+          "needs_evidence": true,
+          "citations": [
+            {
+              "id": "SQL1",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "text": "Số liệu này không đủ để kết luận mọi vị thế đủ điều kiện đều đã bị thanh lý",
+          "needs_evidence": true,
+          "citations": [
+            {
+              "id": "DOC_LIQ_000",
+              "supported": true
+            },
+            {
+              "id": "DOC_LIQ_001",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "text": "Thanh lý là quá trình permissionless và cạnh tranh cao, phụ thuộc vào hoạt động của liquidator",
+          "needs_evidence": true,
+          "citations": [
+            {
+              "id": "DOC_LIQ_001",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "text": "Số sự kiện thanh lý chỉ phản ánh những gì thực tế xảy ra, không phản ánh tổng số vị thế đủ điều kiện",
+          "needs_evidence": false,
+          "citations": []
+        }
+      ]
+    },
+    "judge_error": "",
+    "citation": {
+      "precision": 1.0,
+      "completeness": 1.0
+    },
+    "refused": false,
+    "expected_refusal": false,
+    "elapsed": 36.65917880000052,
+    "input_tokens": 4429,
+    "output_tokens": 207,
+    "sql_calls": 3,
+    "retrieval_calls": 1,
+    "runtime_error": false,
+    "review_context": {
+      "question": "Tháng 2026-07 có bao nhiêu sự kiện thanh lý? Số liệu này có đủ kết luận mọi vị thế đủ điều kiện đều đã bị thanh lý không? Vì sao?",
+      "reference_answer": {
+        "required_points": [
+          "Số sự kiện không chứng minh mọi vị thế có health factor dưới 1 đều đã được thanh lý."
+        ],
+        "sql_result": [
+          {
+            "value": 63
+          }
+        ],
+        "limitation": ""
+      },
+      "sources": [
+        {
+          "id": "SQL1",
+          "sql": "SELECT count(*) AS value FROM liquidation_events WHERE time >= TIMESTAMPTZ '2026-07-01' AND time < TIMESTAMPTZ '2026-08-01'",
+          "rows": [
+            {
+              "value": 63
+            }
+          ]
+        },
+        {
+          "id": "DOC_LIQ_000",
+          "title": "Health Factor & Liquidations | Aave",
+          "url": "https://aave.com/help/borrowing/liquidations",
+          "collected_at": "2026-10-28T14:16:07.023365+00:00",
+          "source_sha256": "29031b86b53d3b90c456e0eb91dafc75cdacb68928b4f776eb590eff301f3b25",
+          "text": "Back to Borrowing Health Factor & Liquidations advanced Health Factor The health factor is a critical metric within the Aave Protocol that measures the safety of a borrow position. It is calculated as: Health Factor = (Total Collateral Value * Weighted Average Liquidation Threshold) / Total Borrow Value This metric indicates the stability of a borrow position, with a health factor below 1 signaling the risk of liquidation. The liquidation threshold, set by Aave Governance for each collateral asset, determines the maximum percentage of value that can be borrowed against it. For example, if you supply $10,000 in ETH with an 80% liquidation threshold and borrow $6,000 in GHO, your health factor would be 1.333. Managing Health Factor Maintaining a health factor above 1 is crucial to avoid liquidation. Regular monitoring of this metric is essential, as it fluctuates with the value of both collateral and borrowed assets. To improve your health factor, you can either supply more collateral or repay part of your borrow position. The health factor is sensitive to market changes—if your collateral's value increases, so does your health factor; conversely, if it decreases, your health factor drops, heightening the risk of liquidation. There is no universally \"safe\" health factor, as this depends on the volatility and correlation of your assets. Generally, lower health factors may be acceptable for correlated assets, such as stablecoins or assets closely tied to ETH. Tools for Managing Health Factor (Use at your own risk): Simulate health factor changes: DeFi Simulator Auto-repay borrow position: DeFi Saver Liquidation Process A liquidation in the Aave Protocol occurs when a borrower's health factor falls below 1, indicating that their collateral no longer sufficiently covers the borrowed amount. This situation can happen when the value of the collateral decreases or the borrowed amount increases, pushing the position past the liquidation threshold. The amount that can be liquidated depends on the health factor and position size: Up to 50% of total debt can be liquidated when the health factor is above 0.95 AND both the collateral and debt values are at least $2,000 each. Up to 100% of debt can be liquidated when the health factor is 0.95 or below, OR when either the collateral or debt value is below $2,000. During liquidation, the liquidator repays debt on behalf of the borrower and receives an equivalent value plus a liquidation bonus from the borrower's collateral. To prevent"
+        },
+        {
+          "id": "DOC_LIQ_001",
+          "title": "Health Factor & Liquidations | Aave",
+          "url": "https://aave.com/help/borrowing/liquidations",
+          "collected_at": "2026-10-28T14:16:07.023365+00:00",
+          "source_sha256": "29031b86b53d3b90c456e0eb91dafc75cdacb68928b4f776eb590eff301f3b25",
+          "text": "debt values are at least $2,000 each. Up to 100% of debt can be liquidated when the health factor is 0.95 or below, OR when either the collateral or debt value is below $2,000. During liquidation, the liquidator repays debt on behalf of the borrower and receives an equivalent value plus a liquidation bonus from the borrower's collateral. To prevent dust accumulation, partial liquidations must leave at least $1,000 worth of both collateral and debt remaining—otherwise, the position must be fully cleared. Liquidations are permissionless, meaning any network participant can initiate the process when a borrow position is eligible for liquidation. Liquidations within Aave are highly competitive, requiring a deep understanding of the protocol and technical proficiency. Liquidators must actively monitor borrow positions, quickly react to changes in oracle prices, collateral balances, and protocol parameters, and submit transactions with high priority in the attempt to be first to execute the liquidation. Due to the competitive nature, successful liquidations often necessitate custom-coded bots or scripts that automate monitoring and execution. Developers interested in building liquidation bots or learning more about the process can find guidance and resources in the Aave Developer Documentation. Related Borrow Tokens beginner Maintain overcollateralised borrow positions. 4 min read Repay Tokens beginner Repay active borrow positions. 3 min read Efficiency Mode (E-mode) intermediate Borrowing in Efficiency Mode (E-mode). 3 min read"
+        }
+      ],
+      "system_answer": "63",
+      "system_claims": [],
+      "documents": [],
+      "sql": "SELECT COUNT(*) FROM liquidation_events WHERE \"time\" BETWEEN '2026-07-01T00:00:00+00:00' AND '2026-08-01T00:00:00+00:00'",
+      "query_result": {
+        "columns": [
+          "count_star()"
+        ],
+        "rows": [
+          {
+            "count_star()": 63
+          }
+        ],
+        "truncated": false,
+        "total_rows": 1
+      }
+    },
+    "scope": {
+      "chain": "Ethereum",
+      "protocol": "Aave V3",
+      "metric_family": "liquidation_explanation",
+      "assets": [],
+      "unit": "count",
+      "time_zone": "UTC",
+      "gold_where_predicates": [
+        "time >= CAST('2026-07-01' AS TIMESTAMPTZ) AND time < CAST('2026-08-01' AS TIMESTAMPTZ)"
+      ],
+      "gold_time_literals": [
+        "2026-07-01",
+        "2026-08-01"
+      ],
+      "scope_basis": "provisional gold SQL; human must verify against original question",
+      "benchmark_window": {
+        "start": "2025-01-01",
+        "end_exclusive": "2026-09-01"
+      }
+    },
+    "reviewer_1": {
+      "name": "",
+      "answer_correctness": null,
+      "faithfulness": null,
+      "citation_quality": null
+    },
+    "reviewer_2": {
+      "name": "",
+      "answer_correctness": null,
+      "faithfulness": null,
+      "citation_quality": null
+    }
+  },
+  {
+    "question_id": "Q029",
+    "category": "analysis",
+    "mode": "B1",
+    "repeat": 0,
+    "numeric_value_correct": false,
+    "numeric_expected": true,
+    "numeric_correct": false,
+    "correct": false,
+    "judge": {
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "refusal_correct": true,
+      "numeric_scope_correct": 1,
+      "numeric_error_types": [],
+      "explanation": "Câu trả lời của hệ thống cung cấp giá trị trung bình theo giờ của tài sản cung cấp USDT cho tháng 7 năm 2026 là 2,831,780,087.93 USD. Giá trị này được trích xuất trực tiếp từ kết quả SQL được cung cấp (2831780087.9296083), được làm tròn đúng cách đến 2 chữ số thập phân theo yêu cầu. Truy vấn SQL của ứng viên khớp với logic của SQL1 được cung cấp, sử dụng cùng một bộ lọc tài sản, khoảng thời gian (từ 2026-07-01 đến 2026-08-01) và hàm tổng hợp (AVG). Kết quả trả về giống hệt nhau. Phạm vi số học là chính xác: chỉ số liệu được yêu cầu (USD), tài sản (USDT), khoảng thời gian (tháng 7 năm 2026), và phép tính tổng hợp (trung bình theo giờ) đều được đáp ứng đúng cách. Sai số tương đối USD = 0, nằm trong dung sai 0,005.",
+      "claim_checks": [
+        {
+          "text": "Giá trị tài sản cung cấp trung bình theo giờ của USDT trong tháng 2026-07 là 2831780087.93 USD",
+          "needs_evidence": true,
+          "citations": [
+            {
+              "id": "SQL1",
+              "supported": true
+            }
+          ]
+        }
+      ]
+    },
+    "judge_error": "",
+    "citation": {
+      "precision": 1.0,
+      "completeness": 1.0
+    },
+    "refused": false,
+    "expected_refusal": false,
+    "elapsed": 47.331777400002466,
+    "input_tokens": 5871,
+    "output_tokens": 293,
+    "sql_calls": 3,
+    "retrieval_calls": 1,
+    "runtime_error": false,
+    "review_context": {
+      "question": "Giá trị tài sản cung cấp trung bình theo giờ của USDT trong tháng 2026-07 là bao nhiêu USD?",
+      "reference_answer": {
+        "required_points": [],
+        "sql_result": [
+          {
+            "value": 2831780087.9296083
+          }
+        ],
+        "limitation": ""
+      },
+      "sources": [
+        {
+          "id": "SQL1",
+          "sql": "SELECT avg(supplied_usd) AS value FROM market_hourly WHERE asset='USDT' AND hour >= TIMESTAMPTZ '2026-07-01' AND hour < TIMESTAMPTZ '2026-08-01'",
+          "rows": [
+            {
+              "value": 2831780087.9296083
+            }
+          ]
+        }
+      ],
+      "system_answer": "2831780087.93",
+      "system_claims": [
+        {
+          "text": "Giá trị tài sản cung cấp trung bình theo giờ của USDT trong tháng 2026-07 là 2831780087.93 USD",
+          "citations": [
+            "SQL1"
+          ]
+        }
+      ],
+      "documents": [],
+      "sql": "SELECT AVG(supplied_usd) FROM market_hourly WHERE asset = 'USDT' AND hour >= '2026-07-01T00:00:00+00:00' AND hour < '2026-08-01T00:00:00+00:00'",
+      "query_result": {
+        "columns": [
+          "avg(supplied_usd)"
+        ],
+        "rows": [
+          {
+            "avg(supplied_usd)": 2831780087.9296083
+          }
+        ],
+        "truncated": false,
+        "total_rows": 1
+      }
+    },
+    "scope": {
+      "chain": "Ethereum",
+      "protocol": "Aave V3",
+      "metric_family": "avg_supply",
+      "assets": [
+        "USDT"
+      ],
+      "unit": "USD",
+      "time_zone": "UTC",
+      "gold_where_predicates": [
+        "asset = 'USDT' AND hour >= CAST('2026-07-01' AS TIMESTAMPTZ) AND hour < CAST('2026-08-01' AS TIMESTAMPTZ)"
+      ],
+      "gold_time_literals": [
+        "2026-07-01",
+        "2026-08-01"
+      ],
+      "scope_basis": "provisional gold SQL; human must verify against original question",
+      "benchmark_window": {
+        "start": "2025-01-01",
+        "end_exclusive": "2026-09-01"
+      }
+    },
+    "reviewer_1": {
+      "name": "",
+      "answer_correctness": null,
+      "faithfulness": null,
+      "citation_quality": null
+    },
+    "reviewer_2": {
+      "name": "",
+      "answer_correctness": null,
+      "faithfulness": null,
+      "citation_quality": null
+    }
+  },
+  {
+    "question_id": "Q020",
+    "category": "lookup",
+    "mode": "B1",
+    "repeat": 0,
+    "numeric_value_correct": false,
+    "numeric_expected": true,
+    "numeric_correct": false,
+    "correct": false,
+    "judge": {
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "numeric_scope_correct": 1,
+      "numeric_error_types": [],
+      "refusal_correct": true,
+      "explanation": "The system answer of 307 liquidation events in August 2025 UTC is correct and complete. The numeric value matches the reference exactly (307 = 307). The candidate SQL query correctly filters for the August 2025 UTC interval using BETWEEN with proper timestamp boundaries. Both the reference SQL (time >= 2025-08-01 AND time < 2025-09-01) and candidate SQL (BETWEEN 2025-08-01 and 2025-08-31 23:59:59) capture the full month of August 2025 UTC. The metric (count of liquidation events), aggregation (count), asset (Aave V3 Ethereum liquidations), time interval (2025-08 UTC), and unit (count) are all correct. No evidence of fabrication or inference beyond the supplied data.",
+      "claim_checks": [
+        {
+          "text": "307 sự kiện thanh lý trên Aave V3 Ethereum trong tháng 2025-08 UTC",
+          "needs_evidence": true,
+          "citations": [
+            {
+              "id": "SQL1",
+              "supported": true
+            }
+          ]
+        }
+      ]
+    },
+    "judge_error": "",
+    "citation": {
+      "precision": 1.0,
+      "completeness": 1.0
+    },
+    "refused": false,
+    "expected_refusal": false,
+    "elapsed": 48.809001600002375,
+    "input_tokens": 5704,
+    "output_tokens": 215,
+    "sql_calls": 3,
+    "retrieval_calls": 1,
+    "runtime_error": false,
+    "review_context": {
+      "question": "Trong tháng 2025-08 UTC có bao nhiêu sự kiện thanh lý trên Aave V3 Ethereum?",
+      "reference_answer": {
+        "required_points": [],
+        "sql_result": [
+          {
+            "value": 307
+          }
+        ],
+        "limitation": ""
+      },
+      "sources": [
+        {
+          "id": "SQL1",
+          "sql": "SELECT count(*) AS value FROM liquidation_events WHERE time >= TIMESTAMPTZ '2025-08-01' AND time < TIMESTAMPTZ '2025-09-01'",
+          "rows": [
+            {
+              "value": 307
+            }
+          ]
+        }
+      ],
+      "system_answer": "307",
+      "system_claims": [],
+      "documents": [],
+      "sql": "SELECT COUNT(*) FROM liquidation_events WHERE \"time\" BETWEEN '2025-08-01T00:00:00+00:00' AND '2025-08-31T23:59:59+00:00'",
+      "query_result": {
+        "columns": [
+          "count_star()"
+        ],
+        "rows": [
+          {
+            "count_star()": 307
+          }
+        ],
+        "truncated": false,
+        "total_rows": 1
+      }
+    },
+    "scope": {
+      "chain": "Ethereum",
+      "protocol": "Aave V3",
+      "metric_family": "event_count",
+      "assets": [],
+      "unit": "count",
+      "time_zone": "UTC",
+      "gold_where_predicates": [
+        "time >= CAST('2025-08-01' AS TIMESTAMPTZ) AND time < CAST('2025-09-01' AS TIMESTAMPTZ)"
+      ],
+      "gold_time_literals": [
+        "2025-08-01",
+        "2025-09-01"
+      ],
+      "scope_basis": "provisional gold SQL; human must verify against original question",
+      "benchmark_window": {
+        "start": "2025-01-01",
+        "end_exclusive": "2026-09-01"
+      }
+    },
+    "reviewer_1": {
+      "name": "",
+      "answer_correctness": null,
+      "faithfulness": null,
+      "citation_quality": null
+    },
+    "reviewer_2": {
+      "name": "",
+      "answer_correctness": null,
+      "faithfulness": null,
+      "citation_quality": null
+    }
+  }
+]

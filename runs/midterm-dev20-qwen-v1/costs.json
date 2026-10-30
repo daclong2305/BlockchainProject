@@ -1,0 +1,70 @@
+{
+  "runtime_physical": {
+    "estimated_api_usd": 0.0,
+    "input_tokens": 198022,
+    "output_tokens": 7158,
+    "calls": 130,
+    "calls_with_unknown_usage": 18,
+    "input_usd_per_million": "0",
+    "output_usd_per_million": "0",
+    "source": null,
+    "source_page": null,
+    "verified_on": "2026-10-29",
+    "scope": "API fee only; local hardware/electricity excluded. Published standard geo cross-region rate, not account invoice/discount/tax. Missing usage may underestimate API cost."
+  },
+  "per_configuration": {
+    "B0": {
+      "estimated_api_usd": 0.0,
+      "input_tokens": 84273,
+      "output_tokens": 4759,
+      "calls": 54,
+      "calls_with_unknown_usage": 3,
+      "input_usd_per_million": "0",
+      "output_usd_per_million": "0",
+      "source": null,
+      "source_page": null,
+      "verified_on": "2026-10-29",
+      "scope": "API fee only; local hardware/electricity excluded. Published standard geo cross-region rate, not account invoice/discount/tax. Missing usage may underestimate API cost."
+    },
+    "B1": {
+      "estimated_api_usd": 0.0,
+      "input_tokens": 111148,
+      "output_tokens": 4871,
+      "calls": 70,
+      "calls_with_unknown_usage": 3,
+      "input_usd_per_million": "0",
+      "output_usd_per_million": "0",
+      "source": null,
+      "source_page": null,
+      "verified_on": "2026-10-29",
+      "scope": "API fee only; local hardware/electricity excluded. Published standard geo cross-region rate, not account invoice/discount/tax. Missing usage may underestimate API cost."
+    },
+    "P": {
+      "estimated_api_usd": 0.0,
+      "input_tokens": 171147,
+      "output_tokens": 7046,
+      "calls": 114,
+      "calls_with_unknown_usage": 18,
+      "input_usd_per_million": "0",
+      "output_usd_per_million": "0",
+      "source": null,
+      "source_page": null,
+      "verified_on": "2026-10-29",
+      "scope": "API fee only; local hardware/electricity excluded. Published standard geo cross-region rate, not account invoice/discount/tax. Missing usage may underestimate API cost."
+    }
+  },
+  "judge": {
+    "estimated_api_usd": 0.1197933,
+    "input_tokens": 44468,
+    "output_tokens": 12887,
+    "calls": 33,
+    "calls_with_unknown_usage": 4,
+    "input_usd_per_million": "1.10",
+    "output_usd_per_million": "5.50",
+    "source": "https://www-cdn.anthropic.com/files/4zrzovbb/website/3684c2faafb97418665782cea0001f439f74b1d2.pdf",
+    "source_page": 6,
+    "verified_on": "2026-10-29",
+    "scope": "API fee only; local hardware/electricity excluded. Published standard geo cross-region rate, not account invoice/discount/tax. Missing usage may underestimate API cost."
+  },
+  "note": "Per-configuration estimates include the shared draft for standalone comparison; summing them double-counts initial calls. Runtime physical counts the shared draft once."
+}

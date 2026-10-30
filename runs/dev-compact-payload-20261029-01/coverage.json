@@ -1,0 +1,24 @@
+{
+  "complete": false,
+  "test_questions": 0,
+  "expected_outputs": 0,
+  "actual_outputs": 2,
+  "missing": [],
+  "unexpected": [
+    [
+      "Q005",
+      0,
+      "B0"
+    ],
+    [
+      "Q005",
+      0,
+      "P"
+    ]
+  ],
+  "duplicates": [],
+  "inconsistent_shared_draft": [],
+  "missing_shared_draft_id": 0,
+  "runtime_errors": 1,
+  "note": "Coverage includes errors and timeouts; it does not certify answer quality or human review."
+}

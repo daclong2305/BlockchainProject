@@ -1,0 +1,659 @@
+{
+  "configurations": {
+    "B0": {
+      "outputs": 20,
+      "scored_outputs": 19,
+      "correct": 1,
+      "correct_rate": null,
+      "numeric_correct": 0,
+      "numeric_total": 14,
+      "correct_refusals": 0,
+      "wrong_refusals": 1,
+      "unscored_refusals": 0,
+      "unsupported_answers": 2,
+      "median_seconds": 40.017866800000775,
+      "p95_seconds": 120.00884291499897,
+      "input_tokens": 84273,
+      "output_tokens": 4759,
+      "runtime_errors": 4,
+      "judge_errors": 1,
+      "api_cost_usd": null,
+      "cost_note": "Use your account pricing; judge tokens recorded separately. Shared draft cost is included in every mode.",
+      "citation_precision": 0.8666666666666667,
+      "citation_completeness": 0.8666666666666667,
+      "per_question": {
+        "Q005": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q006": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q007": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q008": {
+          "correct_runs": 1,
+          "scored_runs": 1
+        },
+        "Q017": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q018": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q019": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q020": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q025": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q026": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q027": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q028": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q029": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q030": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q047": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q048": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q049": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q050": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q055": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q056": {
+          "correct_runs": 0,
+          "scored_runs": 0
+        }
+      },
+      "by_category": {
+        "analysis": {
+          "correct": 0,
+          "scored": 6
+        },
+        "lookup": {
+          "correct": 0,
+          "scored": 4
+        },
+        "mechanism": {
+          "correct": 1,
+          "scored": 4
+        },
+        "mixed": {
+          "correct": 0,
+          "scored": 4
+        },
+        "unanswerable": {
+          "correct": 0,
+          "scored": 1
+        }
+      },
+      "correct_rate_scored_only": 0.05263157894736842,
+      "unscored_outputs": 1,
+      "correct_rate_bounds": [
+        0.05,
+        0.1
+      ],
+      "numeric_expected_total": 14,
+      "by_assets": [
+        {
+          "scope": [],
+          "outputs": 14,
+          "correct": 1,
+          "scored": 13
+        },
+        {
+          "scope": [
+            "DAI"
+          ],
+          "outputs": 2,
+          "correct": 0,
+          "scored": 2
+        },
+        {
+          "scope": [
+            "USDT"
+          ],
+          "outputs": 2,
+          "correct": 0,
+          "scored": 2
+        },
+        {
+          "scope": [
+            "USDe"
+          ],
+          "outputs": 2,
+          "correct": 0,
+          "scored": 2
+        }
+      ],
+      "by_gold_time_literals": [
+        {
+          "scope": [],
+          "outputs": 6,
+          "correct": 1,
+          "scored": 5
+        },
+        {
+          "scope": [
+            "2025-08-01",
+            "2025-09-01"
+          ],
+          "outputs": 2,
+          "correct": 0,
+          "scored": 2
+        },
+        {
+          "scope": [
+            "2026-06-01",
+            "2026-07-01"
+          ],
+          "outputs": 2,
+          "correct": 0,
+          "scored": 2
+        },
+        {
+          "scope": [
+            "2026-07-01",
+            "2026-08-01"
+          ],
+          "outputs": 4,
+          "correct": 0,
+          "scored": 4
+        },
+        {
+          "scope": [
+            "2026-08-01",
+            "2026-09-01"
+          ],
+          "outputs": 6,
+          "correct": 0,
+          "scored": 6
+        }
+      ]
+    },
+    "B1": {
+      "outputs": 20,
+      "scored_outputs": 20,
+      "correct": 1,
+      "correct_rate": 0.05,
+      "numeric_correct": 0,
+      "numeric_total": 14,
+      "correct_refusals": 0,
+      "wrong_refusals": 1,
+      "unscored_refusals": 0,
+      "unsupported_answers": 2,
+      "median_seconds": 56.49066365000181,
+      "p95_seconds": 120.00876336000037,
+      "input_tokens": 111148,
+      "output_tokens": 4871,
+      "runtime_errors": 4,
+      "judge_errors": 3,
+      "api_cost_usd": null,
+      "cost_note": "Use your account pricing; judge tokens recorded separately. Shared draft cost is included in every mode.",
+      "citation_precision": 0.8461538461538461,
+      "citation_completeness": 0.8461538461538461,
+      "per_question": {
+        "Q005": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q006": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q007": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q008": {
+          "correct_runs": 1,
+          "scored_runs": 1
+        },
+        "Q017": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q018": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q019": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q020": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q025": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q026": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q027": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q028": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q029": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q030": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q047": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q048": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q049": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q050": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q055": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q056": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        }
+      },
+      "by_category": {
+        "analysis": {
+          "correct": 0,
+          "scored": 6
+        },
+        "lookup": {
+          "correct": 0,
+          "scored": 4
+        },
+        "mechanism": {
+          "correct": 1,
+          "scored": 4
+        },
+        "mixed": {
+          "correct": 0,
+          "scored": 4
+        },
+        "unanswerable": {
+          "correct": 0,
+          "scored": 2
+        }
+      },
+      "correct_rate_scored_only": 0.05,
+      "unscored_outputs": 0,
+      "correct_rate_bounds": [
+        0.05,
+        0.05
+      ],
+      "numeric_expected_total": 14,
+      "by_assets": [
+        {
+          "scope": [],
+          "outputs": 14,
+          "correct": 1,
+          "scored": 14
+        },
+        {
+          "scope": [
+            "DAI"
+          ],
+          "outputs": 2,
+          "correct": 0,
+          "scored": 2
+        },
+        {
+          "scope": [
+            "USDT"
+          ],
+          "outputs": 2,
+          "correct": 0,
+          "scored": 2
+        },
+        {
+          "scope": [
+            "USDe"
+          ],
+          "outputs": 2,
+          "correct": 0,
+          "scored": 2
+        }
+      ],
+      "by_gold_time_literals": [
+        {
+          "scope": [],
+          "outputs": 6,
+          "correct": 1,
+          "scored": 6
+        },
+        {
+          "scope": [
+            "2025-08-01",
+            "2025-09-01"
+          ],
+          "outputs": 2,
+          "correct": 0,
+          "scored": 2
+        },
+        {
+          "scope": [
+            "2026-06-01",
+            "2026-07-01"
+          ],
+          "outputs": 2,
+          "correct": 0,
+          "scored": 2
+        },
+        {
+          "scope": [
+            "2026-07-01",
+            "2026-08-01"
+          ],
+          "outputs": 4,
+          "correct": 0,
+          "scored": 4
+        },
+        {
+          "scope": [
+            "2026-08-01",
+            "2026-09-01"
+          ],
+          "outputs": 6,
+          "correct": 0,
+          "scored": 6
+        }
+      ]
+    },
+    "P": {
+      "outputs": 20,
+      "scored_outputs": 20,
+      "correct": 0,
+      "correct_rate": 0.0,
+      "numeric_correct": 0,
+      "numeric_total": 14,
+      "correct_refusals": 0,
+      "wrong_refusals": 2,
+      "unscored_refusals": 0,
+      "unsupported_answers": 1,
+      "median_seconds": 120.00874839999778,
+      "p95_seconds": 120.02897533000468,
+      "input_tokens": 171147,
+      "output_tokens": 7046,
+      "runtime_errors": 19,
+      "judge_errors": 0,
+      "api_cost_usd": null,
+      "cost_note": "Use your account pricing; judge tokens recorded separately. Shared draft cost is included in every mode.",
+      "citation_precision": 0.0,
+      "citation_completeness": 0.0,
+      "per_question": {
+        "Q005": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q006": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q007": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q008": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q017": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q018": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q019": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q020": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q025": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q026": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q027": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q028": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q029": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q030": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q047": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q048": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q049": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q050": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q055": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        },
+        "Q056": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        }
+      },
+      "by_category": {
+        "analysis": {
+          "correct": 0,
+          "scored": 6
+        },
+        "lookup": {
+          "correct": 0,
+          "scored": 4
+        },
+        "mechanism": {
+          "correct": 0,
+          "scored": 4
+        },
+        "mixed": {
+          "correct": 0,
+          "scored": 4
+        },
+        "unanswerable": {
+          "correct": 0,
+          "scored": 2
+        }
+      },
+      "correct_rate_scored_only": 0.0,
+      "unscored_outputs": 0,
+      "correct_rate_bounds": [
+        0.0,
+        0.0
+      ],
+      "numeric_expected_total": 14,
+      "by_assets": [
+        {
+          "scope": [],
+          "outputs": 14,
+          "correct": 0,
+          "scored": 14
+        },
+        {
+          "scope": [
+            "DAI"
+          ],
+          "outputs": 2,
+          "correct": 0,
+          "scored": 2
+        },
+        {
+          "scope": [
+            "USDT"
+          ],
+          "outputs": 2,
+          "correct": 0,
+          "scored": 2
+        },
+        {
+          "scope": [
+            "USDe"
+          ],
+          "outputs": 2,
+          "correct": 0,
+          "scored": 2
+        }
+      ],
+      "by_gold_time_literals": [
+        {
+          "scope": [],
+          "outputs": 6,
+          "correct": 0,
+          "scored": 6
+        },
+        {
+          "scope": [
+            "2025-08-01",
+            "2025-09-01"
+          ],
+          "outputs": 2,
+          "correct": 0,
+          "scored": 2
+        },
+        {
+          "scope": [
+            "2026-06-01",
+            "2026-07-01"
+          ],
+          "outputs": 2,
+          "correct": 0,
+          "scored": 2
+        },
+        {
+          "scope": [
+            "2026-07-01",
+            "2026-08-01"
+          ],
+          "outputs": 4,
+          "correct": 0,
+          "scored": 4
+        },
+        {
+          "scope": [
+            "2026-08-01",
+            "2026-09-01"
+          ],
+          "outputs": 6,
+          "correct": 0,
+          "scored": 6
+        }
+      ]
+    }
+  },
+  "paired_P_vs": {
+    "B0": {
+      "wrong_to_right": 0,
+      "right_to_wrong": 1,
+      "paired_scored": 19
+    },
+    "B1": {
+      "wrong_to_right": 0,
+      "right_to_wrong": 1,
+      "paired_scored": 20
+    },
+    "P-SQL": {
+      "wrong_to_right": 0,
+      "right_to_wrong": 0,
+      "paired_scored": 0
+    },
+    "P-Evidence": {
+      "wrong_to_right": 0,
+      "right_to_wrong": 0,
+      "paired_scored": 0
+    },
+    "P-Repair": {
+      "wrong_to_right": 0,
+      "right_to_wrong": 0,
+      "paired_scored": 0
+    }
+  },
+  "unit": "question; repeated outputs are not independent questions"
+}

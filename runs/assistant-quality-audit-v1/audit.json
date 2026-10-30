@@ -1,0 +1,1109 @@
+{
+  "kind": "assistant technical audit; not two-human review",
+  "benchmark_checks": [
+    {
+      "id": "Q001",
+      "status": "requires_document_semantic_review",
+      "human_approved": false
+    },
+    {
+      "id": "Q002",
+      "status": "requires_document_semantic_review",
+      "human_approved": false
+    },
+    {
+      "id": "Q003",
+      "status": "requires_document_semantic_review",
+      "human_approved": false
+    },
+    {
+      "id": "Q004",
+      "status": "requires_document_semantic_review",
+      "human_approved": false
+    },
+    {
+      "id": "Q005",
+      "status": "requires_document_semantic_review",
+      "human_approved": false
+    },
+    {
+      "id": "Q006",
+      "status": "requires_document_semantic_review",
+      "human_approved": false
+    },
+    {
+      "id": "Q007",
+      "status": "requires_document_semantic_review",
+      "human_approved": false
+    },
+    {
+      "id": "Q008",
+      "status": "requires_document_semantic_review",
+      "human_approved": false
+    },
+    {
+      "id": "Q009",
+      "status": "requires_document_semantic_review",
+      "human_approved": false
+    },
+    {
+      "id": "Q010",
+      "status": "requires_document_semantic_review",
+      "human_approved": false
+    },
+    {
+      "id": "Q011",
+      "status": "requires_document_semantic_review",
+      "human_approved": false
+    },
+    {
+      "id": "Q012",
+      "status": "requires_document_semantic_review",
+      "human_approved": false
+    },
+    {
+      "id": "Q013",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 1997694271.598428
+        }
+      ],
+      "reference": [
+        {
+          "value": 1997694271.598428
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q014",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 11041542615.29097
+        }
+      ],
+      "reference": [
+        {
+          "value": 11041542615.29097
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q015",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 1993676848.0321777
+        }
+      ],
+      "reference": [
+        {
+          "value": 1993676848.0321777
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q016",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 10023005896.239573
+        }
+      ],
+      "reference": [
+        {
+          "value": 10023005896.239573
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q017",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 107
+        }
+      ],
+      "reference": [
+        {
+          "value": 107
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q018",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 307
+        }
+      ],
+      "reference": [
+        {
+          "value": 307
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q019",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 158
+        }
+      ],
+      "reference": [
+        {
+          "value": 158
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q020",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 307
+        }
+      ],
+      "reference": [
+        {
+          "value": 307
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q021",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 6604733.083234468
+        }
+      ],
+      "reference": [
+        {
+          "value": 6604733.083234468
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q022",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 28132234.04010158
+        }
+      ],
+      "reference": [
+        {
+          "value": 28132234.04010158
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q023",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 2073673650.805748
+        }
+      ],
+      "reference": [
+        {
+          "value": 2073673650.805748
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q024",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 10836798387.491997
+        }
+      ],
+      "reference": [
+        {
+          "value": 10836798387.491997
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q025",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 98282885.63031632
+        }
+      ],
+      "reference": [
+        {
+          "value": 98282885.63031632
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q026",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 2337819599.9938083
+        }
+      ],
+      "reference": [
+        {
+          "value": 2337819599.9938083
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q027",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 521264061.9902388
+        }
+      ],
+      "reference": [
+        {
+          "value": 521264061.9902388
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q028",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 118343676.63059068
+        }
+      ],
+      "reference": [
+        {
+          "value": 118343676.63059068
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q029",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 2831780087.9296083
+        }
+      ],
+      "reference": [
+        {
+          "value": 2831780087.9296083
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q030",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 749295298.141774
+        }
+      ],
+      "reference": [
+        {
+          "value": 749295298.141774
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q031",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 1692127461.001217
+        }
+      ],
+      "reference": [
+        {
+          "value": 1692127461.001217
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q032",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": -437232310.61343
+        }
+      ],
+      "reference": [
+        {
+          "value": -437232310.61343
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q033",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 1417403487.0444803
+        }
+      ],
+      "reference": [
+        {
+          "value": 1417403487.0444803
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q034",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": -12133324.429995105
+        }
+      ],
+      "reference": [
+        {
+          "value": -12133324.429995105
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q035",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": -1725488668.2893205
+        }
+      ],
+      "reference": [
+        {
+          "value": -1725488668.2893205
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q036",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": -240373085.12855375
+        }
+      ],
+      "reference": [
+        {
+          "value": -240373085.12855375
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q037",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "month": "2025-02",
+          "value": 2188
+        }
+      ],
+      "reference": [
+        {
+          "month": "2025-02",
+          "value": 2188
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q038",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "month": "2026-02",
+          "value": 2647
+        }
+      ],
+      "reference": [
+        {
+          "month": "2026-02",
+          "value": 2647
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q039",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "month": "2026-02",
+          "value": 2647
+        }
+      ],
+      "reference": [
+        {
+          "month": "2026-02",
+          "value": 2647
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q040",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 51931723.65202591
+        }
+      ],
+      "reference": [
+        {
+          "value": 51931723.65202591
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q041",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": -325072291.77384555
+        }
+      ],
+      "reference": [
+        {
+          "value": -325072291.77384555
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q042",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": -324263050.30990607
+        }
+      ],
+      "reference": [
+        {
+          "value": -324263050.30990607
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q043",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 1993676848.0321777
+        }
+      ],
+      "reference": [
+        {
+          "value": 1993676848.0321777
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q044",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 3042883324.3152447
+        }
+      ],
+      "reference": [
+        {
+          "value": 3042883324.3152447
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q045",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 1997694271.598428
+        }
+      ],
+      "reference": [
+        {
+          "value": 1997694271.598428
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q046",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 3897799627.0425687
+        }
+      ],
+      "reference": [
+        {
+          "value": 3897799627.0425687
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q047",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 158
+        }
+      ],
+      "reference": [
+        {
+          "value": 158
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q048",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 63
+        }
+      ],
+      "reference": [
+        {
+          "value": 63
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q049",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 107
+        }
+      ],
+      "reference": [
+        {
+          "value": 107
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q050",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 52
+        }
+      ],
+      "reference": [
+        {
+          "value": 52
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q051",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 1993676848.0321777
+        }
+      ],
+      "reference": [
+        {
+          "value": 1993676848.0321777
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q052",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 3042883324.3152447
+        }
+      ],
+      "reference": [
+        {
+          "value": 3042883324.3152447
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q053",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 1997694271.598428
+        }
+      ],
+      "reference": [
+        {
+          "value": 1997694271.598428
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q054",
+      "status": "recomputed_exact_match",
+      "actual": [
+        {
+          "value": 3897799627.0425687
+        }
+      ],
+      "reference": [
+        {
+          "value": 3897799627.0425687
+        }
+      ],
+      "human_approved": false,
+      "limitation": "Reexecuting the same SQL checks reproducibility, not semantic correctness"
+    },
+    {
+      "id": "Q055",
+      "status": "requires_document_semantic_review",
+      "human_approved": false
+    },
+    {
+      "id": "Q056",
+      "status": "requires_document_semantic_review",
+      "human_approved": false
+    },
+    {
+      "id": "Q057",
+      "status": "requires_document_semantic_review",
+      "human_approved": false
+    },
+    {
+      "id": "Q058",
+      "status": "requires_document_semantic_review",
+      "human_approved": false
+    },
+    {
+      "id": "Q059",
+      "status": "requires_document_semantic_review",
+      "human_approved": false
+    },
+    {
+      "id": "Q060",
+      "status": "requires_document_semantic_review",
+      "human_approved": false
+    }
+  ],
+  "stress_checks": [
+    {
+      "id": "S001",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 2001158632.0983303
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 2178906496.656451
+        }
+      ],
+      "human_approved": false
+    },
+    {
+      "id": "S002",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 2001158632.0983303
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 1488862022281.1577
+        }
+      ],
+      "human_approved": false
+    },
+    {
+      "id": "S003",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 2001158632.0983303
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 521264061.9902388
+        }
+      ],
+      "human_approved": false
+    },
+    {
+      "id": "S004",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 2001158632.0983303
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 2001.1586320983304
+        }
+      ],
+      "human_approved": false
+    },
+    {
+      "id": "S005",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 1940447808.541687
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 1443693169555.0432
+        }
+      ],
+      "human_approved": false
+    },
+    {
+      "id": "S006",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 3667108875.975095
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 4513728233.032762
+        }
+      ],
+      "human_approved": false
+    },
+    {
+      "id": "S007",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 3667108875.975095
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 2728329003725.4707
+        }
+      ],
+      "human_approved": false
+    },
+    {
+      "id": "S008",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 3667108875.975095
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 521264061.9902388
+        }
+      ],
+      "human_approved": false
+    },
+    {
+      "id": "S009",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 3667108875.975095
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 3667.1088759750946
+        }
+      ],
+      "human_approved": false
+    },
+    {
+      "id": "S010",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 3224504248.285001
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 2399031160724.0234
+        }
+      ],
+      "human_approved": false
+    },
+    {
+      "id": "S011",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 8543331357.753431
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 7433240190.383629
+        }
+      ],
+      "human_approved": false
+    },
+    {
+      "id": "S012",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 8543331357.753431
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 44006612600991.52
+        }
+      ],
+      "human_approved": false
+    },
+    {
+      "id": "S013",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 8543331357.753431
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 2099807877.7059045
+        }
+      ],
+      "human_approved": false
+    },
+    {
+      "id": "S014",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 8543331357.753431
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 8543.331357753432
+        }
+      ],
+      "human_approved": false
+    },
+    {
+      "id": "S015",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 6110198977.972517
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 8518589055.798603
+        }
+      ],
+      "human_approved": false
+    },
+    {
+      "id": "S016",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 190574906.70241314
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 170316388.53263703
+        }
+      ],
+      "human_approved": false
+    },
+    {
+      "id": "S017",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 190574906.70241314
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 1486142315386.4263
+        }
+      ],
+      "human_approved": false
+    },
+    {
+      "id": "S018",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 190574906.70241314
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 2099807877.7059045
+        }
+      ],
+      "human_approved": false
+    },
+    {
+      "id": "S019",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 190574906.70241314
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 190.57490670241313
+        }
+      ],
+      "human_approved": false
+    },
+    {
+      "id": "S020",
+      "reference_matches": true,
+      "mutation_changes_result": true,
+      "correct_rows": [
+        {
+          "value": 39288476.32574871
+        }
+      ],
+      "wrong_rows": [
+        {
+          "value": 165832604.74758512
+        }
+      ],
+      "human_approved": false
+    }
+  ],
+  "supplemental_cases": 75,
+  "supplemental_independent_engine_agreement": 75,
+  "supplemental_mutations_change_result": 75,
+  "source_hashes": {
+    "data\\benchmark\\questions.jsonl": "45efa6a5486633bd15ed4c2c4b9702b9b7aab3c594efceb4c420752b26216a08",
+    "data\\benchmark\\stress.jsonl": "b8b9a7f99484893892cc9985d1a6c581cf81896a591eaf69cdf4262c03cfb7e4",
+    "data\\processed\\market_hourly.parquet": "0e6e631d4a68bd640eba077975e458106c51ccbf497eac9bfc1d3fa2096b5c9c"
+  },
+  "limitations": [
+    "No model inference or quality score produced",
+    "Document semantics not verified by numeric recomputation",
+    "Supplemental dev uses existing avg_debt development family; excluded from primary 60 and 720 outputs",
+    "No human approvals modified; expanded quantity does not guarantee quality"
+  ]
+}

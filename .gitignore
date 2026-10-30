@@ -9,7 +9,6 @@ data/raw/
 data/processed/
 data/documents/
 data/benchmark/
-runs/
 *.log
 models/
 .tools/

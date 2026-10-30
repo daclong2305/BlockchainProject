@@ -1,0 +1,68 @@
+{
+  "kind": "offline checker replay on existing dev evidence; not human gold or final correctness",
+  "cases": [
+    {
+      "injected": "wrong",
+      "original_spec": {
+        "kind": "data",
+        "metric": "supplied_usd",
+        "assets": [
+          "USDC"
+        ],
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-31T23:59:59Z",
+        "unit": "USD",
+        "aggregation": "average",
+        "grain": "hour",
+        "retrieval_query": "select avg ( supplied_usd ) , hour from market_hourly where asset = \"USDC\" and hour >= \"2026-08-01\" and hour < \"2026-09-01\" group by hour",
+        "clarification": ""
+      },
+      "sql": "SELECT avg(supplied_usd) AS value FROM market_hourly WHERE asset='USDC' AND hour>=TIMESTAMPTZ '2026-08-01' AND hour<TIMESTAMPTZ '2026-09-01'",
+      "plan_only_issues": [
+        {
+          "code": "time_filter",
+          "message": "Missing requested end boundary 2026-08-31T23:59:59Z",
+          "action": "sql"
+        }
+      ],
+      "question_anchored_issues": [
+        {
+          "code": "question_metric",
+          "message": "Original question requires borrowed_usd; that column is missing from SQL",
+          "action": "sql"
+        }
+      ]
+    },
+    {
+      "injected": "correct",
+      "original_spec": {
+        "kind": "data",
+        "metric": "supplied_usd",
+        "assets": [
+          "USDC"
+        ],
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-31T23:59:59Z",
+        "unit": "USD",
+        "aggregation": "average",
+        "grain": "hour",
+        "retrieval_query": "market_hourly",
+        "clarification": ""
+      },
+      "sql": "SELECT avg(borrowed_usd) AS value FROM market_hourly WHERE asset='USDC' AND hour>=TIMESTAMPTZ '2026-08-01' AND hour<TIMESTAMPTZ '2026-09-01'",
+      "plan_only_issues": [
+        {
+          "code": "metric",
+          "message": "Requested measure missing from SQL",
+          "action": "sql"
+        },
+        {
+          "code": "time_filter",
+          "message": "Missing requested end boundary 2026-08-31T23:59:59Z",
+          "action": "sql"
+        }
+      ],
+      "question_anchored_issues": []
+    }
+  ]
+}

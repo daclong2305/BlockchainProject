@@ -1,0 +1,16 @@
+{
+  "complete": true,
+  "split": "dev",
+  "questions": 20,
+  "repeats": 1,
+  "modes": [
+    "B0",
+    "B1",
+    "P"
+  ],
+  "outputs": 60,
+  "shared_draft_id_and_usage_consistent": true,
+  "sources_unchanged": true,
+  "code_unchanged": true,
+  "note": "Development pilot coverage; not 40-test/720-output final coverage"
+}

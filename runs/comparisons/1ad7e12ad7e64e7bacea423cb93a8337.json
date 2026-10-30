@@ -1,0 +1,954 @@
+{
+  "id": "1ad7e12ad7e64e7bacea423cb93a8337",
+  "created_at": "2026-10-28T15:44:20.850011+00:00",
+  "question": "Có bao nhiêu giao dịch thanh lý trong tháng 8 năm 2026?",
+  "mode": "P",
+  "deadline_seconds_per_model": 600.0,
+  "execution": "sequential",
+  "input_hashes": {
+    "data/processed/aave.duckdb": "9069f8c284d9dfbfb9953962a3f0ca0b3ab98a0217636c9af432e55985bd3aef",
+    "data/processed/dictionary.json": "4cd24105faa74b560b28d7fdd536766293b6994f4a0bdaa0df73ead88c544c21",
+    "data/documents/chunks.json": "d89c33e1141ce9937ee04803cd45d4c6e128d74112fb9019555ba123c3fa6ae9"
+  },
+  "code_hashes": {
+    "__init__.py": "2983b5b92e89908b1a1b40fea40a0fab378b030ae1bf9d0ca5dc62c0a2706df9",
+    "benchmark.py": "aa4b85de516c585a5552e7dce22a8900a36f3d337ffdae3c0dd0aeebd0185225",
+    "cli.py": "e95437db35527fd48ecfb4cc10f97683b72cf88aa3fcb571260d8ae5e8819f3e",
+    "comparison.py": "868ca47a5aee6bc96afbec98b1e9959ec498621c1f4839198b8454cd17c9548c",
+    "config.py": "06c5af7f964afbeffce4ca48a518174d4fe6e1cee371853bd6db6e981cbe3d03",
+    "data.py": "3fdb88ef7bab27ff871efa1a68814f45893e19c05e4556e8256fe5a1bc2845a9",
+    "database.py": "82a0831488083ef42d5d4f193125031aef2ebbc97e04624597a046830f96f912",
+    "evaluation.py": "56bc29fbd43619dd58355b2e347b38be6d6574d2d7e0074b671d3c9c0ac39fef",
+    "experiments.py": "190c6d209db3ce5c40d5e4a290f8b5bb4ed9362082dd622df4779a0b9f0a1a1a",
+    "llm.py": "34c4ccfc8b9a5c6a5fb684125332a33cab5ae252db60ff4f07c050d9af0e5d48",
+    "local_llm.py": "af9885f33c133e7167e06cac85c9616a085316de37a1705f1cba81363d370a75",
+    "models.py": "bd97e8c37915580e822aa218f1371f5cc94f3586c385d77f69581be4ba01d295",
+    "pipeline.py": "327286ae3d9c7d7b6ce417a458d42525d2dfe72f772fe1df76ca06a43d5b31c7",
+    "planning.py": "112fb4e5fc4afa01aa021bda6cf98a415614974dd0739ad974e6120d6b370b95",
+    "reporting.py": "85bd5514b1baaa44ed0031013b19e19527b7d390227052f557d4f44dc6128032",
+    "retrieval.py": "f96f82fe709f1024cc78c0d7c4e794dae3d1073f5e3bf9649f61cf2eecbe14ed",
+    "stress.py": "3ff0d69d73ebcf99a7a6e3cf7d2fdf55112f57fd31e3950c081771af80cb1106",
+    "ui.py": "491fa1dde6d6a4d1679041a17f99f5808a06b3c67f4e9e540f57d53bf785aff2",
+    "verification.py": "a28efd2cb5541cc3349d3b328b74fa611028159f764b732446d6aa4134508f1d"
+  },
+  "results": {
+    "local_qwen": {
+      "provider": "local_qwen",
+      "config": {
+        "provider": "llama.cpp",
+        "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+        "revision": "579ae3d2f0db23dd25fd83076a57dbab79f68dd9",
+        "artifact_sha256": "b34a028bc6c18d738b57552423bb75ca555d823c19722c4261acc792547a4cd2",
+        "base_url": "http://127.0.0.1:8081",
+        "quantization": "Q4_K_M",
+        "generation_temperature": 0.2,
+        "review_temperature": 0.0,
+        "max_tokens": 4096,
+        "json_format_retries": 1
+      },
+      "result": {
+        "mode": "P",
+        "draft": {
+          "question": "Có bao nhiêu giao dịch thanh lý trong tháng 8 năm 2026?",
+          "spec": {
+            "kind": "docs",
+            "metric": "transactions",
+            "assets": [],
+            "start": null,
+            "end": null,
+            "unit": "count",
+            "aggregation": "count_distinct",
+            "grain": "hour",
+            "retrieval_query": "market_hourly",
+            "clarification": ""
+          },
+          "sql": "",
+          "query_result": null,
+          "documents": [
+            {
+              "id": "DOC_SUPPLY_000",
+              "title": "Supply Tokens | Aave",
+              "url": "https://aave.com/help/supplying/supply-tokens",
+              "collected_at": "2026-10-28T14:16:02.570990+00:00",
+              "source_sha256": "b59a3f775e241e2e9d829abc9fbd529afe72cc0d31bf94f8dd6a46a05d7b084c",
+              "text": "Back to Supplying Supply Tokens beginner Introduction Supplying tokens to the Aave Protocol allows you to earn interest on your digital assets and utilize supplied tokens as collateral. When tokens are supplied, they are transferred to the Aave liquidity pool, a system of smart contracts that facilitates overcollateralized borrowing of tokens. Supplied tokens automatically accumulate interest by updating in balance at the current market supply rate. This interest accrual happens dynamically as the balance of your supplied tokens increases linearly over time, reflecting the current rate allocated to suppliers. Interest rates for supplied tokens are determined by the borrow utilization rate, which measures the proportion of assets currently borrowed against the total supplied in the pool, and by governance parameters that can be adjusted through community decisions. These parameters, including collateralization requirements and interest rates for suppliers and borrowers, are influenced by on-chain inputs such as token balances, oracle prices, and the borrow utilization ratio. As liquidity is supplied, borrowed, repaid, or withdrawn from the pool, the interest rates are updated accordingly. Tokens can be supplied through protocol smart contracts or through a frontend such as the Aave Labs interface, by performing the following steps: Step 1: Connect Wallet To begin, press ‘Connect Wallet’ and select the Ethereum wallet provider corresponding to the wallet holding tokens intended to supply. Step 2: Select Token To Supply Once connected, navigate to the ‘Dashboard’ where you’ll find the ‘Assets To Supply’ table, which lists current token balances and asset parameters. More details on supply and borrow parameters can be found by selecting the individual token icon, which will navigate to the reserve details page. Step 3: Approve Token Transfer In order to transfer tokens on an Ethereum-based network, the Aave Pool smart contract must be granted an allowance to transfer tokens from the connected wallet address. Approvals can be performed through transaction (which will incur a network fee) or signature (which does not incur a network fee). After selecting a token to supply, a modal will appear which will prompt a transaction or message signature request in the connected wallet. Step 4: Perform Supply Transaction After approval, enter the amount you wish to supply and confirm, which will prompt a transaction in the connected wallet. Your supplied tokens are then added to the Aave liquidity pool, where they are made available for borrowers. The supplied tokens will start earning interest immediately, which can",
+              "score": 0.0
+            },
+            {
+              "id": "DOC_SUPPLY_001",
+              "title": "Supply Tokens | Aave",
+              "url": "https://aave.com/help/supplying/supply-tokens",
+              "collected_at": "2026-10-28T14:16:02.570990+00:00",
+              "source_sha256": "b59a3f775e241e2e9d829abc9fbd529afe72cc0d31bf94f8dd6a46a05d7b084c",
+              "text": "message signature request in the connected wallet. Step 4: Perform Supply Transaction After approval, enter the amount you wish to supply and confirm, which will prompt a transaction in the connected wallet. Your supplied tokens are then added to the Aave liquidity pool, where they are made available for borrowers. The supplied tokens will start earning interest immediately, which can be monitored from the ‘Dashboard’ tab. Related Withdraw Tokens beginner Withdraw tokens from the Aave Protocol. 4 min read Toggle Collateral Status intermediate Toggle collateral status of supply positions. 4 min read Isolation Mode beginner Supply isolated collateral assets. 3 min read",
+              "score": 0.0
+            },
+            {
+              "id": "DOC_BORROW_000",
+              "title": "Borrow Tokens | Aave",
+              "url": "https://aave.com/help/borrowing/borrow-tokens",
+              "collected_at": "2026-10-28T14:16:05.100252+00:00",
+              "source_sha256": "3d05a42e5f1beb0ea05cb067c4ed673135313157efe4f2fb57d83975445e2d32",
+              "text": "Back to Borrowing Borrow Tokens beginner Introduction Borrowing tokens from the Aave Protocol enables participants to access liquidity against supplied collateral tokens. This process requires maintaining sufficient collateral and understanding the associated risks, such as liquidation. Borrowers must maintain that their collateral remains adequate to cover the borrowed amount, as falling below the required collateralization level could lead to liquidation. The interest rates for borrowed tokens are dynamically determined by the protocol based on factors like the borrow utilization rate and governance parameters, which can change through community decisions. Borrowing can be performed through protocol smart contracts or through a frontend such as the Aave Labs interface by performing the following steps: Step 1: Connect Wallet To begin, press ‘Connect Wallet’ and select the Ethereum wallet provider corresponding to the wallet holding the collateralized tokens. Step 2: Select Token to Borrow Once connected, navigate to the ‘Dashboard’ and locate the ‘Assets to Borrow’ table. This table lists the available tokens for borrowing, along with key parameters such as available amount, interest rates, and your health factor. The interest rates displayed here are influenced by the borrow utilization rate, which measures the proportion of assets currently borrowed against the total supplied in the pool. As liquidity is borrowed or repaid, these rates are dynamically adjusted to reflect current market conditions. Select the token you wish to borrow. Step 3: Review Borrow Parameters Before proceeding, review the borrow parameters including the Loan-to-Value (LTV) ratio, Liquidation Threshold (LT) ratio, and your current health factor. These parameters are crucial for maintaining sufficient collateral and avoiding liquidation. If you are borrowing a network base asset (e.g., ETH), you will first need to approve the WrappedTokenGateway contract. This approval enables the contract to perform a credit delegation, which performs a borrow and unwraps to the base asset in a single transaction. Step 4: Confirm Borrow Transaction Enter the amount you wish to borrow and confirm the transaction in your wallet. Upon confirmation, the borrowed tokens will be transferred to your wallet. It's important to note that interest on the borrowed tokens begins to accrue immediately and is dynamically adjusted based on the borrow utilization rate. Step 5: Monitor Health Factor Regularly monitor your health factor from the ‘Dashboard’ to verify that your collateral remains sufficient. If your health factor drops, consider supplying more collateral or repaying part of your borrow position to avoid liquidation. The health",
+              "score": 0.0
+            },
+            {
+              "id": "DOC_BORROW_001",
+              "title": "Borrow Tokens | Aave",
+              "url": "https://aave.com/help/borrowing/borrow-tokens",
+              "collected_at": "2026-10-28T14:16:05.100252+00:00",
+              "source_sha256": "3d05a42e5f1beb0ea05cb067c4ed673135313157efe4f2fb57d83975445e2d32",
+              "text": "interest on the borrowed tokens begins to accrue immediately and is dynamically adjusted based on the borrow utilization rate. Step 5: Monitor Health Factor Regularly monitor your health factor from the ‘Dashboard’ to verify that your collateral remains sufficient. If your health factor drops, consider supplying more collateral or repaying part of your borrow position to avoid liquidation. The health factor is a critical indicator of the safety of your borrow position, and maintaining it above the liquidation threshold is essential to prevent your collateral from being liquidated. Related Repay Tokens beginner Repay active borrow positions. 3 min read Efficiency Mode (E-mode) intermediate Borrowing in Efficiency Mode (E-mode). 3 min read Health Factor & Liquidations advanced Mechanics of Aave Protocol liquidations. 5 min read",
+              "score": 0.0
+            },
+            {
+              "id": "DOC_LIQ_000",
+              "title": "Health Factor & Liquidations | Aave",
+              "url": "https://aave.com/help/borrowing/liquidations",
+              "collected_at": "2026-10-28T14:16:07.023365+00:00",
+              "source_sha256": "29031b86b53d3b90c456e0eb91dafc75cdacb68928b4f776eb590eff301f3b25",
+              "text": "Back to Borrowing Health Factor & Liquidations advanced Health Factor The health factor is a critical metric within the Aave Protocol that measures the safety of a borrow position. It is calculated as: Health Factor = (Total Collateral Value * Weighted Average Liquidation Threshold) / Total Borrow Value This metric indicates the stability of a borrow position, with a health factor below 1 signaling the risk of liquidation. The liquidation threshold, set by Aave Governance for each collateral asset, determines the maximum percentage of value that can be borrowed against it. For example, if you supply $10,000 in ETH with an 80% liquidation threshold and borrow $6,000 in GHO, your health factor would be 1.333. Managing Health Factor Maintaining a health factor above 1 is crucial to avoid liquidation. Regular monitoring of this metric is essential, as it fluctuates with the value of both collateral and borrowed assets. To improve your health factor, you can either supply more collateral or repay part of your borrow position. The health factor is sensitive to market changes—if your collateral's value increases, so does your health factor; conversely, if it decreases, your health factor drops, heightening the risk of liquidation. There is no universally \"safe\" health factor, as this depends on the volatility and correlation of your assets. Generally, lower health factors may be acceptable for correlated assets, such as stablecoins or assets closely tied to ETH. Tools for Managing Health Factor (Use at your own risk): Simulate health factor changes: DeFi Simulator Auto-repay borrow position: DeFi Saver Liquidation Process A liquidation in the Aave Protocol occurs when a borrower's health factor falls below 1, indicating that their collateral no longer sufficiently covers the borrowed amount. This situation can happen when the value of the collateral decreases or the borrowed amount increases, pushing the position past the liquidation threshold. The amount that can be liquidated depends on the health factor and position size: Up to 50% of total debt can be liquidated when the health factor is above 0.95 AND both the collateral and debt values are at least $2,000 each. Up to 100% of debt can be liquidated when the health factor is 0.95 or below, OR when either the collateral or debt value is below $2,000. During liquidation, the liquidator repays debt on behalf of the borrower and receives an equivalent value plus a liquidation bonus from the borrower's collateral. To prevent",
+              "score": 0.0
+            }
+          ],
+          "answer": "0\n\nChưa thể xác minh đầy đủ: The answer is not in the correct unit. The correct answer is \"0\" transactions, but the answer is given as \"0\".",
+          "claims": [],
+          "refused": true,
+          "issues": [],
+          "elapsed": 46.03209289999995,
+          "usage": [
+            {
+              "role": "plan",
+              "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+              "format_attempt": 1,
+              "input_tokens": 3612,
+              "output_tokens": 48,
+              "timeout_seconds": 599.9419185999986,
+              "prompt_characters": 15916,
+              "server_timings": {
+                "prompt_ms": 62.174,
+                "prompt_n": 1,
+                "predicted_ms": 1697.547,
+                "predicted_n": 48
+              },
+              "elapsed": 2.0429496999995536
+            },
+            {
+              "role": "answer",
+              "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+              "format_attempt": 1,
+              "input_tokens": 3643,
+              "output_tokens": 18,
+              "timeout_seconds": 597.8984974000005,
+              "prompt_characters": 15227,
+              "server_timings": {
+                "prompt_ms": 42987.427,
+                "prompt_n": 3558,
+                "predicted_ms": 535.962,
+                "predicted_n": 18
+              },
+              "elapsed": 43.93043769999986
+            }
+          ],
+          "error": "",
+          "tools": [
+            {
+              "tool": "sql",
+              "sql": "SELECT * FROM coverage",
+              "started": 8156.5598078,
+              "returned_rows": 5,
+              "truncated": false,
+              "elapsed": 0.03387109999948734
+            },
+            {
+              "tool": "sql",
+              "sql": "SELECT MIN(time) AS first_event_utc, MAX(time) AS last_event_utc, COUNT(*) AS event_rows FROM liquidation_events",
+              "started": 8156.5936939,
+              "returned_rows": 1,
+              "truncated": false,
+              "elapsed": 0.023440399999344663
+            },
+            {
+              "tool": "retrieve",
+              "query": "Có bao nhiêu giao dịch thanh lý trong tháng 8 năm 2026?",
+              "document_ids": [
+                "DOC_SUPPLY_000",
+                "DOC_SUPPLY_001",
+                "DOC_BORROW_000",
+                "DOC_BORROW_001",
+                "DOC_LIQ_000"
+              ],
+              "started": 8156.6171408,
+              "elapsed": 0.00047220000033121323
+            },
+            {
+              "tool": "retrieve",
+              "query": "market_hourly",
+              "document_ids": [
+                "DOC_SUPPLY_000",
+                "DOC_SUPPLY_001",
+                "DOC_BORROW_000",
+                "DOC_BORROW_001",
+                "DOC_LIQ_000"
+              ],
+              "started": 8158.660934,
+              "elapsed": 8.969999998953426e-05
+            }
+          ],
+          "planning": {
+            "initial": {
+              "kind": "docs",
+              "metric": "transactions",
+              "assets": [],
+              "start": null,
+              "end": null,
+              "unit": "count",
+              "aggregation": "count_distinct",
+              "grain": "hour",
+              "retrieval_query": "market_hourly",
+              "clarification": ""
+            },
+            "availability": {
+              "market_hourly": [
+                {
+                  "asset": "USDT",
+                  "start_utc": "2023-02-13T14:00:00+00:00",
+                  "end_utc": "2026-09-15T07:00:00+00:00",
+                  "rows": 31434,
+                  "observed_hours": 31434
+                },
+                {
+                  "asset": "USDC",
+                  "start_utc": "2023-01-27T08:00:00+00:00",
+                  "end_utc": "2026-09-15T07:00:00+00:00",
+                  "rows": 31848,
+                  "observed_hours": 31848
+                },
+                {
+                  "asset": "USDe",
+                  "start_utc": "2024-06-06T15:00:00+00:00",
+                  "end_utc": "2026-09-15T07:00:00+00:00",
+                  "rows": 19937,
+                  "observed_hours": 19937
+                },
+                {
+                  "asset": "WETH",
+                  "start_utc": "2023-01-27T08:00:00+00:00",
+                  "end_utc": "2026-09-15T07:00:00+00:00",
+                  "rows": 31848,
+                  "observed_hours": 31848
+                },
+                {
+                  "asset": "DAI",
+                  "start_utc": "2023-01-27T08:00:00+00:00",
+                  "end_utc": "2026-09-15T06:00:00+00:00",
+                  "rows": 31847,
+                  "observed_hours": 31847
+                }
+              ],
+              "liquidation_events": {
+                "first_event_utc": "2023-01-30T19:11:47+00:00",
+                "last_event_utc": "2026-09-15T05:53:59+00:00",
+                "event_rows": 25121
+              },
+              "interpretation": "These are observed timestamp bounds, not guarantees of gap-free coverage. The last event timestamp is not the collection cutoff. Do not infer missing events or a partial month from an event timestamp alone. Query the requested interval to report counts in the loaded dataset."
+            }
+          }
+        },
+        "status": "unverified",
+        "repairs": 1,
+        "issues": [
+          {
+            "code": "wrong_numeric_wording",
+            "message": "The answer is not in the correct unit. The correct answer is \"0\" transactions, but the answer is given as \"0\".",
+            "action": "answer"
+          }
+        ],
+        "trace": [
+          {
+            "event": "verification",
+            "repair": 0,
+            "issues": [
+              {
+                "code": "wrong_numeric_wording",
+                "message": "The answer is not in the correct unit. The correct answer is \"0\" transactions, but the answer is given as \"0\".",
+                "action": "answer"
+              }
+            ],
+            "sql": "",
+            "answer": "0"
+          },
+          {
+            "event": "repair",
+            "repair": 1,
+            "sql": "",
+            "answer": "0"
+          },
+          {
+            "event": "unchanged_repair_stop"
+          }
+        ],
+        "elapsed": 146.1092297999985,
+        "usage": [
+          {
+            "role": "plan",
+            "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+            "format_attempt": 1,
+            "input_tokens": 3612,
+            "output_tokens": 48,
+            "timeout_seconds": 599.9419185999986,
+            "prompt_characters": 15916,
+            "server_timings": {
+              "prompt_ms": 62.174,
+              "prompt_n": 1,
+              "predicted_ms": 1697.547,
+              "predicted_n": 48
+            },
+            "elapsed": 2.0429496999995536
+          },
+          {
+            "role": "answer",
+            "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+            "format_attempt": 1,
+            "input_tokens": 3643,
+            "output_tokens": 18,
+            "timeout_seconds": 597.8984974000005,
+            "prompt_characters": 15227,
+            "server_timings": {
+              "prompt_ms": 42987.427,
+              "prompt_n": 3558,
+              "predicted_ms": 535.962,
+              "predicted_n": 18
+            },
+            "elapsed": 43.93043769999986
+          },
+          {
+            "role": "claim_review",
+            "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+            "format_attempt": 1,
+            "input_tokens": 3714,
+            "output_tokens": 57,
+            "timeout_seconds": 553.9678044000011,
+            "prompt_characters": 15673,
+            "server_timings": {
+              "prompt_ms": 41100.931,
+              "prompt_n": 3629,
+              "predicted_ms": 1699.536,
+              "predicted_n": 57
+            },
+            "elapsed": 42.9058514999997
+          },
+          {
+            "role": "repair",
+            "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+            "format_attempt": 1,
+            "input_tokens": 3855,
+            "output_tokens": 7,
+            "timeout_seconds": 511.04550129999916,
+            "prompt_characters": 15515,
+            "server_timings": {
+              "prompt_ms": 42488.542,
+              "prompt_n": 3770,
+              "predicted_ms": 208.464,
+              "predicted_n": 7
+            },
+            "elapsed": 42.82174229999873
+          },
+          {
+            "role": "answer",
+            "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+            "format_attempt": 1,
+            "input_tokens": 3645,
+            "output_tokens": 17,
+            "timeout_seconds": 468.2231400000019,
+            "prompt_characters": 15227,
+            "server_timings": {
+              "prompt_ms": 13703.585,
+              "prompt_n": 1165,
+              "predicted_ms": 454.497,
+              "predicted_n": 17
+            },
+            "elapsed": 14.332092399999965
+          }
+        ],
+        "error": "",
+        "tools": [
+          {
+            "tool": "sql",
+            "sql": "SELECT * FROM coverage",
+            "started": 8156.5598078,
+            "returned_rows": 5,
+            "truncated": false,
+            "elapsed": 0.03387109999948734
+          },
+          {
+            "tool": "sql",
+            "sql": "SELECT MIN(time) AS first_event_utc, MAX(time) AS last_event_utc, COUNT(*) AS event_rows FROM liquidation_events",
+            "started": 8156.5936939,
+            "returned_rows": 1,
+            "truncated": false,
+            "elapsed": 0.023440399999344663
+          },
+          {
+            "tool": "retrieve",
+            "query": "Có bao nhiêu giao dịch thanh lý trong tháng 8 năm 2026?",
+            "document_ids": [
+              "DOC_SUPPLY_000",
+              "DOC_SUPPLY_001",
+              "DOC_BORROW_000",
+              "DOC_BORROW_001",
+              "DOC_LIQ_000"
+            ],
+            "started": 8156.6171408,
+            "elapsed": 0.00047220000033121323
+          },
+          {
+            "tool": "retrieve",
+            "query": "market_hourly",
+            "document_ids": [
+              "DOC_SUPPLY_000",
+              "DOC_SUPPLY_001",
+              "DOC_BORROW_000",
+              "DOC_BORROW_001",
+              "DOC_LIQ_000"
+            ],
+            "started": 8158.660934,
+            "elapsed": 8.969999998953426e-05
+          }
+        ]
+      },
+      "calls": [
+        {
+          "role": "plan",
+          "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+          "format_attempt": 1,
+          "input_tokens": 3612,
+          "output_tokens": 48,
+          "timeout_seconds": 599.9419185999986,
+          "prompt_characters": 15916,
+          "server_timings": {
+            "prompt_ms": 62.174,
+            "prompt_n": 1,
+            "predicted_ms": 1697.547,
+            "predicted_n": 48
+          },
+          "elapsed": 2.0429496999995536
+        },
+        {
+          "role": "answer",
+          "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+          "format_attempt": 1,
+          "input_tokens": 3643,
+          "output_tokens": 18,
+          "timeout_seconds": 597.8984974000005,
+          "prompt_characters": 15227,
+          "server_timings": {
+            "prompt_ms": 42987.427,
+            "prompt_n": 3558,
+            "predicted_ms": 535.962,
+            "predicted_n": 18
+          },
+          "elapsed": 43.93043769999986
+        },
+        {
+          "role": "claim_review",
+          "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+          "format_attempt": 1,
+          "input_tokens": 3714,
+          "output_tokens": 57,
+          "timeout_seconds": 553.9678044000011,
+          "prompt_characters": 15673,
+          "server_timings": {
+            "prompt_ms": 41100.931,
+            "prompt_n": 3629,
+            "predicted_ms": 1699.536,
+            "predicted_n": 57
+          },
+          "elapsed": 42.9058514999997
+        },
+        {
+          "role": "repair",
+          "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+          "format_attempt": 1,
+          "input_tokens": 3855,
+          "output_tokens": 7,
+          "timeout_seconds": 511.04550129999916,
+          "prompt_characters": 15515,
+          "server_timings": {
+            "prompt_ms": 42488.542,
+            "prompt_n": 3770,
+            "predicted_ms": 208.464,
+            "predicted_n": 7
+          },
+          "elapsed": 42.82174229999873
+        },
+        {
+          "role": "answer",
+          "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+          "format_attempt": 1,
+          "input_tokens": 3645,
+          "output_tokens": 17,
+          "timeout_seconds": 468.2231400000019,
+          "prompt_characters": 15227,
+          "server_timings": {
+            "prompt_ms": 13703.585,
+            "prompt_n": 1165,
+            "predicted_ms": 454.497,
+            "predicted_n": 17
+          },
+          "elapsed": 14.332092399999965
+        }
+      ],
+      "wall_seconds": 146.11138449999999,
+      "input_tokens": 18469,
+      "output_tokens": 147,
+      "model_calls": 5
+    },
+    "bedrock": {
+      "provider": "bedrock",
+      "config": {
+        "provider": "bedrock",
+        "region": "us-east-1",
+        "profile": null,
+        "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "generation_temperature": 0.2,
+        "review_temperature": 0.0,
+        "max_tokens": 4096,
+        "json_format_retries": 1
+      },
+      "result": {
+        "mode": "P",
+        "draft": {
+          "question": "Có bao nhiêu giao dịch thanh lý trong tháng 8 năm 2026?",
+          "spec": {
+            "kind": "data",
+            "metric": "transactions",
+            "assets": [],
+            "start": "2026-08-01T00:00:00Z",
+            "end": "2026-09-01T00:00:00Z",
+            "unit": "count",
+            "aggregation": "count_distinct",
+            "grain": "none",
+            "retrieval_query": "liquidation_events tx_hash August 2026",
+            "clarification": ""
+          },
+          "sql": "SELECT COUNT(DISTINCT tx_hash) AS liquidation_transactions FROM liquidation_events WHERE time >= '2026-08-01T00:00:00Z' AND time < '2026-09-01T00:00:00Z'",
+          "query_result": {
+            "columns": [
+              "liquidation_transactions"
+            ],
+            "rows": [
+              {
+                "liquidation_transactions": 107
+              }
+            ],
+            "truncated": false,
+            "total_rows": 1
+          },
+          "documents": [],
+          "answer": "Trong bộ dữ liệu hiện có, có 107 giao dịch thanh lý trong tháng 8 năm 2026 (từ 2026-08-01 đến 2026-09-01).\n\nChưa thể xác minh đầy đủ: Khoảng thời gian truy vấn [2026-08-01, 2026-09-01) nằm trong giới hạn quan sát của liquidation_events (first_event_utc: 2023-01-30T19:11:47+00:00, last_event_utc: 2026-09-15T05:53:59+00:00). Tuy nhiên, availability.interpretation rõ ràng nêu rằng đây là 'observed timestamp bounds, not guarantees of gap-free coverage'. Không thể khẳng định dữ liệu tháng 8 năm 2026 được thu thập đầy đủ.; Trường 'documents' trống rỗng. Retrieval_runs ghi lại 5 document_ids được trả về (DOC_SUPPLY_000, DOC_SUPPLY_001, DOC_BORROW_000, DOC_BORROW_001, DOC_LIQ_000), nhưng nội dung của chúng không được cung cấp. Không thể xác minh các tuyên bố dựa trên tài liệu nguồn.; Tuyên bố '107 giao dịch thanh lý trong tháng 8 năm 2026' được hỗ trợ trực tiếp bởi sql_result: COUNT(DISTINCT tx_hash) = 107 từ truy vấn liquidation_events với điều kiện time >= '2026-08-01T00:00:00Z' AND time < '2026-09-01T00:00:00Z'. Aggregation COUNT(DISTINCT tx_hash) phù hợp với yêu cầu 'count_distinct' và định nghĩa từ điển (tx_hash là transaction identifier).",
+          "claims": [
+            {
+              "text": "Số lượng giao dịch thanh lý trong tháng 8 năm 2026 là 107",
+              "citations": [
+                "SQL1"
+              ],
+              "numeric": {
+                "value": 107,
+                "unit": "count",
+                "evidence_id": "SQL1",
+                "row": 0,
+                "column": "liquidation_transactions"
+              }
+            }
+          ],
+          "refused": false,
+          "issues": [],
+          "elapsed": 7.1862873999998556,
+          "usage": [
+            {
+              "role": "plan",
+              "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "format_attempt": 1,
+              "input_tokens": 3847,
+              "output_tokens": 128,
+              "timeout_seconds": 599.9480055999993,
+              "elapsed": 2.576382899998862
+            },
+            {
+              "role": "sql",
+              "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "format_attempt": 1,
+              "input_tokens": 1081,
+              "output_tokens": 72,
+              "timeout_seconds": 597.3507809000002,
+              "elapsed": 2.0752412999991066
+            },
+            {
+              "role": "answer",
+              "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "format_attempt": 1,
+              "input_tokens": 1626,
+              "output_tokens": 203,
+              "timeout_seconds": 595.2547861000003,
+              "elapsed": 2.440269700000499
+            }
+          ],
+          "error": "",
+          "tools": [
+            {
+              "tool": "sql",
+              "sql": "SELECT * FROM coverage",
+              "started": 8302.6710209,
+              "returned_rows": 5,
+              "truncated": false,
+              "elapsed": 0.019655100000818493
+            },
+            {
+              "tool": "sql",
+              "sql": "SELECT MIN(time) AS first_event_utc, MAX(time) AS last_event_utc, COUNT(*) AS event_rows FROM liquidation_events",
+              "started": 8302.6906874,
+              "returned_rows": 1,
+              "truncated": false,
+              "elapsed": 0.03158790000088629
+            },
+            {
+              "tool": "sql",
+              "sql": "SELECT COUNT(DISTINCT tx_hash) AS liquidation_transactions FROM liquidation_events WHERE time >= '2026-08-01T00:00:00Z' AND time < '2026-09-01T00:00:00Z'",
+              "started": 8307.3963074,
+              "returned_rows": 1,
+              "truncated": false,
+              "elapsed": 0.019669100000101025
+            },
+            {
+              "tool": "retrieve",
+              "query": "Có bao nhiêu giao dịch thanh lý trong tháng 8 năm 2026?",
+              "document_ids": [
+                "DOC_SUPPLY_000",
+                "DOC_SUPPLY_001",
+                "DOC_BORROW_000",
+                "DOC_BORROW_001",
+                "DOC_LIQ_000"
+              ],
+              "started": 8302.722289,
+              "elapsed": 0.00045529999988502823
+            }
+          ],
+          "planning": {
+            "initial": {
+              "kind": "data",
+              "metric": "transactions",
+              "assets": [],
+              "start": "2026-08-01T00:00:00Z",
+              "end": "2026-09-01T00:00:00Z",
+              "unit": "count",
+              "aggregation": "count_distinct",
+              "grain": "none",
+              "retrieval_query": "liquidation_events tx_hash August 2026",
+              "clarification": ""
+            },
+            "availability": {
+              "market_hourly": [
+                {
+                  "asset": "USDT",
+                  "start_utc": "2023-02-13T14:00:00+00:00",
+                  "end_utc": "2026-09-15T07:00:00+00:00",
+                  "rows": 31434,
+                  "observed_hours": 31434
+                },
+                {
+                  "asset": "USDC",
+                  "start_utc": "2023-01-27T08:00:00+00:00",
+                  "end_utc": "2026-09-15T07:00:00+00:00",
+                  "rows": 31848,
+                  "observed_hours": 31848
+                },
+                {
+                  "asset": "USDe",
+                  "start_utc": "2024-06-06T15:00:00+00:00",
+                  "end_utc": "2026-09-15T07:00:00+00:00",
+                  "rows": 19937,
+                  "observed_hours": 19937
+                },
+                {
+                  "asset": "WETH",
+                  "start_utc": "2023-01-27T08:00:00+00:00",
+                  "end_utc": "2026-09-15T07:00:00+00:00",
+                  "rows": 31848,
+                  "observed_hours": 31848
+                },
+                {
+                  "asset": "DAI",
+                  "start_utc": "2023-01-27T08:00:00+00:00",
+                  "end_utc": "2026-09-15T06:00:00+00:00",
+                  "rows": 31847,
+                  "observed_hours": 31847
+                }
+              ],
+              "liquidation_events": {
+                "first_event_utc": "2023-01-30T19:11:47+00:00",
+                "last_event_utc": "2026-09-15T05:53:59+00:00",
+                "event_rows": 25121
+              },
+              "interpretation": "These are observed timestamp bounds, not guarantees of gap-free coverage. The last event timestamp is not the collection cutoff. Do not infer missing events or a partial month from an event timestamp alone. Query the requested interval to report counts in the loaded dataset."
+            }
+          }
+        },
+        "status": "unverified",
+        "repairs": 1,
+        "issues": [
+          {
+            "code": "AVAILABILITY_BOUNDS_CONFIRM",
+            "message": "Khoảng thời gian truy vấn [2026-08-01, 2026-09-01) nằm trong giới hạn quan sát của liquidation_events (first_event_utc: 2023-01-30T19:11:47+00:00, last_event_utc: 2026-09-15T05:53:59+00:00). Tuy nhiên, availability.interpretation rõ ràng nêu rằng đây là 'observed timestamp bounds, not guarantees of gap-free coverage'. Không thể khẳng định dữ liệu tháng 8 năm 2026 được thu thập đầy đủ.",
+            "action": "answer"
+          },
+          {
+            "code": "DOCUMENT_RETRIEVAL_EMPTY",
+            "message": "Trường 'documents' trống rỗng. Retrieval_runs ghi lại 5 document_ids được trả về (DOC_SUPPLY_000, DOC_SUPPLY_001, DOC_BORROW_000, DOC_BORROW_001, DOC_LIQ_000), nhưng nội dung của chúng không được cung cấp. Không thể xác minh các tuyên bố dựa trên tài liệu nguồn.",
+            "action": "retrieve"
+          },
+          {
+            "code": "CLAIM_SUPPORT_VERIFIED",
+            "message": "Tuyên bố '107 giao dịch thanh lý trong tháng 8 năm 2026' được hỗ trợ trực tiếp bởi sql_result: COUNT(DISTINCT tx_hash) = 107 từ truy vấn liquidation_events với điều kiện time >= '2026-08-01T00:00:00Z' AND time < '2026-09-01T00:00:00Z'. Aggregation COUNT(DISTINCT tx_hash) phù hợp với yêu cầu 'count_distinct' và định nghĩa từ điển (tx_hash là transaction identifier).",
+            "action": "answer"
+          }
+        ],
+        "trace": [
+          {
+            "event": "verification",
+            "repair": 0,
+            "issues": [
+              {
+                "code": "AVAILABILITY_BOUNDS_CONFIRM",
+                "message": "Khoảng thời gian truy vấn [2026-08-01, 2026-09-01) nằm trong giới hạn quan sát của liquidation_events (first_event_utc: 2023-01-30T19:11:47+00:00, last_event_utc: 2026-09-15T05:53:59+00:00). Tuy nhiên, availability.interpretation rõ ràng nêu rằng đây là 'observed timestamp bounds, not guarantees of gap-free coverage'. Không thể khẳng định dữ liệu tháng 8 năm 2026 được thu thập đầy đủ.",
+                "action": "answer"
+              },
+              {
+                "code": "DOCUMENT_RETRIEVAL_EMPTY",
+                "message": "Trường 'documents' trống rỗng. Retrieval_runs ghi lại 5 document_ids được trả về (DOC_SUPPLY_000, DOC_SUPPLY_001, DOC_BORROW_000, DOC_BORROW_001, DOC_LIQ_000), nhưng nội dung của chúng không được cung cấp. Không thể xác minh các tuyên bố dựa trên tài liệu nguồn.",
+                "action": "retrieve"
+              },
+              {
+                "code": "CLAIM_SUPPORT_VERIFIED",
+                "message": "Tuyên bố '107 giao dịch thanh lý trong tháng 8 năm 2026' được hỗ trợ trực tiếp bởi sql_result: COUNT(DISTINCT tx_hash) = 107 từ truy vấn liquidation_events với điều kiện time >= '2026-08-01T00:00:00Z' AND time < '2026-09-01T00:00:00Z'. Aggregation COUNT(DISTINCT tx_hash) phù hợp với yêu cầu 'count_distinct' và định nghĩa từ điển (tx_hash là transaction identifier).",
+                "action": "answer"
+              }
+            ],
+            "sql": "SELECT COUNT(DISTINCT tx_hash) AS liquidation_transactions FROM liquidation_events WHERE time >= '2026-08-01T00:00:00Z' AND time < '2026-09-01T00:00:00Z'",
+            "answer": "Trong bộ dữ liệu hiện có, có 107 giao dịch thanh lý trong tháng 8 năm 2026 (từ 2026-08-01 đến 2026-09-01)."
+          },
+          {
+            "event": "repair",
+            "repair": 1,
+            "sql": "SELECT COUNT(DISTINCT tx_hash) AS liquidation_transactions FROM liquidation_events WHERE time >= '2026-08-01T00:00:00Z' AND time < '2026-09-01T00:00:00Z'",
+            "answer": "Trong bộ dữ liệu hiện có, có 107 giao dịch thanh lý trong tháng 8 năm 2026 (từ 2026-08-01 đến 2026-09-01)."
+          },
+          {
+            "event": "unchanged_repair_stop"
+          }
+        ],
+        "elapsed": 22.360945899999933,
+        "usage": [
+          {
+            "role": "plan",
+            "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "format_attempt": 1,
+            "input_tokens": 3847,
+            "output_tokens": 128,
+            "timeout_seconds": 599.9480055999993,
+            "elapsed": 2.576382899998862
+          },
+          {
+            "role": "sql",
+            "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "format_attempt": 1,
+            "input_tokens": 1081,
+            "output_tokens": 72,
+            "timeout_seconds": 597.3507809000002,
+            "elapsed": 2.0752412999991066
+          },
+          {
+            "role": "answer",
+            "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "format_attempt": 1,
+            "input_tokens": 1626,
+            "output_tokens": 203,
+            "timeout_seconds": 595.2547861000003,
+            "elapsed": 2.440269700000499
+          },
+          {
+            "role": "sql_review",
+            "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "format_attempt": 1,
+            "input_tokens": 1534,
+            "output_tokens": 13,
+            "timeout_seconds": 592.8131329999978,
+            "elapsed": 1.6221633999994083
+          },
+          {
+            "role": "claim_review",
+            "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "format_attempt": 1,
+            "input_tokens": 1850,
+            "output_tokens": 587,
+            "timeout_seconds": 591.1901455000007,
+            "elapsed": 4.674108700000943
+          },
+          {
+            "role": "repair",
+            "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "format_attempt": 1,
+            "input_tokens": 2467,
+            "output_tokens": 413,
+            "timeout_seconds": 586.4982970999972,
+            "error": "JSONDecodeError",
+            "elapsed": 3.6730463999992935
+          },
+          {
+            "role": "repair",
+            "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "format_attempt": 2,
+            "input_tokens": 2925,
+            "output_tokens": 277,
+            "timeout_seconds": 582.8252501999978,
+            "elapsed": 2.7442740999995294
+          },
+          {
+            "role": "answer",
+            "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "format_attempt": 1,
+            "input_tokens": 1772,
+            "output_tokens": 203,
+            "timeout_seconds": 580.0795248999984,
+            "elapsed": 2.4384871999991447
+          }
+        ],
+        "error": "",
+        "tools": [
+          {
+            "tool": "sql",
+            "sql": "SELECT * FROM coverage",
+            "started": 8302.6710209,
+            "returned_rows": 5,
+            "truncated": false,
+            "elapsed": 0.019655100000818493
+          },
+          {
+            "tool": "sql",
+            "sql": "SELECT MIN(time) AS first_event_utc, MAX(time) AS last_event_utc, COUNT(*) AS event_rows FROM liquidation_events",
+            "started": 8302.6906874,
+            "returned_rows": 1,
+            "truncated": false,
+            "elapsed": 0.03158790000088629
+          },
+          {
+            "tool": "sql",
+            "sql": "SELECT COUNT(DISTINCT tx_hash) AS liquidation_transactions FROM liquidation_events WHERE time >= '2026-08-01T00:00:00Z' AND time < '2026-09-01T00:00:00Z'",
+            "started": 8307.3963074,
+            "returned_rows": 1,
+            "truncated": false,
+            "elapsed": 0.019669100000101025
+          },
+          {
+            "tool": "retrieve",
+            "query": "Có bao nhiêu giao dịch thanh lý trong tháng 8 năm 2026?",
+            "document_ids": [
+              "DOC_SUPPLY_000",
+              "DOC_SUPPLY_001",
+              "DOC_BORROW_000",
+              "DOC_BORROW_001",
+              "DOC_LIQ_000"
+            ],
+            "started": 8302.722289,
+            "elapsed": 0.00045529999988502823
+          }
+        ]
+      },
+      "calls": [
+        {
+          "role": "plan",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 3847,
+          "output_tokens": 128,
+          "timeout_seconds": 599.9480055999993,
+          "elapsed": 2.576382899998862
+        },
+        {
+          "role": "sql",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 1081,
+          "output_tokens": 72,
+          "timeout_seconds": 597.3507809000002,
+          "elapsed": 2.0752412999991066
+        },
+        {
+          "role": "answer",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 1626,
+          "output_tokens": 203,
+          "timeout_seconds": 595.2547861000003,
+          "elapsed": 2.440269700000499
+        },
+        {
+          "role": "sql_review",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 1534,
+          "output_tokens": 13,
+          "timeout_seconds": 592.8131329999978,
+          "elapsed": 1.6221633999994083
+        },
+        {
+          "role": "claim_review",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 1850,
+          "output_tokens": 587,
+          "timeout_seconds": 591.1901455000007,
+          "elapsed": 4.674108700000943
+        },
+        {
+          "role": "repair",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 2467,
+          "output_tokens": 413,
+          "timeout_seconds": 586.4982970999972,
+          "error": "JSONDecodeError",
+          "elapsed": 3.6730463999992935
+        },
+        {
+          "role": "repair",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 2,
+          "input_tokens": 2925,
+          "output_tokens": 277,
+          "timeout_seconds": 582.8252501999978,
+          "elapsed": 2.7442740999995294
+        },
+        {
+          "role": "answer",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 1772,
+          "output_tokens": 203,
+          "timeout_seconds": 580.0795248999984,
+          "elapsed": 2.4384871999991447
+        }
+      ],
+      "wall_seconds": 22.363105700000233,
+      "input_tokens": 17102,
+      "output_tokens": 1896,
+      "model_calls": 8
+    }
+  },
+  "inputs_unchanged": true,
+  "input_hashes_after": {
+    "data/processed/aave.duckdb": "9069f8c284d9dfbfb9953962a3f0ca0b3ab98a0217636c9af432e55985bd3aef",
+    "data/processed/dictionary.json": "4cd24105faa74b560b28d7fdd536766293b6994f4a0bdaa0df73ead88c544c21",
+    "data/documents/chunks.json": "d89c33e1141ce9937ee04803cd45d4c6e128d74112fb9019555ba123c3fa6ae9"
+  }
+}

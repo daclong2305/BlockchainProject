@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "source_sha256": "cd1730dddd7b7258a568dbe39bbcc1f79fe10576a30bac1864072f69b0b0279b",
+  "reviewer_name": "",
+  "items": [
+    {
+      "case_id": "A0001",
+      "answer_correctness": null,
+      "faithfulness": null,
+      "citation_quality": null,
+      "notes": ""
+    }
+  ]
+}

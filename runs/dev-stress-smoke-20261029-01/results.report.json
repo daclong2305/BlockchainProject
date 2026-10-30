@@ -1,0 +1,36 @@
+{
+  "per_mode": {
+    "B1": {
+      "outputs": 2,
+      "coverage_complete": true,
+      "counts": {
+        "wrong_total": 1,
+        "wrong_initial_checks_completed": 1,
+        "wrong_initial_flagged": 0,
+        "correct_total": 1,
+        "correct_initial_checks_completed": 1,
+        "correct_initial_flagged": 0
+      },
+      "median_seconds": 30.213663200001065,
+      "p95_seconds": 38.68401824000111
+    },
+    "P": {
+      "outputs": 2,
+      "coverage_complete": true,
+      "counts": {
+        "wrong_total": 1,
+        "runtime_errors": 1,
+        "wrong_initial_checks_completed": 1,
+        "wrong_initial_flagged": 1,
+        "correct_total": 1,
+        "correct_initial_checks_completed": 1,
+        "correct_initial_flagged": 1
+      },
+      "median_seconds": 118.44630510000025,
+      "p95_seconds": 119.85701910000043
+    }
+  },
+  "observed_cases": 1,
+  "both_modes_present": true,
+  "note": "Coverage is only within observed case IDs; compare with the frozen stress manifest for full coverage. Initial flags are checker behavior, not ground-truth detection accuracy. Repair/breakage counts require two human decisions; missing review is not success. Stress results are separate from the 60-question benchmark."
+}

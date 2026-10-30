@@ -1,0 +1,199 @@
+{
+  "question": "Có bao nhiêu giao dịch thanh lý trong tháng 8 năm 2026?",
+  "spec": {
+    "kind": "data",
+    "metric": "transactions",
+    "assets": [],
+    "start": "2026-08-01T00:00:00+00:00",
+    "end": "2026-09-01T00:00:00+00:00",
+    "unit": "count",
+    "aggregation": "count_distinct",
+    "grain": "day",
+    "retrieval_query": "select count ( distinct tx_hash ) from liquidation_events where time >= \"2026-08-01\" and time < \"2026-09-01\"",
+    "clarification": ""
+  },
+  "sql": "SELECT COUNT(DISTINCT tx_hash) FROM liquidation_events WHERE time >= '2026-08-01' AND time < '2026-09-01'",
+  "query_result": {
+    "columns": [
+      "count(DISTINCT tx_hash)"
+    ],
+    "rows": [
+      {
+        "count(DISTINCT tx_hash)": 107
+      }
+    ],
+    "truncated": false,
+    "total_rows": 1
+  },
+  "documents": [],
+  "answer": "107",
+  "claims": [],
+  "refused": false,
+  "issues": [],
+  "elapsed": 28.400444199999583,
+  "usage": [
+    {
+      "role": "plan",
+      "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+      "format_attempt": 1,
+      "input_tokens": 3689,
+      "output_tokens": 159,
+      "timeout_seconds": 599.9456909,
+      "prompt_characters": 16326,
+      "server_timings": {
+        "prompt_ms": 296.371,
+        "prompt_n": 1,
+        "predicted_ms": 3875.94,
+        "predicted_n": 159
+      },
+      "elapsed": 4.4430270000002565
+    },
+    {
+      "role": "sql",
+      "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+      "format_attempt": 1,
+      "input_tokens": 1062,
+      "output_tokens": 47,
+      "timeout_seconds": 595.4865000999998,
+      "prompt_characters": 3840,
+      "server_timings": {
+        "prompt_ms": 6539.087,
+        "prompt_n": 682,
+        "predicted_ms": 875.604,
+        "predicted_n": 47
+      },
+      "elapsed": 7.513110500000039
+    },
+    {
+      "role": "answer",
+      "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+      "format_attempt": 1,
+      "input_tokens": 1704,
+      "output_tokens": 20,
+      "timeout_seconds": 587.9522317999999,
+      "prompt_characters": 5348,
+      "server_timings": {
+        "prompt_ms": 15939.447,
+        "prompt_n": 1619,
+        "predicted_ms": 376.694,
+        "predicted_n": 20
+      },
+      "elapsed": 16.35253339999963
+    }
+  ],
+  "error": "",
+  "tools": [
+    {
+      "tool": "sql",
+      "sql": "SELECT * FROM coverage",
+      "started": 4260.9307256,
+      "returned_rows": 5,
+      "truncated": false,
+      "elapsed": 0.039953099999365804
+    },
+    {
+      "tool": "sql",
+      "sql": "SELECT MIN(time) AS first_event_utc, MAX(time) AS last_event_utc, COUNT(*) AS event_rows FROM liquidation_events",
+      "started": 4260.9706877,
+      "returned_rows": 1,
+      "truncated": false,
+      "elapsed": 0.01400629999989178
+    },
+    {
+      "tool": "sql",
+      "sql": "SELECT COUNT(DISTINCT tx_hash) FROM liquidation_events WHERE time >= '2026-08-01' AND time < '2026-09-01'",
+      "started": 4272.9600006,
+      "returned_rows": 1,
+      "truncated": false,
+      "elapsed": 0.01825840000037715
+    },
+    {
+      "tool": "retrieve",
+      "query": "Có bao nhiêu giao dịch thanh lý trong tháng 8 năm 2026?",
+      "document_ids": [
+        "DOC_SUPPLY_000",
+        "DOC_SUPPLY_001",
+        "DOC_BORROW_000",
+        "DOC_BORROW_001",
+        "DOC_LIQ_000"
+      ],
+      "started": 4260.9847006,
+      "elapsed": 0.00018530000033933902
+    }
+  ],
+  "planning": {
+    "initial": {
+      "kind": "data",
+      "metric": "transactions",
+      "assets": [],
+      "start": "2026-08-01T00:00:00+00:00",
+      "end": "2026-09-01T00:00:00+00:00",
+      "unit": "count",
+      "aggregation": "count_distinct",
+      "grain": "day",
+      "retrieval_query": "select count ( distinct tx_hash ) from liquidation_events where time >= \"2026-08-01\" and time < \"2026-09-01\"",
+      "clarification": ""
+    },
+    "availability": {
+      "market_hourly": [
+        {
+          "asset": "USDT",
+          "start_utc": "2023-02-13T14:00:00+00:00",
+          "end_utc": "2026-09-15T07:00:00+00:00",
+          "rows": 31434,
+          "observed_hours": 31434
+        },
+        {
+          "asset": "USDC",
+          "start_utc": "2023-01-27T08:00:00+00:00",
+          "end_utc": "2026-09-15T07:00:00+00:00",
+          "rows": 31848,
+          "observed_hours": 31848
+        },
+        {
+          "asset": "USDe",
+          "start_utc": "2024-06-06T15:00:00+00:00",
+          "end_utc": "2026-09-15T07:00:00+00:00",
+          "rows": 19937,
+          "observed_hours": 19937
+        },
+        {
+          "asset": "WETH",
+          "start_utc": "2023-01-27T08:00:00+00:00",
+          "end_utc": "2026-09-15T07:00:00+00:00",
+          "rows": 31848,
+          "observed_hours": 31848
+        },
+        {
+          "asset": "DAI",
+          "start_utc": "2023-01-27T08:00:00+00:00",
+          "end_utc": "2026-09-15T06:00:00+00:00",
+          "rows": 31847,
+          "observed_hours": 31847
+        }
+      ],
+      "liquidation_events": {
+        "first_event_utc": "2023-01-30T19:11:47+00:00",
+        "last_event_utc": "2026-09-15T05:53:59+00:00",
+        "event_rows": 25121
+      },
+      "interpretation": "These are observed timestamp bounds, not guarantees of gap-free coverage. The last event timestamp is not the collection cutoff. Do not infer missing events or a partial month from an event timestamp alone. Query the requested interval to report counts in the loaded dataset."
+    },
+    "sql_normalizations": [
+      {
+        "raw_sql": "select count ( distinct tx_hash ) from liquidation_events where time >= \"2026-08-01\" and time < \"2026-09-01\"",
+        "executed_sql": "SELECT COUNT(DISTINCT tx_hash) FROM liquidation_events WHERE time >= '2026-08-01' AND time < '2026-09-01'",
+        "changes": [
+          {
+            "kind": "iso_datetime_identifier_to_literal",
+            "value": "2026-08-01"
+          },
+          {
+            "kind": "iso_datetime_identifier_to_literal",
+            "value": "2026-09-01"
+          }
+        ]
+      }
+    ]
+  }
+}

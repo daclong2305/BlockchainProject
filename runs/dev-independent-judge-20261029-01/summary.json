@@ -1,0 +1,89 @@
+{
+  "configurations": {
+    "B0": {
+      "outputs": 1,
+      "scored_outputs": 1,
+      "correct": 1,
+      "correct_rate": 1.0,
+      "numeric_correct": 0,
+      "numeric_total": 0,
+      "correct_refusals": 0,
+      "wrong_refusals": 0,
+      "unscored_refusals": 0,
+      "unsupported_answers": 0,
+      "median_seconds": 88.68360919999941,
+      "p95_seconds": 88.68360919999941,
+      "input_tokens": 7345,
+      "output_tokens": 116,
+      "runtime_errors": 0,
+      "judge_errors": 0,
+      "api_cost_usd": null,
+      "cost_note": "Use your account pricing; judge tokens recorded separately. Shared draft cost is included in every mode.",
+      "citation_precision": 1.0,
+      "citation_completeness": 1.0,
+      "per_question": {
+        "Q005": {
+          "correct_runs": 1,
+          "scored_runs": 1
+        }
+      },
+      "by_category": {
+        "mechanism": {
+          "correct": 1,
+          "scored": 1
+        }
+      },
+      "correct_rate_scored_only": 1.0,
+      "unscored_outputs": 0,
+      "correct_rate_bounds": [
+        1.0,
+        1.0
+      ],
+      "numeric_expected_total": 0,
+      "by_assets": [
+        {
+          "scope": [],
+          "outputs": 1,
+          "correct": 1,
+          "scored": 1
+        }
+      ],
+      "by_gold_time_literals": [
+        {
+          "scope": [],
+          "outputs": 1,
+          "correct": 1,
+          "scored": 1
+        }
+      ]
+    }
+  },
+  "paired_P_vs": {
+    "B0": {
+      "wrong_to_right": 0,
+      "right_to_wrong": 0,
+      "paired_scored": 0
+    },
+    "B1": {
+      "wrong_to_right": 0,
+      "right_to_wrong": 0,
+      "paired_scored": 0
+    },
+    "P-SQL": {
+      "wrong_to_right": 0,
+      "right_to_wrong": 0,
+      "paired_scored": 0
+    },
+    "P-Evidence": {
+      "wrong_to_right": 0,
+      "right_to_wrong": 0,
+      "paired_scored": 0
+    },
+    "P-Repair": {
+      "wrong_to_right": 0,
+      "right_to_wrong": 0,
+      "paired_scored": 0
+    }
+  },
+  "unit": "question; repeated outputs are not independent questions"
+}

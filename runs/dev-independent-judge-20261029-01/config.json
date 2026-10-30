@@ -1,0 +1,72 @@
+{
+  "llm": {
+    "provider": "llama.cpp",
+    "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+    "revision": "579ae3d2f0db23dd25fd83076a57dbab79f68dd9",
+    "artifact_sha256": "b34a028bc6c18d738b57552423bb75ca555d823c19722c4261acc792547a4cd2",
+    "base_url": "http://127.0.0.1:8081",
+    "quantization": "Q4_K_M",
+    "generation_temperature": 0.2,
+    "review_temperature": 0.0,
+    "max_tokens": 4096,
+    "json_format_retries": 1,
+    "role_schema_version": 2,
+    "input_normalization": "NFC"
+  },
+  "source_hashes": {
+    "data\\processed\\aave.duckdb": "9069f8c284d9dfbfb9953962a3f0ca0b3ab98a0217636c9af432e55985bd3aef",
+    "data\\processed\\dictionary.json": "4cd24105faa74b560b28d7fdd536766293b6994f4a0bdaa0df73ead88c544c21",
+    "data\\documents\\chunks.json": "d89c33e1141ce9937ee04803cd45d4c6e128d74112fb9019555ba123c3fa6ae9",
+    "data\\benchmark\\questions.jsonl": "b70ba26a5cc6c785f780b4b11812c79d7217a3ea7e6dc3571f0c04d0f33405e2",
+    "data\\benchmark\\stress.jsonl": "b8b9a7f99484893892cc9985d1a6c581cf81896a591eaf69cdf4262c03cfb7e4",
+    "data\\benchmark\\trace_registration.json": "adc3d7446474173549ded4dfc637394ff81cbe54f4b135cdddd2334f1f4d2f10"
+  },
+  "code_hashes": {
+    "__init__.py": "2983b5b92e89908b1a1b40fea40a0fab378b030ae1bf9d0ca5dc62c0a2706df9",
+    "benchmark.py": "608ff2b09a646f9507982433e7d0f67ebc63d47d65b0df49f5218717133170b7",
+    "cli.py": "0e8c8be40be9ffc6683a1e0438fb6984458a65401c928c9ff362fed3bcc8c776",
+    "comparison.py": "868ca47a5aee6bc96afbec98b1e9959ec498621c1f4839198b8454cd17c9548c",
+    "config.py": "67208f74c76cc45487322083457575ad6407e5a94591fa0b48e28fdaf7eb3041",
+    "data.py": "3fdb88ef7bab27ff871efa1a68814f45893e19c05e4556e8256fe5a1bc2845a9",
+    "database.py": "82a0831488083ef42d5d4f193125031aef2ebbc97e04624597a046830f96f912",
+    "evaluation.py": "56972815d8a2f76f29ca0bb4fc4ad063984438a70fb93ace909a89c354ee52f5",
+    "experiments.py": "d831f9e52a2bbd1747784dd2453ad9a73c03259f562f589a70d5b930cd77564c",
+    "llm.py": "4dfa57cf367573b65f2dfdeec97e1f480742f79985a7ac3b31dba64919ddc67c",
+    "local_llm.py": "f3bcee5b578e78c34778c2a60ca223cc22813830d7aa78c44f1bf092f01a0e81",
+    "models.py": "bd97e8c37915580e822aa218f1371f5cc94f3586c385d77f69581be4ba01d295",
+    "pipeline.py": "d1957015bee5abb04f91be1e761811a2e06a5e0a5e3a43da3506445c5468f502",
+    "planning.py": "f956bd575dd4b2734d88538dd6ba024a0a21f9fe60c4704f9ef42e2e3d640ced",
+    "protocol.py": "99f26b6e1005a884b65fbc0964e4dadae689c0274052e1a0eea1f5faea5fb16c",
+    "reporting.py": "85bd5514b1baaa44ed0031013b19e19527b7d390227052f557d4f44dc6128032",
+    "response_schemas.py": "89d0aa1b40598e541f7ec1884c4a32250dfc3623100452f2597438ecb9a659cb",
+    "retrieval.py": "f96f82fe709f1024cc78c0d7c4e794dae3d1073f5e3bf9649f61cf2eecbe14ed",
+    "review.py": "782f7415cac5f809420a07410542505ac7ff89f855119a579790929f8195beae",
+    "sql_normalization.py": "4463a8a5d8289cb486eea8611b01c70bfd4d235c81f399f01eb756be52a05751",
+    "stress.py": "3ff0d69d73ebcf99a7a6e3cf7d2fdf55112f57fd31e3950c081771af80cb1106",
+    "ui.py": "4640616fc9b05273f0663324e216d7fcacb420f63df4b7d43d44deae939ebbeb",
+    "verification.py": "a28efd2cb5541cc3349d3b328b74fa611028159f764b732446d6aa4134508f1d"
+  },
+  "final": false,
+  "modes": [
+    "B0"
+  ],
+  "repeats": 1,
+  "deadline_seconds": 120,
+  "repair_limit": 2,
+  "retrieval_top_k": 5,
+  "chunk_words": 400,
+  "chunk_overlap": 60,
+  "evaluation_only": true,
+  "parent_run": "runs\\dev-protocol-smoke-20261029-01",
+  "judge_config": {
+    "provider": "bedrock",
+    "region": "us-east-1",
+    "profile": null,
+    "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "generation_temperature": 0.2,
+    "review_temperature": 0.0,
+    "max_tokens": 4096,
+    "json_format_retries": 1,
+    "input_normalization": "NFC"
+  }
+}

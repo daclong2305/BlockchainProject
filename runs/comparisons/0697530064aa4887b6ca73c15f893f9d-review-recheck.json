@@ -1,0 +1,19 @@
+{
+  "check": "isolated reviewer recheck; original result preserved",
+  "response": {
+    "issues": []
+  },
+  "usage": [
+    {
+      "role": "sql_review",
+      "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "format_attempt": 1,
+      "input_tokens": 1889,
+      "output_tokens": 17,
+      "timeout_seconds": 119.99992620000012,
+      "cache_read_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "elapsed": 1.9493605999996362
+    }
+  ]
+}

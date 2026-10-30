@@ -1,0 +1,1495 @@
+{
+  "id": "0697530064aa4887b6ca73c15f893f9d",
+  "created_at": "2026-10-29T14:50:36.209256+00:00",
+  "question": "dư nợ trung bình của USDC trong tháng 8/2026.",
+  "mode": "P",
+  "deadline_seconds_per_model": 600.0,
+  "execution": "parallel",
+  "input_hashes": {
+    "data/processed/aave.duckdb": "9069f8c284d9dfbfb9953962a3f0ca0b3ab98a0217636c9af432e55985bd3aef",
+    "data/processed/dictionary.json": "4cd24105faa74b560b28d7fdd536766293b6994f4a0bdaa0df73ead88c544c21",
+    "data/documents/chunks.json": "d89c33e1141ce9937ee04803cd45d4c6e128d74112fb9019555ba123c3fa6ae9"
+  },
+  "code_hashes": {
+    "__init__.py": "2983b5b92e89908b1a1b40fea40a0fab378b030ae1bf9d0ca5dc62c0a2706df9",
+    "audit_review.py": "a65de44a6ace9e180a55dddd704ecd51ab5c54644514efd168aa3aa3d0e9625a",
+    "benchmark.py": "86b3b32f0205cb005c69af81cef706c534e82a5fd27513b14ca1c070a0dccc06",
+    "cli.py": "3e754e7ef294c6cfcf32ade9f3d2e381293f164d1a946ec15c0e21df3d1371a1",
+    "comparison.py": "8a6cdc7a6de5fa02354634619db86ad7932140e2f196b6d54f1c6104d53dbd36",
+    "config.py": "67208f74c76cc45487322083457575ad6407e5a94591fa0b48e28fdaf7eb3041",
+    "costs.py": "7dc722f18af153a25adf4fcd0fd0dec1b60cc70b5aba322f2eaff8cf8aaddf3d",
+    "data.py": "3fdb88ef7bab27ff871efa1a68814f45893e19c05e4556e8256fe5a1bc2845a9",
+    "database.py": "82a0831488083ef42d5d4f193125031aef2ebbc97e04624597a046830f96f912",
+    "evaluation.py": "56972815d8a2f76f29ca0bb4fc4ad063984438a70fb93ace909a89c354ee52f5",
+    "experiments.py": "efb9ff3dc3e2709df30d85a2846d73567ddd7b22ff5e7ed407499a895daae87f",
+    "intent_guards.py": "18c7e043900b870631752bce10337c44a3517a0decd4dc33fc911c072797f83c",
+    "llm.py": "6086149550dec4a4c9829c7c0f29fb1186caa859ecab7a81a8580857456d6a34",
+    "local_llm.py": "c116844f660064dd1b99b1a10ed13dda5a13389a3ca1b7d5fe9049e718078e9b",
+    "models.py": "bd97e8c37915580e822aa218f1371f5cc94f3586c385d77f69581be4ba01d295",
+    "pipeline.py": "8f466410fc3ad3e3c9fa89ec516efc798793018be70759095761ef7ea3cb76f4",
+    "planning.py": "f956bd575dd4b2734d88538dd6ba024a0a21f9fe60c4704f9ef42e2e3d640ced",
+    "protocol.py": "909c3773cf8942e1949809ceb92ac81fd48f5845c1600b848e029e9720bef1dd",
+    "reporting.py": "f5872b2dad3cc0cf429b846cbad64fb636ed91ed545252e695731f5726f37bc7",
+    "response_schemas.py": "89d0aa1b40598e541f7ec1884c4a32250dfc3623100452f2597438ecb9a659cb",
+    "retrieval.py": "f96f82fe709f1024cc78c0d7c4e794dae3d1073f5e3bf9649f61cf2eecbe14ed",
+    "review.py": "782f7415cac5f809420a07410542505ac7ff89f855119a579790929f8195beae",
+    "scoring.py": "4c265e1403401dbff9805cbe29f1d370f7b328c6f10d16b05b1a3682cb101d94",
+    "sql_normalization.py": "eb3fe8c3d2c48d9270a3358b871752430ac1fb8bf6fdcd97f0a82034ce8a3a4d",
+    "stress.py": "68c4694855da4d5c6c93c551ba7f37e0c7b7d0a17e0e29cd0a18f1b6b87d6640",
+    "supplementary.py": "2dfec286174792b66f3c4508e649055d81184c3f8bcfa5a940efd315be4f409c",
+    "ui.py": "4640616fc9b05273f0663324e216d7fcacb420f63df4b7d43d44deae939ebbeb",
+    "verification.py": "5ef0f3f823a67e0a1c5fe046bce3bf3d21efedc38fad9098a94f1282b98611ea"
+  },
+  "results": {
+    "local_qwen": {
+      "provider": "local_qwen",
+      "config": {
+        "provider": "llama.cpp",
+        "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+        "revision": "579ae3d2f0db23dd25fd83076a57dbab79f68dd9",
+        "artifact_sha256": "b34a028bc6c18d738b57552423bb75ca555d823c19722c4261acc792547a4cd2",
+        "base_url": "http://127.0.0.1:8081",
+        "quantization": "Q4_K_M",
+        "generation_temperature": 0.2,
+        "review_temperature": 0.0,
+        "max_tokens": 4096,
+        "json_format_retries": 1,
+        "role_schema_version": 2,
+        "input_normalization": "NFC",
+        "payload_serialization": "compact_json_v1"
+      },
+      "result": {
+        "mode": "P",
+        "draft": {
+          "question": "dư nợ trung bình của USDC trong tháng 8/2026.",
+          "spec": {
+            "kind": "data",
+            "metric": "borrowed_usd",
+            "assets": [
+              "USDC"
+            ],
+            "start": "2026-08-01T00:00:00+00:00",
+            "end": "2026-09-01T00:00:00+00:00",
+            "unit": "USD",
+            "aggregation": "average",
+            "grain": "day",
+            "retrieval_query": "average borrowed usd of usdc in august 2026",
+            "clarification": ""
+          },
+          "sql": "select avg ( borrowed_usd ) from market_hourly where hour >= '2026-08-01T00:00:00+00:00' and hour < '2026-09-01T00:00:00+00:00' and asset = 'USDC'",
+          "query_result": {
+            "columns": [
+              "avg(borrowed_usd)"
+            ],
+            "rows": [
+              {
+                "avg(borrowed_usd)": 2001158632.0983303
+              }
+            ],
+            "truncated": false,
+            "total_rows": 1
+          },
+          "documents": [
+            {
+              "id": "DOC_SUPPLY_000",
+              "title": "Supply Tokens | Aave",
+              "url": "https://aave.com/help/supplying/supply-tokens",
+              "collected_at": "2026-10-28T14:16:02.570990+00:00",
+              "source_sha256": "b59a3f775e241e2e9d829abc9fbd529afe72cc0d31bf94f8dd6a46a05d7b084c",
+              "text": "Back to Supplying Supply Tokens beginner Introduction Supplying tokens to the Aave Protocol allows you to earn interest on your digital assets and utilize supplied tokens as collateral. When tokens are supplied, they are transferred to the Aave liquidity pool, a system of smart contracts that facilitates overcollateralized borrowing of tokens. Supplied tokens automatically accumulate interest by updating in balance at the current market supply rate. This interest accrual happens dynamically as the balance of your supplied tokens increases linearly over time, reflecting the current rate allocated to suppliers. Interest rates for supplied tokens are determined by the borrow utilization rate, which measures the proportion of assets currently borrowed against the total supplied in the pool, and by governance parameters that can be adjusted through community decisions. These parameters, including collateralization requirements and interest rates for suppliers and borrowers, are influenced by on-chain inputs such as token balances, oracle prices, and the borrow utilization ratio. As liquidity is supplied, borrowed, repaid, or withdrawn from the pool, the interest rates are updated accordingly. Tokens can be supplied through protocol smart contracts or through a frontend such as the Aave Labs interface, by performing the following steps: Step 1: Connect Wallet To begin, press ‘Connect Wallet’ and select the Ethereum wallet provider corresponding to the wallet holding tokens intended to supply. Step 2: Select Token To Supply Once connected, navigate to the ‘Dashboard’ where you’ll find the ‘Assets To Supply’ table, which lists current token balances and asset parameters. More details on supply and borrow parameters can be found by selecting the individual token icon, which will navigate to the reserve details page. Step 3: Approve Token Transfer In order to transfer tokens on an Ethereum-based network, the Aave Pool smart contract must be granted an allowance to transfer tokens from the connected wallet address. Approvals can be performed through transaction (which will incur a network fee) or signature (which does not incur a network fee). After selecting a token to supply, a modal will appear which will prompt a transaction or message signature request in the connected wallet. Step 4: Perform Supply Transaction After approval, enter the amount you wish to supply and confirm, which will prompt a transaction in the connected wallet. Your supplied tokens are then added to the Aave liquidity pool, where they are made available for borrowers. The supplied tokens will start earning interest immediately, which can",
+              "score": 0.0
+            },
+            {
+              "id": "DOC_SUPPLY_001",
+              "title": "Supply Tokens | Aave",
+              "url": "https://aave.com/help/supplying/supply-tokens",
+              "collected_at": "2026-10-28T14:16:02.570990+00:00",
+              "source_sha256": "b59a3f775e241e2e9d829abc9fbd529afe72cc0d31bf94f8dd6a46a05d7b084c",
+              "text": "message signature request in the connected wallet. Step 4: Perform Supply Transaction After approval, enter the amount you wish to supply and confirm, which will prompt a transaction in the connected wallet. Your supplied tokens are then added to the Aave liquidity pool, where they are made available for borrowers. The supplied tokens will start earning interest immediately, which can be monitored from the ‘Dashboard’ tab. Related Withdraw Tokens beginner Withdraw tokens from the Aave Protocol. 4 min read Toggle Collateral Status intermediate Toggle collateral status of supply positions. 4 min read Isolation Mode beginner Supply isolated collateral assets. 3 min read",
+              "score": 0.0
+            },
+            {
+              "id": "DOC_BORROW_000",
+              "title": "Borrow Tokens | Aave",
+              "url": "https://aave.com/help/borrowing/borrow-tokens",
+              "collected_at": "2026-10-28T14:16:05.100252+00:00",
+              "source_sha256": "3d05a42e5f1beb0ea05cb067c4ed673135313157efe4f2fb57d83975445e2d32",
+              "text": "Back to Borrowing Borrow Tokens beginner Introduction Borrowing tokens from the Aave Protocol enables participants to access liquidity against supplied collateral tokens. This process requires maintaining sufficient collateral and understanding the associated risks, such as liquidation. Borrowers must maintain that their collateral remains adequate to cover the borrowed amount, as falling below the required collateralization level could lead to liquidation. The interest rates for borrowed tokens are dynamically determined by the protocol based on factors like the borrow utilization rate and governance parameters, which can change through community decisions. Borrowing can be performed through protocol smart contracts or through a frontend such as the Aave Labs interface by performing the following steps: Step 1: Connect Wallet To begin, press ‘Connect Wallet’ and select the Ethereum wallet provider corresponding to the wallet holding the collateralized tokens. Step 2: Select Token to Borrow Once connected, navigate to the ‘Dashboard’ and locate the ‘Assets to Borrow’ table. This table lists the available tokens for borrowing, along with key parameters such as available amount, interest rates, and your health factor. The interest rates displayed here are influenced by the borrow utilization rate, which measures the proportion of assets currently borrowed against the total supplied in the pool. As liquidity is borrowed or repaid, these rates are dynamically adjusted to reflect current market conditions. Select the token you wish to borrow. Step 3: Review Borrow Parameters Before proceeding, review the borrow parameters including the Loan-to-Value (LTV) ratio, Liquidation Threshold (LT) ratio, and your current health factor. These parameters are crucial for maintaining sufficient collateral and avoiding liquidation. If you are borrowing a network base asset (e.g., ETH), you will first need to approve the WrappedTokenGateway contract. This approval enables the contract to perform a credit delegation, which performs a borrow and unwraps to the base asset in a single transaction. Step 4: Confirm Borrow Transaction Enter the amount you wish to borrow and confirm the transaction in your wallet. Upon confirmation, the borrowed tokens will be transferred to your wallet. It's important to note that interest on the borrowed tokens begins to accrue immediately and is dynamically adjusted based on the borrow utilization rate. Step 5: Monitor Health Factor Regularly monitor your health factor from the ‘Dashboard’ to verify that your collateral remains sufficient. If your health factor drops, consider supplying more collateral or repaying part of your borrow position to avoid liquidation. The health",
+              "score": 0.0
+            },
+            {
+              "id": "DOC_BORROW_001",
+              "title": "Borrow Tokens | Aave",
+              "url": "https://aave.com/help/borrowing/borrow-tokens",
+              "collected_at": "2026-10-28T14:16:05.100252+00:00",
+              "source_sha256": "3d05a42e5f1beb0ea05cb067c4ed673135313157efe4f2fb57d83975445e2d32",
+              "text": "interest on the borrowed tokens begins to accrue immediately and is dynamically adjusted based on the borrow utilization rate. Step 5: Monitor Health Factor Regularly monitor your health factor from the ‘Dashboard’ to verify that your collateral remains sufficient. If your health factor drops, consider supplying more collateral or repaying part of your borrow position to avoid liquidation. The health factor is a critical indicator of the safety of your borrow position, and maintaining it above the liquidation threshold is essential to prevent your collateral from being liquidated. Related Repay Tokens beginner Repay active borrow positions. 3 min read Efficiency Mode (E-mode) intermediate Borrowing in Efficiency Mode (E-mode). 3 min read Health Factor & Liquidations advanced Mechanics of Aave Protocol liquidations. 5 min read",
+              "score": 0.0
+            },
+            {
+              "id": "DOC_LIQ_000",
+              "title": "Health Factor & Liquidations | Aave",
+              "url": "https://aave.com/help/borrowing/liquidations",
+              "collected_at": "2026-10-28T14:16:07.023365+00:00",
+              "source_sha256": "29031b86b53d3b90c456e0eb91dafc75cdacb68928b4f776eb590eff301f3b25",
+              "text": "Back to Borrowing Health Factor & Liquidations advanced Health Factor The health factor is a critical metric within the Aave Protocol that measures the safety of a borrow position. It is calculated as: Health Factor = (Total Collateral Value * Weighted Average Liquidation Threshold) / Total Borrow Value This metric indicates the stability of a borrow position, with a health factor below 1 signaling the risk of liquidation. The liquidation threshold, set by Aave Governance for each collateral asset, determines the maximum percentage of value that can be borrowed against it. For example, if you supply $10,000 in ETH with an 80% liquidation threshold and borrow $6,000 in GHO, your health factor would be 1.333. Managing Health Factor Maintaining a health factor above 1 is crucial to avoid liquidation. Regular monitoring of this metric is essential, as it fluctuates with the value of both collateral and borrowed assets. To improve your health factor, you can either supply more collateral or repay part of your borrow position. The health factor is sensitive to market changes—if your collateral's value increases, so does your health factor; conversely, if it decreases, your health factor drops, heightening the risk of liquidation. There is no universally \"safe\" health factor, as this depends on the volatility and correlation of your assets. Generally, lower health factors may be acceptable for correlated assets, such as stablecoins or assets closely tied to ETH. Tools for Managing Health Factor (Use at your own risk): Simulate health factor changes: DeFi Simulator Auto-repay borrow position: DeFi Saver Liquidation Process A liquidation in the Aave Protocol occurs when a borrower's health factor falls below 1, indicating that their collateral no longer sufficiently covers the borrowed amount. This situation can happen when the value of the collateral decreases or the borrowed amount increases, pushing the position past the liquidation threshold. The amount that can be liquidated depends on the health factor and position size: Up to 50% of total debt can be liquidated when the health factor is above 0.95 AND both the collateral and debt values are at least $2,000 each. Up to 100% of debt can be liquidated when the health factor is 0.95 or below, OR when either the collateral or debt value is below $2,000. During liquidation, the liquidator repays debt on behalf of the borrower and receives an equivalent value plus a liquidation bonus from the borrower's collateral. To prevent",
+              "score": 0.0
+            }
+          ],
+          "answer": "2001158632.09\n\nChưa thể xác minh đầy đủ: the answer should be in USD",
+          "claims": [
+            {
+              "text": "dư nợ trung bình của USDC trong tháng 8/2026 là 2001158632.09 USD",
+              "citations": [
+                "SQL1"
+              ]
+            }
+          ],
+          "refused": false,
+          "issues": [],
+          "elapsed": 77.61655930000052,
+          "usage": [
+            {
+              "role": "plan",
+              "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+              "format_attempt": 1,
+              "input_tokens": 3619,
+              "output_tokens": 136,
+              "timeout_seconds": 599.9112989000005,
+              "prompt_characters": 16611,
+              "server_timings": {
+                "prompt_ms": 37168.886,
+                "prompt_n": 2942,
+                "predicted_ms": 4651.641,
+                "predicted_n": 136
+              },
+              "elapsed": 42.25827200000094
+            },
+            {
+              "role": "sql",
+              "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+              "format_attempt": 1,
+              "input_tokens": 1056,
+              "output_tokens": 83,
+              "timeout_seconds": 557.6253436999996,
+              "prompt_characters": 4364,
+              "server_timings": {
+                "prompt_ms": 12131.773,
+                "prompt_n": 971,
+                "predicted_ms": 2149.631,
+                "predicted_n": 83
+              },
+              "elapsed": 14.421546800000215
+            },
+            {
+              "role": "answer",
+              "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+              "format_attempt": 1,
+              "input_tokens": 1613,
+              "output_tokens": 70,
+              "timeout_seconds": 543.1742576999986,
+              "prompt_characters": 5375,
+              "server_timings": {
+                "prompt_ms": 18425.16,
+                "prompt_n": 1528,
+                "predicted_ms": 2276.747,
+                "predicted_n": 70
+              },
+              "elapsed": 20.790636799998538
+            }
+          ],
+          "error": "",
+          "tools": [
+            {
+              "tool": "sql",
+              "sql": "SELECT * FROM coverage",
+              "started": 12601.9802319,
+              "returned_rows": 5,
+              "truncated": false,
+              "elapsed": 0.06170420000125887
+            },
+            {
+              "tool": "sql",
+              "sql": "SELECT MIN(time) AS first_event_utc, MAX(time) AS last_event_utc, COUNT(*) AS event_rows FROM liquidation_events",
+              "started": 12602.0419536,
+              "returned_rows": 1,
+              "truncated": false,
+              "elapsed": 0.026327399998990586
+            },
+            {
+              "tool": "sql",
+              "sql": "select avg ( borrowed_usd ) from market_hourly where hour >= '2026-08-01T00:00:00+00:00' and hour < '2026-09-01T00:00:00+00:00' and asset = 'USDC'",
+              "started": 12658.7771573,
+              "returned_rows": 1,
+              "truncated": false,
+              "elapsed": 0.028270899998460663
+            },
+            {
+              "tool": "retrieve",
+              "query": "dư nợ trung bình của USDC trong tháng 8/2026.",
+              "document_ids": [
+                "DOC_SUPPLY_000",
+                "DOC_SUPPLY_001",
+                "DOC_BORROW_000",
+                "DOC_BORROW_001",
+                "DOC_LIQ_000"
+              ],
+              "started": 12602.0682942,
+              "elapsed": 0.0003166999995301012
+            },
+            {
+              "tool": "retrieve",
+              "query": "dư nợ trung bình của USDC trong tháng 8/2026.",
+              "document_ids": [
+                "DOC_SUPPLY_000",
+                "DOC_SUPPLY_001",
+                "DOC_BORROW_000",
+                "DOC_BORROW_001",
+                "DOC_LIQ_000"
+              ],
+              "started": 12737.9916101,
+              "elapsed": 0.00019240000074205454
+            },
+            {
+              "tool": "retrieve",
+              "query": "dư nợ trung bình của usdc trong tháng 8/2026",
+              "document_ids": [
+                "DOC_SUPPLY_000",
+                "DOC_SUPPLY_001",
+                "DOC_BORROW_000",
+                "DOC_BORROW_001",
+                "DOC_LIQ_000"
+              ],
+              "started": 12870.7187053,
+              "elapsed": 0.0004332000007707393
+            }
+          ],
+          "planning": {
+            "initial": {
+              "kind": "data",
+              "metric": "borrowed_usd",
+              "assets": [
+                "USDC"
+              ],
+              "start": "2026-08-01T00:00:00+00:00",
+              "end": "2026-09-01T00:00:00+00:00",
+              "unit": "USD",
+              "aggregation": "average",
+              "grain": "day",
+              "retrieval_query": "average borrowed usd of usdc in august 2026",
+              "clarification": ""
+            },
+            "availability": {
+              "market_hourly": [
+                {
+                  "asset": "USDT",
+                  "start_utc": "2023-02-13T14:00:00+00:00",
+                  "end_utc": "2026-09-15T07:00:00+00:00",
+                  "rows": 31434,
+                  "observed_hours": 31434
+                },
+                {
+                  "asset": "USDC",
+                  "start_utc": "2023-01-27T08:00:00+00:00",
+                  "end_utc": "2026-09-15T07:00:00+00:00",
+                  "rows": 31848,
+                  "observed_hours": 31848
+                },
+                {
+                  "asset": "USDe",
+                  "start_utc": "2024-06-06T15:00:00+00:00",
+                  "end_utc": "2026-09-15T07:00:00+00:00",
+                  "rows": 19937,
+                  "observed_hours": 19937
+                },
+                {
+                  "asset": "WETH",
+                  "start_utc": "2023-01-27T08:00:00+00:00",
+                  "end_utc": "2026-09-15T07:00:00+00:00",
+                  "rows": 31848,
+                  "observed_hours": 31848
+                },
+                {
+                  "asset": "DAI",
+                  "start_utc": "2023-01-27T08:00:00+00:00",
+                  "end_utc": "2026-09-15T06:00:00+00:00",
+                  "rows": 31847,
+                  "observed_hours": 31847
+                }
+              ],
+              "liquidation_events": {
+                "first_event_utc": "2023-01-30T19:11:47+00:00",
+                "last_event_utc": "2026-09-15T05:53:59+00:00",
+                "event_rows": 25121
+              },
+              "interpretation": "These are observed timestamp bounds, not guarantees of gap-free coverage. The last event timestamp is not the collection cutoff. Do not infer missing events or a partial month from an event timestamp alone. Query the requested interval to report counts in the loaded dataset."
+            }
+          }
+        },
+        "status": "unverified",
+        "repairs": 2,
+        "issues": [
+          {
+            "code": "wrong_numeric_wording",
+            "message": "the answer should be in USD",
+            "action": "answer"
+          }
+        ],
+        "trace": [
+          {
+            "event": "verification",
+            "repair": 0,
+            "issues": [
+              {
+                "code": "wrong_numeric_wording",
+                "message": "the answer should be in USD",
+                "action": "answer"
+              }
+            ],
+            "sql": "select avg ( borrowed_usd ) from market_hourly where hour >= '2026-08-01T00:00:00+00:00' and hour < '2026-09-01T00:00:00+00:00' and asset = 'USDC'",
+            "answer": "2001158632.09"
+          },
+          {
+            "event": "repair",
+            "repair": 1,
+            "sql": "select avg ( borrowed_usd ) from market_hourly where hour >= '2026-08-01T00:00:00+00:00' and hour < '2026-09-01T00:00:00+00:00' and asset = 'USDC'",
+            "answer": "2001158632.09"
+          },
+          {
+            "event": "verification",
+            "repair": 1,
+            "issues": [
+              {
+                "code": "wrong_numeric_wording",
+                "message": "the answer should be in USD",
+                "action": "answer"
+              }
+            ],
+            "sql": "select avg ( borrowed_usd ) from market_hourly where hour >= '2026-08-01T00:00:00+00:00' and hour < '2026-09-01T00:00:00+00:00' and asset = 'USDC'",
+            "answer": "2001158632.09"
+          },
+          {
+            "event": "repair",
+            "repair": 2,
+            "sql": "select avg ( borrowed_usd ) from market_hourly where hour >= '2026-08-01T00:00:00+00:00' and hour < '2026-09-01T00:00:00+00:00' and asset = 'USDC'",
+            "answer": "2001158632.09"
+          },
+          {
+            "event": "unchanged_repair_stop"
+          }
+        ],
+        "elapsed": 273.3782363999999,
+        "usage": [
+          {
+            "role": "plan",
+            "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+            "format_attempt": 1,
+            "input_tokens": 3619,
+            "output_tokens": 136,
+            "timeout_seconds": 599.9112989000005,
+            "prompt_characters": 16611,
+            "server_timings": {
+              "prompt_ms": 37168.886,
+              "prompt_n": 2942,
+              "predicted_ms": 4651.641,
+              "predicted_n": 136
+            },
+            "elapsed": 42.25827200000094
+          },
+          {
+            "role": "sql",
+            "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+            "format_attempt": 1,
+            "input_tokens": 1056,
+            "output_tokens": 83,
+            "timeout_seconds": 557.6253436999996,
+            "prompt_characters": 4364,
+            "server_timings": {
+              "prompt_ms": 12131.773,
+              "prompt_n": 971,
+              "predicted_ms": 2149.631,
+              "predicted_n": 83
+            },
+            "elapsed": 14.421546800000215
+          },
+          {
+            "role": "answer",
+            "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+            "format_attempt": 1,
+            "input_tokens": 1613,
+            "output_tokens": 70,
+            "timeout_seconds": 543.1742576999986,
+            "prompt_characters": 5375,
+            "server_timings": {
+              "prompt_ms": 18425.16,
+              "prompt_n": 1528,
+              "predicted_ms": 2276.747,
+              "predicted_n": 70
+            },
+            "elapsed": 20.790636799998538
+          },
+          {
+            "role": "sql_review",
+            "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+            "format_attempt": 1,
+            "input_tokens": 1518,
+            "output_tokens": 5,
+            "timeout_seconds": 522.350279799999,
+            "prompt_characters": 5114,
+            "server_timings": {
+              "prompt_ms": 12442.752,
+              "prompt_n": 1012,
+              "predicted_ms": 114.821,
+              "predicted_n": 5
+            },
+            "elapsed": 12.745374099999026
+          },
+          {
+            "role": "claim_review",
+            "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+            "format_attempt": 1,
+            "input_tokens": 1775,
+            "output_tokens": 41,
+            "timeout_seconds": 509.60461620000024,
+            "prompt_characters": 6132,
+            "server_timings": {
+              "prompt_ms": 20706.575,
+              "prompt_n": 1690,
+              "predicted_ms": 1247.475,
+              "predicted_n": 41
+            },
+            "elapsed": 22.05990279999969
+          },
+          {
+            "role": "repair",
+            "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+            "format_attempt": 1,
+            "input_tokens": 1723,
+            "output_tokens": 110,
+            "timeout_seconds": 487.5227849999992,
+            "prompt_characters": 5309,
+            "server_timings": {
+              "prompt_ms": 20154.713,
+              "prompt_n": 1638,
+              "predicted_ms": 3282.136,
+              "predicted_n": 110
+            },
+            "elapsed": 23.532981400001518
+          },
+          {
+            "role": "answer",
+            "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+            "format_attempt": 1,
+            "input_tokens": 3744,
+            "output_tokens": 69,
+            "timeout_seconds": 463.98815900000045,
+            "prompt_characters": 15727,
+            "server_timings": {
+              "prompt_ms": 39244.273,
+              "prompt_n": 3064,
+              "predicted_ms": 2217.042,
+              "predicted_n": 69
+            },
+            "elapsed": 41.61402620000081
+          },
+          {
+            "role": "sql_review",
+            "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+            "format_attempt": 1,
+            "input_tokens": 1557,
+            "output_tokens": 5,
+            "timeout_seconds": 422.3372924999985,
+            "prompt_characters": 5195,
+            "server_timings": {
+              "prompt_ms": 1712.254,
+              "prompt_n": 84,
+              "predicted_ms": 111.274,
+              "predicted_n": 5
+            },
+            "elapsed": 2.074755300000106
+          },
+          {
+            "role": "claim_review",
+            "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+            "format_attempt": 1,
+            "input_tokens": 3849,
+            "output_tokens": 36,
+            "timeout_seconds": 420.26188009999896,
+            "prompt_characters": 16374,
+            "server_timings": {
+              "prompt_ms": 39633.985,
+              "prompt_n": 3064,
+              "predicted_ms": 1188.961,
+              "predicted_n": 36
+            },
+            "elapsed": 40.95681220000006
+          },
+          {
+            "role": "repair",
+            "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+            "format_attempt": 1,
+            "input_tokens": 3797,
+            "output_tokens": 31,
+            "timeout_seconds": 379.2879348999995,
+            "prompt_characters": 15551,
+            "server_timings": {
+              "prompt_ms": 46829.994,
+              "prompt_n": 3712,
+              "predicted_ms": 1003.329,
+              "predicted_n": 31
+            },
+            "elapsed": 48.02552780000042
+          },
+          {
+            "role": "answer",
+            "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+            "format_attempt": 1,
+            "input_tokens": 3852,
+            "output_tokens": 69,
+            "timeout_seconds": 331.2606343999978,
+            "prompt_characters": 15957,
+            "server_timings": {
+              "prompt_ms": 1884.441,
+              "prompt_n": 115,
+              "predicted_ms": 2337.967,
+              "predicted_n": 69
+            },
+            "elapsed": 4.638625800000227
+          }
+        ],
+        "error": "",
+        "tools": [
+          {
+            "tool": "sql",
+            "sql": "SELECT * FROM coverage",
+            "started": 12601.9802319,
+            "returned_rows": 5,
+            "truncated": false,
+            "elapsed": 0.06170420000125887
+          },
+          {
+            "tool": "sql",
+            "sql": "SELECT MIN(time) AS first_event_utc, MAX(time) AS last_event_utc, COUNT(*) AS event_rows FROM liquidation_events",
+            "started": 12602.0419536,
+            "returned_rows": 1,
+            "truncated": false,
+            "elapsed": 0.026327399998990586
+          },
+          {
+            "tool": "sql",
+            "sql": "select avg ( borrowed_usd ) from market_hourly where hour >= '2026-08-01T00:00:00+00:00' and hour < '2026-09-01T00:00:00+00:00' and asset = 'USDC'",
+            "started": 12658.7771573,
+            "returned_rows": 1,
+            "truncated": false,
+            "elapsed": 0.028270899998460663
+          },
+          {
+            "tool": "retrieve",
+            "query": "dư nợ trung bình của USDC trong tháng 8/2026.",
+            "document_ids": [
+              "DOC_SUPPLY_000",
+              "DOC_SUPPLY_001",
+              "DOC_BORROW_000",
+              "DOC_BORROW_001",
+              "DOC_LIQ_000"
+            ],
+            "started": 12602.0682942,
+            "elapsed": 0.0003166999995301012
+          },
+          {
+            "tool": "sql",
+            "sql": "SELECT * FROM coverage WHERE asset IN ('USDC')",
+            "started": 12679.5974861,
+            "returned_rows": 1,
+            "truncated": false,
+            "elapsed": 0.032005900000513066
+          },
+          {
+            "tool": "sql",
+            "sql": "SELECT * FROM coverage WHERE asset IN ('USDC')",
+            "started": 12779.6070084,
+            "returned_rows": 1,
+            "truncated": false,
+            "elapsed": 0.035347299999557436
+          },
+          {
+            "tool": "retrieve",
+            "query": "dư nợ trung bình của USDC trong tháng 8/2026.",
+            "document_ids": [
+              "DOC_SUPPLY_000",
+              "DOC_SUPPLY_001",
+              "DOC_BORROW_000",
+              "DOC_BORROW_001",
+              "DOC_LIQ_000"
+            ],
+            "started": 12737.9916101,
+            "elapsed": 0.00019240000074205454
+          },
+          {
+            "tool": "retrieve",
+            "query": "dư nợ trung bình của usdc trong tháng 8/2026",
+            "document_ids": [
+              "DOC_SUPPLY_000",
+              "DOC_SUPPLY_001",
+              "DOC_BORROW_000",
+              "DOC_BORROW_001",
+              "DOC_LIQ_000"
+            ],
+            "started": 12870.7187053,
+            "elapsed": 0.0004332000007707393
+          }
+        ]
+      },
+      "calls": [
+        {
+          "role": "plan",
+          "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+          "format_attempt": 1,
+          "input_tokens": 3619,
+          "output_tokens": 136,
+          "timeout_seconds": 599.9112989000005,
+          "prompt_characters": 16611,
+          "server_timings": {
+            "prompt_ms": 37168.886,
+            "prompt_n": 2942,
+            "predicted_ms": 4651.641,
+            "predicted_n": 136
+          },
+          "elapsed": 42.25827200000094
+        },
+        {
+          "role": "sql",
+          "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+          "format_attempt": 1,
+          "input_tokens": 1056,
+          "output_tokens": 83,
+          "timeout_seconds": 557.6253436999996,
+          "prompt_characters": 4364,
+          "server_timings": {
+            "prompt_ms": 12131.773,
+            "prompt_n": 971,
+            "predicted_ms": 2149.631,
+            "predicted_n": 83
+          },
+          "elapsed": 14.421546800000215
+        },
+        {
+          "role": "answer",
+          "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+          "format_attempt": 1,
+          "input_tokens": 1613,
+          "output_tokens": 70,
+          "timeout_seconds": 543.1742576999986,
+          "prompt_characters": 5375,
+          "server_timings": {
+            "prompt_ms": 18425.16,
+            "prompt_n": 1528,
+            "predicted_ms": 2276.747,
+            "predicted_n": 70
+          },
+          "elapsed": 20.790636799998538
+        },
+        {
+          "role": "sql_review",
+          "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+          "format_attempt": 1,
+          "input_tokens": 1518,
+          "output_tokens": 5,
+          "timeout_seconds": 522.350279799999,
+          "prompt_characters": 5114,
+          "server_timings": {
+            "prompt_ms": 12442.752,
+            "prompt_n": 1012,
+            "predicted_ms": 114.821,
+            "predicted_n": 5
+          },
+          "elapsed": 12.745374099999026
+        },
+        {
+          "role": "claim_review",
+          "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+          "format_attempt": 1,
+          "input_tokens": 1775,
+          "output_tokens": 41,
+          "timeout_seconds": 509.60461620000024,
+          "prompt_characters": 6132,
+          "server_timings": {
+            "prompt_ms": 20706.575,
+            "prompt_n": 1690,
+            "predicted_ms": 1247.475,
+            "predicted_n": 41
+          },
+          "elapsed": 22.05990279999969
+        },
+        {
+          "role": "repair",
+          "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+          "format_attempt": 1,
+          "input_tokens": 1723,
+          "output_tokens": 110,
+          "timeout_seconds": 487.5227849999992,
+          "prompt_characters": 5309,
+          "server_timings": {
+            "prompt_ms": 20154.713,
+            "prompt_n": 1638,
+            "predicted_ms": 3282.136,
+            "predicted_n": 110
+          },
+          "elapsed": 23.532981400001518
+        },
+        {
+          "role": "answer",
+          "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+          "format_attempt": 1,
+          "input_tokens": 3744,
+          "output_tokens": 69,
+          "timeout_seconds": 463.98815900000045,
+          "prompt_characters": 15727,
+          "server_timings": {
+            "prompt_ms": 39244.273,
+            "prompt_n": 3064,
+            "predicted_ms": 2217.042,
+            "predicted_n": 69
+          },
+          "elapsed": 41.61402620000081
+        },
+        {
+          "role": "sql_review",
+          "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+          "format_attempt": 1,
+          "input_tokens": 1557,
+          "output_tokens": 5,
+          "timeout_seconds": 422.3372924999985,
+          "prompt_characters": 5195,
+          "server_timings": {
+            "prompt_ms": 1712.254,
+            "prompt_n": 84,
+            "predicted_ms": 111.274,
+            "predicted_n": 5
+          },
+          "elapsed": 2.074755300000106
+        },
+        {
+          "role": "claim_review",
+          "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+          "format_attempt": 1,
+          "input_tokens": 3849,
+          "output_tokens": 36,
+          "timeout_seconds": 420.26188009999896,
+          "prompt_characters": 16374,
+          "server_timings": {
+            "prompt_ms": 39633.985,
+            "prompt_n": 3064,
+            "predicted_ms": 1188.961,
+            "predicted_n": 36
+          },
+          "elapsed": 40.95681220000006
+        },
+        {
+          "role": "repair",
+          "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+          "format_attempt": 1,
+          "input_tokens": 3797,
+          "output_tokens": 31,
+          "timeout_seconds": 379.2879348999995,
+          "prompt_characters": 15551,
+          "server_timings": {
+            "prompt_ms": 46829.994,
+            "prompt_n": 3712,
+            "predicted_ms": 1003.329,
+            "predicted_n": 31
+          },
+          "elapsed": 48.02552780000042
+        },
+        {
+          "role": "answer",
+          "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+          "format_attempt": 1,
+          "input_tokens": 3852,
+          "output_tokens": 69,
+          "timeout_seconds": 331.2606343999978,
+          "prompt_characters": 15957,
+          "server_timings": {
+            "prompt_ms": 1884.441,
+            "prompt_n": 115,
+            "predicted_ms": 2337.967,
+            "predicted_n": 69
+          },
+          "elapsed": 4.638625800000227
+        }
+      ],
+      "wall_seconds": 273.3822070999995,
+      "input_tokens": 28103,
+      "output_tokens": 655,
+      "model_calls": 11
+    },
+    "bedrock": {
+      "provider": "bedrock",
+      "config": {
+        "provider": "bedrock",
+        "region": "us-east-1",
+        "profile": null,
+        "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "generation_temperature": 0.2,
+        "review_temperature": 0.0,
+        "max_tokens": 4096,
+        "json_format_retries": 1,
+        "input_normalization": "NFC"
+      },
+      "result": {
+        "mode": "P",
+        "draft": {
+          "question": "dư nợ trung bình của USDC trong tháng 8/2026.",
+          "spec": {
+            "kind": "data",
+            "metric": "borrowed_usd",
+            "assets": [
+              "USDC"
+            ],
+            "start": "2026-08-01T00:00:00Z",
+            "end": "2026-09-01T00:00:00Z",
+            "unit": "USD",
+            "aggregation": "average",
+            "grain": "hour",
+            "retrieval_query": "USDC borrowed_usd August 2026 hourly average",
+            "clarification": ""
+          },
+          "sql": "SELECT AVG(borrowed_usd) as average_borrowed_usd FROM market_hourly WHERE asset = 'USDC' AND hour >= '2026-08-01T00:00:00Z' AND hour < '2026-09-01T00:00:00Z'",
+          "query_result": {
+            "columns": [
+              "average_borrowed_usd"
+            ],
+            "rows": [
+              {
+                "average_borrowed_usd": 2001158632.0983303
+              }
+            ],
+            "truncated": false,
+            "total_rows": 1
+          },
+          "documents": [
+            {
+              "id": "DOC_LIQ_000",
+              "title": "Health Factor & Liquidations | Aave",
+              "url": "https://aave.com/help/borrowing/liquidations",
+              "collected_at": "2026-10-28T14:16:07.023365+00:00",
+              "source_sha256": "29031b86b53d3b90c456e0eb91dafc75cdacb68928b4f776eb590eff301f3b25",
+              "text": "Back to Borrowing Health Factor & Liquidations advanced Health Factor The health factor is a critical metric within the Aave Protocol that measures the safety of a borrow position. It is calculated as: Health Factor = (Total Collateral Value * Weighted Average Liquidation Threshold) / Total Borrow Value This metric indicates the stability of a borrow position, with a health factor below 1 signaling the risk of liquidation. The liquidation threshold, set by Aave Governance for each collateral asset, determines the maximum percentage of value that can be borrowed against it. For example, if you supply $10,000 in ETH with an 80% liquidation threshold and borrow $6,000 in GHO, your health factor would be 1.333. Managing Health Factor Maintaining a health factor above 1 is crucial to avoid liquidation. Regular monitoring of this metric is essential, as it fluctuates with the value of both collateral and borrowed assets. To improve your health factor, you can either supply more collateral or repay part of your borrow position. The health factor is sensitive to market changes—if your collateral's value increases, so does your health factor; conversely, if it decreases, your health factor drops, heightening the risk of liquidation. There is no universally \"safe\" health factor, as this depends on the volatility and correlation of your assets. Generally, lower health factors may be acceptable for correlated assets, such as stablecoins or assets closely tied to ETH. Tools for Managing Health Factor (Use at your own risk): Simulate health factor changes: DeFi Simulator Auto-repay borrow position: DeFi Saver Liquidation Process A liquidation in the Aave Protocol occurs when a borrower's health factor falls below 1, indicating that their collateral no longer sufficiently covers the borrowed amount. This situation can happen when the value of the collateral decreases or the borrowed amount increases, pushing the position past the liquidation threshold. The amount that can be liquidated depends on the health factor and position size: Up to 50% of total debt can be liquidated when the health factor is above 0.95 AND both the collateral and debt values are at least $2,000 each. Up to 100% of debt can be liquidated when the health factor is 0.95 or below, OR when either the collateral or debt value is below $2,000. During liquidation, the liquidator repays debt on behalf of the borrower and receives an equivalent value plus a liquidation bonus from the borrower's collateral. To prevent",
+              "score": 2.2237536483411686
+            },
+            {
+              "id": "DOC_SUPPLY_000",
+              "title": "Supply Tokens | Aave",
+              "url": "https://aave.com/help/supplying/supply-tokens",
+              "collected_at": "2026-10-28T14:16:02.570990+00:00",
+              "source_sha256": "b59a3f775e241e2e9d829abc9fbd529afe72cc0d31bf94f8dd6a46a05d7b084c",
+              "text": "Back to Supplying Supply Tokens beginner Introduction Supplying tokens to the Aave Protocol allows you to earn interest on your digital assets and utilize supplied tokens as collateral. When tokens are supplied, they are transferred to the Aave liquidity pool, a system of smart contracts that facilitates overcollateralized borrowing of tokens. Supplied tokens automatically accumulate interest by updating in balance at the current market supply rate. This interest accrual happens dynamically as the balance of your supplied tokens increases linearly over time, reflecting the current rate allocated to suppliers. Interest rates for supplied tokens are determined by the borrow utilization rate, which measures the proportion of assets currently borrowed against the total supplied in the pool, and by governance parameters that can be adjusted through community decisions. These parameters, including collateralization requirements and interest rates for suppliers and borrowers, are influenced by on-chain inputs such as token balances, oracle prices, and the borrow utilization ratio. As liquidity is supplied, borrowed, repaid, or withdrawn from the pool, the interest rates are updated accordingly. Tokens can be supplied through protocol smart contracts or through a frontend such as the Aave Labs interface, by performing the following steps: Step 1: Connect Wallet To begin, press ‘Connect Wallet’ and select the Ethereum wallet provider corresponding to the wallet holding tokens intended to supply. Step 2: Select Token To Supply Once connected, navigate to the ‘Dashboard’ where you’ll find the ‘Assets To Supply’ table, which lists current token balances and asset parameters. More details on supply and borrow parameters can be found by selecting the individual token icon, which will navigate to the reserve details page. Step 3: Approve Token Transfer In order to transfer tokens on an Ethereum-based network, the Aave Pool smart contract must be granted an allowance to transfer tokens from the connected wallet address. Approvals can be performed through transaction (which will incur a network fee) or signature (which does not incur a network fee). After selecting a token to supply, a modal will appear which will prompt a transaction or message signature request in the connected wallet. Step 4: Perform Supply Transaction After approval, enter the amount you wish to supply and confirm, which will prompt a transaction in the connected wallet. Your supplied tokens are then added to the Aave liquidity pool, where they are made available for borrowers. The supplied tokens will start earning interest immediately, which can",
+              "score": 1.339615360451411
+            },
+            {
+              "id": "DOC_BORROW_000",
+              "title": "Borrow Tokens | Aave",
+              "url": "https://aave.com/help/borrowing/borrow-tokens",
+              "collected_at": "2026-10-28T14:16:05.100252+00:00",
+              "source_sha256": "3d05a42e5f1beb0ea05cb067c4ed673135313157efe4f2fb57d83975445e2d32",
+              "text": "Back to Borrowing Borrow Tokens beginner Introduction Borrowing tokens from the Aave Protocol enables participants to access liquidity against supplied collateral tokens. This process requires maintaining sufficient collateral and understanding the associated risks, such as liquidation. Borrowers must maintain that their collateral remains adequate to cover the borrowed amount, as falling below the required collateralization level could lead to liquidation. The interest rates for borrowed tokens are dynamically determined by the protocol based on factors like the borrow utilization rate and governance parameters, which can change through community decisions. Borrowing can be performed through protocol smart contracts or through a frontend such as the Aave Labs interface by performing the following steps: Step 1: Connect Wallet To begin, press ‘Connect Wallet’ and select the Ethereum wallet provider corresponding to the wallet holding the collateralized tokens. Step 2: Select Token to Borrow Once connected, navigate to the ‘Dashboard’ and locate the ‘Assets to Borrow’ table. This table lists the available tokens for borrowing, along with key parameters such as available amount, interest rates, and your health factor. The interest rates displayed here are influenced by the borrow utilization rate, which measures the proportion of assets currently borrowed against the total supplied in the pool. As liquidity is borrowed or repaid, these rates are dynamically adjusted to reflect current market conditions. Select the token you wish to borrow. Step 3: Review Borrow Parameters Before proceeding, review the borrow parameters including the Loan-to-Value (LTV) ratio, Liquidation Threshold (LT) ratio, and your current health factor. These parameters are crucial for maintaining sufficient collateral and avoiding liquidation. If you are borrowing a network base asset (e.g., ETH), you will first need to approve the WrappedTokenGateway contract. This approval enables the contract to perform a credit delegation, which performs a borrow and unwraps to the base asset in a single transaction. Step 4: Confirm Borrow Transaction Enter the amount you wish to borrow and confirm the transaction in your wallet. Upon confirmation, the borrowed tokens will be transferred to your wallet. It's important to note that interest on the borrowed tokens begins to accrue immediately and is dynamically adjusted based on the borrow utilization rate. Step 5: Monitor Health Factor Regularly monitor your health factor from the ‘Dashboard’ to verify that your collateral remains sufficient. If your health factor drops, consider supplying more collateral or repaying part of your borrow position to avoid liquidation. The health",
+              "score": 0.2537146842946312
+            },
+            {
+              "id": "DOC_SUPPLY_001",
+              "title": "Supply Tokens | Aave",
+              "url": "https://aave.com/help/supplying/supply-tokens",
+              "collected_at": "2026-10-28T14:16:02.570990+00:00",
+              "source_sha256": "b59a3f775e241e2e9d829abc9fbd529afe72cc0d31bf94f8dd6a46a05d7b084c",
+              "text": "message signature request in the connected wallet. Step 4: Perform Supply Transaction After approval, enter the amount you wish to supply and confirm, which will prompt a transaction in the connected wallet. Your supplied tokens are then added to the Aave liquidity pool, where they are made available for borrowers. The supplied tokens will start earning interest immediately, which can be monitored from the ‘Dashboard’ tab. Related Withdraw Tokens beginner Withdraw tokens from the Aave Protocol. 4 min read Toggle Collateral Status intermediate Toggle collateral status of supply positions. 4 min read Isolation Mode beginner Supply isolated collateral assets. 3 min read",
+              "score": 0.23562127435973954
+            },
+            {
+              "id": "DOC_LIQ_001",
+              "title": "Health Factor & Liquidations | Aave",
+              "url": "https://aave.com/help/borrowing/liquidations",
+              "collected_at": "2026-10-28T14:16:07.023365+00:00",
+              "source_sha256": "29031b86b53d3b90c456e0eb91dafc75cdacb68928b4f776eb590eff301f3b25",
+              "text": "debt values are at least $2,000 each. Up to 100% of debt can be liquidated when the health factor is 0.95 or below, OR when either the collateral or debt value is below $2,000. During liquidation, the liquidator repays debt on behalf of the borrower and receives an equivalent value plus a liquidation bonus from the borrower's collateral. To prevent dust accumulation, partial liquidations must leave at least $1,000 worth of both collateral and debt remaining—otherwise, the position must be fully cleared. Liquidations are permissionless, meaning any network participant can initiate the process when a borrow position is eligible for liquidation. Liquidations within Aave are highly competitive, requiring a deep understanding of the protocol and technical proficiency. Liquidators must actively monitor borrow positions, quickly react to changes in oracle prices, collateral balances, and protocol parameters, and submit transactions with high priority in the attempt to be first to execute the liquidation. Due to the competitive nature, successful liquidations often necessitate custom-coded bots or scripts that automate monitoring and execution. Developers interested in building liquidation bots or learning more about the process can find guidance and resources in the Aave Developer Documentation. Related Borrow Tokens beginner Maintain overcollateralised borrow positions. 4 min read Repay Tokens beginner Repay active borrow positions. 3 min read Efficiency Mode (E-mode) intermediate Borrowing in Efficiency Mode (E-mode). 3 min read",
+              "score": 0.18220689139258558
+            }
+          ],
+          "answer": "Dư nợ trung bình của USDC trong tháng 8/2026 là $2,001,158,632.10 USD, dựa trên dữ liệu hàng giờ trong bộ dữ liệu hiện có.\n\nChưa thể xác minh đầy đủ: borrowed_usd is a stock metric (debt balance at a point in time) but the query uses AVG() across hourly observations. Stock metrics must not be averaged over time periods; they should be reported at specific timestamps or aggregated by taking the value at period end, period start, or a snapshot date. Averaging stock values across hours conflates independent point-in-time measurements and produces a meaningless blended value.; The requirement specifies grain='hour' but requests aggregation='average'. The market_hourly table already provides one USDC row per UTC hour. Averaging these hourly stock values across the entire month (744 hours in August) produces a single number that does not represent a meaningful hourly average. Clarify whether the requirement is: (a) hourly values themselves (no aggregation), (b) a single month-end or month-start balance, or (c) a different aggregation logic for stock data.",
+          "claims": [
+            {
+              "text": "Dư nợ trung bình (average borrowed_usd) của USDC trong khoảng thời gian từ 2026-08-01T00:00:00Z đến 2026-09-01T00:00:00Z là $2,001,158,632.10 USD",
+              "citations": [
+                "SQL1"
+              ],
+              "numeric": {
+                "value": 2001158632.1,
+                "unit": "USD",
+                "evidence_id": "SQL1",
+                "row": 0,
+                "column": "average_borrowed_usd"
+              }
+            }
+          ],
+          "refused": false,
+          "issues": [],
+          "elapsed": 8.178118300000278,
+          "usage": [
+            {
+              "role": "plan",
+              "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "format_attempt": 1,
+              "input_tokens": 4013,
+              "output_tokens": 137,
+              "timeout_seconds": 599.9076486999984,
+              "cache_read_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "elapsed": 2.7477295999997295
+            },
+            {
+              "role": "sql",
+              "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "format_attempt": 1,
+              "input_tokens": 1279,
+              "output_tokens": 83,
+              "timeout_seconds": 597.0440330999991,
+              "cache_read_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "elapsed": 1.9595700999998371
+            },
+            {
+              "role": "answer",
+              "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "format_attempt": 1,
+              "input_tokens": 1698,
+              "output_tokens": 394,
+              "timeout_seconds": 595.0618696999991,
+              "cache_read_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "elapsed": 3.2369515000009415
+            }
+          ],
+          "error": "",
+          "tools": [
+            {
+              "tool": "sql",
+              "sql": "SELECT * FROM coverage",
+              "started": 12601.982397,
+              "returned_rows": 5,
+              "truncated": false,
+              "elapsed": 0.06903050000073563
+            },
+            {
+              "tool": "sql",
+              "sql": "SELECT MIN(time) AS first_event_utc, MAX(time) AS last_event_utc, COUNT(*) AS event_rows FROM liquidation_events",
+              "started": 12602.051463,
+              "returned_rows": 1,
+              "truncated": false,
+              "elapsed": 0.022695900001053815
+            },
+            {
+              "tool": "sql",
+              "sql": "SELECT AVG(borrowed_usd) AS avg_borrowed_usd FROM market_hourly WHERE asset = 'USDC' AND hour >= '2026-08-01T00:00:00Z' AND hour < '2026-09-01T00:00:00Z'",
+              "started": 12606.8994,
+              "returned_rows": 1,
+              "truncated": false,
+              "elapsed": 0.020576200000505196
+            },
+            {
+              "tool": "retrieve",
+              "query": "dư nợ trung bình của USDC trong tháng 8/2026.",
+              "document_ids": [
+                "DOC_SUPPLY_000",
+                "DOC_SUPPLY_001",
+                "DOC_BORROW_000",
+                "DOC_BORROW_001",
+                "DOC_LIQ_000"
+              ],
+              "started": 12602.0741642,
+              "elapsed": 0.00014860000010230578
+            },
+            {
+              "tool": "retrieve",
+              "query": "USDC borrowed_usd August 2026 hourly time series for stock metric analysis",
+              "document_ids": [
+                "DOC_LIQ_000",
+                "DOC_SUPPLY_000",
+                "DOC_BORROW_000",
+                "DOC_SUPPLY_001",
+                "DOC_LIQ_001"
+              ],
+              "started": 12616.5706213,
+              "elapsed": 0.00016060000052675605
+            }
+          ],
+          "planning": {
+            "initial": {
+              "kind": "data",
+              "metric": "borrowed_usd",
+              "assets": [
+                "USDC"
+              ],
+              "start": "2026-08-01T00:00:00Z",
+              "end": "2026-09-01T00:00:00Z",
+              "unit": "USD",
+              "aggregation": "average",
+              "grain": "hour",
+              "retrieval_query": "USDC borrowed_usd August 2026 hourly average",
+              "clarification": ""
+            },
+            "availability": {
+              "market_hourly": [
+                {
+                  "asset": "USDT",
+                  "start_utc": "2023-02-13T14:00:00+00:00",
+                  "end_utc": "2026-09-15T07:00:00+00:00",
+                  "rows": 31434,
+                  "observed_hours": 31434
+                },
+                {
+                  "asset": "USDC",
+                  "start_utc": "2023-01-27T08:00:00+00:00",
+                  "end_utc": "2026-09-15T07:00:00+00:00",
+                  "rows": 31848,
+                  "observed_hours": 31848
+                },
+                {
+                  "asset": "USDe",
+                  "start_utc": "2024-06-06T15:00:00+00:00",
+                  "end_utc": "2026-09-15T07:00:00+00:00",
+                  "rows": 19937,
+                  "observed_hours": 19937
+                },
+                {
+                  "asset": "WETH",
+                  "start_utc": "2023-01-27T08:00:00+00:00",
+                  "end_utc": "2026-09-15T07:00:00+00:00",
+                  "rows": 31848,
+                  "observed_hours": 31848
+                },
+                {
+                  "asset": "DAI",
+                  "start_utc": "2023-01-27T08:00:00+00:00",
+                  "end_utc": "2026-09-15T06:00:00+00:00",
+                  "rows": 31847,
+                  "observed_hours": 31847
+                }
+              ],
+              "liquidation_events": {
+                "first_event_utc": "2023-01-30T19:11:47+00:00",
+                "last_event_utc": "2026-09-15T05:53:59+00:00",
+                "event_rows": 25121
+              },
+              "interpretation": "These are observed timestamp bounds, not guarantees of gap-free coverage. The last event timestamp is not the collection cutoff. Do not infer missing events or a partial month from an event timestamp alone. Query the requested interval to report counts in the loaded dataset."
+            }
+          }
+        },
+        "status": "unverified",
+        "repairs": 2,
+        "issues": [
+          {
+            "code": "stock_metric_aggregation_error",
+            "message": "borrowed_usd is a stock metric (debt balance at a point in time) but the query uses AVG() across hourly observations. Stock metrics must not be averaged over time periods; they should be reported at specific timestamps or aggregated by taking the value at period end, period start, or a snapshot date. Averaging stock values across hours conflates independent point-in-time measurements and produces a meaningless blended value.",
+            "action": "sql"
+          },
+          {
+            "code": "grain_mismatch_with_aggregation",
+            "message": "The requirement specifies grain='hour' but requests aggregation='average'. The market_hourly table already provides one USDC row per UTC hour. Averaging these hourly stock values across the entire month (744 hours in August) produces a single number that does not represent a meaningful hourly average. Clarify whether the requirement is: (a) hourly values themselves (no aggregation), (b) a single month-end or month-start balance, or (c) a different aggregation logic for stock data.",
+            "action": "sql"
+          }
+        ],
+        "trace": [
+          {
+            "event": "verification",
+            "repair": 0,
+            "issues": [
+              {
+                "code": "stock_metric_aggregation_error",
+                "message": "borrowed_usd is a stock metric (debt balance at a point in time) but the query uses AVG() aggregation across hours. Stock metrics must not be averaged or summed over time periods. The result 2001158632.0983303 USD represents an arithmetic mean of hourly balances, which is not a valid financial measure for outstanding debt. To report average borrowed balance, either: (1) clarify if 'average' means the mean of discrete daily/weekly snapshots, or (2) use a different aggregation such as the balance at month-end, month-start, or a specific reference hour.",
+                "action": "sql"
+              },
+              {
+                "code": "interval_coverage_unverified",
+                "message": "USDC market_hourly data ends at 2026-09-15T07:00:00Z, which is after the requested interval end (2026-09-01T00:00:00Z). However, the availability record shows 31848 observed_hours total for USDC since 2023-01-27T08:00:00Z. The query interval [2026-08-01, 2026-09-01) spans 744 hours. No explicit confirmation that all 744 hours in August 2026 are present in the loaded dataset; gaps or sparse coverage within the month are not ruled out by the availability bounds alone.",
+                "action": "sql"
+              }
+            ],
+            "sql": "SELECT AVG(borrowed_usd) AS avg_borrowed_usd FROM market_hourly WHERE asset = 'USDC' AND hour >= '2026-08-01T00:00:00Z' AND hour < '2026-09-01T00:00:00Z'",
+            "answer": "Dư nợ trung bình của USDC trong tháng 8/2026 là $2,001,158,632.10 USD, dựa trên dữ liệu hàng giờ trong bộ dữ liệu hiện có từ ngày 1/8/2026 đến 1/9/2026."
+          },
+          {
+            "event": "repair",
+            "repair": 1,
+            "sql": "SELECT hour, borrowed_usd FROM market_hourly WHERE asset = 'USDC' AND hour >= '2026-08-01T00:00:00Z' AND hour < '2026-09-01T00:00:00Z' ORDER BY hour",
+            "answer": "Dư nợ trung bình của USDC trong tháng 8/2026 là $1,973,965,965.41 USD, được tính từ 201 quan sát hàng giờ trong bộ dữ liệu hiện có từ 2026-08-01T00:00:00Z đến 2026-09-01T00:00:00Z. Lưu ý rằng kết quả này dựa trên dữ liệu được tải và không đảm bảo bao phủ hoàn toàn trên chuỗi."
+          },
+          {
+            "event": "verification",
+            "repair": 1,
+            "issues": [
+              {
+                "code": "stock_metric_aggregation_mismatch",
+                "message": "borrowed_usd is a stock metric (debt balance at a point in time). The requirement specifies aggregation: 'average' with grain: 'hour', but the SQL returns raw hourly values without computing an average. To report 'average borrowed_usd for August 2026', either (1) compute AVG(borrowed_usd) across all 744 hours in the interval, or (2) clarify that the requirement means hourly snapshots, not a single aggregated average. The current result shows 201 hourly rows (truncated), not a monthly average.",
+                "action": "sql"
+              }
+            ],
+            "sql": "SELECT hour, borrowed_usd FROM market_hourly WHERE asset = 'USDC' AND hour >= '2026-08-01T00:00:00Z' AND hour < '2026-09-01T00:00:00Z' ORDER BY hour",
+            "answer": "Dư nợ trung bình của USDC trong tháng 8/2026 là $1,973,965,965.41 USD, được tính từ 201 quan sát hàng giờ trong bộ dữ liệu hiện có từ 2026-08-01T00:00:00Z đến 2026-09-01T00:00:00Z. Lưu ý rằng kết quả này dựa trên dữ liệu được tải và không đảm bảo bao phủ hoàn toàn trên chuỗi."
+          },
+          {
+            "event": "repair",
+            "repair": 2,
+            "sql": "SELECT AVG(borrowed_usd) as average_borrowed_usd FROM market_hourly WHERE asset = 'USDC' AND hour >= '2026-08-01T00:00:00Z' AND hour < '2026-09-01T00:00:00Z'",
+            "answer": "Dư nợ trung bình của USDC trong tháng 8/2026 là $2,001,158,632.10 USD, dựa trên dữ liệu hàng giờ trong bộ dữ liệu hiện có."
+          },
+          {
+            "event": "verification",
+            "repair": 2,
+            "issues": [
+              {
+                "code": "stock_metric_aggregation_error",
+                "message": "borrowed_usd is a stock metric (debt balance at a point in time) but the query uses AVG() across hourly observations. Stock metrics must not be averaged over time periods; they should be reported at specific timestamps or aggregated by taking the value at period end, period start, or a snapshot date. Averaging stock values across hours conflates independent point-in-time measurements and produces a meaningless blended value.",
+                "action": "sql"
+              },
+              {
+                "code": "grain_mismatch_with_aggregation",
+                "message": "The requirement specifies grain='hour' but requests aggregation='average'. The market_hourly table already provides one USDC row per UTC hour. Averaging these hourly stock values across the entire month (744 hours in August) produces a single number that does not represent a meaningful hourly average. Clarify whether the requirement is: (a) hourly values themselves (no aggregation), (b) a single month-end or month-start balance, or (c) a different aggregation logic for stock data.",
+                "action": "sql"
+              }
+            ],
+            "sql": "SELECT AVG(borrowed_usd) as average_borrowed_usd FROM market_hourly WHERE asset = 'USDC' AND hour >= '2026-08-01T00:00:00Z' AND hour < '2026-09-01T00:00:00Z'",
+            "answer": "Dư nợ trung bình của USDC trong tháng 8/2026 là $2,001,158,632.10 USD, dựa trên dữ liệu hàng giờ trong bộ dữ liệu hiện có."
+          }
+        ],
+        "elapsed": 32.246754199999486,
+        "usage": [
+          {
+            "role": "plan",
+            "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "format_attempt": 1,
+            "input_tokens": 4013,
+            "output_tokens": 137,
+            "timeout_seconds": 599.9076486999984,
+            "cache_read_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "elapsed": 2.7477295999997295
+          },
+          {
+            "role": "sql",
+            "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "format_attempt": 1,
+            "input_tokens": 1279,
+            "output_tokens": 83,
+            "timeout_seconds": 597.0440330999991,
+            "cache_read_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "elapsed": 1.9595700999998371
+          },
+          {
+            "role": "answer",
+            "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "format_attempt": 1,
+            "input_tokens": 1698,
+            "output_tokens": 394,
+            "timeout_seconds": 595.0618696999991,
+            "cache_read_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "elapsed": 3.2369515000009415
+          },
+          {
+            "role": "sql_review",
+            "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "format_attempt": 1,
+            "input_tokens": 1596,
+            "output_tokens": 367,
+            "timeout_seconds": 591.7898413999992,
+            "cache_read_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "elapsed": 4.278383299999405
+          },
+          {
+            "role": "repair",
+            "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "format_attempt": 1,
+            "input_tokens": 2442,
+            "output_tokens": 108,
+            "timeout_seconds": 587.4901191000008,
+            "cache_read_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "elapsed": 2.0499974000013026
+          },
+          {
+            "role": "answer",
+            "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "format_attempt": 1,
+            "input_tokens": 11523,
+            "output_tokens": 417,
+            "timeout_seconds": 585.4111589999993,
+            "cache_read_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "elapsed": 3.878841799998554
+          },
+          {
+            "role": "sql_review",
+            "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "format_attempt": 1,
+            "input_tokens": 8972,
+            "output_tokens": 161,
+            "timeout_seconds": 581.5001838999997,
+            "cache_read_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "elapsed": 3.3442269999995915
+          },
+          {
+            "role": "repair",
+            "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "format_attempt": 1,
+            "input_tokens": 12122,
+            "output_tokens": 93,
+            "timeout_seconds": 578.1287235,
+            "cache_read_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "elapsed": 2.6251051999988704
+          },
+          {
+            "role": "answer",
+            "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "format_attempt": 1,
+            "input_tokens": 4194,
+            "output_tokens": 261,
+            "timeout_seconds": 575.4751651999995,
+            "cache_read_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "elapsed": 3.4253626999998232
+          },
+          {
+            "role": "sql_review",
+            "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "format_attempt": 1,
+            "input_tokens": 1643,
+            "output_tokens": 292,
+            "timeout_seconds": 572.0184425999996,
+            "cache_read_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "elapsed": 4.262915499999508
+          }
+        ],
+        "error": "",
+        "tools": [
+          {
+            "tool": "sql",
+            "sql": "SELECT * FROM coverage",
+            "started": 12601.982397,
+            "returned_rows": 5,
+            "truncated": false,
+            "elapsed": 0.06903050000073563
+          },
+          {
+            "tool": "sql",
+            "sql": "SELECT MIN(time) AS first_event_utc, MAX(time) AS last_event_utc, COUNT(*) AS event_rows FROM liquidation_events",
+            "started": 12602.051463,
+            "returned_rows": 1,
+            "truncated": false,
+            "elapsed": 0.022695900001053815
+          },
+          {
+            "tool": "sql",
+            "sql": "SELECT AVG(borrowed_usd) AS avg_borrowed_usd FROM market_hourly WHERE asset = 'USDC' AND hour >= '2026-08-01T00:00:00Z' AND hour < '2026-09-01T00:00:00Z'",
+            "started": 12606.8994,
+            "returned_rows": 1,
+            "truncated": false,
+            "elapsed": 0.020576200000505196
+          },
+          {
+            "tool": "retrieve",
+            "query": "dư nợ trung bình của USDC trong tháng 8/2026.",
+            "document_ids": [
+              "DOC_SUPPLY_000",
+              "DOC_SUPPLY_001",
+              "DOC_BORROW_000",
+              "DOC_BORROW_001",
+              "DOC_LIQ_000"
+            ],
+            "started": 12602.0741642,
+            "elapsed": 0.00014860000010230578
+          },
+          {
+            "tool": "sql",
+            "sql": "SELECT * FROM coverage WHERE asset IN ('USDC')",
+            "started": 12610.1637259,
+            "returned_rows": 1,
+            "truncated": false,
+            "elapsed": 0.028738099999827682
+          },
+          {
+            "tool": "sql",
+            "sql": "SELECT hour, borrowed_usd FROM market_hourly WHERE asset = 'USDC' AND hour >= '2026-08-01T00:00:00Z' AND hour < '2026-09-01T00:00:00Z' ORDER BY hour",
+            "started": 12616.5453037,
+            "returned_rows": 200,
+            "truncated": true,
+            "elapsed": 0.025308499998573097
+          },
+          {
+            "tool": "sql",
+            "sql": "SELECT * FROM coverage WHERE asset IN ('USDC')",
+            "started": 12620.4517232,
+            "returned_rows": 1,
+            "truncated": false,
+            "elapsed": 0.02951759999996284
+          },
+          {
+            "tool": "sql",
+            "sql": "SELECT AVG(borrowed_usd) as average_borrowed_usd FROM market_hourly WHERE asset = 'USDC' AND hour >= '2026-08-01T00:00:00Z' AND hour < '2026-09-01T00:00:00Z'",
+            "started": 12626.4835587,
+            "returned_rows": 1,
+            "truncated": false,
+            "elapsed": 0.02343479999944975
+          },
+          {
+            "tool": "sql",
+            "sql": "SELECT * FROM coverage WHERE asset IN ('USDC')",
+            "started": 12629.9342154,
+            "returned_rows": 1,
+            "truncated": false,
+            "elapsed": 0.029521700000259443
+          },
+          {
+            "tool": "retrieve",
+            "query": "USDC borrowed_usd August 2026 hourly time series for stock metric analysis",
+            "document_ids": [
+              "DOC_LIQ_000",
+              "DOC_SUPPLY_000",
+              "DOC_BORROW_000",
+              "DOC_SUPPLY_001",
+              "DOC_LIQ_001"
+            ],
+            "started": 12616.5706213,
+            "elapsed": 0.00016060000052675605
+          }
+        ]
+      },
+      "calls": [
+        {
+          "role": "plan",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 4013,
+          "output_tokens": 137,
+          "timeout_seconds": 599.9076486999984,
+          "cache_read_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "elapsed": 2.7477295999997295
+        },
+        {
+          "role": "sql",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 1279,
+          "output_tokens": 83,
+          "timeout_seconds": 597.0440330999991,
+          "cache_read_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "elapsed": 1.9595700999998371
+        },
+        {
+          "role": "answer",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 1698,
+          "output_tokens": 394,
+          "timeout_seconds": 595.0618696999991,
+          "cache_read_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "elapsed": 3.2369515000009415
+        },
+        {
+          "role": "sql_review",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 1596,
+          "output_tokens": 367,
+          "timeout_seconds": 591.7898413999992,
+          "cache_read_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "elapsed": 4.278383299999405
+        },
+        {
+          "role": "repair",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 2442,
+          "output_tokens": 108,
+          "timeout_seconds": 587.4901191000008,
+          "cache_read_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "elapsed": 2.0499974000013026
+        },
+        {
+          "role": "answer",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 11523,
+          "output_tokens": 417,
+          "timeout_seconds": 585.4111589999993,
+          "cache_read_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "elapsed": 3.878841799998554
+        },
+        {
+          "role": "sql_review",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 8972,
+          "output_tokens": 161,
+          "timeout_seconds": 581.5001838999997,
+          "cache_read_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "elapsed": 3.3442269999995915
+        },
+        {
+          "role": "repair",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 12122,
+          "output_tokens": 93,
+          "timeout_seconds": 578.1287235,
+          "cache_read_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "elapsed": 2.6251051999988704
+        },
+        {
+          "role": "answer",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 4194,
+          "output_tokens": 261,
+          "timeout_seconds": 575.4751651999995,
+          "cache_read_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "elapsed": 3.4253626999998232
+        },
+        {
+          "role": "sql_review",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 1643,
+          "output_tokens": 292,
+          "timeout_seconds": 572.0184425999996,
+          "cache_read_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "elapsed": 4.262915499999508
+        }
+      ],
+      "wall_seconds": 32.25294369999938,
+      "input_tokens": 49482,
+      "output_tokens": 2313,
+      "model_calls": 10
+    }
+  },
+  "wall_seconds": 273.38307709999935,
+  "inputs_unchanged": true,
+  "input_hashes_after": {
+    "data/processed/aave.duckdb": "9069f8c284d9dfbfb9953962a3f0ca0b3ab98a0217636c9af432e55985bd3aef",
+    "data/processed/dictionary.json": "4cd24105faa74b560b28d7fdd536766293b6994f4a0bdaa0df73ead88c544c21",
+    "data/documents/chunks.json": "d89c33e1141ce9937ee04803cd45d4c6e128d74112fb9019555ba123c3fa6ae9"
+  }
+}

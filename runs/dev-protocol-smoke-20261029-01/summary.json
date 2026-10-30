@@ -1,0 +1,278 @@
+{
+  "configurations": {
+    "B0": {
+      "outputs": 1,
+      "scored_outputs": 0,
+      "correct": 0,
+      "correct_rate": null,
+      "numeric_correct": 0,
+      "numeric_total": 0,
+      "correct_refusals": 0,
+      "wrong_refusals": 0,
+      "unscored_refusals": 0,
+      "unsupported_answers": 0,
+      "median_seconds": 88.68360919999941,
+      "p95_seconds": 88.68360919999941,
+      "input_tokens": 7345,
+      "output_tokens": 116,
+      "runtime_errors": 0,
+      "judge_errors": 0,
+      "api_cost_usd": null,
+      "cost_note": "Use your account pricing; judge tokens recorded separately. Shared draft cost is included in every mode.",
+      "citation_precision": null,
+      "citation_completeness": null,
+      "per_question": {
+        "Q005": {
+          "correct_runs": 0,
+          "scored_runs": 0
+        }
+      },
+      "by_category": {
+        "mechanism": {
+          "correct": 0,
+          "scored": 0
+        }
+      },
+      "correct_rate_scored_only": null,
+      "unscored_outputs": 1,
+      "correct_rate_bounds": [
+        0.0,
+        1.0
+      ],
+      "numeric_expected_total": 0
+    },
+    "B1": {
+      "outputs": 1,
+      "scored_outputs": 1,
+      "correct": 0,
+      "correct_rate": 0.0,
+      "numeric_correct": 0,
+      "numeric_total": 0,
+      "correct_refusals": 0,
+      "wrong_refusals": 0,
+      "unscored_refusals": 0,
+      "unsupported_answers": 0,
+      "median_seconds": 120.01317759999984,
+      "p95_seconds": 120.01317759999984,
+      "input_tokens": 7345,
+      "output_tokens": 116,
+      "runtime_errors": 1,
+      "judge_errors": 0,
+      "api_cost_usd": null,
+      "cost_note": "Use your account pricing; judge tokens recorded separately. Shared draft cost is included in every mode.",
+      "citation_precision": null,
+      "citation_completeness": null,
+      "per_question": {
+        "Q005": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        }
+      },
+      "by_category": {
+        "mechanism": {
+          "correct": 0,
+          "scored": 1
+        }
+      },
+      "correct_rate_scored_only": 0.0,
+      "unscored_outputs": 0,
+      "correct_rate_bounds": [
+        0.0,
+        0.0
+      ],
+      "numeric_expected_total": 0
+    },
+    "P": {
+      "outputs": 1,
+      "scored_outputs": 1,
+      "correct": 0,
+      "correct_rate": 0.0,
+      "numeric_correct": 0,
+      "numeric_total": 0,
+      "correct_refusals": 0,
+      "wrong_refusals": 0,
+      "unscored_refusals": 0,
+      "unsupported_answers": 0,
+      "median_seconds": 120.02468979999958,
+      "p95_seconds": 120.02468979999958,
+      "input_tokens": 7345,
+      "output_tokens": 116,
+      "runtime_errors": 1,
+      "judge_errors": 0,
+      "api_cost_usd": null,
+      "cost_note": "Use your account pricing; judge tokens recorded separately. Shared draft cost is included in every mode.",
+      "citation_precision": null,
+      "citation_completeness": null,
+      "per_question": {
+        "Q005": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        }
+      },
+      "by_category": {
+        "mechanism": {
+          "correct": 0,
+          "scored": 1
+        }
+      },
+      "correct_rate_scored_only": 0.0,
+      "unscored_outputs": 0,
+      "correct_rate_bounds": [
+        0.0,
+        0.0
+      ],
+      "numeric_expected_total": 0
+    },
+    "P-Evidence": {
+      "outputs": 1,
+      "scored_outputs": 0,
+      "correct": 0,
+      "correct_rate": null,
+      "numeric_correct": 0,
+      "numeric_total": 0,
+      "correct_refusals": 0,
+      "wrong_refusals": 0,
+      "unscored_refusals": 0,
+      "unsupported_answers": 0,
+      "median_seconds": 88.6836545999995,
+      "p95_seconds": 88.6836545999995,
+      "input_tokens": 7345,
+      "output_tokens": 116,
+      "runtime_errors": 0,
+      "judge_errors": 0,
+      "api_cost_usd": null,
+      "cost_note": "Use your account pricing; judge tokens recorded separately. Shared draft cost is included in every mode.",
+      "citation_precision": null,
+      "citation_completeness": null,
+      "per_question": {
+        "Q005": {
+          "correct_runs": 0,
+          "scored_runs": 0
+        }
+      },
+      "by_category": {
+        "mechanism": {
+          "correct": 0,
+          "scored": 0
+        }
+      },
+      "correct_rate_scored_only": null,
+      "unscored_outputs": 1,
+      "correct_rate_bounds": [
+        0.0,
+        1.0
+      ],
+      "numeric_expected_total": 0
+    },
+    "P-Repair": {
+      "outputs": 1,
+      "scored_outputs": 0,
+      "correct": 0,
+      "correct_rate": null,
+      "numeric_correct": 0,
+      "numeric_total": 0,
+      "correct_refusals": 0,
+      "wrong_refusals": 0,
+      "unscored_refusals": 0,
+      "unsupported_answers": 0,
+      "median_seconds": 97.43079109999962,
+      "p95_seconds": 97.43079109999962,
+      "input_tokens": 10921,
+      "output_tokens": 123,
+      "runtime_errors": 0,
+      "judge_errors": 0,
+      "api_cost_usd": null,
+      "cost_note": "Use your account pricing; judge tokens recorded separately. Shared draft cost is included in every mode.",
+      "citation_precision": null,
+      "citation_completeness": null,
+      "per_question": {
+        "Q005": {
+          "correct_runs": 0,
+          "scored_runs": 0
+        }
+      },
+      "by_category": {
+        "mechanism": {
+          "correct": 0,
+          "scored": 0
+        }
+      },
+      "correct_rate_scored_only": null,
+      "unscored_outputs": 1,
+      "correct_rate_bounds": [
+        0.0,
+        1.0
+      ],
+      "numeric_expected_total": 0
+    },
+    "P-SQL": {
+      "outputs": 1,
+      "scored_outputs": 1,
+      "correct": 0,
+      "correct_rate": 0.0,
+      "numeric_correct": 0,
+      "numeric_total": 0,
+      "correct_refusals": 0,
+      "wrong_refusals": 0,
+      "unscored_refusals": 0,
+      "unsupported_answers": 0,
+      "median_seconds": 120.00587879999966,
+      "p95_seconds": 120.00587879999966,
+      "input_tokens": 10921,
+      "output_tokens": 123,
+      "runtime_errors": 1,
+      "judge_errors": 0,
+      "api_cost_usd": null,
+      "cost_note": "Use your account pricing; judge tokens recorded separately. Shared draft cost is included in every mode.",
+      "citation_precision": null,
+      "citation_completeness": null,
+      "per_question": {
+        "Q005": {
+          "correct_runs": 0,
+          "scored_runs": 1
+        }
+      },
+      "by_category": {
+        "mechanism": {
+          "correct": 0,
+          "scored": 1
+        }
+      },
+      "correct_rate_scored_only": 0.0,
+      "unscored_outputs": 0,
+      "correct_rate_bounds": [
+        0.0,
+        0.0
+      ],
+      "numeric_expected_total": 0
+    }
+  },
+  "paired_P_vs": {
+    "B0": {
+      "wrong_to_right": 0,
+      "right_to_wrong": 0,
+      "paired_scored": 0
+    },
+    "B1": {
+      "wrong_to_right": 0,
+      "right_to_wrong": 0,
+      "paired_scored": 1
+    },
+    "P-SQL": {
+      "wrong_to_right": 0,
+      "right_to_wrong": 0,
+      "paired_scored": 1
+    },
+    "P-Evidence": {
+      "wrong_to_right": 0,
+      "right_to_wrong": 0,
+      "paired_scored": 0
+    },
+    "P-Repair": {
+      "wrong_to_right": 0,
+      "right_to_wrong": 0,
+      "paired_scored": 0
+    }
+  },
+  "unit": "question; repeated outputs are not independent questions"
+}

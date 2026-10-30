@@ -1,0 +1,163 @@
+{
+  "question": "Có bao nhiêu giao dịch thanh lý trong tháng 8 năm 2026?",
+  "spec": {
+    "kind": "mixed",
+    "metric": "",
+    "assets": [],
+    "start": null,
+    "end": null,
+    "unit": "",
+    "aggregation": "",
+    "grain": "",
+    "retrieval_query": "",
+    "clarification": ""
+  },
+  "sql": "",
+  "query_result": null,
+  "documents": [],
+  "answer": "",
+  "claims": [],
+  "refused": false,
+  "issues": [],
+  "elapsed": 76.16728030000013,
+  "usage": [
+    {
+      "role": "plan",
+      "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+      "format_attempt": 1,
+      "input_tokens": 3689,
+      "output_tokens": 119,
+      "timeout_seconds": 599.9302370999999,
+      "prompt_characters": 16326,
+      "server_timings": {
+        "prompt_ms": 36042.631,
+        "prompt_n": 3604,
+        "predicted_ms": 2888.379,
+        "predicted_n": 119
+      },
+      "elapsed": 39.14021049999974
+    },
+    {
+      "role": "plan_review",
+      "model_id": "zhenlong54/qwen-vitext2sql-3b-GGUF",
+      "format_attempt": 1,
+      "input_tokens": 3956,
+      "output_tokens": 117,
+      "timeout_seconds": 560.7897688999992,
+      "prompt_characters": 17443,
+      "server_timings": {
+        "prompt_ms": 33984.999,
+        "prompt_n": 3279,
+        "predicted_ms": 2894.018,
+        "predicted_n": 117
+      },
+      "elapsed": 36.95687199999975
+    }
+  ],
+  "error": "ValueError: Invalid analysis: A supported database metric cannot use docs routing. Recheck the ORIGINAL question: use data or mixed for numerical observations, preserve its requested dates, or metric=other for a purely conceptual question",
+  "tools": [
+    {
+      "tool": "sql",
+      "sql": "SELECT * FROM coverage",
+      "started": 3936.0116033,
+      "returned_rows": 5,
+      "truncated": false,
+      "elapsed": 0.053496999999879336
+    },
+    {
+      "tool": "sql",
+      "sql": "SELECT MIN(time) AS first_event_utc, MAX(time) AS last_event_utc, COUNT(*) AS event_rows FROM liquidation_events",
+      "started": 3936.0651085,
+      "returned_rows": 1,
+      "truncated": false,
+      "elapsed": 0.015612099999998463
+    },
+    {
+      "tool": "retrieve",
+      "query": "Có bao nhiêu giao dịch thanh lý trong tháng 8 năm 2026?",
+      "document_ids": [
+        "DOC_SUPPLY_000",
+        "DOC_SUPPLY_001",
+        "DOC_BORROW_000",
+        "DOC_BORROW_001",
+        "DOC_LIQ_000"
+      ],
+      "started": 3936.0807255,
+      "elapsed": 0.0004880000001321605
+    }
+  ],
+  "planning": {
+    "initial": {
+      "kind": "docs",
+      "metric": "transactions",
+      "assets": [],
+      "start": "2026-08-01T00:00:00+00:00",
+      "end": "2026-09-01T00:00:00+00:00",
+      "unit": "count",
+      "aggregation": "count_distinct",
+      "grain": "day",
+      "retrieval_query": "liquidation_events",
+      "clarification": ""
+    },
+    "availability": {
+      "market_hourly": [
+        {
+          "asset": "USDT",
+          "start_utc": "2023-02-13T14:00:00+00:00",
+          "end_utc": "2026-09-15T07:00:00+00:00",
+          "rows": 31434,
+          "observed_hours": 31434
+        },
+        {
+          "asset": "USDC",
+          "start_utc": "2023-01-27T08:00:00+00:00",
+          "end_utc": "2026-09-15T07:00:00+00:00",
+          "rows": 31848,
+          "observed_hours": 31848
+        },
+        {
+          "asset": "USDe",
+          "start_utc": "2024-06-06T15:00:00+00:00",
+          "end_utc": "2026-09-15T07:00:00+00:00",
+          "rows": 19937,
+          "observed_hours": 19937
+        },
+        {
+          "asset": "WETH",
+          "start_utc": "2023-01-27T08:00:00+00:00",
+          "end_utc": "2026-09-15T07:00:00+00:00",
+          "rows": 31848,
+          "observed_hours": 31848
+        },
+        {
+          "asset": "DAI",
+          "start_utc": "2023-01-27T08:00:00+00:00",
+          "end_utc": "2026-09-15T06:00:00+00:00",
+          "rows": 31847,
+          "observed_hours": 31847
+        }
+      ],
+      "liquidation_events": {
+        "first_event_utc": "2023-01-30T19:11:47+00:00",
+        "last_event_utc": "2026-09-15T05:53:59+00:00",
+        "event_rows": 25121
+      },
+      "interpretation": "These are observed timestamp bounds, not guarantees of gap-free coverage. The last event timestamp is not the collection cutoff. Do not infer missing events or a partial month from an event timestamp alone. Query the requested interval to report counts in the loaded dataset."
+    },
+    "review_reasons": [
+      "A supported database metric cannot use docs routing. Recheck the ORIGINAL question: use data or mixed for numerical observations, preserve its requested dates, or metric=other for a purely conceptual question"
+    ],
+    "revised": {
+      "kind": "docs",
+      "metric": "transactions",
+      "assets": [],
+      "start": "2026-08-01T00:00:00+00:00",
+      "end": "2026-09-01T00:00:00+00:00",
+      "unit": "count",
+      "aggregation": "count_distinct",
+      "grain": "day",
+      "retrieval_query": "liquidation_events",
+      "clarification": ""
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "runtime_physical": {
+    "estimated_api_usd": 0.0,
+    "input_tokens": 7345,
+    "output_tokens": 116,
+    "calls": 2,
+    "calls_with_unknown_usage": 0,
+    "input_usd_per_million": "0",
+    "output_usd_per_million": "0",
+    "source": null,
+    "source_page": null,
+    "verified_on": "2026-10-29",
+    "scope": "API fee only; local hardware/electricity excluded. Published standard geo cross-region rate, not account invoice/discount/tax. Missing usage may underestimate API cost."
+  },
+  "per_configuration": {
+    "B0": {
+      "estimated_api_usd": 0.0,
+      "input_tokens": 7345,
+      "output_tokens": 116,
+      "calls": 2,
+      "calls_with_unknown_usage": 0,
+      "input_usd_per_million": "0",
+      "output_usd_per_million": "0",
+      "source": null,
+      "source_page": null,
+      "verified_on": "2026-10-29",
+      "scope": "API fee only; local hardware/electricity excluded. Published standard geo cross-region rate, not account invoice/discount/tax. Missing usage may underestimate API cost."
+    }
+  },
+  "judge": {
+    "estimated_api_usd": 0.0065791,
+    "input_tokens": 4311,
+    "output_tokens": 334,
+    "calls": 1,
+    "calls_with_unknown_usage": 0,
+    "input_usd_per_million": "1.10",
+    "output_usd_per_million": "5.50",
+    "source": "https://www-cdn.anthropic.com/files/4zrzovbb/website/3684c2faafb97418665782cea0001f439f74b1d2.pdf",
+    "source_page": 6,
+    "verified_on": "2026-10-29",
+    "scope": "API fee only; local hardware/electricity excluded. Published standard geo cross-region rate, not account invoice/discount/tax. Missing usage may underestimate API cost."
+  },
+  "note": "Per-configuration estimates include the shared draft for standalone comparison; summing them double-counts initial calls. Runtime physical counts the shared draft once."
+}
