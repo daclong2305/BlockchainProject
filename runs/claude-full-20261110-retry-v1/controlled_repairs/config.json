@@ -1,0 +1,48 @@
+{
+  "case_ids": [
+    "S001-wrong",
+    "S001-correct",
+    "S002-wrong",
+    "S002-correct"
+  ],
+  "modes": [
+    "B1",
+    "P"
+  ],
+  "pace": 12,
+  "deadline": 120,
+  "code_hashes": {
+    "__init__.py": "5ab3f02f18c41f78c0b6b533f01a57dd4fd6de80bbeab35994baf8a0ddc72de4",
+    "audit_review.py": "8389cc51799bbe52af58488d6eae129017f51527aaf2fd8480dce599f6f6a0ec",
+    "benchmark.py": "86b3b32f0205cb005c69af81cef706c534e82a5fd27513b14ca1c070a0dccc06",
+    "cli.py": "3e754e7ef294c6cfcf32ade9f3d2e381293f164d1a946ec15c0e21df3d1371a1",
+    "comparison.py": "24faa915552849bb9a50ac7d990761a10a7d036836d0553a06fca1970245cc37",
+    "config.py": "67208f74c76cc45487322083457575ad6407e5a94591fa0b48e28fdaf7eb3041",
+    "costs.py": "1e85458536d8ce91b05f0cc4e811b9da321aeb2321817175b893b09ae0cb2941",
+    "data.py": "2d89c2010789c4c1107f3adf53b8121cd423f7e3a53e4bf4ab333c0e1a04bfcf",
+    "database.py": "35682c0291f69418382dbf95591557d7fd5d97a2d5a466f3938d70b9b1332c24",
+    "evaluation.py": "56972815d8a2f76f29ca0bb4fc4ad063984438a70fb93ace909a89c354ee52f5",
+    "experiments.py": "efb9ff3dc3e2709df30d85a2846d73567ddd7b22ff5e7ed407499a895daae87f",
+    "intent_guards.py": "fe739ab216fe9275853758207a2fe464b70af58bd6397a79f2264256bf27e2a6",
+    "llm.py": "d57b1e1009713b603de2edc2986f808e0250c56e769dc3dce7fbdb19634d6aa3",
+    "local_llm.py": "be3d2d882e8ee3c8109304c4cbe428f5dcfaa1aaa592cc720c6c238de0f7e899",
+    "models.py": "bd97e8c37915580e822aa218f1371f5cc94f3586c385d77f69581be4ba01d295",
+    "pipeline.py": "da1fa6d86ed463375ceaa91d2742f24d67568595eae278ea95281060ec953133",
+    "planning.py": "f956bd575dd4b2734d88538dd6ba024a0a21f9fe60c4704f9ef42e2e3d640ced",
+    "prompt_payload.py": "3f0d42fb866e4e2d17177bf3664cbffd2fd8d453f1cf06533366d9b40ddd32d4",
+    "protocol.py": "b4a5a100484fdff33e2b238919f923ef3c5fbd2078547a39ed81645517c5d941",
+    "reporting.py": "f5872b2dad3cc0cf429b846cbad64fb636ed91ed545252e695731f5726f37bc7",
+    "research_runtime.py": "180f45dc9f735244cfa0705111f585cca93442afaa2701f24b0819faf84b4160",
+    "response_schemas.py": "176d9f2775b43baf2f58145061d774db861b0de6db13778753050b22e6ade605",
+    "retrieval.py": "a861473a21bba30e1c3e26b68664905e05d4967f3456682446482420e22fd3ae",
+    "review.py": "992f115fcd4d8b4cef55cdc2396d530111e53a353deec9850145c1ecd3ab6f73",
+    "scoring.py": "e36c526ac5a0bfcd1c257d207537128cc5524959d8697619ea611e83cc1b4a96",
+    "sql_normalization.py": "fc7d41e7eeab0c09450df31d7055ca6962625fcbf8a7c44ceeca7fe508b8855c",
+    "stress.py": "68c4694855da4d5c6c93c551ba7f37e0c7b7d0a17e0e29cd0a18f1b6b87d6640",
+    "supplementary.py": "ea28bcf9494f25c417b137b9023cfb83dd471dd43bf612f66664192212cffa3c",
+    "ui.py": "4640616fc9b05273f0663324e216d7fcacb420f63df4b7d43d44deae939ebbeb",
+    "verification.py": "c1c7df385cd016a84ebda793e2d497d0bade6e6b2e5bc6d088fb70bbbcb5ec3f",
+    "verifier_replay.py": "cd9f24aebb91ae09b5a73563edc8812ad4d3ac519e2af51dc085267e00dacadf"
+  },
+  "label_status": "provisional DEV controlled experiment"
+}
