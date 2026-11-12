@@ -102,7 +102,7 @@ def sql_review_payload(draft):
     return result
 
 
-def verify_claims(draft,llm,timeout=60.):
+def claim_rules(draft):
     issues=[]
     docs={d["id"]:d for d in draft.documents};valid=set(docs)
     if draft.query_result:valid.add("SQL1")
@@ -120,5 +120,8 @@ def verify_claims(draft,llm,timeout=60.):
                 if not numeric_equal(numeric.get("value"),value,numeric.get("unit","USD"),numeric.get("decimals",2)):
                     issues.append(Issue("numeric_mismatch","Claim value does not match executed result cell","answer"))
             except (KeyError,IndexError,TypeError,ValueError,AttributeError):issues.append(Issue("numeric_link","Numeric claim points to invalid SQL result cell","answer"))
-    issues.extend(response_issues(llm.complete("claim_review",evidence_payload(draft),timeout=timeout)))
     return issues
+
+
+def verify_claims(draft,llm,timeout=60.):
+    return claim_rules(draft)+response_issues(llm.complete("claim_review",evidence_payload(draft),timeout=timeout))

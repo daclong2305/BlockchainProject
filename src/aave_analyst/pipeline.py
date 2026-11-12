@@ -38,12 +38,14 @@ class Analyst:
         self.remaining(end)
         return value
 
-    def _answer(self,draft,end):
+    def _answer(self,draft,end,repair_feedback=None):
         if draft.spec.kind in {'data','mixed'} and draft.sql and draft.query_result is None:
             draft.answer='Chưa có kết quả truy vấn hợp lệ để trả lời phần số liệu. Cần sửa và thực thi SQL thành công trước.'
             draft.claims=[];draft.refused=True
             return
-        value=self._call("answer",evidence_payload(draft),end)
+        payload=evidence_payload(draft)
+        if repair_feedback:payload['repair_feedback']=[asdict(i) for i in repair_feedback]
+        value=self._call("answer",payload,end)
         if not isinstance(value.get('answer'), str):raise ValueError('Malformed answer response: answer must be a string, not a fabricated scalar')
         draft.answer=value['answer'];draft.claims=value.get("claims",[]);draft.refused=bool(value.get("refused",False))
         if not draft.answer or not isinstance(draft.claims,list):raise ValueError("Malformed answer response")
@@ -117,6 +119,7 @@ class Analyst:
                     status="unverified"
                     if not flags.repair or repairs>=2 or any(i.action=="stop" for i in issues):break
                     before=(draft.sql,draft.answer,tuple(d["id"] for d in draft.documents))
+                    before_snapshot={'sql':draft.sql,'sql_result':asdict(draft.query_result) if draft.query_result else None,'answer':draft.answer,'claims':deepcopy(draft.claims),'documents':deepcopy(draft.documents)}
                     fix=self._call("repair",dict(evidence_payload(draft),issues=[asdict(i) for i in issues],schema=self.db.schema()),end)
                     repairs+=1
                     new_sql=fix.get("sql","")
@@ -132,9 +135,9 @@ class Analyst:
                     # A repeated unchanged SQL-only fix cannot improve the query.
                     if before[0]==draft.sql and not query and all(i.action=="sql" for i in issues):
                         trace.append({"event":"unchanged_repair_stop"});break
-                    self._answer(draft,end)
+                    self._answer(draft,end,repair_feedback=issues)
                     after=(draft.sql,draft.answer,tuple(d["id"] for d in draft.documents))
-                    trace.append({"event":"repair","repair":repairs,"sql":draft.sql,"answer":draft.answer})
+                    trace.append({"event":"repair","repair":repairs,"sql":draft.sql,"answer":draft.answer,'feedback':[asdict(i) for i in issues],'before':before_snapshot,'after':{'sql':draft.sql,'sql_result':asdict(draft.query_result) if draft.query_result else None,'answer':draft.answer,'claims':deepcopy(draft.claims),'documents':deepcopy(draft.documents)}})
                     if after==before:trace.append({"event":"unchanged_repair_stop"});break
                 self.remaining(end)
         except Exception as exc:
