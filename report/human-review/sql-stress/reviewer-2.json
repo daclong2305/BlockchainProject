@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "source_sha256": "b8b9a7f99484893892cc9985d1a6c581cf81896a591eaf69cdf4262c03cfb7e4",
+  "reviewer_name": "Nguyễn Ngọc Đông Phương",
+  "items": [
+    {
+      "id": "S001",
+      "content_sha256": "3d205dcf7559e7be33bd22cb66079756c55b0aed1e91cb9f484d89a9865d5058",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho USDC, tháng 8/2026 UTC, trả 2,001,158,632.10 USD và khớp số tham chiếu. SQL sai dùng giá trị cung cấp thay cho dư nợ. Kết quả truy vấn sai là 2,178,906,496.66."
+    },
+    {
+      "id": "S002",
+      "content_sha256": "bf7d7c75718b708e7d0e56036bf5db253cb40002391fbb3925191014dc00b352",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho USDC, tháng 8/2026 UTC, trả 2,001,158,632.10 USD và khớp số tham chiếu. SUM cộng dồn cùng loại số dư qua các giờ, trong khi câu hỏi yêu cầu trung bình. Kết quả truy vấn sai là 1,488,862,022,281.16."
+    },
+    {
+      "id": "S003",
+      "content_sha256": "c2afda5954325c0a1b8166e812786f85e1cbe639590cce06f591e50d741a43cb",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho USDC, tháng 8/2026 UTC, trả 2,001,158,632.10 USD và khớp số tham chiếu. SQL sai lọc USDe thay vì USDC. Kết quả truy vấn sai là 521,264,061.99."
+    },
+    {
+      "id": "S004",
+      "content_sha256": "2037236ca590b3c1bfd1313dbb639d59004c2693c0dc9a1df298114b5d47345e",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho USDC, tháng 8/2026 UTC, trả 2,001,158,632.10 USD và khớp số tham chiếu. Phép chia một triệu đổi đơn vị sang triệu USD. Kết quả truy vấn sai là 2,001.16."
+    },
+    {
+      "id": "S005",
+      "content_sha256": "7ff4e2f2f7d193a9e75b6ec0076eb72a2c31eeccc7de3838d0c8a228d75b6f70",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho USDC, 00:00 UTC ngày 01/08/2026, trả 1,940,447,808.54 USD và khớp số tham chiếu. Tự nối chỉ theo tài sản lặp số dư ở cùng thời điểm cho mỗi giờ tháng 8 rồi cộng lại. Kết quả truy vấn sai là 1,443,693,169,555.04."
+    },
+    {
+      "id": "S006",
+      "content_sha256": "4d0853a07dfaa4e8eadb6fe25f177d63fa6de7ca2aa7837da27775f1567c1fe0",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho WETH, tháng 8/2026 UTC, trả 3,667,108,875.98 USD và khớp số tham chiếu. SQL sai dùng giá trị cung cấp thay cho dư nợ. Kết quả truy vấn sai là 4,513,728,233.03."
+    },
+    {
+      "id": "S007",
+      "content_sha256": "9f435fc820cdfd7c7f60e024b58776e912e9f97806f06295be5e40392467e64f",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho WETH, tháng 8/2026 UTC, trả 3,667,108,875.98 USD và khớp số tham chiếu. SUM cộng dồn cùng loại số dư qua các giờ, trong khi câu hỏi yêu cầu trung bình. Kết quả truy vấn sai là 2,728,329,003,725.47."
+    },
+    {
+      "id": "S008",
+      "content_sha256": "27cad5f2dad84bb379adbd08c59e3065a95e1945cceb3201f313db49662f9995",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho WETH, tháng 8/2026 UTC, trả 3,667,108,875.98 USD và khớp số tham chiếu. SQL sai lọc USDe thay vì WETH. Kết quả truy vấn sai là 521,264,061.99."
+    },
+    {
+      "id": "S009",
+      "content_sha256": "f3761c2a0394cdb28be26cdf5d7946e66e9d6ebf8ac6beaf5c63a183f5991dcb",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho WETH, tháng 8/2026 UTC, trả 3,667,108,875.98 USD và khớp số tham chiếu. Phép chia một triệu đổi đơn vị sang triệu USD. Kết quả truy vấn sai là 3,667.11."
+    },
+    {
+      "id": "S010",
+      "content_sha256": "307cb92dac701bd7e00188c93a03f7564cd1bfaf753651486fd11f2f59d2acea",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho WETH, 00:00 UTC ngày 01/08/2026, trả 3,224,504,248.29 USD và khớp số tham chiếu. Tự nối chỉ theo tài sản lặp số dư ở cùng thời điểm cho mỗi giờ tháng 8 rồi cộng lại. Kết quả truy vấn sai là 2,399,031,160,724.02."
+    },
+    {
+      "id": "S011",
+      "content_sha256": "7f6783dde05b23330a80b8523e3ab59883a9d317f20b6a6e957c6204f364526e",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho USDT, năm 2025 UTC, trả 8,543,331,357.75 USD và khớp số tham chiếu. SQL sai lấy dư nợ thay cho giá trị tài sản cung cấp. Kết quả truy vấn sai là 7,433,240,190.38."
+    },
+    {
+      "id": "S012",
+      "content_sha256": "1c12642ec7394221d390da54c5a23d191d25e41b5c995c861038d6061d5dc370",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho USDT, năm 2025 UTC, trả 8,543,331,357.75 USD và khớp số tham chiếu. SUM cộng dồn cùng loại số dư qua các giờ, trong khi câu hỏi yêu cầu giá trị lớn nhất. Kết quả truy vấn sai là 44,006,612,600,991.52."
+    },
+    {
+      "id": "S013",
+      "content_sha256": "5798dbaaa22dd9be283f27fa813fef900d098407df5574a826cbd061b274d4d2",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho USDT, năm 2025 UTC, trả 8,543,331,357.75 USD và khớp số tham chiếu. SQL sai lọc USDe thay vì USDT. Kết quả truy vấn sai là 2,099,807,877.71."
+    },
+    {
+      "id": "S014",
+      "content_sha256": "53a484050723a859cda08a7d92ca1b6f6a5eb3e682d0d27698cfc2612b91809e",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho USDT, năm 2025 UTC, trả 8,543,331,357.75 USD và khớp số tham chiếu. Phép chia một triệu đổi đơn vị sang triệu USD. Kết quả truy vấn sai là 8,543.33."
+    },
+    {
+      "id": "S015",
+      "content_sha256": "2610a60d8f4ec332d3e90711f1a7020533fade65f501d58f649371e3b2246f87",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho USDT, năm 2025 UTC, trả 6,110,198,977.97 USD và khớp số tham chiếu. Phép nối theo giờ trộn cực đại của USDT với cực tiểu USDe. Kết quả truy vấn sai là 8,518,589,055.80."
+    },
+    {
+      "id": "S016",
+      "content_sha256": "eb1840dfcb068d239d346062c7c55a09cbdf41d750a166aba93c7c716870a07a",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho DAI, năm 2025 UTC, trả 190,574,906.70 USD và khớp số tham chiếu. SQL sai lấy dư nợ thay cho giá trị tài sản cung cấp. Kết quả truy vấn sai là 170,316,388.53."
+    },
+    {
+      "id": "S017",
+      "content_sha256": "368ea3b29ad2ba59bbf5dacc8c3d4fce00b194503c3f71dd029dc528e6fb3993",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho DAI, năm 2025 UTC, trả 190,574,906.70 USD và khớp số tham chiếu. SUM cộng dồn cùng loại số dư qua các giờ, trong khi câu hỏi yêu cầu giá trị lớn nhất. Kết quả truy vấn sai là 1,486,142,315,386.43."
+    },
+    {
+      "id": "S018",
+      "content_sha256": "5c46243cc0c2be84dd4af5d4bf909658befa6474fa03acd1730e85d6767d86e6",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho DAI, năm 2025 UTC, trả 190,574,906.70 USD và khớp số tham chiếu. SQL sai lọc USDe thay vì DAI. Kết quả truy vấn sai là 2,099,807,877.71."
+    },
+    {
+      "id": "S019",
+      "content_sha256": "288aeabfa515aa9cc41037a3adec7da2a9842de06ae2cb5f047aeec9c4c6fef7",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho DAI, năm 2025 UTC, trả 190,574,906.70 USD và khớp số tham chiếu. Phép chia một triệu đổi đơn vị sang triệu USD. Kết quả truy vấn sai là 190.57."
+    },
+    {
+      "id": "S020",
+      "content_sha256": "7341874cc263856b5083bc143ff09a236d459a1402761b865e5a2eed10b32b8c",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Truy vấn đối chứng trên market_hourly cho DAI, năm 2025 UTC, trả 39,288,476.33 USD và khớp số tham chiếu. Phép nối theo giờ trộn cực đại của DAI với cực tiểu USDe. Kết quả truy vấn sai là 165,832,604.75."
+    }
+  ]
+}

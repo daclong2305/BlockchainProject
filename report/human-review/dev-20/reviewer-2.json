@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "source_sha256": "5e352af09830a28917b189f5d5ffda15709bcbde76e1bcaa0560017fb23efdbe",
+  "reviewer_name": "Nguyễn Ngọc Đông Phương",
+  "items": [
+    {
+      "id": "Q001",
+      "content_sha256": "d17b5d3c090223ae2606d5d1c80031fc6a5aca47ddf89faeb9baac00f80bca73",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Người cung cấp gửi token vào pool và nhận lãi theo lãi suất hiện hành. Người vay rút thanh khoản từ pool và phát sinh nghĩa vụ trả nợ. [DOC_SUPPLY_000]"
+    },
+    {
+      "id": "Q002",
+      "content_sha256": "a4b62e7f418c57d7735885b3f9a1717f3ce1ff15f1c1d28717a212fbf28842e5",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Gửi token vào pool giúp bạn hưởng lãi theo lãi suất cung cấp hiện hành. Giao dịch gửi này không tạo khoản nợ cho bạn. [DOC_SUPPLY_000]"
+    },
+    {
+      "id": "Q003",
+      "content_sha256": "5dc8b993a7c223dda642090ca3c0ee3784ac999c73799ee267b22a398efe8474",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Aave dùng giá trị tài sản đã bật làm thế chấp cùng LTV của từng loại để tính khả năng vay. Ngưỡng thanh lý quyết định mức an toàn của khoản nợ đang mở. [DOC_BORROW_000]"
+    },
+    {
+      "id": "Q004",
+      "content_sha256": "c7d89acd486e65f6697c44d1dab59241b7d24b748d94530caba48bf23b80da99",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Bạn dùng tài sản thế chấp để bảo đảm khoản nợ. Hạn mức phụ thuộc giá trị tài sản và LTV, còn ngưỡng thanh lý dùng để đánh giá rủi ro của vị thế. [DOC_BORROW_000]"
+    },
+    {
+      "id": "Q013",
+      "content_sha256": "a1fb592c8ca23afeb808d2037ec73b67685e8a5940c3bdb2e704ff826926ba66",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Tại 00:00 UTC ngày 15/08/2026, giá trị tài sản cung cấp của USDC đạt 1.997.694.271,60 USD. [SQL1]"
+    },
+    {
+      "id": "Q014",
+      "content_sha256": "ca84bea7f022204449f955158d9caa9ee2e8a1be9b12835f83f7b128c909382a",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Tại 00:00 UTC ngày 15/08/2025, giá trị tài sản cung cấp của WETH đạt 11.041.542.615,29 USD. [SQL1]"
+    },
+    {
+      "id": "Q015",
+      "content_sha256": "8203206cf67d694b4db768a0acb5a2bc1b8aa30d3b23531e980c26a2dc4ae491",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Tại 00:00 UTC ngày 15/08/2026, dư nợ của USDC đạt 1.993.676.848,03 USD. [SQL1]"
+    },
+    {
+      "id": "Q016",
+      "content_sha256": "0f30bd3440358ef1da71ff1e76a940f677d7002ff9ee9dc1a6191849fa1f801e",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Tại 00:00 UTC ngày 15/08/2025, dư nợ của WETH đạt 10.023.005.896,24 USD. [SQL1]"
+    },
+    {
+      "id": "Q025",
+      "content_sha256": "ded81f67192e143f04270db19f8e1e5e0f73a2936f5c7291a7e7d752d2f5385e",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Trong tháng 6/2026 (UTC), 720 số dư theo giờ của DAI cho dư nợ trung bình 98.282.885,63 USD. Trong đó có 244 giờ dùng lại giá trị gần nhất. [SQL1]"
+    },
+    {
+      "id": "Q026",
+      "content_sha256": "9566732bea1d55ab5d998b049f6b128fab0aef6d0efa1cfb980cdac5fafecdaf",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Trong tháng 7/2026 (UTC), 744 số dư theo giờ của USDT cho dư nợ trung bình 2.337.819.599,99 USD. [SQL1]"
+    },
+    {
+      "id": "Q027",
+      "content_sha256": "20e93e13efe137c686cf9b6ff23416562103c5cc0aaba43333dda6a5e112d8bf",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Trong tháng 8/2026 (UTC), 744 số dư theo giờ của USDe cho dư nợ trung bình 521.264.061,99 USD. Trong đó có 30 giờ dùng lại giá trị gần nhất. [SQL1]"
+    },
+    {
+      "id": "Q028",
+      "content_sha256": "f92fa80a9487717c00a6d6bfce02db6b58b8a32a68fb4230134ea4d3c9e35678",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Trong tháng 6/2026 (UTC), 720 số dư theo giờ của DAI cho giá trị tài sản cung cấp trung bình 118.343.676,63 USD. Trong đó có 244 giờ dùng lại giá trị gần nhất. [SQL1]"
+    },
+    {
+      "id": "Q029",
+      "content_sha256": "aa1f6b4e3b567f254547012d4225842805131b510755de2dda00d7a633b6bc8a",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Trong tháng 7/2026 (UTC), 744 số dư theo giờ của USDT cho giá trị tài sản cung cấp trung bình 2.831.780.087,93 USD. [SQL1]"
+    },
+    {
+      "id": "Q030",
+      "content_sha256": "08581e20871a0ee2a9fe1a2fac831b3c3e42173cc2e77ac6161e0a7288d923b2",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Trong tháng 8/2026 (UTC), 744 số dư theo giờ của USDe cho giá trị tài sản cung cấp trung bình 749.295.298,14 USD. Trong đó có 30 giờ dùng lại giá trị gần nhất. [SQL1]"
+    },
+    {
+      "id": "Q043",
+      "content_sha256": "57c9030d1423447da89a42f2d4265748682887e30d2755cf3a8e6c4011f3496a",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Tại 00:00 UTC ngày 15/08/2026, dư nợ của USDC đạt 1.993.676.848,03 USD. Không thể suy ra tổng vay mới trong tháng từ số dư này vì cả vay mới và trả nợ đều làm thay đổi dư nợ. [SQL1] [DOC_BORROW_000]"
+    },
+    {
+      "id": "Q044",
+      "content_sha256": "d9e69a1552c6763649f988b2604ce29ff29894878a7b842ab804ac88913641e6",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Tại 00:00 UTC ngày 15/07/2026, dư nợ của WETH đạt 3.042.883.324,32 USD. Không thể suy ra tổng vay mới trong tháng từ số dư này vì cả vay mới và trả nợ đều làm thay đổi dư nợ. [SQL1] [DOC_BORROW_000]"
+    },
+    {
+      "id": "Q045",
+      "content_sha256": "2ae8cd9c77a48693693648d2cff3279d4dcc2167284f65efa8beda40aef7e441",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Tại 00:00 UTC ngày 15/08/2026, giá trị tài sản cung cấp của USDC đạt 1.997.694.271,60 USD. Không thể coi toàn bộ số dư là lợi nhuận vì vốn gốc cũng nằm trong số đó. Cần tách phần lãi khỏi vốn gửi và các khoản rút. [SQL1] [DOC_SUPPLY_000]"
+    },
+    {
+      "id": "Q046",
+      "content_sha256": "8bd9ee1813eacfb7e811c736bf9cc8cf71488ed6f3c21035f6ff0a913ff2ee03",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Tại 00:00 UTC ngày 15/07/2026, giá trị tài sản cung cấp của WETH đạt 3.897.799.627,04 USD. Không thể coi toàn bộ số dư là lợi nhuận vì vốn gốc cũng nằm trong số đó. Cần tách phần lãi khỏi vốn gửi và các khoản rút. [SQL1] [DOC_SUPPLY_000]"
+    },
+    {
+      "id": "Q055",
+      "content_sha256": "df07f4e92aa5ac9df3c13763413b882eb5c077da6c49a4799a3c8bdf791f5027",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Không xác định được tổng phí gas tháng 8/2026. Muốn tính cần có phí của từng giao dịch thanh lý và tỷ giá ETH/USD tương ứng. [POLICY]"
+    },
+    {
+      "id": "Q056",
+      "content_sha256": "c434e87206e06682a6c3fcb408a075543bb12b76810f6d3a3f30e2e1d6ec00a8",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Dữ liệu tháng 8/2026 có giá trị thanh lý nhưng thiếu số liệu đã xác minh về khoản thu và chi phí thực tế của người thanh lý, nên không thể tính lợi nhuận bằng USD. [POLICY]"
+    }
+  ],
+  "original_reviewer_label": "AI mô phỏng – Chuyên viên phân tích giao thức"
+}

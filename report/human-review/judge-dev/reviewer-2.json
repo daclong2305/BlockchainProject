@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "source_sha256": "798a42a8a6ba956baf918e11bcf21073d2d70df740e2d558335ef1b18a4564b9",
+  "reviewer_name": "Nguyễn Ngọc Đông Phương",
+  "items": [
+    {
+      "case_id": "A0001",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Trung bình dư nợ DAI tháng 6 khớp kết quả AVG trong SQL1 sau khi làm tròn."
+    },
+    {
+      "case_id": "A0002",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "SQL1 xác nhận cả dư nợ USDC và giờ nguồn sớm hơn 85 giây. Quan sát mới đối với giờ lưới vẫn có thể có thời điểm nguồn sớm hơn."
+    },
+    {
+      "case_id": "A0003",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_SUPPLY_000 mô tả chuyển token vào pool cho người khác vay, cách tích lũy lãi và các yếu tố làm thay đổi lãi suất."
+    },
+    {
+      "case_id": "A0004",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Đúng số dư WETH và phân biệt được số dư với khoản vay mới. Chênh lệch dư nợ đầu và cuối tháng còn chịu ảnh hưởng của trả nợ và lãi. Hai tài liệu vay không chứng minh cách tính đã nêu và gói nguồn không chứa mục dictionary được dẫn."
+    },
+    {
+      "case_id": "A0005",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "AVG trong SQL1 xác nhận số tiền yêu cầu. Nguồn này không xác nhận ngày hiện tại trước tháng 7/2026 hay hai mốc bao phủ lịch sử. Gói không có nguồn availability được dẫn."
+    },
+    {
+      "case_id": "A0006",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Số tiền làm tròn và thời điểm khớp hàng WETH mà SQL1 trả về."
+    },
+    {
+      "case_id": "A0007",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_BORROW_000 và DOC_LIQ_000 xác nhận yêu cầu thế chấp, sự phụ thuộc vào ngưỡng thanh lý, công thức Health Factor và cách giảm rủi ro."
+    },
+    {
+      "case_id": "A0008",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Đúng số dư và phân biệt được số dư với lợi nhuận. DOC_SUPPLY_000 chỉ giải thích lãi tích lũy. So sánh hai số dư USD tổng hợp còn lẫn gửi, rút và biến động giá WETH nên không xác định được riêng lợi nhuận."
+    },
+    {
+      "case_id": "A0009",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 xác nhận mức trung bình nhưng không đếm số giờ có dữ liệu trong tháng. Khẳng định không thiếu giờ và con số 31.434 giờ quan sát toàn kỳ không có dẫn chứng trong gói."
+    },
+    {
+      "case_id": "A0010",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Dòng SQL1 chứng minh đúng số tiền và giờ yêu cầu. Nhận định ngày 15/08 ngoài phạm vi dữ liệu mâu thuẫn với dòng này và với chính mốc 15/09 được nêu. Không có nguồn cho suy đoán về dữ liệu tương lai."
+    },
+    {
+      "case_id": "A0011",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_SUPPLY_000 hỗ trợ các ý về pool, nhu cầu vay, lãi suất biến đổi và khả năng dùng tài sản đã cung cấp làm thế chấp."
+    },
+    {
+      "case_id": "A0012",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Số USD nằm trong dung sai và trả lời đúng ý số dư tức thời. Hàng 0 được dẫn không phải giờ 15/08. DOC_SUPPLY_000 không định nghĩa dư nợ. So sánh hai số dư rồi trừ lãi còn bỏ sót khoản trả nợ."
+    },
+    {
+      "case_id": "A0013",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 xác nhận mức trung bình. Phát biểu riêng về 19.937 hàng và hai mốc bao phủ không thể kiểm tra bằng truy vấn AVG. Gói không chứa nguồn availability mà phát biểu này dẫn."
+    },
+    {
+      "case_id": "A0014",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 xác nhận giờ yêu cầu và đúng số tiền. Dự đoán đây là ngày tương lai và mốc chấm dứt phạm vi quan sát toàn bảng không có nguồn dẫn trong gói."
+    },
+    {
+      "case_id": "A0015",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Nguồn đã dẫn nêu vai trò thế chấp đối với khoản vay, công thức Health Factor, ngưỡng rủi ro và cách cải thiện chỉ số."
+    },
+    {
+      "case_id": "A0016",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Đúng số dư và đúng phân biệt dư nợ với vay mới. Hai số dư sau khi trừ lãi chưa tính đến khoản trả nợ. DOC_SUPPLY_000 không hỗ trợ cách tính đó. SQL trả is_carried=false trong khi câu trả lời diễn giải là đã mang tiếp."
+    },
+    {
+      "case_id": "A0017",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Đúng số AVG từ SQL1. Không có nhật ký truy xuất hoặc nguồn xác nhận 19.937 hàng và danh sách năm tài liệu truy xuất như phần giải thích khẳng định."
+    },
+    {
+      "case_id": "A0018",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Số tiền đúng theo SQL1. Câu nói 15/08/2025 nằm sau 15/09/2026 sai về thứ tự thời gian và trái với chính quan sát SQL trả về. Không có nguồn cho nhận định ngoài phạm vi."
+    },
+    {
+      "case_id": "A0019",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Hạn mức vay mới phụ thuộc LTV. Ví dụ trong DOC_LIQ_000 tính Health Factor cho khoản vay 6.000 USD, chưa xác nhận có thể vay mới 8.000 USD. HF dưới 1 tạo điều kiện để bên thanh lý thực hiện giao dịch, chưa chứng minh giao dịch chắc chắn xảy ra."
+    },
+    {
+      "case_id": "A0020",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Số tiền và ý phân biệt số dư với khoản vay mới đúng. Chênh lệch hai số dư không đo được tổng vay mới nếu có trả nợ. DOC_BORROW_000 và DOC_BORROW_001 không chứng minh cách tính này, còn dictionary không có trong gói."
+    },
+    {
+      "case_id": "A0021",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Số trung bình đúng với SQL1. Nhận xét tháng 6/2026 ngoài phạm vi đến tháng 9/2026 mâu thuẫn với chính khoảng ngày nêu ra. SQL1 không dẫn nguồn cho các mốc lịch sử hay nhận xét về thời điểm hiện tại."
+    },
+    {
+      "case_id": "A0022",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Số dư đúng. Cờ is_carried=false trái với nhận xét đã dùng quan sát ở giờ lưới trước. SQL1 ghi 23:58:35 của ngày hôm trước nên đây cũng không cùng giờ UTC với 00:00 như câu trả lời khẳng định."
+    },
+    {
+      "case_id": "A0023",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Ví dụ 10.000 USD với ngưỡng thanh lý 80% chỉ xác định mức nợ tại HF bằng 1. DOC_LIQ_000 không cho LTV để xác nhận hạn mức vay mới 8.000 USD. Đủ điều kiện thanh lý cũng chưa bảo đảm sẽ có giao dịch thanh lý."
+    },
+    {
+      "case_id": "A0024",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Đúng số dư và phân biệt với lợi nhuận. SQL1 thực sự trả về giờ 15/08, trái với kết luận ngoài phạm vi. DOC_SUPPLY_000 không chứng minh rằng so sánh hai số dư tổng hợp đủ để tách lãi khỏi dòng gửi rút."
+    }
+  ]
+}
