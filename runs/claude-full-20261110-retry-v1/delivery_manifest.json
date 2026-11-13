@@ -1,0 +1,17 @@
+{
+  "runtime_outputs": 120,
+  "scores": 120,
+  "replay_verdicts": 300,
+  "controlled_outputs": 8,
+  "runtime_errors": 0,
+  "judge_errors": 0,
+  "replay_execution_errors": 0,
+  "models": [
+    "us.anthropic.claude-haiku-4-5-20251001-v1:0"
+  ],
+  "sources_and_runtime_code_unchanged": true,
+  "known_usage_estimate_usd": 4.4708829,
+  "unknown_usage_calls": 28,
+  "labels": "provisional; human audit pending",
+  "split": "dev; no final test"
+}

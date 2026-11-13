@@ -1,0 +1,38 @@
+{
+  "reviewer_names": [
+    "Nguyễn Thanh Thảo",
+    "Nguyễn Ngọc Đông Phương"
+  ],
+  "items": [
+    {
+      "case_id": "A0004",
+      "answer_correctness": 1,
+      "notes": "Câu trả lời nêu đúng dư nợ WETH là 3.042.883.324,32 USD và giải thích được vì sao số dư tại một thời điểm không thể hiện tổng vay mới trong tháng."
+    },
+    {
+      "case_id": "A0007",
+      "answer_correctness": 0,
+      "notes": "Câu trả lời giải thích Health Factor và rủi ro thanh lý nhưng thiếu ý bắt buộc về cách giá trị thế chấp và tỷ lệ cho vay trên giá trị tài sản (LTV) giới hạn số tiền có thể vay."
+    },
+    {
+      "case_id": "A0015",
+      "answer_correctness": 0,
+      "notes": "Phần giải thích cho biết khi nào vị thế có nguy cơ bị thanh lý nhưng chưa giải thích vì sao người dùng chỉ có thể vay một phần giá trị tài sản thế chấp."
+    },
+    {
+      "case_id": "A0016",
+      "answer_correctness": 1,
+      "notes": "Câu trả lời nêu đúng dư nợ USDC là 1.993.676.848,03 USD và phân biệt được dư nợ với tổng vay mới, dù phép tính bổ sung từ hai số dư bỏ sót các khoản trả nợ."
+    },
+    {
+      "case_id": "A0020",
+      "answer_correctness": 1,
+      "notes": "Số dư WETH và lý do không thể dùng một số dư để đo tổng vay mới đều đúng, dù cách tính bổ sung bằng chênh lệch dư nợ đầu và cuối tháng có sai sót."
+    },
+    {
+      "case_id": "A0022",
+      "answer_correctness": 1,
+      "notes": "SQL1 xác nhận dư nợ USDC tại giờ được hỏi là 1.993.676.848,03 USD, dù phần giải thích thêm diễn giải ngược cờ `is_carried=false`."
+    }
+  ]
+}
