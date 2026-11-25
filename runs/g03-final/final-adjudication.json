@@ -1,0 +1,175 @@
+{
+  "source_sha256": "662484005eb40d9804b5ac21040167fa79e35ced8c21e5701b99365ff5829838",
+  "review_sha256": [
+    "8fb3aeb3d782614bc110d4d6ed770f664929cd62d1111026539401865e3f3c89",
+    "b15a2e9586b6b767f9932faf28a9155c3905d50eeeee7f0bae2d9d18394997c9"
+  ],
+  "rubric_sha256": "7ff3b1e135e0346c79db69383512196e2ebe4ef5a6aec575f122cd53b022a52c",
+  "items": [
+    {
+      "case_id": "A0009",
+      "faithfulness": 0,
+      "notes": "SQL1 và DOC_BORROW_000 hỗ trợ số dư và cơ chế lãi. Tuy nhiên cảnh báo nói câu hỏi yêu cầu chứng minh nhân quả và không thể đáp ứng, trong khi câu hỏi chỉ yêu cầu đánh giá liệu một snapshot có đủ bằng chứng."
+    },
+    {
+      "case_id": "A0020",
+      "faithfulness": 0,
+      "notes": "Số 0 đúng riêng cho bộ lọc market đã dùng. Phần cảnh báo còn khẳng định các mốc quan sát và nội dung của metadata availability, trong khi bằng chứng đính kèm không có bảng đó."
+    },
+    {
+      "case_id": "A0030",
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "DOC_WITHDRAW_000 khuyến nghị theo dõi health factor. Phát biểu “phải theo dõi thường xuyên ... từ Dashboard” biến khuyến nghị thành điều kiện rút mà nguồn được dẫn không đặt ra."
+    },
+    {
+      "case_id": "A0036",
+      "citation_quality": 0,
+      "notes": "SQL1 dẫn đúng số dư WETH, nhưng phát biểu về các dữ liệu cần để tách lãi khỏi vay mới và trả nợ để trống citations."
+    },
+    {
+      "case_id": "A0040",
+      "faithfulness": 1,
+      "notes": "SQL1 đếm 63 sự kiện đã xảy ra. DOC_LIQ_001 mô tả việc bên thanh lý phải thực hiện giao dịch. Hai nguồn phù hợp với giới hạn suy luận về những vị thế chưa được xử lý; câu trả lời chỉ nêu thiếu bao phủ như một khả năng."
+    },
+    {
+      "case_id": "A0041",
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Năm hàng SQL1 cho thấy dư nợ WETH quy đổi USD tăng rồi giảm. Chúng thiếu giá WETH và dòng tiền, nên chưa chứng minh cách diễn giải về lãi phải tăng đơn điệu; phát biểu về các dữ liệu cần để quy nguyên nhân cũng để trống citations."
+    },
+    {
+      "case_id": "A0044",
+      "citation_quality": 0,
+      "notes": "Phát biểu trung tâm về việc phải so sánh các mốc và loại trừ vay mới hoặc trả nợ để trống citations. DOC_BORROW_000 được dẫn cho cơ chế tích lũy lãi."
+    },
+    {
+      "case_id": "A0045",
+      "answer_correctness": 0,
+      "notes": "Câu trả lời xếp HF bằng 0,95 vào cả hai nhánh. Theo DOC_LIQ_000, nhánh tối đa 50% đòi hỏi HF lớn hơn 0,95 cùng các điều kiện về giá trị."
+    },
+    {
+      "case_id": "A0047",
+      "faithfulness": 0,
+      "notes": "DOC_BORROW_000 giải thích mức sử dụng vốn ảnh hưởng lãi suất. Phát biểu bổ sung suy ra lãi suất tác động đến thanh khoản khả dụng vượt quá chiều quan hệ được nguồn xác nhận."
+    },
+    {
+      "case_id": "A0049",
+      "answer_correctness": 0,
+      "notes": "SQL1 cho tổng 28.132.234,04 USD đúng kỳ. Cảnh báo lại yêu cầu xác minh liệu dữ liệu có phải mô phỏng và liệu tổng có thuộc Ethereum, khiến kết quả đúng bị đặt lại điều kiện."
+    },
+    {
+      "case_id": "A0054",
+      "observed_refusal": 0,
+      "notes": "Câu trả lời dùng SUM = NULL để kết luận tháng 7 không ghi nhận sự kiện WETH. Đây là một kết luận về nội dung chính, dù bộ lọc market chưa xác minh."
+    },
+    {
+      "case_id": "A0063",
+      "answer_correctness": 0,
+      "notes": "Dù hiệu cuối khớp −1.725.488.668,29 USD, câu trả lời gán số quý II cho SQL1 rồi tự xác nhận SQL1 chỉ trả quý I, còn cảnh báo lại diễn giải sai yêu cầu tính hiệu hai quý."
+    },
+    {
+      "case_id": "A0074",
+      "citation_quality": 0,
+      "notes": "SQL1 hỗ trợ số dư USDC và tài liệu hỗ trợ cơ chế lãi vay, nhưng phát biểu riêng giải thích vì sao một snapshot không đủ quy nguyên nhân có citations rỗng."
+    },
+    {
+      "case_id": "A0076",
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "DOC_LIQ_000 xác nhận HF dưới 1 khiến vị thế đủ điều kiện thanh lý. Câu cuối khẳng định vị thế “sẽ bị thanh lý”, mạnh hơn điều tài liệu chứng minh."
+    },
+    {
+      "case_id": "A0077",
+      "observed_refusal": 0,
+      "notes": "Hệ thống trả lời trực tiếp rằng không có sự kiện WETH trong tháng dựa vào phép lọc trả 0 hàng. Kết luận thiếu căn cứ theo token vẫn là một câu trả lời."
+    },
+    {
+      "case_id": "A0079",
+      "answer_correctness": 0,
+      "notes": "DOC_LIQ_000 đặt HF bằng 0,95 ở nhánh có thể thanh lý tới 100%. Cụm “từ 0.95 trở lên” trong nhánh 50% làm sai chính điểm biên này."
+    },
+    {
+      "case_id": "A0084",
+      "answer_correctness": 1,
+      "notes": "Câu cuối nêu bên thanh lý có thể khởi động giao dịch khi vị thế đủ điều kiện, qua đó phân biệt ngưỡng HF với lúc thực thi. Câu trả lời cũng nêu việc hoàn nợ, nhận thế chấp kèm thưởng và mức tối đa 100%."
+    },
+    {
+      "case_id": "A0087",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "DOC_WITHDRAW_000 nói có thể cần trả bớt nợ hoặc bổ sung thế chấp khi rút. Câu trả lời bắt buộc chọn một trong hai thao tác ngay cả khi vị thế sẵn đủ an toàn, nên cả điều kiện nêu ra lẫn dẫn chứng đều không đạt."
+    },
+    {
+      "case_id": "A0099",
+      "answer_correctness": 1,
+      "notes": "Cảnh báo ban đầu đặt sai thứ tự tháng 7 và tháng 9, nhưng ngay sau đó tự sửa, xác nhận tháng 7 nằm trong dữ liệu và chấp nhận kết quả 63 sự kiện trên 52 giao dịch. Kết luận cuối vẫn trả đủ hai ý."
+    },
+    {
+      "case_id": "A0119",
+      "answer_correctness": 0,
+      "notes": "SQL1 trả về trung bình của cả hai quý và hiệu −240.373.085,13 USD. Cảnh báo kết luận chỉ quý II được xác minh, khiến người đọc nghi ngờ phép so sánh dù cả hai giá trị đều có trong kết quả."
+    },
+    {
+      "case_id": "A0129",
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chứng minh 158 sự kiện thuộc 107 giao dịch. Hai số đếm không cho biết các giao dịch đó xử lý nhiều vị thế hay nhiều tài sản như ví dụ trong câu trả lời, và ví dụ này thiếu nguồn riêng."
+    },
+    {
+      "case_id": "A0130",
+      "faithfulness": 0,
+      "notes": "Cảnh báo cho rằng để quy phần tăng cho lãi thì giữa hai mốc tuyệt đối không được có vay mới hoặc trả nợ. Đây là yêu cầu quá mức vì có thể đo và loại trừ các dòng tiền đó."
+    },
+    {
+      "case_id": "A0133",
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Câu trả lời nói người dùng phải trả nợ hoặc bổ sung thế chấp trước khi rút. DOC_WITHDRAW_000 chỉ nói các thao tác này có thể cần thiết tùy mức an toàn của vị thế."
+    },
+    {
+      "case_id": "A0145",
+      "faithfulness": 0,
+      "notes": "Giới hạn ánh xạ USDC giải thích được vì sao bộ lọc market chưa đủ. Tuy nhiên, các mốc availability và nhận định về việc hệ thống chưa thấy đầy đủ lược đồ không được kết quả SQL1 hay POLICY xác nhận."
+    },
+    {
+      "case_id": "A0157",
+      "answer_correctness": 1,
+      "notes": "Câu trả lời phân biệt rõ số dư 2.196.015.248,98 USD ngày 15/09/2026 với dư nợ hiện tại và giữ kết luận không có dữ liệu trực tiếp. Suy đoán sai về dữ liệu giả lập ảnh hưởng tính căn cứ nhưng không đảo kết luận đó."
+    },
+    {
+      "case_id": "A0158",
+      "faithfulness": 0,
+      "notes": "Hai hàng SQL1 xác nhận mức giảm 4.300.049,87 USD. Chúng không tách riêng vay, trả nợ hoặc biến động giá để chứng minh nhận định dòng tiền ròng chi phối."
+    },
+    {
+      "case_id": "A0193",
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Phát biểu “dư nợ USDC ngay bây giờ” trỏ SQL1, trong khi ô được dẫn chỉ xác nhận số dư lịch sử tại 07:00 UTC ngày 15/09/2026."
+    },
+    {
+      "case_id": "A0196",
+      "faithfulness": 0,
+      "notes": "Các hàng 23 và 24 hỗ trợ phép trừ. Cảnh báo lại báo thiếu mốc 00:00 UTC ngày 15/08 trong khi hàng 24 chứa đúng giờ đó; phạm vi truy vấn rộng hơn không làm mất quan sát cần tìm."
+    },
+    {
+      "case_id": "A0200",
+      "faithfulness": 0,
+      "notes": "SQL1 ghi is_carried=false. Quan sát nguồn sớm hơn một giây không chứng minh giá trị đã được dùng lại từ giờ lưới trước như phát biểu đính kèm."
+    },
+    {
+      "case_id": "A0226",
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 xác nhận tháng 2/2026 có 2.647 giao dịch. Phát biểu dẫn SQL1 lại ghi ngày cuối là 29/02/2026, một ngày không tồn tại."
+    },
+    {
+      "case_id": "A0233",
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Phát biểu gắn mức thanh lý tối đa 100% với điều kiện chung HF dưới 1. DOC_LIQ_000/001 còn yêu cầu HF ≤ 0,95 hoặc giá trị nợ hay tài sản thế chấp dưới 2.000 USD cho nhánh này."
+    }
+  ]
+}

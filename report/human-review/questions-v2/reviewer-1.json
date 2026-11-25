@@ -1,0 +1,547 @@
+{
+  "schema_version": 1,
+  "source_sha256": "e2c9011310a186567c62779e7d313f6184aadb7f5e56f0ee94ea16331b4bc8aa",
+  "reviewer_name": "Nguyễn Thanh Thảo",
+  "items": [
+    {
+      "id": "Q001",
+      "content_sha256": "d17b5d3c090223ae2606d5d1c80031fc6a5aca47ddf89faeb9baac00f80bca73",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Khi cung cấp tài sản, bạn chuyển token vào pool Aave V3 để người khác có thể vay. Số dư của bạn tích lũy lãi theo lãi suất cung cấp, thay đổi theo mức sử dụng vốn và tham số của thị trường. [DOC_SUPPLY_000]"
+    },
+    {
+      "id": "Q002",
+      "content_sha256": "a4b62e7f418c57d7735885b3f9a1717f3ce1ff15f1c1d28717a212fbf28842e5",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Bạn gửi token vào pool để người khác vay và hưởng lãi suất thay đổi theo thị trường. [DOC_SUPPLY_000]"
+    },
+    {
+      "id": "Q003",
+      "content_sha256": "5dc8b993a7c223dda642090ca3c0ee3784ac999c73799ee267b22a398efe8474",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Tài sản thế chấp bảo đảm khoản vay. Giá trị tài sản và tỷ lệ cho vay trên giá trị tài sản (LTV) quyết định hạn mức. Nếu giá trị thế chấp giảm đủ sâu, vị thế có thể bị thanh lý. [DOC_BORROW_000]"
+    },
+    {
+      "id": "Q004",
+      "content_sha256": "c7d89acd486e65f6697c44d1dab59241b7d24b748d94530caba48bf23b80da99",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Giá trị thế chấp và LTV giới hạn số tiền bạn có thể vay. Nếu tài sản bảo đảm không còn đủ để duy trì khoản vay, vị thế có thể bị thanh lý. [DOC_BORROW_000]"
+    },
+    {
+      "id": "Q005",
+      "content_sha256": "288f6da177c30a97af7687df3f99af0e7a2ca6cafde3c8111b7be0005d14abfb",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Health factor phản ánh mức an toàn của vị thế; dưới 1 có thể bị thanh lý, không đồng nghĩa chắc chắn bị thanh lý ngay lập tức. [DOC_LIQ_000]"
+    },
+    {
+      "id": "Q006",
+      "content_sha256": "f391352664de41ce36b01a27dfbe2f9ce54a4d595ae57f8172ee8ccf278a0c40",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Health factor phản ánh mức an toàn của vị thế; dưới 1 có thể bị thanh lý, không đồng nghĩa chắc chắn bị thanh lý ngay lập tức. [DOC_LIQ_000]"
+    },
+    {
+      "id": "Q007",
+      "content_sha256": "dd4bd8474980b8b3a62ae344c9ae71c094c4a4b5d827c5e54af2dab3adb03afd",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "DOC_LIQ_000/001 xác nhận ngưỡng HF dưới 1, phần thưởng từ tài sản thế chấp và khả năng trả tới 100% nợ tùy điều kiện. Đáp án phân biệt được lúc đủ điều kiện với lúc thanh lý diễn ra."
+    },
+    {
+      "id": "Q008",
+      "content_sha256": "857ceab895d2c9e4904536dcd3d6ce90ff9c72de7f33d140d256b09d872c822c",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "DOC_LIQ_000/001 xác nhận ngưỡng HF dưới 1, phần thưởng từ tài sản thế chấp và khả năng trả tới 100% nợ tùy điều kiện. Đáp án phân biệt được lúc đủ điều kiện với lúc thanh lý diễn ra."
+    },
+    {
+      "id": "Q009",
+      "content_sha256": "264661174f33b3112d6808d16a85279e87a1373444093221a348f88e74f35bcd",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "DOC_BORROW_001 xác nhận lãi bắt đầu tích lũy ngay khi vay. DOC_BORROW_000 giải thích lãi suất thay đổi theo mức sử dụng vốn và tham số quản trị."
+    },
+    {
+      "id": "Q010",
+      "content_sha256": "0e22ac997969742166adb814b795d5ead2979e93142bb6fac3f69fbce2135e9d",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "DOC_BORROW_001 xác nhận lãi bắt đầu tích lũy ngay khi vay. DOC_BORROW_000 giải thích lãi suất thay đổi theo mức sử dụng vốn và tham số quản trị."
+    },
+    {
+      "id": "Q011",
+      "content_sha256": "daff0e4862bbc2cdc35e39e2b1830df5af9838a43972453229ece52f9ff2b466",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "DOC_WITHDRAW_000 xác nhận giới hạn thanh khoản chưa được vay và yêu cầu duy trì đủ thế chấp sau khi rút. Bước 5 nêu cả hai cách xử lý là trả bớt nợ hoặc bổ sung thế chấp."
+    },
+    {
+      "id": "Q012",
+      "content_sha256": "a02f4f69fb675de2d5f4a0c335c39d74e38aa4d14e1d50185fd94879e8d900e8",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "DOC_WITHDRAW_000 xác nhận giới hạn thanh khoản chưa được vay và yêu cầu duy trì đủ thế chấp sau khi rút. Bước 5 nêu cả hai cách xử lý là trả bớt nợ hoặc bổ sung thế chấp."
+    },
+    {
+      "id": "Q013",
+      "content_sha256": "a1fb592c8ca23afeb808d2037ec73b67685e8a5940c3bdb2e704ff826926ba66",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Giá trị tài sản cung cấp USDC lúc 00:00 UTC ngày 15/08/2026 là 1.997.694.271,60 USD. [SQL1]"
+    },
+    {
+      "id": "Q014",
+      "content_sha256": "ca84bea7f022204449f955158d9caa9ee2e8a1be9b12835f83f7b128c909382a",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Giá trị tài sản cung cấp WETH lúc 00:00 UTC ngày 15/08/2025 là 11.041.542.615,29 USD. [SQL1]"
+    },
+    {
+      "id": "Q015",
+      "content_sha256": "8203206cf67d694b4db768a0acb5a2bc1b8aa30d3b23531e980c26a2dc4ae491",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Dư nợ USDC lúc 00:00 UTC ngày 15/08/2026 là 1.993.676.848,03 USD. [SQL1]"
+    },
+    {
+      "id": "Q016",
+      "content_sha256": "0f30bd3440358ef1da71ff1e76a940f677d7002ff9ee9dc1a6191849fa1f801e",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Dư nợ WETH lúc 00:00 UTC ngày 15/08/2025 là 10.023.005.896,24 USD. [SQL1]"
+    },
+    {
+      "id": "Q017",
+      "content_sha256": "5862247f789e3ff3d3208df5e2f71a3bcb280adc82132ceb56638871a99368cd",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về 107 giao dịch."
+    },
+    {
+      "id": "Q018",
+      "content_sha256": "575b5bbcddba758917270c3c4dbd7ee4682b06da3c42e98fc5424383825459c7",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về 307 giao dịch."
+    },
+    {
+      "id": "Q019",
+      "content_sha256": "e33250d73e3520dd37b3d15a3fa07f4aa98271248195575afac5daa38f16b93c",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về 158 sự kiện."
+    },
+    {
+      "id": "Q020",
+      "content_sha256": "db55f24c05197297470c5f5979ae29ffa5edacb0f73e60c28a08d6a024b6b624",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về 307 sự kiện."
+    },
+    {
+      "id": "Q021",
+      "content_sha256": "5890fcd5b24b5bf908368243d5e936a619454f596dd4feaf13a09880f9359059",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Câu hỏi đã nêu rõ tổng giá trị. SQL1 cộng amount_usd trong tháng 8/2026 theo UTC, thu được 6.604.733,08 USD."
+    },
+    {
+      "id": "Q022",
+      "content_sha256": "0a0c81b30c79c2c3b0427b18d8a111ac600c137aea772b7c8353512700758801",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Câu hỏi đã nêu rõ tổng giá trị. SQL1 cộng amount_usd trong tháng 8/2025 theo UTC, thu được 28.132.234,04 USD."
+    },
+    {
+      "id": "Q023",
+      "content_sha256": "98a9f0d90d7c4c49f4aa5d8e06cf2ff62111ffbd37555854ef9af6f3d38bdac3",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về 2,073,673,650.81 USD."
+    },
+    {
+      "id": "Q024",
+      "content_sha256": "1a1b18bd7c575009d1e701ae7e44d6c30653fb7ab38e836c47be38446be4393f",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về 10,836,798,387.49 USD."
+    },
+    {
+      "id": "Q025",
+      "content_sha256": "ded81f67192e143f04270db19f8e1e5e0f73a2936f5c7291a7e7d752d2f5385e",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Dư nợ DAI trung bình theo giờ trong tháng 6/2026 (UTC) là 98.282.885,63 USD. [SQL1]"
+    },
+    {
+      "id": "Q026",
+      "content_sha256": "9566732bea1d55ab5d998b049f6b128fab0aef6d0efa1cfb980cdac5fafecdaf",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Dư nợ USDT trung bình theo giờ trong tháng 7/2026 (UTC) là 2.337.819.599,99 USD. [SQL1]"
+    },
+    {
+      "id": "Q027",
+      "content_sha256": "20e93e13efe137c686cf9b6ff23416562103c5cc0aaba43333dda6a5e112d8bf",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Dư nợ USDe trung bình theo giờ trong tháng 8/2026 (UTC) là 521.264.061,99 USD. [SQL1]"
+    },
+    {
+      "id": "Q028",
+      "content_sha256": "f92fa80a9487717c00a6d6bfce02db6b58b8a32a68fb4230134ea4d3c9e35678",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Giá trị tài sản cung cấp DAI trung bình theo giờ trong tháng 6/2026 (UTC) là 118.343.676,63 USD. [SQL1]"
+    },
+    {
+      "id": "Q029",
+      "content_sha256": "aa1f6b4e3b567f254547012d4225842805131b510755de2dda00d7a633b6bc8a",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Giá trị tài sản cung cấp USDT trung bình theo giờ trong tháng 7/2026 (UTC) là 2.831.780.087,93 USD. [SQL1]"
+    },
+    {
+      "id": "Q030",
+      "content_sha256": "08581e20871a0ee2a9fe1a2fac831b3c3e42173cc2e77ac6161e0a7288d923b2",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Giá trị tài sản cung cấp USDe trung bình theo giờ trong tháng 8/2026 (UTC) là 749.295.298,14 USD. [SQL1]"
+    },
+    {
+      "id": "Q031",
+      "content_sha256": "e15f73c5288d3e5b8cdc4a37cc1fc5333e6194fb68833c86cb983c165bbbd96d",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về 1,692,127,461.00 USD."
+    },
+    {
+      "id": "Q032",
+      "content_sha256": "3ba0354d8575268678e4e3e5358f2fc386a1acc54632bcf37c597ea45097b121",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về -437,232,310.61 USD."
+    },
+    {
+      "id": "Q033",
+      "content_sha256": "f980f06daaf20048705941efc992db981e3beefa0f136cd0d01861fc3f275541",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về 1,417,403,487.04 USD."
+    },
+    {
+      "id": "Q034",
+      "content_sha256": "82dbc5e8d50dd285af45ff67b05cca05c5027952f75b716fa46ca27f4bb422d8",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về -12,133,324.43 USD."
+    },
+    {
+      "id": "Q035",
+      "content_sha256": "1b52648714a0921cd2601854b5a29f85f582f9024a63f40b90b9fc6a75a6f86c",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về -1,725,488,668.29 USD."
+    },
+    {
+      "id": "Q036",
+      "content_sha256": "58730b3d0786b1cc347aada233961f8d64084c4ff630cb06e6047a19b7880cb1",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về -240,373,085.13 USD."
+    },
+    {
+      "id": "Q037",
+      "content_sha256": "84f0c4ca904c958f036673c2640b9a3ab0192aedbb40b086afe1fe9cdd86e4cf",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về 2025-02, 2188 giao dịch."
+    },
+    {
+      "id": "Q038",
+      "content_sha256": "d319afee4a343b45fde29a5c867de4ef7fbd98896628de2a79fcf2ecc825b485",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về 2026-02, 2647 giao dịch."
+    },
+    {
+      "id": "Q039",
+      "content_sha256": "4e60c75dbb466ececdf4443a5bf71e9363a686c5141ada0907646ee2726422b6",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về 2026-02, 2647 giao dịch."
+    },
+    {
+      "id": "Q040",
+      "content_sha256": "bdad2ca4c1243f79dd3576536c0534dbc0b40cfe553987fa67b1216172d0d542",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về 51,931,723.65 USD."
+    },
+    {
+      "id": "Q041",
+      "content_sha256": "f06ec396f9efa7bd78011d01098aa4fa8ce0e34d876249ca0fe1f17dac45c1cc",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về -325,072,291.77 USD."
+    },
+    {
+      "id": "Q042",
+      "content_sha256": "0b1a237108ea4ceda138e4733edda86eda05279b1da273828242a1ae1803aa95",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về -324,263,050.31 USD."
+    },
+    {
+      "id": "Q043",
+      "content_sha256": "57c9030d1423447da89a42f2d4265748682887e30d2755cf3a8e6c4011f3496a",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Dư nợ USDC lúc 00:00 UTC ngày 15/08/2026 là 1.993.676.848,03 USD. Số dư này bao gồm cả các khoản vay từ trước còn chưa trả. Muốn tính tổng vay mới, cần cộng các khoản giải ngân trong tháng. [SQL1] [DOC_BORROW_000]"
+    },
+    {
+      "id": "Q044",
+      "content_sha256": "d9e69a1552c6763649f988b2604ce29ff29894878a7b842ab804ac88913641e6",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Dư nợ WETH lúc 00:00 UTC ngày 15/07/2026 là 3.042.883.324,32 USD. Số dư này bao gồm cả các khoản vay từ trước còn chưa trả. Muốn tính tổng vay mới, cần cộng các khoản giải ngân trong tháng. [SQL1] [DOC_BORROW_000]"
+    },
+    {
+      "id": "Q045",
+      "content_sha256": "2ae8cd9c77a48693693648d2cff3279d4dcc2167284f65efa8beda40aef7e441",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Giá trị tài sản cung cấp USDC lúc 00:00 UTC ngày 15/08/2026 là 1.997.694.271,60 USD. Số dư bao gồm cả vốn người dùng đã gửi. Một số dư tại một thời điểm không cho biết phần lợi nhuận đã thu được. [SQL1] [DOC_SUPPLY_000]"
+    },
+    {
+      "id": "Q046",
+      "content_sha256": "8bd9ee1813eacfb7e811c736bf9cc8cf71488ed6f3c21035f6ff0a913ff2ee03",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Giá trị tài sản cung cấp WETH lúc 00:00 UTC ngày 15/07/2026 là 3.897.799.627,04 USD. Số dư bao gồm cả vốn người dùng đã gửi. Một số dư tại một thời điểm không cho biết phần lợi nhuận đã thu được. [SQL1] [DOC_SUPPLY_000]"
+    },
+    {
+      "id": "Q047",
+      "content_sha256": "e3bc2599010eaeffd931d52a52c94ad1414904e9c294b70fb3cc67c1870993de",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về 158 sự kiện. Số sự kiện không chứng minh mọi vị thế có health factor dưới 1 đều đã được thanh lý."
+    },
+    {
+      "id": "Q048",
+      "content_sha256": "c44b6f37e04f83898c0790f28883c2b6cd00387b9c1cd0b72929d1bfc979e589",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về 63 sự kiện. Số sự kiện không chứng minh mọi vị thế có health factor dưới 1 đều đã được thanh lý."
+    },
+    {
+      "id": "Q049",
+      "content_sha256": "acc12b2921aa99fd4ec3e062d824457d4f8cb6410ec0b22bed40e4abc38226da",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 đếm được 107 giao dịch phân biệt. SQL2 nhóm theo tx_hash xác nhận 158 sự kiện, trong đó 18 giao dịch có nhiều sự kiện."
+    },
+    {
+      "id": "Q050",
+      "content_sha256": "7674e151e28314cea1b8a7ea355c27de1c98deed6fb167e3b10587dda6365d5e",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 đếm được 52 giao dịch phân biệt. SQL2 nhóm theo tx_hash xác nhận 63 sự kiện, trong đó 5 giao dịch có nhiều sự kiện."
+    },
+    {
+      "id": "Q051",
+      "content_sha256": "82aa78603b19e3d9c61a95cf8ea9f032a1e470c877b6ab6ceaab4800b9b6e43c",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về 1,993,676,848.03 USD. Biến động dư nợ USD không đủ kết luận nguyên nhân từ lãi vay hoặc hành vi người dùng."
+    },
+    {
+      "id": "Q052",
+      "content_sha256": "525744d974f38b2fb1f0ccf08003e485d90de7a8ed258fab619701e0cd2badb4",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 trả về 3,042,883,324.32 USD. Biến động dư nợ USD không đủ kết luận nguyên nhân từ lãi vay hoặc hành vi người dùng."
+    },
+    {
+      "id": "Q053",
+      "content_sha256": "18b3d669e7f575967037c1e34e1ba54ceb7d5ab291a475ca7b6911d0e529330e",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 xác nhận số dư cung cấp là 1.997.694.271,60 USD tại đúng giờ UTC. DOC_WITHDRAW_000 giải thích vì sao khả năng rút còn phụ thuộc thanh khoản trong pool và mức thế chấp sau khi rút."
+    },
+    {
+      "id": "Q054",
+      "content_sha256": "842a856ebb084ac75d30168cc6099cb3eb4278a1510b66673c884a54d04d92d0",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "SQL1 xác nhận số dư cung cấp là 3.897.799.627,04 USD tại đúng giờ UTC. DOC_WITHDRAW_000 giải thích vì sao khả năng rút còn phụ thuộc thanh khoản trong pool và mức thế chấp sau khi rút."
+    },
+    {
+      "id": "Q055",
+      "content_sha256": "df07f4e92aa5ac9df3c13763413b882eb5c077da6c49a4799a3c8bdf791f5027",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Không đủ dữ liệu để tính tổng phí gas bằng USD cho các giao dịch thanh lý tháng 8/2026. Bảng sự kiện có mã giao dịch nhưng thiếu phí gas và giá quy đổi sang USD. [POLICY]"
+    },
+    {
+      "id": "Q056",
+      "content_sha256": "c434e87206e06682a6c3fcb408a075543bb12b76810f6d3a3f30e2e1d6ec00a8",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Không xác định được lợi nhuận ròng của người thanh lý trong tháng 8/2026. Giá trị sự kiện thanh lý không cho biết giá trị tài sản thu về sau khi trừ nợ đã trả, gas và các chi phí khác. [POLICY]"
+    },
+    {
+      "id": "Q057",
+      "content_sha256": "20c655236fb68232dd5f6aa01949ee53cf2be290f046a437fb83d4c997aae02d",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Chưa xác minh ánh xạ market sang tài sản thanh lý; không thể kết luận theo token. [POLICY]"
+    },
+    {
+      "id": "Q058",
+      "content_sha256": "a2d69bfb0f49532c1e71eabaf81bd2c02ed3b2edd33dbd48397caeecdc3bb666",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Chưa xác minh ánh xạ market sang tài sản thanh lý; không thể kết luận theo token. [POLICY]"
+    },
+    {
+      "id": "Q059",
+      "content_sha256": "7d0b49614a0b8dedf6c415aa27d318c37f1f9849e5c3ffb68954bf4a4e052f36",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Bộ dữ liệu lịch sử cố định không cung cấp dữ liệu trực tiếp hoặc kết quả dự báo tương lai. [POLICY]"
+    },
+    {
+      "id": "Q060",
+      "content_sha256": "c8206eb2f54a739b498cff21291acbef0c0bd36054f1d6fcc673636e98fc74c1",
+      "verdict": "approved",
+      "verified_answer": true,
+      "verified_sources": true,
+      "verified_scope": true,
+      "notes": "Bộ dữ liệu lịch sử cố định không cung cấp dữ liệu trực tiếp hoặc kết quả dự báo tương lai. [POLICY]"
+    }
+  ]
+}

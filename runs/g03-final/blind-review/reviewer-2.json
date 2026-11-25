@@ -1,0 +1,1992 @@
+{
+  "schema_version": 1,
+  "source_sha256": "662484005eb40d9804b5ac21040167fa79e35ced8c21e5701b99365ff5829838",
+  "reviewer_name": "Nguyễn Ngọc Đông Phương (AI mô phỏng)",
+  "items": [
+    {
+      "case_id": "A0001",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Có số giao dịch và sự kiện khác nhau trong cùng SQL1 nhưng trả lời lưỡng lự về việc hai số có bắt buộc bằng nhau. Chính hai phép đếm cho thấy ít nhất một giao dịch có nhiều sự kiện. Phần giải thích về cơ chế phát log thiếu nguồn. Tham chiếu 52 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0002",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 158}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0003",
+      "answer_correctness": 0,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "SQL1 hỗ trợ số dư và ngày của quan sát cuối 15/9/2026. Câu trả lời đưa số lịch sử ngoài phạm vi thay vì nêu rõ không thể cung cấp dư nợ thời gian thực.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0004",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Phần đầu tính đúng AVG quý II trừ AVG quý I. Cảnh báo lại khẳng định chỉ nên lấy quý II, trái câu hỏi và phép tính tham chiếu. Tham chiếu -1,725,488,668.2893205 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0005",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Bộ lọc market làm SUM trả NULL. Suy ra không có dữ liệu cho cả tháng trái với tổng USD trong tham chiếu. SQL1 chỉ cho biết kết quả của tập con đã lọc. Tham chiếu 28,132,234.04010158 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0006",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Claim gọi 2.196.015.248,98 USD là dư nợ ngay bây giờ, trong khi SQL1 chỉ trả snapshot ngày 15/9/2026.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0007",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Có số giao dịch và sự kiện khác nhau trong cùng SQL1 nhưng trả lời lưỡng lự về việc hai số có bắt buộc bằng nhau. Chính hai phép đếm cho thấy ít nhất một giao dịch có nhiều sự kiện. Phần giải thích về cơ chế phát log thiếu nguồn. Tham chiếu 107 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0008",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chứng minh nhiều sự kiện trong một giao dịch bằng hai phép đếm. SQL1 và các tài liệu không xác định giao dịch xử lý nhiều vị thế, nhiều tài sản hay nhiều sự kiện trong cùng một lần gọi hàm. Tham chiếu 107 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0009",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 0,
+      "notes": "Số dư tại đúng giờ và cơ chế lãi có bằng chứng. Claim về dữ liệu cần cho việc quy nguyên nhân hoặc các dòng tiền thay thế không gắn mã cho phần giải thích đó. Tham chiếu 3,042,883,324.3152447 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0010",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chỉ tính AVG của quý II. Thiếu hiệu quý II trừ quý I. Claim về phạm vi toàn chuỗi trỏ tới availability không có trong gói bằng chứng. Tham chiếu -12,133,324.429995105 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0011",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 2073673650.805748}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0012",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"month\": \"2026-02\", \"value\": 2647}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0013",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_LIQ_000/001 giải thích khi HF dưới 1 thì bên thanh lý có thể thực hiện giao dịch, hoàn nợ và nhận thế chấp kèm thưởng.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0014",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 đếm hàng khớp chuỗi market. POLICY ghi nhận chưa xác minh ánh xạ token, nên số 0 không xác lập số giao dịch thanh lý USDC.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0015",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chứng minh nhiều sự kiện trong một giao dịch bằng hai phép đếm. SQL1 và các tài liệu không xác định giao dịch xử lý nhiều vị thế, nhiều tài sản hay nhiều sự kiện trong cùng một lần gọi hàm. Tham chiếu 107 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0016",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_BORROW_000/001 xác nhận lãi tích lũy từ khi vay và lãi suất thay đổi theo mức sử dụng vốn, tham số quản trị.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0017",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 307 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0018",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Câu trả lời không cung cấp số tiền, nhưng suy ra WETH không có sự kiện từ SUM=NULL của bộ lọc market chưa được xác minh. SQL1 không chứng minh kết luận theo token.",
+      "observed_refusal": 1
+    },
+    {
+      "case_id": "A0019",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 28132234.04010158}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0020",
+      "answer_correctness": 0,
+      "faithfulness": 1,
+      "citation_quality": 0,
+      "notes": "Báo 0 sau khi lọc market = 'Aave V3 Ethereum', dù tự nêu giới hạn bộ lọc. Tham chiếu đếm đủ 158 sự kiện toàn tháng. SQL sau lọc không trả lời tổng số được hỏi. Tham chiếu 158 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0021",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Khẳng định tổng = 0 USD trong khi SUM của bộ lọc WETH là NULL và market chưa ánh xạ token.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0022",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 158 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0023",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Từ chối dự báo chắc chắn tháng 12/2027 là đúng. POLICY chỉ xác nhận dữ liệu lịch sử. Các ngày đầu/cuối cụ thể của toàn bộ thị trường thiếu bảng availability trong bằng chứng thực tế.",
+      "observed_refusal": 1
+    },
+    {
+      "case_id": "A0024",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "DOC_WITHDRAW_000 nói người dùng có thể cần trả bớt nợ hoặc thêm thế chấp. Câu trả lời biến điều này thành điều bắt buộc cho mọi lần rút tài sản thế chấp.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0025",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Số dư tại hàng 24 đúng và chưa đủ xác lập nhân quả. Nhưng câu trả lời nói không có dữ liệu giờ trước trong khi SQL có cả số dư 23:00 ngày 14/8. Tham chiếu 1,993,676,848.0321777 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0026",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 52 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0027",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 2073673650.805748}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0028",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_BORROW_000/001 xác nhận lãi tích lũy từ khi vay và lãi suất thay đổi theo mức sử dụng vốn, tham số quản trị.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0029",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"month\": \"2026-02\", \"value\": 2647}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0030",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Nêu đủ thanh khoản và điều kiện thế chấp. Claim nói phải theo dõi thường xuyên qua Dashboard như điều kiện rút. DOC_WITHDRAW_000 chỉ khuyến nghị theo dõi HF.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0031",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 3897799627.0425687}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0032",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Từ chối dự báo chắc chắn tháng 12/2027 là đúng. POLICY chỉ xác nhận dữ liệu lịch sử. Các ngày đầu/cuối cụ thể của toàn bộ thị trường thiếu bảng availability trong bằng chứng thực tế.",
+      "observed_refusal": 1
+    },
+    {
+      "case_id": "A0033",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 158}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0034",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"month\": \"2025-02\", \"value\": 2188}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0035",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Gắn nghi vấn về chain với định danh market hoặc tên tệp. Phạm vi tham chiếu đã cố định Aave V3 Ethereum. SQL/dẫn chứng không chứng minh giả định dữ liệu có thể thuộc mạng khác. Tham chiếu 307 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0036",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 0,
+      "notes": "Số dư tại đúng giờ và cơ chế lãi có bằng chứng. Claim về dữ liệu cần cho việc quy nguyên nhân hoặc các dòng tiền thay thế không gắn mã cho phần giải thích đó. Tham chiếu 3,042,883,324.3152447 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0037",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_LIQ_000 hỗ trợ công thức và kết luận HF dưới 1 biểu thị rủi ro thanh lý.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0038",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 đếm hàng khớp chuỗi market. POLICY ghi nhận chưa xác minh ánh xạ token, nên số 0 không xác lập số giao dịch thanh lý USDC.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0039",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 307 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0040",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 0,
+      "notes": "SQL1 đếm 63 sự kiện và DOC_LIQ_001 giải thích bên thanh lý phải thực hiện giao dịch. DOC_LIQ_001 không chứng minh độ phủ của việc thu thập dữ liệu on-chain. Tham chiếu 63 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0041",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có năm mốc và không tách lãi, giá token, vay mới và trả nợ. Cảnh báo suy diễn quan hệ giữa độ đơn điệu của số dư USD với lãi mà không kiểm soát giá WETH. Tham chiếu 3,042,883,324.3152447 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0042",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 0,
+      "notes": "Tháng 2/2025 và 2.188 giao dịch đúng. Claim 12 tháng trỏ tới row 11, column transaction_count chứa 97 giao dịch, không phải số tháng. Tham chiếu 2,188 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0043",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 1,997,694,271.598428 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0044",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 0,
+      "notes": "Số dư tại đúng giờ và cơ chế lãi có bằng chứng. Claim về dữ liệu cần cho việc quy nguyên nhân hoặc các dòng tiền thay thế không gắn mã cho phần giải thích đó. Tham chiếu 3,042,883,324.3152447 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0045",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "DOC_LIQ_000 chỉ áp dụng giới hạn 50% khi HF > 0,95 và đủ điều kiện giá trị. Câu trả lời dùng ‘từ 0.95 trở lên’, xếp điểm biên 0,95 vào cả hai nhánh.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0046",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": -240373085.12855375}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0047",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 và DOC_WITHDRAW_000 hỗ trợ số dư cùng các điều kiện rút. DOC_BORROW_000 nói utilization ảnh hưởng lãi suất chứ không xác nhận chiều nhân quả lãi suất làm thay đổi thanh khoản khả dụng. Tham chiếu 3,897,799,627.0425687 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0048",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 107 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0049",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 28,132,234.04010158 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0050",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Hiệu 51.931.723,65 USD khớp SQL1. Cảnh báo đếm tháng 6 là 31 ngày dù khoảng nửa mở 1/6–1/7 có 30 ngày. Tham chiếu 51,931,723.65202591 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0051",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 51931723.65202591}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0052",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 307}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0053",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Số dư đúng, kết luận không quy được phần tăng cho lãi là phù hợp. Cảnh báo phản bác việc phân biệt cơ chế tính lãi với chứng minh nguyên nhân tại thời điểm cụ thể, dù SQL không tách được vay mới, trả nợ và lãi. Tham chiếu 3,042,883,324.3152447 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0054",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Trình bày NULL như kết quả cho token và suy ra WETH không có sự kiện từ SUM=NULL của bộ lọc market chưa được xác minh. SQL1 không chứng minh kết luận theo token.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0055",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 158 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0056",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": -324263050.30990607}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0057",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 3,897,799,627.0425687 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0058",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Phần đầu tính đúng AVG quý II trừ AVG quý I. Cảnh báo lại khẳng định chỉ nên lấy quý II, trái câu hỏi và phép tính tham chiếu. Tham chiếu -12,133,324.429995105 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0059",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 107 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0060",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 158 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0061",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 52 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0062",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"month\": \"2026-02\", \"value\": 2647}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0063",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Hiệu USDT trùng tham chiếu nhưng tự mâu thuẫn về quý có dữ liệu. SQL1 chỉ trả quý I, thiếu ô quý II được dùng để tính hiệu. Tham chiếu -1,725,488,668.2893205 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0064",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_BORROW_000/001 xác nhận lãi tích lũy từ khi vay và lãi suất thay đổi theo mức sử dụng vốn, tham số quản trị.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0065",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 6,604,733.083234468 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0066",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 đếm hàng khớp chuỗi market. POLICY ghi nhận chưa xác minh ánh xạ token, nên số 0 không xác lập số giao dịch thanh lý USDC.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0067",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_BORROW_000/001 xác nhận lãi tích lũy từ khi vay và lãi suất thay đổi theo mức sử dụng vốn, tham số quản trị.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0068",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": -325072291.77384555}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0069",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 thực hiện đúng phép trừ hai giai đoạn. Cảnh báo nói cận trên để tính trọn tháng cuối vượt yêu cầu dù đó là cận loại trừ cần thiết. Tham chiếu -324,263,050.30990607 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0070",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": -437232310.61343}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0071",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Từ chối dự báo chắc chắn tháng 12/2027 là đúng. POLICY chỉ xác nhận dữ liệu lịch sử. Các ngày đầu/cuối cụ thể của toàn bộ thị trường thiếu bảng availability trong bằng chứng thực tế.",
+      "observed_refusal": 1
+    },
+    {
+      "case_id": "A0072",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 158}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0073",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chứng minh nhiều sự kiện trong một giao dịch bằng hai phép đếm. SQL1 và các tài liệu không xác định giao dịch xử lý nhiều vị thế, nhiều tài sản hay nhiều sự kiện trong cùng một lần gọi hàm. Tham chiếu 52 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0074",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 0,
+      "notes": "Số dư tại đúng giờ và cơ chế lãi có bằng chứng. Claim về dữ liệu cần cho việc quy nguyên nhân hoặc các dòng tiền thay thế không gắn mã cho phần giải thích đó. Tham chiếu 1,993,676,848.0321777 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0075",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_LIQ_000 hỗ trợ công thức và kết luận HF dưới 1 biểu thị rủi ro thanh lý.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0076",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_BORROW_000/001 xác nhận lãi tích lũy từ khi vay và lãi suất thay đổi theo mức sử dụng vốn, tham số quản trị.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0077",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Trình bày NULL như kết quả cho token và suy ra WETH không có sự kiện từ SUM=NULL của bộ lọc market chưa được xác minh. SQL1 không chứng minh kết luận theo token.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0078",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 thực hiện đúng phép trừ hai giai đoạn. Cảnh báo nói cận trên để tính trọn tháng cuối vượt yêu cầu dù đó là cận loại trừ cần thiết. Tham chiếu -325,072,291.77384555 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0079",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "DOC_LIQ_000 chỉ áp dụng giới hạn 50% khi HF > 0,95 và đủ điều kiện giá trị. Câu trả lời dùng ‘từ 0.95 trở lên’, xếp điểm biên 0,95 vào cả hai nhánh.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0080",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 28,132,234.04010158 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0081",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 1,997,694,271.598428 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0082",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 1417403487.0444803}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0083",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 đếm hàng khớp chuỗi market. POLICY ghi nhận chưa xác minh ánh xạ token, nên số 0 không xác lập số giao dịch thanh lý USDC.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0084",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_LIQ_000/001 giải thích khi HF dưới 1 thì bên thanh lý có thể thực hiện giao dịch, hoàn nợ và nhận thế chấp kèm thưởng.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0085",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_LIQ_000 hỗ trợ công thức và kết luận HF dưới 1 biểu thị rủi ro thanh lý.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0086",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chỉ tính AVG của quý II. Thiếu hiệu quý II trừ quý I. Claim về phạm vi toàn chuỗi trỏ tới availability không có trong gói bằng chứng. Tham chiếu -1,725,488,668.2893205 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0087",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Tài liệu rút tiền nêu có thể cần trả nợ hoặc bổ sung thế chấp. Cách diễn đạt bắt buộc phải thực hiện một trong hai thao tác đã loại bỏ trường hợp vị thế vốn đủ an toàn để rút.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0088",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 307 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0089",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_WITHDRAW_000 xác nhận thanh khoản chưa vay và yêu cầu duy trì đủ thế chấp sau khi rút.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0090",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chỉ tính AVG của quý II. Thiếu hiệu quý II trừ quý I. Claim về phạm vi toàn chuỗi trỏ tới availability không có trong gói bằng chứng. Tham chiếu -240,373,085.12855375 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0091",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Phép đếm hoặc hiệu giữa các tổng trong SQL1 phù hợp tham chiếu. Cảnh báo bổ sung ngày giờ kết thúc toàn bộ tập sự kiện (15/9/2026). Truy vấn cho kỳ đang xét không thể kiểm tra mốc này và gói không có bảng availability. Tham chiếu 158 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0092",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"month\": \"2026-02\", \"value\": 2647}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0093",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 107 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0094",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 1417403487.0444803}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0095",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 0,
+      "notes": "63 sự kiện không đo mọi vị thế đủ điều kiện thanh lý. Claim cuối về độ phủ dữ liệu on-chain không chỉ tới nguồn. Tham chiếu 63 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0096",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Từ chối dự báo chắc chắn tháng 12/2027 là đúng. POLICY chỉ xác nhận dữ liệu lịch sử. Các ngày đầu/cuối cụ thể của toàn bộ thị trường thiếu bảng availability trong bằng chứng thực tế.",
+      "observed_refusal": 1
+    },
+    {
+      "case_id": "A0097",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Có số giao dịch và sự kiện khác nhau trong cùng SQL1 nhưng trả lời lưỡng lự về việc hai số có bắt buộc bằng nhau. Chính hai phép đếm cho thấy ít nhất một giao dịch có nhiều sự kiện. Phần giải thích về cơ chế phát log thiếu nguồn. Tham chiếu 52 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0098",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 307 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0099",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 52 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0100",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 158}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0101",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"month\": \"2026-02\", \"value\": 2647}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0102",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "63 sự kiện và giới hạn suy luận đúng. DOC_LIQ_001 nói thanh lý thành công thường dùng bot, câu trả lời biến bot thành yêu cầu tuyệt đối. DOC_BORROW_000 cũng không xác nhận tự động trả nợ. Tham chiếu 63 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0103",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chỉ tính AVG của quý II. Thiếu hiệu quý II trừ quý I. Claim về phạm vi toàn chuỗi trỏ tới availability không có trong gói bằng chứng. Tham chiếu -1,725,488,668.2893205 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0104",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 1997694271.598428}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0105",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": -324263050.30990607}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0106",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 307 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0107",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 158}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0108",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Phép đếm hoặc hiệu giữa các tổng trong SQL1 phù hợp tham chiếu. Cảnh báo bổ sung ngày giờ kết thúc toàn bộ tập sự kiện (15/9/2026). Truy vấn cho kỳ đang xét không thể kiểm tra mốc này và gói không có bảng availability. Tham chiếu -325,072,291.77384555 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0109",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 đếm hàng khớp chuỗi market. POLICY ghi nhận chưa xác minh ánh xạ token, nên số 0 không xác lập số giao dịch thanh lý USDC.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0110",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 307 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0111",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 307}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0112",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chỉ tính AVG của quý II. Thiếu hiệu quý II trừ quý I. Claim về phạm vi toàn chuỗi trỏ tới availability không có trong gói bằng chứng. Tham chiếu -240,373,085.12855375 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0113",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_LIQ_000 hỗ trợ công thức và kết luận HF dưới 1 biểu thị rủi ro thanh lý.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0114",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 1417403487.0444803}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0115",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 28132234.04010158}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0116",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 307}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0117",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Từ chối tính hiệu vì SQL chỉ lấy quý I. Cảnh báo diễn giải sai rằng câu hỏi chỉ yêu cầu quý II. Các dẫn chứng sql, availability và repair_feedback không chỉ đến kết quả của cả hai quý. Tham chiếu -1,725,488,668.2893205 USD.",
+      "observed_refusal": 1
+    },
+    {
+      "case_id": "A0118",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 0,
+      "notes": "6.604.733,08 USD khớp SQL1. Claim về toàn bộ phạm vi thu thập trỏ tới availability.liquidation_events, không có trong gói bằng chứng thực tế. Tham chiếu 6,604,733.083234468 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0119",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Hiệu USDe đúng ngay trong SQL1, nhưng cảnh báo nói chỉ quý II được xác minh dù SQL trả cả hai số trung bình cho hai quý trong phạm vi. Tham chiếu -240,373,085.12855375 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0120",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": -1725488668.2893205}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0121",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 6,604,733.083234468 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0122",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 6,604,733.083234468 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0123",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 6,604,733.083234468 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0124",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chỉ tính AVG của quý II. Thiếu hiệu quý II trừ quý I. Claim về phạm vi toàn chuỗi trỏ tới availability không có trong gói bằng chứng. Tham chiếu -12,133,324.429995105 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0125",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 0,
+      "notes": "158 sự kiện và giới hạn về phạm vi đếm đúng. DOC_LIQ_000 được dẫn cho vai trò thực hiện của liquidator, trong khi phần trực tiếp mô tả cạnh tranh và giao dịch thực hiện nằm ở DOC_LIQ_001. Tham chiếu 158 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0126",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 3,897,799,627.0425687 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0127",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "158 sự kiện trong 107 giao dịch chứng minh một giao dịch có nhiều sự kiện. Claim quy cho các lần gọi hợp đồng khác nhau không có citation hay dấu vết thực thi trong SQL1. Tham chiếu 107 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0128",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Hiệu DAI tính được từ hai dòng SQL1. Claim về số giờ, độ phủ cả chuỗi và khẳng định không phát hiện khoảng trống không có bằng chứng từ truy vấn hai số trung bình. Tham chiếu -12,133,324.429995105 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0129",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chứng minh nhiều sự kiện trong một giao dịch bằng hai phép đếm. SQL1 và các tài liệu không xác định giao dịch xử lý nhiều vị thế, nhiều tài sản hay nhiều sự kiện trong cùng một lần gọi hàm. Tham chiếu 107 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0130",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Số dư và kết luận giới hạn nhân quả đúng. Cảnh báo yêu cầu tuyệt đối không có giao dịch vay/trả giữa hai mốc, dù có thể định lượng và loại trừ ảnh hưởng của các dòng tiền. Tham chiếu 1,993,676,848.0321777 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0131",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 307}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0132",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_LIQ_000/001 giải thích khi HF dưới 1 thì bên thanh lý có thể thực hiện giao dịch, hoàn nợ và nhận thế chấp kèm thưởng.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0133",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 3897799627.0425687}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0134",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Tổng 28.132.234,04 USD và 307 sự kiện khớp SQL. Cảnh báo nói số liệu trình bày như toàn bộ on-chain dù câu trả lời mở đầu bằng ‘trong bộ dữ liệu hiện có’. Claim về độ phủ thiếu dẫn chứng. Tham chiếu 28,132,234.04010158 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0135",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 28,132,234.04010158 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0136",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 307}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0137",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chỉ tính AVG của quý II. Thiếu hiệu quý II trừ quý I. Claim về phạm vi toàn chuỗi trỏ tới availability không có trong gói bằng chứng. Tham chiếu -240,373,085.12855375 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0138",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 3,897,799,627.0425687 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0139",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 63}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0140",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Từ chối dự báo chắc chắn tháng 12/2027 là đúng. POLICY chỉ xác nhận dữ liệu lịch sử. Các ngày đầu/cuối cụ thể của toàn bộ thị trường thiếu bảng availability trong bằng chứng thực tế.",
+      "observed_refusal": 1
+    },
+    {
+      "case_id": "A0141",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 10836798387.491997}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0142",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 đếm hàng khớp chuỗi market. POLICY ghi nhận chưa xác minh ánh xạ token, nên số 0 không xác lập số giao dịch thanh lý USDC.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0143",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 1,997,694,271.598428 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0144",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Hiệu USD đúng, nhưng cảnh báo đặt ngày 15/9/2026 bên trong cửa sổ kết thúc 1/7 hoặc 1/8. Ngày tháng trong SQL1 bác bỏ so sánh đó. Tham chiếu -325,072,291.77384555 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0145",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 0,
+      "notes": "Phân biệt số 0 của bộ lọc market với số giao dịch USDC thực tế, từ chối kết luận theo token. Dẫn repair_feedback thay cho chứng cứ về giới hạn ánh xạ.",
+      "observed_refusal": 1
+    },
+    {
+      "case_id": "A0146",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"month\": \"2025-02\", \"value\": 2188}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0147",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 107 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0148",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Bộ lọc market làm SUM trả NULL. Suy ra không có dữ liệu cho cả tháng trái với tổng USD trong tham chiếu. SQL1 chỉ cho biết kết quả của tập con đã lọc. Tham chiếu 6,604,733.083234468 USD.",
+      "observed_refusal": 1
+    },
+    {
+      "case_id": "A0149",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"month\": \"2026-02\", \"value\": 2647}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0150",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Trình bày NULL như kết quả cho token và suy ra WETH không có sự kiện từ SUM=NULL của bộ lọc market chưa được xác minh. SQL1 không chứng minh kết luận theo token.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0151",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"month\": \"2026-02\", \"value\": 2647}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0152",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chỉ tính AVG của quý II. Thiếu hiệu quý II trừ quý I. Claim về phạm vi toàn chuỗi trỏ tới availability không có trong gói bằng chứng. Tham chiếu -240,373,085.12855375 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0153",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Từ chối dự báo chắc chắn tháng 12/2027 là đúng. POLICY chỉ xác nhận dữ liệu lịch sử. Các ngày đầu/cuối cụ thể của toàn bộ thị trường thiếu bảng availability trong bằng chứng thực tế.",
+      "observed_refusal": 1
+    },
+    {
+      "case_id": "A0154",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Hiệu USD đúng, nhưng cảnh báo đặt ngày 15/9/2026 bên trong cửa sổ kết thúc 1/7 hoặc 1/8. Ngày tháng trong SQL1 bác bỏ so sánh đó. Tham chiếu 51,931,723.65202591 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0155",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_BORROW_000/001 xác nhận lãi tích lũy từ khi vay và lãi suất thay đổi theo mức sử dụng vốn, tham số quản trị.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0156",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 107 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0157",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Đã nói không có giá trị thời gian thực, nhưng giải thích snapshot 15/9/2026 là tương lai hoặc dữ liệu giả lập. Ngày đó đã qua và SQL1 không hỗ trợ nhận định này.",
+      "observed_refusal": 1
+    },
+    {
+      "case_id": "A0158",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 0,
+      "notes": "Số dư tại mốc yêu cầu và kết luận nhân quả đúng. Claim chênh lệch 4.300.049,87 USD trỏ vào ô số dư 1.993.676.848,03 USD thay vì chỉ rõ cặp ô dùng để tính chênh lệch. Tham chiếu 1,993,676,848.0321777 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0159",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 1993676848.0321777}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0160",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Hiệu USD đúng, nhưng cảnh báo đặt ngày 15/9/2026 bên trong cửa sổ kết thúc 1/7 hoặc 1/8. Ngày tháng trong SQL1 bác bỏ so sánh đó. Tham chiếu 51,931,723.65202591 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0161",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Trình bày NULL như kết quả cho token và suy ra WETH không có sự kiện từ SUM=NULL của bộ lọc market chưa được xác minh. SQL1 không chứng minh kết luận theo token.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0162",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"month\": \"2026-02\", \"value\": 2647}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0163",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": -325072291.77384555}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0164",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Câu trả lời đưa snapshot 15/9 cho yêu cầu thời gian thực. Cảnh báo gọi quan sát là tương lai mà SQL1 không chứng minh.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0165",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 6,604,733.083234468 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0166",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 thực hiện đúng phép trừ hai giai đoạn. Cảnh báo nói cận trên để tính trọn tháng cuối vượt yêu cầu dù đó là cận loại trừ cần thiết. Tham chiếu 51,931,723.65202591 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0167",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 1,997,694,271.598428 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0168",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 3,897,799,627.0425687 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0169",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Câu trả lời đưa snapshot 15/9 cho yêu cầu thời gian thực. Cảnh báo gọi quan sát là tương lai mà SQL1 không chứng minh.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0170",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"month\": \"2026-02\", \"value\": 2647}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0171",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chứng minh nhiều sự kiện trong một giao dịch bằng hai phép đếm. SQL1 và các tài liệu không xác định giao dịch xử lý nhiều vị thế, nhiều tài sản hay nhiều sự kiện trong cùng một lần gọi hàm. Tham chiếu 52 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0172",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 107 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0173",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"month\": \"2026-02\", \"value\": 2647}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0174",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": -325072291.77384555}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0175",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Phép đếm hoặc hiệu giữa các tổng trong SQL1 phù hợp tham chiếu. Cảnh báo bổ sung ngày giờ kết thúc toàn bộ tập sự kiện (15/9/2026). Truy vấn cho kỳ đang xét không thể kiểm tra mốc này và gói không có bảng availability. Tham chiếu -324,263,050.30990607 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0176",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chỉ tính AVG của quý II. Thiếu hiệu quý II trừ quý I. Claim về phạm vi toàn chuỗi trỏ tới availability không có trong gói bằng chứng. Tham chiếu -1,725,488,668.2893205 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0177",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Tài liệu rút tiền nêu có thể cần trả nợ hoặc bổ sung thế chấp. Cách diễn đạt bắt buộc phải thực hiện một trong hai thao tác đã loại bỏ trường hợp vị thế vốn đủ an toàn để rút.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0178",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chỉ tính AVG của quý II. Thiếu hiệu quý II trừ quý I. Claim về phạm vi toàn chuỗi trỏ tới availability không có trong gói bằng chứng. Tham chiếu -240,373,085.12855375 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0179",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"month\": \"2025-02\", \"value\": 2188}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0180",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": -12133324.429995105}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0181",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Phần đầu tính đúng AVG quý II trừ AVG quý I. Cảnh báo lại khẳng định chỉ nên lấy quý II, trái câu hỏi và phép tính tham chiếu. Tham chiếu -12,133,324.429995105 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0182",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_LIQ_000/001 giải thích khi HF dưới 1 thì bên thanh lý có thể thực hiện giao dịch, hoàn nợ và nhận thế chấp kèm thưởng.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0183",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 10836798387.491997}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0184",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Kết quả phép trừ khớp SQL1. Cảnh báo nghi đây là kỳ tương lai hoặc dữ liệu thử nghiệm dù các tháng được hỏi nằm trong phạm vi lịch sử. Tham chiếu -324,263,050.30990607 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0185",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Số dư đúng, kết luận không quy được phần tăng cho lãi là phù hợp. Cảnh báo phản bác việc phân biệt cơ chế tính lãi với chứng minh nguyên nhân tại thời điểm cụ thể, dù SQL không tách được vay mới, trả nợ và lãi. Tham chiếu 1,993,676,848.0321777 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0186",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Số dư đúng, kết luận không quy được phần tăng cho lãi là phù hợp. Cảnh báo phản bác việc phân biệt cơ chế tính lãi với chứng minh nguyên nhân tại thời điểm cụ thể, dù SQL không tách được vay mới, trả nợ và lãi. Tham chiếu 1,993,676,848.0321777 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0187",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Từ chối dự báo chắc chắn tháng 12/2027 là đúng. POLICY chỉ xác nhận dữ liệu lịch sử. Các ngày đầu/cuối cụ thể của toàn bộ thị trường thiếu bảng availability trong bằng chứng thực tế.",
+      "observed_refusal": 1
+    },
+    {
+      "case_id": "A0188",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 307 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0189",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"month\": \"2025-02\", \"value\": 2188}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0190",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Đã nói không có giá trị thời gian thực, nhưng giải thích snapshot 15/9/2026 là tương lai hoặc dữ liệu giả lập. Ngày đó đã qua và SQL1 không hỗ trợ nhận định này.",
+      "observed_refusal": 1
+    },
+    {
+      "case_id": "A0191",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 28132234.04010158}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0192",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 thực hiện đúng phép trừ hai giai đoạn. Cảnh báo nói cận trên để tính trọn tháng cuối vượt yêu cầu dù đó là cận loại trừ cần thiết. Tham chiếu 51,931,723.65202591 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0193",
+      "answer_correctness": 0,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "SQL1 hỗ trợ số dư và ngày của quan sát cuối 15/9/2026. Câu trả lời đưa số lịch sử ngoài phạm vi thay vì nêu rõ không thể cung cấp dư nợ thời gian thực.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0194",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "DOC_WITHDRAW_000 nói người dùng có thể cần trả bớt nợ hoặc thêm thế chấp. Câu trả lời biến điều này thành điều bắt buộc cho mọi lần rút tài sản thế chấp.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0195",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chỉ tính AVG của quý II. Thiếu hiệu quý II trừ quý I. Claim về phạm vi toàn chuỗi trỏ tới availability không có trong gói bằng chứng. Tham chiếu -12,133,324.429995105 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0196",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 0,
+      "notes": "Số dư tại mốc yêu cầu và kết luận nhân quả đúng. Claim chênh lệch 4.300.049,87 USD trỏ vào ô số dư 1.993.676.848,03 USD thay vì chỉ rõ cặp ô dùng để tính chênh lệch. Tham chiếu 1,993,676,848.0321777 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0197",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_WITHDRAW_000 xác nhận thanh khoản chưa vay và yêu cầu duy trì đủ thế chấp sau khi rút.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0198",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "158/107 trong SQL1 đủ để kết luận có giao dịch chứa nhiều sự kiện. Cảnh báo nói câu trả lời chưa giải thích được điều này, trái phần diễn giải tỷ lệ 1,48. Tham chiếu 107 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0199",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Từ chối dự báo chắc chắn tháng 12/2027 là đúng. POLICY chỉ xác nhận dữ liệu lịch sử. Các ngày đầu/cuối cụ thể của toàn bộ thị trường thiếu bảng availability trong bằng chứng thực tế.",
+      "observed_refusal": 1
+    },
+    {
+      "case_id": "A0200",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 0,
+      "notes": "Số dư tại đúng giờ và cơ chế lãi có bằng chứng. Claim về dữ liệu cần cho việc quy nguyên nhân hoặc các dòng tiền thay thế không gắn mã cho phần giải thích đó. Tham chiếu 3,042,883,324.3152447 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0201",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Hai quý USDT và hiệu phù hợp SQL1. Không có kết quả kiểm kê 31.434 quan sát hay kiểm tra khoảng trống trong nguồn SQL của câu này. Tham chiếu -1,725,488,668.2893205 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0202",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chỉ tính AVG của quý II. Thiếu hiệu quý II trừ quý I. Claim về phạm vi toàn chuỗi trỏ tới availability không có trong gói bằng chứng. Tham chiếu -12,133,324.429995105 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0203",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chỉ tính AVG của quý II. Thiếu hiệu quý II trừ quý I. Claim về phạm vi toàn chuỗi trỏ tới availability không có trong gói bằng chứng. Tham chiếu -12,133,324.429995105 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0204",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 6604733.083234468}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0205",
+      "answer_correctness": 0,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "SQL1 chứng minh 2.286.878.458,77 USD là trung bình USDT quý II. Thiếu trung bình quý I để tính hiệu được hỏi. Tham chiếu -1,725,488,668.2893205 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0206",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Phép đếm hoặc hiệu giữa các tổng trong SQL1 phù hợp tham chiếu. Cảnh báo bổ sung ngày giờ kết thúc toàn bộ tập sự kiện (15/9/2026). Truy vấn cho kỳ đang xét không thể kiểm tra mốc này và gói không có bảng availability. Tham chiếu 307 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0207",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 1692127461.001217}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0208",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 52 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0209",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Trình bày NULL như kết quả cho token và suy ra WETH không có sự kiện từ SUM=NULL của bộ lọc market chưa được xác minh. SQL1 không chứng minh kết luận theo token.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0210",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chứng minh nhiều sự kiện trong một giao dịch bằng hai phép đếm. SQL1 và các tài liệu không xác định giao dịch xử lý nhiều vị thế, nhiều tài sản hay nhiều sự kiện trong cùng một lần gọi hàm. Tham chiếu 52 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0211",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 3897799627.0425687}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0212",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_LIQ_000 hỗ trợ công thức và kết luận HF dưới 1 biểu thị rủi ro thanh lý.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0213",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"month\": \"2025-02\", \"value\": 2188}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0214",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_WITHDRAW_000 xác nhận thanh khoản chưa vay và yêu cầu duy trì đủ thế chấp sau khi rút.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0215",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 3,897,799,627.0425687 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0216",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 28,132,234.04010158 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0217",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 107 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0218",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "DOC_WITHDRAW_000 nói người dùng có thể cần trả bớt nợ hoặc thêm thế chấp. Câu trả lời biến điều này thành điều bắt buộc cho mọi lần rút tài sản thế chấp.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0219",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 158}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0220",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "DOC_LIQ_000 hỗ trợ công thức và kết luận HF dưới 1 biểu thị rủi ro thanh lý.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0221",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 6604733.083234468}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0222",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": -240373085.12855375}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0223",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Kết quả phép trừ khớp SQL1. Cảnh báo nghi đây là kỳ tương lai hoặc dữ liệu thử nghiệm dù các tháng được hỏi nằm trong phạm vi lịch sử. Tham chiếu -324,263,050.30990607 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0224",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 0,
+      "notes": "Số dư WETH và giới hạn suy luận đúng. Claim số có row=48 nhưng thiếu cột của bằng chứng định lượng. Tham chiếu 3,042,883,324.3152447 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0225",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Số dư đúng, kết luận không quy được phần tăng cho lãi là phù hợp. Cảnh báo phản bác việc phân biệt cơ chế tính lãi với chứng minh nguyên nhân tại thời điểm cụ thể, dù SQL không tách được vay mới, trả nợ và lãi. Tham chiếu 3,042,883,324.3152447 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0226",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"month\": \"2026-02\", \"value\": 2647}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0227",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL trả 25 hàng, trong khi claim nói dữ liệu chỉ gồm một snapshot, và cảnh báo phủ nhận có tài liệu cơ chế lãi dù có DOC_BORROW_000. Tham chiếu 3,042,883,324.3152447 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0228",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 1997694271.598428}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0229",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 0,
+      "notes": "Số dư tại đúng giờ và cơ chế lãi có bằng chứng. Claim về dữ liệu cần cho việc quy nguyên nhân hoặc các dòng tiền thay thế không gắn mã cho phần giải thích đó. Tham chiếu 1,993,676,848.0321777 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0230",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 đếm hàng khớp chuỗi market. POLICY ghi nhận chưa xác minh ánh xạ token, nên số 0 không xác lập số giao dịch thanh lý USDC.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0231",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Kết quả hiệu đúng nhưng phần cảnh báo diễn giải sai khoảng đối chiếu, hoặc cho rằng hai khoảng nửa mở rời nhau đếm trùng tháng. SQL1 bác bỏ cách hiểu này. Tham chiếu -325,072,291.77384555 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0232",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Kết quả phép trừ khớp SQL1. Cảnh báo nghi đây là kỳ tương lai hoặc dữ liệu thử nghiệm dù các tháng được hỏi nằm trong phạm vi lịch sử. Tham chiếu -325,072,291.77384555 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0233",
+      "answer_correctness": 0,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Số dư USDC, thanh khoản và HF được SQL1 cùng DOC_WITHDRAW_000/DOC_LIQ_000 hỗ trợ. Thiếu ý có thể cần trả bớt nợ hoặc bổ sung thế chấp trước khi rút. Tham chiếu 1,997,694,271.598428 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0234",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 chỉ tính AVG của quý II. Thiếu hiệu quý II trừ quý I. Claim về phạm vi toàn chuỗi trỏ tới availability không có trong gói bằng chứng. Tham chiếu -240,373,085.12855375 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0235",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu -325,072,291.77384555 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0236",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 63}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0237",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Kết quả hiệu đúng nhưng phần cảnh báo diễn giải sai khoảng đối chiếu, hoặc cho rằng hai khoảng nửa mở rời nhau đếm trùng tháng. SQL1 bác bỏ cách hiểu này. Tham chiếu -324,263,050.30990607 USD.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0238",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Trình bày NULL như kết quả cho token và suy ra WETH không có sự kiện từ SUM=NULL của bộ lọc market chưa được xác minh. SQL1 không chứng minh kết luận theo token.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0239",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Gắn nghi vấn về chain với định danh market hoặc tên tệp. Phạm vi tham chiếu đã cố định Aave V3 Ethereum. SQL/dẫn chứng không chứng minh giả định dữ liệu có thể thuộc mạng khác. Tham chiếu 307 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0240",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Trình bày NULL như kết quả cho token và suy ra WETH không có sự kiện từ SUM=NULL của bộ lọc market chưa được xác minh. SQL1 không chứng minh kết luận theo token.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0241",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "DOC_WITHDRAW_000 nói người dùng có thể cần trả bớt nợ hoặc thêm thế chấp. Câu trả lời biến điều này thành điều bắt buộc cho mọi lần rút tài sản thế chấp.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0242",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 đếm hàng khớp chuỗi market. POLICY ghi nhận chưa xác minh ánh xạ token, nên số 0 không xác lập số giao dịch thanh lý USDC.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0243",
+      "answer_correctness": 0,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "SQL1 có kết quả cho kỳ yêu cầu. Cảnh báo lại xếp kỳ đó vào tương lai, ngoài phạm vi, hoặc nghi dữ liệu giả lập mà không đưa ra chứng cứ. Tham chiếu 107 count.",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0244",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 51931723.65202591}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0245",
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "notes": "Từ chối dự báo chắc chắn tháng 12/2027 là đúng. POLICY chỉ xác nhận dữ liệu lịch sử. Các ngày đầu/cuối cụ thể của toàn bộ thị trường thiếu bảng availability trong bằng chứng thực tế.",
+      "observed_refusal": 1
+    },
+    {
+      "case_id": "A0246",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"month\": \"2026-02\", \"value\": 2647}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0247",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": -437232310.61343}].",
+      "observed_refusal": 0
+    },
+    {
+      "case_id": "A0248",
+      "answer_correctness": 1,
+      "faithfulness": 1,
+      "citation_quality": 1,
+      "notes": "Đối chiếu SQL1 với tham chiếu [{\"value\": 107}].",
+      "observed_refusal": 0
+    }
+  ],
+  "rubric_sha256": "7ff3b1e135e0346c79db69383512196e2ebe4ef5a6aec575f122cd53b022a52c"
+}
