@@ -3,7 +3,7 @@ from copy import deepcopy
 from dataclasses import asdict
 import hashlib, json, time
 from botocore.exceptions import ReadTimeoutError, ConnectTimeoutError
-from .verification import semantic_rules, coverage_rules, claim_rules, response_issues, evidence_payload, sql_review_payload
+from .verification import semantic_rules, coverage_rules, claim_rules, response_issues, evidence_payload, sql_review_payload, specialist_findings
 
 VARIANTS=('rules','generic','full','no_sql','no_evidence')
 
@@ -19,12 +19,15 @@ def verify_candidate(candidate,analyst,variant='full',deadline=120.):
         else:
             if variant!='no_sql' and draft.sql:
                 issues.extend(semantic_rules(draft.sql,asdict(draft.spec),question=draft.question))
-                issues.extend(coverage_rules(analyst.db,draft.spec,timeout=min(15,analyst.remaining(end))))
-                if variant!='rules':issues.extend(response_issues(call('sql_review',sql_review_payload(draft))))
+                issues.extend(coverage_rules(analyst.db, draft.spec, timeout=min(15,analyst.remaining(end)),
+                                             draft=draft if variant != 'rules' else None))
+                if variant!='rules':
+                    issues.extend(specialist_findings(draft, call('sql_review', sql_review_payload(draft))))
             # Independent detection examines prose even when SQL has an issue.
             if variant!='no_evidence':
                 issues.extend(claim_rules(draft))
-                if variant!='rules':issues.extend(response_issues(call('claim_review',evidence_payload(draft))))
+                if variant!='rules':
+                    issues.extend(specialist_findings(draft, call('claim_review', evidence_payload(draft, specialist=True))))
         analyst.remaining(end)
         verdict='insufficient' if any(i.action=='stop' for i in issues) else ('fail' if issues else 'pass')
     except Exception as exc:

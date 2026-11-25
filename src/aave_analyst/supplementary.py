@@ -10,10 +10,11 @@ from .pipeline import MODES
 def trace_report(rows, registration):
     if len(registration['selected'])!=10 or len({item['question_id'] for item in registration['selected']})!=10:
         raise ValueError('Ten unique registered question IDs required')
-    expected={(item['question_id'],mode,0) for item in registration['selected'] for mode in MODES}
+    registered_modes=registration.get('modes', MODES)
+    expected={(item['question_id'],mode,0) for item in registration['selected'] for mode in registered_modes}
     keys=[(row.get('question_id'),row.get('mode'),row.get('repeat')) for row in rows]
     if len(keys)!=len(set(keys)) or set(keys)!=expected:
-        raise ValueError('Trace measurements must match all 60 registered question/mode/repeat combinations')
+        raise ValueError(f'Trace measurements must match all {len(expected)} registered question/mode/repeat combinations')
     complete=[];pending=[]
     for row in rows:
         seconds=row.get('elapsed_seconds')
@@ -27,7 +28,7 @@ def trace_report(rows, registration):
             raise ValueError('Trace failure requires an explanation; keep failed cases')
         complete.append(row)
     modes={}
-    for mode in MODES:
+    for mode in registered_modes:
         measured=[row for row in complete if row['mode']==mode]
         times=[row['elapsed_seconds'] for row in measured]
         modes[mode]={'expected':10,'measured':len(measured),'traceable':sum(row['traceable'] for row in measured),
