@@ -1,0 +1,15 @@
+{
+  "source_sha256": "798a42a8a6ba956baf918e11bcf21073d2d70df740e2d558335ef1b18a4564b9",
+  "review_sha256": [
+    "babcb1da4c2fb7efbbf68b344dd8dcd66d8c890470f302d4485541836e65c995",
+    "72eaf4b65dc5609731a750c0764daeb66a52eb0fbca88601641800aecc4242d8"
+  ],
+  "rubric_sha256": "7ff3b1e135e0346c79db69383512196e2ebe4ef5a6aec575f122cd53b022a52c",
+  "items": [
+    {
+      "case_id": "A0014",
+      "answer_correctness": 0,
+      "notes": "SQL1 trả đúng số dư USDC tại giờ yêu cầu. Cảnh báo nghi ngờ ngày truy vấn thuộc tương lai khiến người đọc hiểu rằng số dư này vẫn cần xác minh, dù dòng dữ liệu đã có."
+    }
+  ]
+}
