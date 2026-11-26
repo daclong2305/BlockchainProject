@@ -5,7 +5,12 @@ import requests
 from bs4 import BeautifulSoup
 from rank_bm25 import BM25Okapi
 
-SOURCES={"SUPPLY":"https://aave.com/help/supplying/supply-tokens","BORROW":"https://aave.com/help/borrowing/borrow-tokens","LIQ":"https://aave.com/help/borrowing/liquidations"}
+SOURCES = {
+    "SUPPLY": "https://aave.com/help/supplying/supply-tokens",
+    "BORROW": "https://aave.com/help/borrowing/borrow-tokens",
+    "LIQ": "https://aave.com/help/borrowing/liquidations",
+    "WITHDRAW": "https://aave.com/help/supplying/withdraw-tokens",
+}
 
 
 def tokenize(text):return re.findall(r"[\w]+",text.lower())

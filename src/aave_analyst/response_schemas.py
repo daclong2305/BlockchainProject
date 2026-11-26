@@ -36,6 +36,10 @@ REVIEW = object_schema({'issues': {'type': 'array', 'items': object_schema({
     'code': STRING, 'message': STRING,
     'action': {'type': 'string', 'enum': ['sql', 'answer', 'retrieve', 'stop']},
 })}})
+SPECIALIST_REVIEW = object_schema({'issues': {'type': 'array', 'items': object_schema({
+    'kind': {'type': 'string', 'enum': ['defect', 'confirmation']},
+    **REVIEW['properties']['issues']['items']['properties'],
+})}})
 NUMERIC = object_schema({'value': {'type': 'number'},
                          'unit': {'type': 'string', 'enum': ['USD', 'count', 'other']},
                          'evidence_id': STRING, 'row': {'type': 'integer', 'minimum': 0},
@@ -46,4 +50,4 @@ ANSWER = object_schema({'answer': STRING, 'refused': {'type': 'boolean'},
                             'numeric': NUMERIC}, required=['text', 'citations'])}})
 SCHEMAS = {'plan': PLAN, 'plan_review': PLAN, 'sql': object_schema({'sql': STRING}),
            'answer': ANSWER, 'repair': object_schema({'sql': STRING, 'retrieval_query': STRING}),
-           'sql_review': REVIEW, 'claim_review': REVIEW, 'generic_review': REVIEW}
+           'sql_review': SPECIALIST_REVIEW, 'claim_review': SPECIALIST_REVIEW, 'generic_review': REVIEW}

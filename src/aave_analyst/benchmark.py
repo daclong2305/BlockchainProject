@@ -6,6 +6,8 @@ must verify source selection, wording, units and answers before final runs.
 from pathlib import Path
 from datetime import datetime,timezone
 import hashlib,json,re,unicodedata
+import os
+from tempfile import NamedTemporaryFile
 
 CATEGORIES={"mechanism":(4,8),"lookup":(4,8),"analysis":(6,12),"mixed":(4,8),"unanswerable":(2,4)}
 
@@ -156,12 +158,21 @@ def save_benchmark(rows,path):
 def load_benchmark(path):return [json.loads(s) for s in Path(path).read_text(encoding="utf-8").splitlines() if s.strip()]
 
 
-def freeze_benchmark(path):
+def freeze_benchmark(path, metadata=None):
     path=Path(path)
     if path.with_suffix('.lock.json').exists():raise FileExistsError('Benchmark already frozen; preserve the original lock and create a new version')
     rows=load_benchmark(path);validate_benchmark(rows,final=True)
     for category,(dev,test) in CATEGORIES.items():
         if sum(r['category']==category and r['split']=='dev' for r in rows)!=dev or sum(r['category']==category and r['split']=='test' for r in rows)!=test:raise ValueError(f"Wrong benchmark distribution: {category}")
     manifest={"sha256":hashlib.sha256(path.read_bytes()).hexdigest(),"frozen_at":datetime.now(timezone.utc).isoformat(),"records":len(rows)}
-    path.with_suffix(".lock.json").write_text(json.dumps(manifest,indent=2),encoding="utf-8")
+    manifest.update(metadata or {})
+    with NamedTemporaryFile(mode='w',encoding='utf-8',dir=path.parent,delete=False) as temporary:
+        temporary_path=Path(temporary.name)
+        json.dump(manifest,temporary,indent=2)
+    try:
+        # Windows rename and POSIX link both fail when a concurrent freezer wins.
+        publish=os.rename if os.name=='nt' else os.link
+        publish(temporary_path,path.with_suffix('.lock.json'))
+    finally:
+        temporary_path.unlink(missing_ok=True)
     return manifest

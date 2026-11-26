@@ -1,22 +1,47 @@
 # Chatbot Aave V3 có dẫn chứng
 
+## Kết quả G03 và công cụ đánh giá
+
+G03 đã chạy 360 đầu ra trên 40 câu test, ba lượt cho B0/B1/P. Kết quả và phiếu chấm ở `runs/g03-final/`; phép đo checker trên 32 bản nháp ở `runs/g03-heldout-checker-paced/`. Hai người có tên trong phiếu đã xác nhận phần chấm theo thông tin bàn giao ngày 26/11/2026. Xem `docs/HUMAN_REVIEW_HANDOFF_VI.md` và `docs/G03_RUBRIC_VI.md`.
+
+Các lệnh bên dưới dùng cho thí nghiệm dev sáu cấu hình theo `docs/VERIFIER_PROTOCOL_VI.md`. Hướng dẫn tái lập giao thức final nằm trong `docs/REPRODUCE_PROPOSAL_VI.md`.
+
+Chạy dev Haiku (có phí API, không chạy test):
+
+```powershell
+.\.venv\Scripts\python.exe scripts/run_verifier_dev.py --out runs/TEN_RUN_MOI --modes B0 B1 P P-SQL P-Evidence P-Repair --pace 12
+```
+
+Runner giữ candidate và kết quả bất biến, có ledger token/chi phí và guard phí. Khi resume phải giữ nguyên model/code/protocol. Throttling, timeout và lỗi JSON được giữ trong log; runner bỏ qua cả bản ghi lỗi đã lưu.
+
+Sau khi đủ 120 đầu ra, chấm và tổng hợp trong cùng thư mục run:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/evaluate_verifier_dev.py --out runs/TEN_RUN_MOI --expected 120 --score-only
+.\.venv\Scripts\python.exe scripts/summarize_verifier_rerun.py runs/TEN_RUN_MOI
+```
+
+Bỏ `--score-only` để chạy thêm replay năm verifier. Sau khi replay hoàn tất, thí nghiệm sửa có kiểm soát chạy bằng `scripts/run_controlled_repairs.py --out runs/TEN_RUN_MOI`. Nhãn vẫn provisional; không dùng trạng thái checker làm gold hoặc điền reviewer giả.
+
+`report/updated-20261108/` lưu bản xuất ngày 08/11. Dùng `summarize_verifier_rerun.py` để tổng hợp run dev mới; dùng `aave_analyst.g03_report` cho quy trình chấm final G03.
+
 Đồ án C.5: hỏi đáp tiếng Việt về giá trị tài sản cung cấp, dư nợ và thanh lý Aave V3 Ethereum. Hệ thống kết hợp tài liệu Aave và SQL; kiểm chứng ý nghĩa truy vấn, dẫn chứng từng phát biểu và sửa lỗi tối đa hai vòng.
 
 ## Trạng thái và phạm vi
 
 - Đã tải release `data-2026-09-15`, chuẩn hóa 146.914 dòng thị trường và 25.121 sự kiện thuộc 20.159 giao dịch thanh lý.
 - Năm tài sản: DAI, USDC, USDT, USDe, WETH. Benchmark giới hạn `[2025-01-01, 2026-09-01)` UTC; chatbot có thể dùng toàn bộ lịch sử có sẵn.
-- Ba trang Aave được lưu HTML gốc, ngày thu thập, mã băm và 6 đoạn nguồn. Đây là kho tài liệu nhỏ; đánh giá truy xuất trên tập phát triển trước khi mở rộng.
-- 60 câu và 20 trường hợp SQL sai ý nghĩa đã được tạo tại `data/benchmark/`. **Đây là bản dự thảo, chưa được hai người xác minh.** Không xem các đáp án tự động là ground truth đã kiểm chứng.
+- Bốn trang Aave được lưu HTML gốc, ngày thu thập, mã băm và 8 đoạn nguồn. Đây là kho tài liệu nhỏ; đánh giá truy xuất trên tập phát triển trước khi mở rộng.
+- Benchmark gồm 60 câu và 20 trường hợp SQL ở `data/benchmark/`. Hồ sơ khóa, phiếu duyệt và snapshot của từng run được giữ để đối chiếu phiên bản dữ liệu.
 - Không bao gồm profitUSD, phí gas, APR hoặc thanh lý theo token vì chưa xác minh đầy đủ.
-- Cần cấu hình quyền AWS/Bedrock để gọi mô hình thật. Chưa có kết quả thực nghiệm LLM hay kết luận P tốt hơn baseline.
+- Cần cấu hình quyền AWS/Bedrock để gọi mô hình. Theo bảng chấm G03 hiện có, B0 đạt 75/120, B1 và P cùng đạt 48/120 đầu ra. Chi tiết ở `runs/g03-final/final-human-report.md`.
 
 ## Chạy ngay trên máy này
 
 Mở PowerShell:
 
 ```powershell
-cd C:\BlockchainProject
+# Chạy tại thư mục gốc của repository
 .\.venv\Scripts\python.exe -m aave_analyst.cli doctor
 .\.venv\Scripts\python.exe -m streamlit run app.py --server.address localhost
 ```
@@ -94,9 +119,10 @@ Tên reviewer phải khác nhau. Phần mềm kiểm tra trường phê duyệt,
 - So sánh giá trị kết quả; không bắt SQL hoặc alias cột phải giống nhau. Judge kiểm tra thêm ý nghĩa, tài sản, thời gian và dẫn chứng.
 - Chỉ dùng 20 câu dev để điều chỉnh. Không đưa câu/đáp án/SQL chuẩn vào RAG hay prompt xử lý.
 
-Lệnh `benchmark` không ghi đè file đã có; `--overwrite` chỉ dành cho lúc chủ động bỏ bản nháp cũ. Sau khi có phê duyệt:
+Lệnh `benchmark` không ghi đè file đã có; `--overwrite` chỉ dành cho lúc chủ động bỏ bản nháp cũ. Sau khi hoàn tất các phiếu, duyệt rubric và bộ ca checker theo `docs/HUMAN_REVIEW_HANDOFF_VI.md`:
 
 ```powershell
+.\.venv\Scripts\python.exe -m aave_analyst.cli trace-register
 .\.venv\Scripts\python.exe -m aave_analyst.cli freeze
 ```
 
@@ -108,7 +134,7 @@ Lệnh khóa hash dữ liệu, tài liệu, benchmark và cấu hình model. N�
 # Pilot: 2 câu dev, 1 lần, chỉ B0 và P; có gọi Bedrock.
 .\.venv\Scripts\python.exe -m aave_analyst.cli run --split dev --limit 2 --repeats 1 --modes B0 P
 
-# Chỉ sau khi khóa benchmark; 40 x 6 x 3 = 720 đầu ra, nhiều hơn 720 API calls.
+# Sau khi khóa benchmark, rubric và bộ ca checker: 40 câu x B0/B1/P x 3 lượt = 360 đầu ra.
 .\.venv\Scripts\python.exe -m aave_analyst.cli run --split test --final
 
 # Thay đường dẫn bằng thư mục run được in ra.
@@ -117,7 +143,7 @@ Lệnh khóa hash dữ liệu, tài liệu, benchmark và cấu hình model. N�
 
 Không có `--judge` thì chỉ tính kiểm tra số liệu; độ đúng toàn bộ chưa chấm được để `null`, không xem là 0 hoặc 100%. Judge token được lưu riêng. Chi phí USD để trống đến khi điền giá thực tế của tài khoản, không suy đoán giá.
 
-Sáu cấu hình: B0, B1, P, P-SQL, P-Evidence, P-Repair. Mỗi câu/lần dùng cùng một bản nháp. Chi phí tạo nháp tính cho từng cấu hình khi so sánh. Mỗi cấu hình có tối đa 120 giây đầu cuối, hai vòng sửa chung; mỗi vòng tối đa một truy xuất và hai SQL (hiện một SQL sửa + một kiểm tra coverage). Nếu mô hình trả JSON sai định dạng, mỗi lệnh gọi được yêu cầu trả lại tối đa một lần trong thời gian còn lại; đây là sửa định dạng, không tăng số vòng sửa nội dung. Token và thời gian của cả hai lần đều được ghi nhận. Chương trình không tự bỏ qua JSON thừa vì có thể làm mất kết quả kiểm chứng. Không sử dụng thời gian chờ giữa các cấu hình làm thời gian xử lý của câu. Lỗi/timeout/từ chối nhầm vẫn lưu và tính.
+Final dùng B0, B1, P. Dev hỗ trợ thêm P-SQL, P-Evidence, P-Repair. Mỗi câu/lần dùng cùng một bản nháp. Chi phí tạo nháp tính cho từng cấu hình khi so sánh. Mỗi cấu hình có tối đa 120 giây đầu cuối, hai vòng sửa chung; mỗi vòng tối đa một truy xuất và hai SQL (hiện một SQL sửa + một kiểm tra coverage). Nếu mô hình trả JSON sai định dạng, mỗi lệnh gọi được yêu cầu trả lại tối đa một lần trong thời gian còn lại; đây là sửa định dạng, không tăng số vòng sửa nội dung. Token và thời gian của cả hai lần đều được ghi nhận. Chương trình không tự bỏ qua JSON thừa vì có thể làm mất kết quả kiểm chứng. Không sử dụng thời gian chờ giữa các cấu hình làm thời gian xử lý của câu. Lỗi/timeout/từ chối nhầm vẫn lưu và tính.
 
 ## Cấu trúc
 
@@ -140,14 +166,14 @@ docs/               Kế hoạch, tiến độ, quy trình thực nghiệm
 
 ## Giới hạn cần báo cáo
 
-Quy tắc SQL không chứng minh truy vấn đúng tuyệt đối. LLM có thể trích xuất yêu cầu sai hoặc kiểm chứng sai. Haiku được dùng ở nhiều vai trò nên judge có thể có thiên lệch tương quan; mẫu hai người chấm độc lập là cần thiết. Kho ba trang không bao phủ toàn bộ Aave. 40 câu test là phạm vi thí nghiệm nhỏ; ba lần chạy cùng câu không tạo ra ba câu độc lập. `checks_passed` chỉ là trạng thái của bộ kiểm tra, không phải nhãn đúng của benchmark.
+Quy tắc SQL không chứng minh truy vấn đúng tuyệt đối. LLM có thể trích xuất yêu cầu sai hoặc kiểm chứng sai. Haiku được dùng ở nhiều vai trò nên judge có thể có thiên lệch tương quan; mẫu hai người chấm độc lập là cần thiết. Kho bốn trang chỉ bao phủ một phần tài liệu Aave. 40 câu test là phạm vi thí nghiệm nhỏ; ba lần chạy cùng câu không tạo ra ba câu độc lập. `checks_passed` chỉ là trạng thái của bộ kiểm tra, không phải nhãn đúng của benchmark.
 
 ## Dùng Qwen ViText2SQL GGUF local
 
 Model người dùng chọn: `zhenlong54/qwen-vitext2sql-3b-GGUF`, revision `579ae3d2f0db23dd25fd83076a57dbab79f68dd9`, file Q4_K_M. Trạng thái đã fine-tune do người dùng cung cấp; chưa có recipe/checkpoint nguồn để tái lập phần fine-tune đó.
 
 ```powershell
-cd C:\BlockchainProject
+# Chạy tại thư mục gốc của repository
 .\.venv\Scripts\python.exe scripts/setup_local_qwen.py
 .\run-qwen.ps1 doctor
 .\run-qwen.ps1 app

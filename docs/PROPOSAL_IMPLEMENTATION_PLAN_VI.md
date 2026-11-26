@@ -1,8 +1,8 @@
 # Kế hoạch thực hiện đủ đề xuất C.5
 
-Bàn giao người đánh giá: xem HUMAN_REVIEW_HANDOFF_VI.md. Phiếu hiện hành là questions-v2 và stress-v1; không dùng phiếu lịch sử để mở final.
+Xem HUMAN_REVIEW_HANDOFF_VI.md để lấy phiếu xác minh hiện hành. Các mục ghi ngày tháng phía dưới là nhật ký của giao thức cũ.
 
-Goal đã được tạo ngày 2026-10-29. Hoàn thành mã và chạy kiểm thử phần mềm không đồng nghĩa hoàn thành thí nghiệm.
+Kế hoạch ban đầu được lập ngày 29/10/2026. Các bảng bên dưới ghi trạng thái ở giai đoạn chuẩn bị. G03 hiện có 360 đầu ra tại `runs/g03-final/` và 32 kết quả checker tại `runs/g03-heldout-checker-paced/`. Xem `HUMAN_REVIEW_HANDOFF_VI.md` để đối chiếu hồ sơ người duyệt hiện hành.
 
 ## Protocol dự kiến trước khi khóa
 
@@ -13,9 +13,9 @@ Goal đã được tạo ngày 2026-10-29. Hoàn thành mã và chạy kiểm th
 - Benchmark giới hạn 120 giây/câu, tối đa hai vòng sửa. Timeout UI 600 giây phục vụ khám phá, không thay giới hạn benchmark.
 - Retrieval top 5, chunk 400 từ, overlap 60. Đếm phải chính xác; USD sai số tương đối tối đa 0,5%; giá trị chuẩn bằng 0 yêu cầu đúng 0.
 - Judge độc lập dự kiến Claude Haiku 4.5 qua Bedrock; cấu hình và mã phải được khóa cùng dữ liệu trước final. Chưa tuyên bố protocol đã khóa.
-- 40 câu × 3 lần × 6 cấu hình = 720 đầu ra; báo cáo lỗi/timeout trong mẫu số. Đơn vị phân tích là câu hỏi.
+- Giao thức final cập nhật theo góp ý: 40 câu × 3 lần × B0/B1/P = 360 đầu ra, giữ lỗi/timeout trong mẫu số. Đơn vị phân tích là câu hỏi.
 
-## Hạng mục và trạng thái thực
+## Trạng thái tại thời điểm lập kế hoạch
 
 | Hạng mục | Trạng thái / phần còn lại |
 |---|---|
@@ -25,10 +25,10 @@ Goal đã được tạo ngày 2026-10-29. Hoàn thành mã và chạy kiểm th
 | 60 câu, chống rò rỉ họ câu | Đã tạo bản nháp; chưa phải gold được duyệt |
 | Hai người xác minh độc lập | Đã xuất phiếu trống; cần người thật điền và xử lý bất đồng |
 | Khóa model/code/data/protocol | Có kiểm tra hash; chưa freeze vì chưa duyệt gold |
-| 720 kết quả cuối | Chưa chạy; chỉ chạy sau khi đủ điều kiện khóa |
-| Judge và audit người 20%, Cohen kappa | Có phần chấm/audit; chưa có kết quả và nhãn người |
+| 360 kết quả cuối | Chưa chạy; chỉ chạy sau khi đủ điều kiện khóa |
+| Judge và chấm người độc lập toàn bộ đầu ra, Cohen kappa | Có phần chấm/audit; chưa có kết quả và nhãn người |
 | Stress SQL riêng | Đã tạo bản nháp và phiếu review; cần xác minh độc lập |
-| Đo truy vết 10 câu | Đã đăng ký trước hai ID mỗi nhóm, seed 2026; 60 dòng đo trống cho lần lặp 0 của sáu cấu hình; chưa có đo người |
+| Đo truy vết 10 câu | Đăng ký hai ID mỗi nhóm trước khi khóa, seed 2026. Dùng 30 dòng đo cho lượt 0 của B0/B1/P. |
 | E1–E4, chi phí, giới hạn, tái lập | Cần báo cáo từ kết quả thực; không điền số giả |
 
 ## Phiếu đã chuẩn bị

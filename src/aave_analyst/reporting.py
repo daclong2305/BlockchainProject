@@ -32,6 +32,19 @@ def experiment_markdown(summary, coverage, config):
         if value is None:return 'chưa có'
         if isinstance(value,float):return f'{value:.4f}'
         return str(value)
+    if config.get('final') and config.get('evaluation_protocol',{}).get('version') == 2:
+        lines=['# Điểm tự động bổ sung trên 40 câu test', '',
+               f"Đầu ra {coverage['actual_outputs']}/{coverage['expected_outputs']}. Lỗi runtime {coverage['runtime_errors']}.",
+               'Bảng này ghi kết quả judge. Kết luận chính dùng điểm của hai người chấm sau phân xử.', '',
+               '| Cấu hình | Tổng lượt | Judge hoặc runtime đã có kết quả | Đạt | Từ chối nhầm | Trung vị (s) | p95 (s) |',
+               '|---|---:|---:|---:|---:|---:|---:|']
+        for mode in config['modes']:
+            row=summary['configurations'][mode]
+            lines.append('| '+' | '.join(display(x) for x in [mode,row['outputs'],row['scored_outputs'],row['correct'],
+                                                              row['wrong_refusals'],row['median_seconds'],row['p95_seconds']])+' |')
+        lines.extend(['', 'Chi phí theo cấu hình và chi phí vật lý của lượt chạy nằm trong costs.json. '
+                      'Mỗi bản nháp dùng chung được tính một lần vào tổng chi phí vật lý.', ''])
+        return '\n'.join(lines)
     lines=['# Báo cáo E1–E4', '',
            f"Final được khai báo: {config.get('final',False)}. Độ phủ final đạt: {coverage['complete']}.",
            f"Đầu ra: {coverage['actual_outputs']}/{coverage['expected_outputs']} theo protocol final. Lỗi runtime: {coverage['runtime_errors']}.",

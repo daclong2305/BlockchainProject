@@ -3,7 +3,7 @@ from copy import deepcopy
 import time
 from .models import Draft,QuerySpec,RunResult,Issue
 from .planning import planning_context,analysis_errors,runtime_dictionary
-from .verification import semantic_rules,response_issues,verify_claims,evidence_payload,coverage_rules,sql_review_payload
+from .verification import semantic_rules,response_issues,verify_claims,evidence_payload,coverage_rules,sql_review_payload,specialist_findings
 from .sql_normalization import normalize_datetime_quotes
 
 
@@ -108,9 +108,9 @@ class Analyst:
                     else:
                         if flags.sql_check and draft.sql:
                             issues.extend(semantic_rules(draft.sql,asdict(draft.spec),question=draft.question))
-                            issues.extend(coverage_rules(self.db,draft.spec,timeout=min(15,self.remaining(end))))
+                            issues.extend(coverage_rules(self.db, draft.spec, timeout=min(15,self.remaining(end)), draft=draft))
                             payload=sql_review_payload(draft)
-                            issues.extend(response_issues(self._call("sql_review",payload,end)))
+                            issues.extend(specialist_findings(draft, self._call("sql_review",payload,end)))
                         # Do not spend calls reviewing prose based on known-invalid SQL.
                         if flags.evidence_check and not any(i.action in {"sql","stop"} for i in issues):
                             issues.extend(verify_claims(draft,self.llm,timeout=self.remaining(end)))
