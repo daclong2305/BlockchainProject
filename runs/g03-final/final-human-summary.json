@@ -1,0 +1,933 @@
+{
+  "questions": 40,
+  "reviewed_unique": 248,
+  "configurations": {
+    "B0": {
+      "outputs": 120,
+      "correct": 75,
+      "wrong_refusals": 0,
+      "correct_refusals": 0,
+      "runtime_errors": 0,
+      "criterion_passes": {
+        "answer_correctness": 96,
+        "faithfulness": 84,
+        "citation_quality": 77
+      },
+      "median_seconds": 21.686500249990786,
+      "p95_seconds": 26.6153766099982,
+      "by_repeat": [
+        {
+          "repeat": 0,
+          "outputs": 40,
+          "correct": 24
+        },
+        {
+          "repeat": 1,
+          "outputs": 40,
+          "correct": 25
+        },
+        {
+          "repeat": 2,
+          "outputs": 40,
+          "correct": 26
+        }
+      ]
+    },
+    "B1": {
+      "outputs": 120,
+      "correct": 48,
+      "wrong_refusals": 1,
+      "correct_refusals": 0,
+      "runtime_errors": 0,
+      "criterion_passes": {
+        "answer_correctness": 75,
+        "faithfulness": 52,
+        "citation_quality": 49
+      },
+      "median_seconds": 32.2716009999931,
+      "p95_seconds": 80.64237785499208,
+      "by_repeat": [
+        {
+          "repeat": 0,
+          "outputs": 40,
+          "correct": 13
+        },
+        {
+          "repeat": 1,
+          "outputs": 40,
+          "correct": 17
+        },
+        {
+          "repeat": 2,
+          "outputs": 40,
+          "correct": 18
+        }
+      ]
+    },
+    "P": {
+      "outputs": 120,
+      "correct": 48,
+      "wrong_refusals": 1,
+      "correct_refusals": 0,
+      "runtime_errors": 0,
+      "criterion_passes": {
+        "answer_correctness": 73,
+        "faithfulness": 51,
+        "citation_quality": 48
+      },
+      "median_seconds": 40.65706424998643,
+      "p95_seconds": 104.11806830999122,
+      "by_repeat": [
+        {
+          "repeat": 0,
+          "outputs": 40,
+          "correct": 17
+        },
+        {
+          "repeat": 1,
+          "outputs": 40,
+          "correct": 16
+        },
+        {
+          "repeat": 2,
+          "outputs": 40,
+          "correct": 15
+        }
+      ]
+    }
+  },
+  "pairs": {
+    "B0": {
+      "pairs": 120,
+      "wrong_to_right": 4,
+      "right_to_wrong": 31,
+      "right_to_wrong_refusal": 0,
+      "by_repeat": [
+        {
+          "pairs": 40,
+          "wrong_to_right": 2,
+          "right_to_wrong": 9,
+          "right_to_wrong_refusal": 0,
+          "repeat": 0
+        },
+        {
+          "pairs": 40,
+          "wrong_to_right": 1,
+          "right_to_wrong": 10,
+          "right_to_wrong_refusal": 0,
+          "repeat": 1
+        },
+        {
+          "pairs": 40,
+          "wrong_to_right": 1,
+          "right_to_wrong": 12,
+          "right_to_wrong_refusal": 0,
+          "repeat": 2
+        }
+      ]
+    },
+    "B1": {
+      "pairs": 120,
+      "wrong_to_right": 7,
+      "right_to_wrong": 7,
+      "right_to_wrong_refusal": 0,
+      "by_repeat": [
+        {
+          "pairs": 40,
+          "wrong_to_right": 4,
+          "right_to_wrong": 0,
+          "right_to_wrong_refusal": 0,
+          "repeat": 0
+        },
+        {
+          "pairs": 40,
+          "wrong_to_right": 2,
+          "right_to_wrong": 3,
+          "right_to_wrong_refusal": 0,
+          "repeat": 1
+        },
+        {
+          "pairs": 40,
+          "wrong_to_right": 1,
+          "right_to_wrong": 4,
+          "right_to_wrong_refusal": 0,
+          "repeat": 2
+        }
+      ]
+    }
+  },
+  "judge_agreement": {
+    "answer_correctness": {
+      "reviewed": 360,
+      "reviewer_agreement": 344,
+      "reviewer_kappa": 0.8969072164948455,
+      "judged": 0,
+      "judge_matches_human": 0
+    },
+    "faithfulness": {
+      "reviewed": 360,
+      "reviewer_agreement": 336,
+      "reviewer_kappa": 0.8655713218820015,
+      "judged": 0,
+      "judge_matches_human": 0
+    },
+    "citation_quality": {
+      "reviewed": 360,
+      "reviewer_agreement": 343,
+      "reviewer_kappa": 0.9055380626041858,
+      "judged": 0,
+      "judge_matches_human": 0
+    }
+  },
+  "costs": {
+    "runtime_physical": {
+      "input_tokens": 4393511,
+      "output_tokens": 424619,
+      "calls": 1289,
+      "calls_with_unknown_usage": 0,
+      "estimated_api_usd": 7.1682666,
+      "input_usd_per_million": "1.10",
+      "output_usd_per_million": "5.50",
+      "source": "https://www-cdn.anthropic.com/files/4zrzovbb/website/3684c2faafb97418665782cea0001f439f74b1d2.pdf",
+      "source_page": 6,
+      "verified_on": "2026-10-29",
+      "scope": "API fee only; local hardware/electricity excluded. Published standard geo cross-region rate, not account invoice/discount/tax. Missing usage may underestimate API cost."
+    },
+    "per_configuration": {
+      "B0": {
+        "input_tokens": 1122852,
+        "output_tokens": 119205,
+        "calls": 389,
+        "calls_with_unknown_usage": 0,
+        "estimated_api_usd": 1.8907647,
+        "input_usd_per_million": "1.10",
+        "output_usd_per_million": "5.50",
+        "source": "https://www-cdn.anthropic.com/files/4zrzovbb/website/3684c2faafb97418665782cea0001f439f74b1d2.pdf",
+        "source_page": 6,
+        "verified_on": "2026-10-29",
+        "scope": "API fee only; local hardware/electricity excluded. Published standard geo cross-region rate, not account invoice/discount/tax. Missing usage may underestimate API cost."
+      },
+      "B1": {
+        "input_tokens": 2298997,
+        "output_tokens": 254357,
+        "calls": 721,
+        "calls_with_unknown_usage": 0,
+        "estimated_api_usd": 3.9278602,
+        "input_usd_per_million": "1.10",
+        "output_usd_per_million": "5.50",
+        "source": "https://www-cdn.anthropic.com/files/4zrzovbb/website/3684c2faafb97418665782cea0001f439f74b1d2.pdf",
+        "source_page": 6,
+        "verified_on": "2026-10-29",
+        "scope": "API fee only; local hardware/electricity excluded. Published standard geo cross-region rate, not account invoice/discount/tax. Missing usage may underestimate API cost."
+      },
+      "P": {
+        "input_tokens": 3217366,
+        "output_tokens": 289467,
+        "calls": 957,
+        "calls_with_unknown_usage": 0,
+        "estimated_api_usd": 5.1311711,
+        "input_usd_per_million": "1.10",
+        "output_usd_per_million": "5.50",
+        "source": "https://www-cdn.anthropic.com/files/4zrzovbb/website/3684c2faafb97418665782cea0001f439f74b1d2.pdf",
+        "source_page": 6,
+        "verified_on": "2026-10-29",
+        "scope": "API fee only; local hardware/electricity excluded. Published standard geo cross-region rate, not account invoice/discount/tax. Missing usage may underestimate API cost."
+      }
+    },
+    "judge": {
+      "reason": "Judge scoring has not been run"
+    },
+    "note": "Per-configuration estimates include the shared draft for standalone comparison; summing them double-counts initial calls. Runtime physical counts the shared draft once."
+  },
+  "review_source_sha256": "662484005eb40d9804b5ac21040167fa79e35ced8c21e5701b99365ff5829838",
+  "rubric_sha256": "7ff3b1e135e0346c79db69383512196e2ebe4ef5a6aec575f122cd53b022a52c",
+  "presentation_case": {
+    "question_id": "Q011",
+    "repeat": 1,
+    "question": "Việc rút tài sản đã cung cấp phụ thuộc vào điều kiện nào?",
+    "before": {
+      "question": "Việc rút tài sản đã cung cấp phụ thuộc vào điều kiện nào?",
+      "spec": {
+        "kind": "docs",
+        "metric": "other",
+        "assets": [],
+        "start": null,
+        "end": null,
+        "unit": "other",
+        "aggregation": "none",
+        "grain": "none",
+        "retrieval_query": "withdraw supplied tokens conditions requirements collateral health factor",
+        "clarification": ""
+      },
+      "sql": "",
+      "query_result": null,
+      "documents": [
+        {
+          "id": "DOC_BORROW_000",
+          "title": "Borrow Tokens | Aave",
+          "url": "https://aave.com/help/borrowing/borrow-tokens",
+          "collected_at": "2026-10-18T02:47:43.660415+00:00",
+          "source_sha256": "d35e7b9f13d1f23e78eef0c061d97f5b4a66c68cd4a79f23a2a02a159c5453e2",
+          "text": "Back to Borrowing Borrow Tokens beginner Introduction Borrowing tokens from the Aave Protocol enables participants to access liquidity against supplied collateral tokens. This process requires maintaining sufficient collateral and understanding the associated risks, such as liquidation. Borrowers must maintain that their collateral remains adequate to cover the borrowed amount, as falling below the required collateralization level could lead to liquidation. The interest rates for borrowed tokens are dynamically determined by the protocol based on factors like the borrow utilization rate and governance parameters, which can change through community decisions. Borrowing can be performed through protocol smart contracts or through a frontend such as the Aave Labs interface by performing the following steps: Step 1: Connect Wallet To begin, press ‘Connect Wallet’ and select the Ethereum wallet provider corresponding to the wallet holding the collateralized tokens. Step 2: Select Token to Borrow Once connected, navigate to the ‘Dashboard’ and locate the ‘Assets to Borrow’ table. This table lists the available tokens for borrowing, along with key parameters such as available amount, interest rates, and your health factor. The interest rates displayed here are influenced by the borrow utilization rate, which measures the proportion of assets currently borrowed against the total supplied in the pool. As liquidity is borrowed or repaid, these rates are dynamically adjusted to reflect current market conditions. Select the token you wish to borrow. Step 3: Review Borrow Parameters Before proceeding, review the borrow parameters including the Loan-to-Value (LTV) ratio, Liquidation Threshold (LT) ratio, and your current health factor. These parameters are crucial for maintaining sufficient collateral and avoiding liquidation. If you are borrowing a network base asset (e.g., ETH), you will first need to approve the WrappedTokenGateway contract. This approval enables the contract to perform a credit delegation, which performs a borrow and unwraps to the base asset in a single transaction. Step 4: Confirm Borrow Transaction Enter the amount you wish to borrow and confirm the transaction in your wallet. Upon confirmation, the borrowed tokens will be transferred to your wallet. It's important to note that interest on the borrowed tokens begins to accrue immediately and is dynamically adjusted based on the borrow utilization rate. Step 5: Monitor Health Factor Regularly monitor your health factor from the ‘Dashboard’ to verify that your collateral remains sufficient. If your health factor drops, consider supplying more collateral or repaying part of your borrow position to avoid liquidation. The health",
+          "score": 3.074978990732603
+        },
+        {
+          "id": "DOC_WITHDRAW_000",
+          "title": "Withdraw Tokens | Aave",
+          "url": "https://aave.com/help/supplying/withdraw-tokens",
+          "collected_at": "2026-11-22T09:12:17.587025+00:00",
+          "source_sha256": "03e8aa2323f7b856e267363066a975fa7615c71e4abfa639a4abf71eaf59d460",
+          "text": "Back to Supplying Withdraw Tokens beginner Introduction Withdrawing tokens from the Aave Protocol transfers underlying supplied assets along with any accrued interest, provided there is sufficient liquidity in the pool. This means suppliers can withdraw up to the amount available in the pool that is not currently borrowed. The process varies slightly depending on the type of token and the withdrawal method, and can be performed through protocl smart contracts or a frontend such as the Aave Labs interface . Step 1: Connect Wallet To begin, press ‘Connect Wallet’ and select the Ethereum wallet provider corresponding to the wallet where the tokens are supplied. Step 2: Navigate to 'Your Supplies' Once connected, navigate to the ‘Dashboard’ and locate the ‘Your Supplies’ section. This table displays all tokens you have supplied to the Aave Protocol. Step 3: Select Token to Withdraw Choose the token you wish to withdraw from the list. Verify that there is enough available liquidity in the pool to support your withdrawal. If the token is not being used as collateral for an active borrow position, you can proceed to withdraw the desired amount. Step 4: Confirm Withdrawal Enter the amount you want to withdraw and confirm the transaction in your wallet. If you are withdrawing the same underlying token that you supplied (e.g., WETH to WETH), no additional approval transaction is needed. However, if you’re withdrawing to a network base token, such as ETH, the Aave Protocol stores these as wrapped tokens (e.g., WETH). In this case, the withdrawal process involves the WrappedTokenGateway contract, where the WETH is unwrapped and withdrawn in a single transaction. Step 5: Handling Collateralised Tokens If your supplied tokens are used as collateral, you may need to repay part of your borrow position or supply additional collateral to maintain a healthy balance before you can withdraw. Regularly monitoring your health factor will help you manage this effectively. Step 6: Withdrawing and Switching Tokens The Aave Labs interface also offers a feature to withdraw and switch to a different token in one action. This requires token approval for both the withdrawal and the switch. Ensure you review the necessary approvals in your wallet before proceeding. Related Supply Tokens beginner Supply tokens to the Aave Protocol. 4 min read Toggle Collateral Status intermediate Toggle collateral status of supply positions. 4 min read Isolation Mode beginner Supply isolated collateral assets. 3 min read",
+          "score": 2.236183119018088
+        },
+        {
+          "id": "DOC_SUPPLY_000",
+          "title": "Supply Tokens | Aave",
+          "url": "https://aave.com/help/supplying/supply-tokens",
+          "collected_at": "2026-10-18T02:47:43.333680+00:00",
+          "source_sha256": "071408472a646541670d782521e5864abeefd6baf637700c00af764942d133f2",
+          "text": "Back to Supplying Supply Tokens beginner Introduction Supplying tokens to the Aave Protocol allows you to earn interest on your digital assets and utilize supplied tokens as collateral. When tokens are supplied, they are transferred to the Aave liquidity pool, a system of smart contracts that facilitates overcollateralized borrowing of tokens. Supplied tokens automatically accumulate interest by updating in balance at the current market supply rate. This interest accrual happens dynamically as the balance of your supplied tokens increases linearly over time, reflecting the current rate allocated to suppliers. Interest rates for supplied tokens are determined by the borrow utilization rate, which measures the proportion of assets currently borrowed against the total supplied in the pool, and by governance parameters that can be adjusted through community decisions. These parameters, including collateralization requirements and interest rates for suppliers and borrowers, are influenced by on-chain inputs such as token balances, oracle prices, and the borrow utilization ratio. As liquidity is supplied, borrowed, repaid, or withdrawn from the pool, the interest rates are updated accordingly. Tokens can be supplied through protocol smart contracts or through a frontend such as the Aave Labs interface, by performing the following steps: Step 1: Connect Wallet To begin, press ‘Connect Wallet’ and select the Ethereum wallet provider corresponding to the wallet holding tokens intended to supply. Step 2: Select Token To Supply Once connected, navigate to the ‘Dashboard’ where you’ll find the ‘Assets To Supply’ table, which lists current token balances and asset parameters. More details on supply and borrow parameters can be found by selecting the individual token icon, which will navigate to the reserve details page. Step 3: Approve Token Transfer In order to transfer tokens on an Ethereum-based network, the Aave Pool smart contract must be granted an allowance to transfer tokens from the connected wallet address. Approvals can be performed through transaction (which will incur a network fee) or signature (which does not incur a network fee). After selecting a token to supply, a modal will appear which will prompt a transaction or message signature request in the connected wallet. Step 4: Perform Supply Transaction After approval, enter the amount you wish to supply and confirm, which will prompt a transaction in the connected wallet. Your supplied tokens are then added to the Aave liquidity pool, where they are made available for borrowers. The supplied tokens will start earning interest immediately, which can",
+          "score": 2.0190290983100923
+        },
+        {
+          "id": "DOC_BORROW_001",
+          "title": "Borrow Tokens | Aave",
+          "url": "https://aave.com/help/borrowing/borrow-tokens",
+          "collected_at": "2026-10-18T02:47:43.660415+00:00",
+          "source_sha256": "d35e7b9f13d1f23e78eef0c061d97f5b4a66c68cd4a79f23a2a02a159c5453e2",
+          "text": "interest on the borrowed tokens begins to accrue immediately and is dynamically adjusted based on the borrow utilization rate. Step 5: Monitor Health Factor Regularly monitor your health factor from the ‘Dashboard’ to verify that your collateral remains sufficient. If your health factor drops, consider supplying more collateral or repaying part of your borrow position to avoid liquidation. The health factor is a critical indicator of the safety of your borrow position, and maintaining it above the liquidation threshold is essential to prevent your collateral from being liquidated. Related Repay Tokens beginner Repay active borrow positions. 3 min read Efficiency Mode (E-mode) intermediate Borrowing in Efficiency Mode (E-mode). 3 min read Health Factor & Liquidations advanced Mechanics of Aave Protocol liquidations. 5 min read",
+          "score": 1.8947364126200539
+        },
+        {
+          "id": "DOC_SUPPLY_001",
+          "title": "Supply Tokens | Aave",
+          "url": "https://aave.com/help/supplying/supply-tokens",
+          "collected_at": "2026-10-18T02:47:43.333680+00:00",
+          "source_sha256": "071408472a646541670d782521e5864abeefd6baf637700c00af764942d133f2",
+          "text": "message signature request in the connected wallet. Step 4: Perform Supply Transaction After approval, enter the amount you wish to supply and confirm, which will prompt a transaction in the connected wallet. Your supplied tokens are then added to the Aave liquidity pool, where they are made available for borrowers. The supplied tokens will start earning interest immediately, which can be monitored from the ‘Dashboard’ tab. Related Withdraw Tokens beginner Withdraw tokens from the Aave Protocol. 4 min read Toggle Collateral Status intermediate Toggle collateral status of supply positions. 4 min read Isolation Mode beginner Supply isolated collateral assets. 3 min read",
+          "score": 1.7703644742877358
+        }
+      ],
+      "answer": "Việc rút tài sản đã cung cấp phụ thuộc vào ba điều kiện chính: (1) Phải có đủ thanh khoản trong pool - người cung cấp chỉ có thể rút tối đa số tiền có sẵn trong pool mà không được vay; (2) Nếu tài sản được sử dụng làm tài sản thế chấp cho vị trí vay hoạt động, người dùng có thể cần phải hoàn trả một phần vị trí vay hoặc cung cấp thêm tài sản thế chấp để duy trì mức cân bằng lành mạnh trước khi có thể rút; (3) Phải duy trì health factor ở mức đủ cao - theo dõi thường xuyên health factor sẽ giúp quản lý hiệu quả để tránh tình trạng tài sản thế chấp bị thanh lý.",
+      "claims": [
+        {
+          "text": "Người cung cấp có thể rút tối đa số tiền có sẵn trong pool mà không được vay hiện tại",
+          "citations": [
+            "DOC_WITHDRAW_000"
+          ]
+        },
+        {
+          "text": "Nếu tài sản được sử dụng làm tài sản thế chấp cho vị trí vay hoạt động, có thể cần phải hoàn trả một phần vị trí vay hoặc cung cấp thêm tài sản thế chấp để duy trì mức cân bằng lành mạnh trước khi rút",
+          "citations": [
+            "DOC_WITHDRAW_000"
+          ]
+        },
+        {
+          "text": "Phải theo dõi thường xuyên health factor từ Dashboard để quản lý hiệu quả và tránh thanh lý tài sản thế chấp",
+          "citations": [
+            "DOC_WITHDRAW_000"
+          ]
+        },
+        {
+          "text": "Nếu rút tài sản cơ sở mạng (ví dụ ETH), quá trình rút sẽ liên quan đến WrappedTokenGateway contract để unwrap và rút trong một giao dịch duy nhất",
+          "citations": [
+            "DOC_WITHDRAW_000"
+          ]
+        }
+      ],
+      "refused": false,
+      "issues": [],
+      "elapsed": 19.0880174000049,
+      "usage": [
+        {
+          "role": "plan",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 4021,
+          "output_tokens": 98,
+          "timeout_seconds": 113.66641069999605,
+          "cache_read_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "elapsed": 2.1764617000008,
+          "queue_seconds": 6.2810000000026776,
+          "estimated_usd": 0.0049621000000000005,
+          "usage_unknown": false,
+          "transport_attempt": 1
+        },
+        {
+          "role": "answer",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 3864,
+          "output_tokens": 661,
+          "timeout_seconds": 105.67410049999307,
+          "cache_read_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "elapsed": 4.759926400001859,
+          "queue_seconds": 5.812000000005355,
+          "estimated_usd": 0.007885900000000001,
+          "usage_unknown": false,
+          "transport_attempt": 1
+        }
+      ],
+      "error": "",
+      "tools": [
+        {
+          "tool": "sql",
+          "sql": "SELECT * FROM coverage",
+          "started": 124749.641259,
+          "returned_rows": 5,
+          "truncated": false,
+          "elapsed": 0.028578199999174103
+        },
+        {
+          "tool": "sql",
+          "sql": "SELECT MIN(time) AS first_event_utc, MAX(time) AS last_event_utc, COUNT(*) AS event_rows FROM liquidation_events",
+          "started": 124749.6698531,
+          "returned_rows": 1,
+          "truncated": false,
+          "elapsed": 0.02338410000083968
+        },
+        {
+          "tool": "retrieve",
+          "query": "Việc rút tài sản đã cung cấp phụ thuộc vào điều kiện nào?",
+          "document_ids": [
+            "DOC_SUPPLY_000",
+            "DOC_SUPPLY_001",
+            "DOC_BORROW_000",
+            "DOC_BORROW_001",
+            "DOC_LIQ_000"
+          ],
+          "started": 124749.693244,
+          "elapsed": 0.0003727000002982095
+        },
+        {
+          "tool": "retrieve",
+          "query": "withdraw supplied tokens conditions requirements collateral health factor",
+          "document_ids": [
+            "DOC_BORROW_000",
+            "DOC_WITHDRAW_000",
+            "DOC_SUPPLY_000",
+            "DOC_BORROW_001",
+            "DOC_SUPPLY_001"
+          ],
+          "started": 124758.1542857,
+          "elapsed": 0.00020510000467766076
+        }
+      ],
+      "planning": {
+        "initial": {
+          "kind": "docs",
+          "metric": "other",
+          "assets": [],
+          "start": null,
+          "end": null,
+          "unit": "other",
+          "aggregation": "none",
+          "grain": "none",
+          "retrieval_query": "withdraw supplied tokens conditions requirements collateral health factor",
+          "clarification": ""
+        },
+        "availability": {
+          "market_hourly": [
+            {
+              "asset": "USDC",
+              "start_utc": "2023-01-27T08:00:00+00:00",
+              "end_utc": "2026-09-15T07:00:00+00:00",
+              "rows": 31848,
+              "observed_hours": 31848
+            },
+            {
+              "asset": "WETH",
+              "start_utc": "2023-01-27T08:00:00+00:00",
+              "end_utc": "2026-09-15T07:00:00+00:00",
+              "rows": 31848,
+              "observed_hours": 31848
+            },
+            {
+              "asset": "DAI",
+              "start_utc": "2023-01-27T08:00:00+00:00",
+              "end_utc": "2026-09-15T06:00:00+00:00",
+              "rows": 31847,
+              "observed_hours": 31847
+            },
+            {
+              "asset": "USDT",
+              "start_utc": "2023-02-13T14:00:00+00:00",
+              "end_utc": "2026-09-15T07:00:00+00:00",
+              "rows": 31434,
+              "observed_hours": 31434
+            },
+            {
+              "asset": "USDe",
+              "start_utc": "2024-06-06T15:00:00+00:00",
+              "end_utc": "2026-09-15T07:00:00+00:00",
+              "rows": 19937,
+              "observed_hours": 19937
+            }
+          ],
+          "liquidation_events": {
+            "first_event_utc": "2023-01-30T19:11:47+00:00",
+            "last_event_utc": "2026-09-15T05:53:59+00:00",
+            "event_rows": 25121
+          },
+          "interpretation": "These are observed timestamp bounds, not guarantees of gap-free coverage. The last event timestamp is not the collection cutoff. Do not infer missing events or a partial month from an event timestamp alone. Query the requested interval to report counts in the loaded dataset."
+        }
+      }
+    },
+    "after": {
+      "question": "Việc rút tài sản đã cung cấp phụ thuộc vào điều kiện nào?",
+      "spec": {
+        "kind": "docs",
+        "metric": "other",
+        "assets": [],
+        "start": null,
+        "end": null,
+        "unit": "other",
+        "aggregation": "none",
+        "grain": "none",
+        "retrieval_query": "withdraw supplied tokens conditions requirements collateral health factor",
+        "clarification": ""
+      },
+      "sql": "",
+      "query_result": null,
+      "documents": [
+        {
+          "id": "DOC_WITHDRAW_000",
+          "title": "Withdraw Tokens | Aave",
+          "url": "https://aave.com/help/supplying/withdraw-tokens",
+          "collected_at": "2026-11-22T09:12:17.587025+00:00",
+          "source_sha256": "03e8aa2323f7b856e267363066a975fa7615c71e4abfa639a4abf71eaf59d460",
+          "text": "Back to Supplying Withdraw Tokens beginner Introduction Withdrawing tokens from the Aave Protocol transfers underlying supplied assets along with any accrued interest, provided there is sufficient liquidity in the pool. This means suppliers can withdraw up to the amount available in the pool that is not currently borrowed. The process varies slightly depending on the type of token and the withdrawal method, and can be performed through protocl smart contracts or a frontend such as the Aave Labs interface . Step 1: Connect Wallet To begin, press ‘Connect Wallet’ and select the Ethereum wallet provider corresponding to the wallet where the tokens are supplied. Step 2: Navigate to 'Your Supplies' Once connected, navigate to the ‘Dashboard’ and locate the ‘Your Supplies’ section. This table displays all tokens you have supplied to the Aave Protocol. Step 3: Select Token to Withdraw Choose the token you wish to withdraw from the list. Verify that there is enough available liquidity in the pool to support your withdrawal. If the token is not being used as collateral for an active borrow position, you can proceed to withdraw the desired amount. Step 4: Confirm Withdrawal Enter the amount you want to withdraw and confirm the transaction in your wallet. If you are withdrawing the same underlying token that you supplied (e.g., WETH to WETH), no additional approval transaction is needed. However, if you’re withdrawing to a network base token, such as ETH, the Aave Protocol stores these as wrapped tokens (e.g., WETH). In this case, the withdrawal process involves the WrappedTokenGateway contract, where the WETH is unwrapped and withdrawn in a single transaction. Step 5: Handling Collateralised Tokens If your supplied tokens are used as collateral, you may need to repay part of your borrow position or supply additional collateral to maintain a healthy balance before you can withdraw. Regularly monitoring your health factor will help you manage this effectively. Step 6: Withdrawing and Switching Tokens The Aave Labs interface also offers a feature to withdraw and switch to a different token in one action. This requires token approval for both the withdrawal and the switch. Ensure you review the necessary approvals in your wallet before proceeding. Related Supply Tokens beginner Supply tokens to the Aave Protocol. 4 min read Toggle Collateral Status intermediate Toggle collateral status of supply positions. 4 min read Isolation Mode beginner Supply isolated collateral assets. 3 min read",
+          "score": 5.6311152374866245
+        },
+        {
+          "id": "DOC_BORROW_000",
+          "title": "Borrow Tokens | Aave",
+          "url": "https://aave.com/help/borrowing/borrow-tokens",
+          "collected_at": "2026-10-18T02:47:43.660415+00:00",
+          "source_sha256": "d35e7b9f13d1f23e78eef0c061d97f5b4a66c68cd4a79f23a2a02a159c5453e2",
+          "text": "Back to Borrowing Borrow Tokens beginner Introduction Borrowing tokens from the Aave Protocol enables participants to access liquidity against supplied collateral tokens. This process requires maintaining sufficient collateral and understanding the associated risks, such as liquidation. Borrowers must maintain that their collateral remains adequate to cover the borrowed amount, as falling below the required collateralization level could lead to liquidation. The interest rates for borrowed tokens are dynamically determined by the protocol based on factors like the borrow utilization rate and governance parameters, which can change through community decisions. Borrowing can be performed through protocol smart contracts or through a frontend such as the Aave Labs interface by performing the following steps: Step 1: Connect Wallet To begin, press ‘Connect Wallet’ and select the Ethereum wallet provider corresponding to the wallet holding the collateralized tokens. Step 2: Select Token to Borrow Once connected, navigate to the ‘Dashboard’ and locate the ‘Assets to Borrow’ table. This table lists the available tokens for borrowing, along with key parameters such as available amount, interest rates, and your health factor. The interest rates displayed here are influenced by the borrow utilization rate, which measures the proportion of assets currently borrowed against the total supplied in the pool. As liquidity is borrowed or repaid, these rates are dynamically adjusted to reflect current market conditions. Select the token you wish to borrow. Step 3: Review Borrow Parameters Before proceeding, review the borrow parameters including the Loan-to-Value (LTV) ratio, Liquidation Threshold (LT) ratio, and your current health factor. These parameters are crucial for maintaining sufficient collateral and avoiding liquidation. If you are borrowing a network base asset (e.g., ETH), you will first need to approve the WrappedTokenGateway contract. This approval enables the contract to perform a credit delegation, which performs a borrow and unwraps to the base asset in a single transaction. Step 4: Confirm Borrow Transaction Enter the amount you wish to borrow and confirm the transaction in your wallet. Upon confirmation, the borrowed tokens will be transferred to your wallet. It's important to note that interest on the borrowed tokens begins to accrue immediately and is dynamically adjusted based on the borrow utilization rate. Step 5: Monitor Health Factor Regularly monitor your health factor from the ‘Dashboard’ to verify that your collateral remains sufficient. If your health factor drops, consider supplying more collateral or repaying part of your borrow position to avoid liquidation. The health",
+          "score": 3.322516508556586
+        },
+        {
+          "id": "DOC_LIQ_000",
+          "title": "Health Factor & Liquidations | Aave",
+          "url": "https://aave.com/help/borrowing/liquidations",
+          "collected_at": "2026-10-18T02:47:43.950779+00:00",
+          "source_sha256": "0a38b5c040f315f20d829ffdbfa5e73df3e175876fd6eb6a7519220404314057",
+          "text": "Back to Borrowing Health Factor & Liquidations advanced Health Factor The health factor is a critical metric within the Aave Protocol that measures the safety of a borrow position. It is calculated as: Health Factor = (Total Collateral Value * Weighted Average Liquidation Threshold) / Total Borrow Value This metric indicates the stability of a borrow position, with a health factor below 1 signaling the risk of liquidation. The liquidation threshold, set by Aave Governance for each collateral asset, determines the maximum percentage of value that can be borrowed against it. For example, if you supply $10,000 in ETH with an 80% liquidation threshold and borrow $6,000 in GHO, your health factor would be 1.333. Managing Health Factor Maintaining a health factor above 1 is crucial to avoid liquidation. Regular monitoring of this metric is essential, as it fluctuates with the value of both collateral and borrowed assets. To improve your health factor, you can either supply more collateral or repay part of your borrow position. The health factor is sensitive to market changes—if your collateral's value increases, so does your health factor; conversely, if it decreases, your health factor drops, heightening the risk of liquidation. There is no universally \"safe\" health factor, as this depends on the volatility and correlation of your assets. Generally, lower health factors may be acceptable for correlated assets, such as stablecoins or assets closely tied to ETH. Tools for Managing Health Factor (Use at your own risk): Simulate health factor changes: DeFi Simulator Auto-repay borrow position: DeFi Saver Liquidation Process A liquidation in the Aave Protocol occurs when a borrower's health factor falls below 1, indicating that their collateral no longer sufficiently covers the borrowed amount. This situation can happen when the value of the collateral decreases or the borrowed amount increases, pushing the position past the liquidation threshold. The amount that can be liquidated depends on the health factor and position size: Up to 50% of total debt can be liquidated when the health factor is above 0.95 AND both the collateral and debt values are at least $2,000 each. Up to 100% of debt can be liquidated when the health factor is 0.95 or below, OR when either the collateral or debt value is below $2,000. During liquidation, the liquidator repays debt on behalf of the borrower and receives an equivalent value plus a liquidation bonus from the borrower's collateral. To prevent",
+          "score": 2.4216798339538084
+        },
+        {
+          "id": "DOC_SUPPLY_001",
+          "title": "Supply Tokens | Aave",
+          "url": "https://aave.com/help/supplying/supply-tokens",
+          "collected_at": "2026-10-18T02:47:43.333680+00:00",
+          "source_sha256": "071408472a646541670d782521e5864abeefd6baf637700c00af764942d133f2",
+          "text": "message signature request in the connected wallet. Step 4: Perform Supply Transaction After approval, enter the amount you wish to supply and confirm, which will prompt a transaction in the connected wallet. Your supplied tokens are then added to the Aave liquidity pool, where they are made available for borrowers. The supplied tokens will start earning interest immediately, which can be monitored from the ‘Dashboard’ tab. Related Withdraw Tokens beginner Withdraw tokens from the Aave Protocol. 4 min read Toggle Collateral Status intermediate Toggle collateral status of supply positions. 4 min read Isolation Mode beginner Supply isolated collateral assets. 3 min read",
+          "score": 2.0511642162120847
+        },
+        {
+          "id": "DOC_WITHDRAW_001",
+          "title": "Withdraw Tokens | Aave",
+          "url": "https://aave.com/help/supplying/withdraw-tokens",
+          "collected_at": "2026-11-22T09:12:17.587025+00:00",
+          "source_sha256": "03e8aa2323f7b856e267363066a975fa7615c71e4abfa639a4abf71eaf59d460",
+          "text": "This requires token approval for both the withdrawal and the switch. Ensure you review the necessary approvals in your wallet before proceeding. Related Supply Tokens beginner Supply tokens to the Aave Protocol. 4 min read Toggle Collateral Status intermediate Toggle collateral status of supply positions. 4 min read Isolation Mode beginner Supply isolated collateral assets. 3 min read",
+          "score": 2.0243737903133643
+        }
+      ],
+      "answer": "Việc rút tài sản đã cung cấp phụ thuộc vào các điều kiện sau: (1) Phải có đủ thanh khoản trong pool - người cung cấp chỉ có thể rút tối đa số tiền có sẵn trong pool mà không được vay hiện tại; (2) Nếu tài sản KHÔNG được sử dụng làm tài sản thế chấp cho vị trí vay hoạt động, có thể tiến hành rút mà không có hạn chế; (3) Nếu tài sản ĐƯỢC sử dụng làm tài sản thế chấp, người dùng có thể cần phải hoàn trả một phần vị trí vay hoặc cung cấp thêm tài sản thế chấp để duy trì mức cân bằng lành mạnh (health factor) trước khi có thể rút; (4) Theo dõi thường xuyên health factor từ Dashboard để quản lý hiệu quả và tránh thanh lý tài sản thế chấp.",
+      "claims": [
+        {
+          "text": "Người cung cấp có thể rút tối đa số tiền có sẵn trong pool mà không được vay hiện tại",
+          "citations": [
+            "DOC_WITHDRAW_000"
+          ]
+        },
+        {
+          "text": "Nếu tài sản không được sử dụng làm tài sản thế chấp cho vị trí vay hoạt động, có thể tiến hành rút mà không có hạn chế",
+          "citations": [
+            "DOC_WITHDRAW_000"
+          ]
+        },
+        {
+          "text": "Nếu tài sản được sử dụng làm tài sản thế chấp, có thể cần phải hoàn trả một phần vị trí vay hoặc cung cấp thêm tài sản thế chấp để duy trì mức cân bằng lành mạnh trước khi rút",
+          "citations": [
+            "DOC_WITHDRAW_000"
+          ]
+        },
+        {
+          "text": "Phải theo dõi thường xuyên health factor từ Dashboard để quản lý hiệu quả và tránh thanh lý tài sản thế chấp",
+          "citations": [
+            "DOC_WITHDRAW_000"
+          ]
+        }
+      ],
+      "refused": false,
+      "issues": [],
+      "elapsed": 19.0880174000049,
+      "usage": [
+        {
+          "role": "plan",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 4021,
+          "output_tokens": 98,
+          "timeout_seconds": 113.66641069999605,
+          "cache_read_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "elapsed": 2.1764617000008,
+          "queue_seconds": 6.2810000000026776,
+          "estimated_usd": 0.0049621000000000005,
+          "usage_unknown": false,
+          "transport_attempt": 1
+        },
+        {
+          "role": "answer",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "format_attempt": 1,
+          "input_tokens": 3864,
+          "output_tokens": 661,
+          "timeout_seconds": 105.67410049999307,
+          "cache_read_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "elapsed": 4.759926400001859,
+          "queue_seconds": 5.812000000005355,
+          "estimated_usd": 0.007885900000000001,
+          "usage_unknown": false,
+          "transport_attempt": 1
+        }
+      ],
+      "error": "",
+      "tools": [
+        {
+          "tool": "sql",
+          "sql": "SELECT * FROM coverage",
+          "started": 124749.641259,
+          "returned_rows": 5,
+          "truncated": false,
+          "elapsed": 0.028578199999174103
+        },
+        {
+          "tool": "sql",
+          "sql": "SELECT MIN(time) AS first_event_utc, MAX(time) AS last_event_utc, COUNT(*) AS event_rows FROM liquidation_events",
+          "started": 124749.6698531,
+          "returned_rows": 1,
+          "truncated": false,
+          "elapsed": 0.02338410000083968
+        },
+        {
+          "tool": "retrieve",
+          "query": "Việc rút tài sản đã cung cấp phụ thuộc vào điều kiện nào?",
+          "document_ids": [
+            "DOC_SUPPLY_000",
+            "DOC_SUPPLY_001",
+            "DOC_BORROW_000",
+            "DOC_BORROW_001",
+            "DOC_LIQ_000"
+          ],
+          "started": 124749.693244,
+          "elapsed": 0.0003727000002982095
+        },
+        {
+          "tool": "retrieve",
+          "query": "withdraw supplied tokens conditions requirements collateral health factor",
+          "document_ids": [
+            "DOC_BORROW_000",
+            "DOC_WITHDRAW_000",
+            "DOC_SUPPLY_000",
+            "DOC_BORROW_001",
+            "DOC_SUPPLY_001"
+          ],
+          "started": 124758.1542857,
+          "elapsed": 0.00020510000467766076
+        },
+        {
+          "tool": "retrieve",
+          "query": "withdraw supplied assets conditions collateral not used as collateral unrestricted liquidity available health factor",
+          "document_ids": [
+            "DOC_WITHDRAW_000",
+            "DOC_BORROW_000",
+            "DOC_LIQ_000",
+            "DOC_SUPPLY_001",
+            "DOC_WITHDRAW_001"
+          ],
+          "started": 124789.8666577,
+          "elapsed": 0.00047569999878760427
+        }
+      ],
+      "planning": {
+        "initial": {
+          "kind": "docs",
+          "metric": "other",
+          "assets": [],
+          "start": null,
+          "end": null,
+          "unit": "other",
+          "aggregation": "none",
+          "grain": "none",
+          "retrieval_query": "withdraw supplied tokens conditions requirements collateral health factor",
+          "clarification": ""
+        },
+        "availability": {
+          "market_hourly": [
+            {
+              "asset": "USDC",
+              "start_utc": "2023-01-27T08:00:00+00:00",
+              "end_utc": "2026-09-15T07:00:00+00:00",
+              "rows": 31848,
+              "observed_hours": 31848
+            },
+            {
+              "asset": "WETH",
+              "start_utc": "2023-01-27T08:00:00+00:00",
+              "end_utc": "2026-09-15T07:00:00+00:00",
+              "rows": 31848,
+              "observed_hours": 31848
+            },
+            {
+              "asset": "DAI",
+              "start_utc": "2023-01-27T08:00:00+00:00",
+              "end_utc": "2026-09-15T06:00:00+00:00",
+              "rows": 31847,
+              "observed_hours": 31847
+            },
+            {
+              "asset": "USDT",
+              "start_utc": "2023-02-13T14:00:00+00:00",
+              "end_utc": "2026-09-15T07:00:00+00:00",
+              "rows": 31434,
+              "observed_hours": 31434
+            },
+            {
+              "asset": "USDe",
+              "start_utc": "2024-06-06T15:00:00+00:00",
+              "end_utc": "2026-09-15T07:00:00+00:00",
+              "rows": 19937,
+              "observed_hours": 19937
+            }
+          ],
+          "liquidation_events": {
+            "first_event_utc": "2023-01-30T19:11:47+00:00",
+            "last_event_utc": "2026-09-15T05:53:59+00:00",
+            "event_rows": 25121
+          },
+          "interpretation": "These are observed timestamp bounds, not guarantees of gap-free coverage. The last event timestamp is not the collection cutoff. Do not infer missing events or a partial month from an event timestamp alone. Query the requested interval to report counts in the loaded dataset."
+        }
+      }
+    },
+    "baseline": "B0",
+    "issues": [],
+    "trace": [
+      {
+        "event": "verification",
+        "repair": 0,
+        "issues": [
+          {
+            "code": "unsupported_claim",
+            "message": "Claim states 'Nếu rút tài sản cơ sở mạng (ví dụ ETH), quá trình rút sẽ liên quan đến WrappedTokenGateway contract để unwrap và rút trong một giao dịch duy nhất' but DOC_WITHDRAW_000 describes WrappedTokenGateway only for the approval step when borrowing network base assets (ETH), not for withdrawal. The withdrawal section mentions WrappedTokenGateway only for unwrapping WETH to ETH during withdrawal, not as a general condition for withdrawing base assets.",
+            "action": "answer"
+          },
+          {
+            "code": "incomplete_answer",
+            "message": "The question asks 'Việc rút tài sản đã cung cấp phụ thuộc vào điều kiện nào?' (What conditions does withdrawal of supplied assets depend on?). The answer lists three conditions but omits a fourth explicit condition from DOC_WITHDRAW_000 Step 3: 'If the token is not being used as collateral for an active borrow position, you can proceed to withdraw the desired amount.' This establishes that withdrawal is unrestricted only when the token is NOT used as collateral—a distinct condition from the collateralized case mentioned in Step 5.",
+            "action": "answer"
+          }
+        ],
+        "sql": "",
+        "answer": "Việc rút tài sản đã cung cấp phụ thuộc vào ba điều kiện chính: (1) Phải có đủ thanh khoản trong pool - người cung cấp chỉ có thể rút tối đa số tiền có sẵn trong pool mà không được vay; (2) Nếu tài sản được sử dụng làm tài sản thế chấp cho vị trí vay hoạt động, người dùng có thể cần phải hoàn trả một phần vị trí vay hoặc cung cấp thêm tài sản thế chấp để duy trì mức cân bằng lành mạnh trước khi có thể rút; (3) Phải duy trì health factor ở mức đủ cao - theo dõi thường xuyên health factor sẽ giúp quản lý hiệu quả để tránh tình trạng tài sản thế chấp bị thanh lý."
+      },
+      {
+        "event": "repair",
+        "repair": 1,
+        "sql": "",
+        "answer": "Việc rút tài sản đã cung cấp phụ thuộc vào các điều kiện sau: (1) Phải có đủ thanh khoản trong pool - người cung cấp chỉ có thể rút tối đa số tiền có sẵn trong pool mà không được vay hiện tại; (2) Nếu tài sản KHÔNG được sử dụng làm tài sản thế chấp cho vị trí vay hoạt động, có thể tiến hành rút mà không có hạn chế; (3) Nếu tài sản ĐƯỢC sử dụng làm tài sản thế chấp, người dùng có thể cần phải hoàn trả một phần vị trí vay hoặc cung cấp thêm tài sản thế chấp để duy trì mức cân bằng lành mạnh (health factor) trước khi có thể rút; (4) Theo dõi thường xuyên health factor từ Dashboard để quản lý hiệu quả và tránh thanh lý tài sản thế chấp.",
+        "feedback": [
+          {
+            "code": "unsupported_claim",
+            "message": "Claim states 'Nếu rút tài sản cơ sở mạng (ví dụ ETH), quá trình rút sẽ liên quan đến WrappedTokenGateway contract để unwrap và rút trong một giao dịch duy nhất' but DOC_WITHDRAW_000 describes WrappedTokenGateway only for the approval step when borrowing network base assets (ETH), not for withdrawal. The withdrawal section mentions WrappedTokenGateway only for unwrapping WETH to ETH during withdrawal, not as a general condition for withdrawing base assets.",
+            "action": "answer"
+          },
+          {
+            "code": "incomplete_answer",
+            "message": "The question asks 'Việc rút tài sản đã cung cấp phụ thuộc vào điều kiện nào?' (What conditions does withdrawal of supplied assets depend on?). The answer lists three conditions but omits a fourth explicit condition from DOC_WITHDRAW_000 Step 3: 'If the token is not being used as collateral for an active borrow position, you can proceed to withdraw the desired amount.' This establishes that withdrawal is unrestricted only when the token is NOT used as collateral—a distinct condition from the collateralized case mentioned in Step 5.",
+            "action": "answer"
+          }
+        ],
+        "before": {
+          "sql": "",
+          "sql_result": null,
+          "answer": "Việc rút tài sản đã cung cấp phụ thuộc vào ba điều kiện chính: (1) Phải có đủ thanh khoản trong pool - người cung cấp chỉ có thể rút tối đa số tiền có sẵn trong pool mà không được vay; (2) Nếu tài sản được sử dụng làm tài sản thế chấp cho vị trí vay hoạt động, người dùng có thể cần phải hoàn trả một phần vị trí vay hoặc cung cấp thêm tài sản thế chấp để duy trì mức cân bằng lành mạnh trước khi có thể rút; (3) Phải duy trì health factor ở mức đủ cao - theo dõi thường xuyên health factor sẽ giúp quản lý hiệu quả để tránh tình trạng tài sản thế chấp bị thanh lý.",
+          "claims": [
+            {
+              "text": "Người cung cấp có thể rút tối đa số tiền có sẵn trong pool mà không được vay hiện tại",
+              "citations": [
+                "DOC_WITHDRAW_000"
+              ]
+            },
+            {
+              "text": "Nếu tài sản được sử dụng làm tài sản thế chấp cho vị trí vay hoạt động, có thể cần phải hoàn trả một phần vị trí vay hoặc cung cấp thêm tài sản thế chấp để duy trì mức cân bằng lành mạnh trước khi rút",
+              "citations": [
+                "DOC_WITHDRAW_000"
+              ]
+            },
+            {
+              "text": "Phải theo dõi thường xuyên health factor từ Dashboard để quản lý hiệu quả và tránh thanh lý tài sản thế chấp",
+              "citations": [
+                "DOC_WITHDRAW_000"
+              ]
+            },
+            {
+              "text": "Nếu rút tài sản cơ sở mạng (ví dụ ETH), quá trình rút sẽ liên quan đến WrappedTokenGateway contract để unwrap và rút trong một giao dịch duy nhất",
+              "citations": [
+                "DOC_WITHDRAW_000"
+              ]
+            }
+          ],
+          "documents": [
+            {
+              "id": "DOC_BORROW_000",
+              "title": "Borrow Tokens | Aave",
+              "url": "https://aave.com/help/borrowing/borrow-tokens",
+              "collected_at": "2026-10-18T02:47:43.660415+00:00",
+              "source_sha256": "d35e7b9f13d1f23e78eef0c061d97f5b4a66c68cd4a79f23a2a02a159c5453e2",
+              "text": "Back to Borrowing Borrow Tokens beginner Introduction Borrowing tokens from the Aave Protocol enables participants to access liquidity against supplied collateral tokens. This process requires maintaining sufficient collateral and understanding the associated risks, such as liquidation. Borrowers must maintain that their collateral remains adequate to cover the borrowed amount, as falling below the required collateralization level could lead to liquidation. The interest rates for borrowed tokens are dynamically determined by the protocol based on factors like the borrow utilization rate and governance parameters, which can change through community decisions. Borrowing can be performed through protocol smart contracts or through a frontend such as the Aave Labs interface by performing the following steps: Step 1: Connect Wallet To begin, press ‘Connect Wallet’ and select the Ethereum wallet provider corresponding to the wallet holding the collateralized tokens. Step 2: Select Token to Borrow Once connected, navigate to the ‘Dashboard’ and locate the ‘Assets to Borrow’ table. This table lists the available tokens for borrowing, along with key parameters such as available amount, interest rates, and your health factor. The interest rates displayed here are influenced by the borrow utilization rate, which measures the proportion of assets currently borrowed against the total supplied in the pool. As liquidity is borrowed or repaid, these rates are dynamically adjusted to reflect current market conditions. Select the token you wish to borrow. Step 3: Review Borrow Parameters Before proceeding, review the borrow parameters including the Loan-to-Value (LTV) ratio, Liquidation Threshold (LT) ratio, and your current health factor. These parameters are crucial for maintaining sufficient collateral and avoiding liquidation. If you are borrowing a network base asset (e.g., ETH), you will first need to approve the WrappedTokenGateway contract. This approval enables the contract to perform a credit delegation, which performs a borrow and unwraps to the base asset in a single transaction. Step 4: Confirm Borrow Transaction Enter the amount you wish to borrow and confirm the transaction in your wallet. Upon confirmation, the borrowed tokens will be transferred to your wallet. It's important to note that interest on the borrowed tokens begins to accrue immediately and is dynamically adjusted based on the borrow utilization rate. Step 5: Monitor Health Factor Regularly monitor your health factor from the ‘Dashboard’ to verify that your collateral remains sufficient. If your health factor drops, consider supplying more collateral or repaying part of your borrow position to avoid liquidation. The health",
+              "score": 3.074978990732603
+            },
+            {
+              "id": "DOC_WITHDRAW_000",
+              "title": "Withdraw Tokens | Aave",
+              "url": "https://aave.com/help/supplying/withdraw-tokens",
+              "collected_at": "2026-11-22T09:12:17.587025+00:00",
+              "source_sha256": "03e8aa2323f7b856e267363066a975fa7615c71e4abfa639a4abf71eaf59d460",
+              "text": "Back to Supplying Withdraw Tokens beginner Introduction Withdrawing tokens from the Aave Protocol transfers underlying supplied assets along with any accrued interest, provided there is sufficient liquidity in the pool. This means suppliers can withdraw up to the amount available in the pool that is not currently borrowed. The process varies slightly depending on the type of token and the withdrawal method, and can be performed through protocl smart contracts or a frontend such as the Aave Labs interface . Step 1: Connect Wallet To begin, press ‘Connect Wallet’ and select the Ethereum wallet provider corresponding to the wallet where the tokens are supplied. Step 2: Navigate to 'Your Supplies' Once connected, navigate to the ‘Dashboard’ and locate the ‘Your Supplies’ section. This table displays all tokens you have supplied to the Aave Protocol. Step 3: Select Token to Withdraw Choose the token you wish to withdraw from the list. Verify that there is enough available liquidity in the pool to support your withdrawal. If the token is not being used as collateral for an active borrow position, you can proceed to withdraw the desired amount. Step 4: Confirm Withdrawal Enter the amount you want to withdraw and confirm the transaction in your wallet. If you are withdrawing the same underlying token that you supplied (e.g., WETH to WETH), no additional approval transaction is needed. However, if you’re withdrawing to a network base token, such as ETH, the Aave Protocol stores these as wrapped tokens (e.g., WETH). In this case, the withdrawal process involves the WrappedTokenGateway contract, where the WETH is unwrapped and withdrawn in a single transaction. Step 5: Handling Collateralised Tokens If your supplied tokens are used as collateral, you may need to repay part of your borrow position or supply additional collateral to maintain a healthy balance before you can withdraw. Regularly monitoring your health factor will help you manage this effectively. Step 6: Withdrawing and Switching Tokens The Aave Labs interface also offers a feature to withdraw and switch to a different token in one action. This requires token approval for both the withdrawal and the switch. Ensure you review the necessary approvals in your wallet before proceeding. Related Supply Tokens beginner Supply tokens to the Aave Protocol. 4 min read Toggle Collateral Status intermediate Toggle collateral status of supply positions. 4 min read Isolation Mode beginner Supply isolated collateral assets. 3 min read",
+              "score": 2.236183119018088
+            },
+            {
+              "id": "DOC_SUPPLY_000",
+              "title": "Supply Tokens | Aave",
+              "url": "https://aave.com/help/supplying/supply-tokens",
+              "collected_at": "2026-10-18T02:47:43.333680+00:00",
+              "source_sha256": "071408472a646541670d782521e5864abeefd6baf637700c00af764942d133f2",
+              "text": "Back to Supplying Supply Tokens beginner Introduction Supplying tokens to the Aave Protocol allows you to earn interest on your digital assets and utilize supplied tokens as collateral. When tokens are supplied, they are transferred to the Aave liquidity pool, a system of smart contracts that facilitates overcollateralized borrowing of tokens. Supplied tokens automatically accumulate interest by updating in balance at the current market supply rate. This interest accrual happens dynamically as the balance of your supplied tokens increases linearly over time, reflecting the current rate allocated to suppliers. Interest rates for supplied tokens are determined by the borrow utilization rate, which measures the proportion of assets currently borrowed against the total supplied in the pool, and by governance parameters that can be adjusted through community decisions. These parameters, including collateralization requirements and interest rates for suppliers and borrowers, are influenced by on-chain inputs such as token balances, oracle prices, and the borrow utilization ratio. As liquidity is supplied, borrowed, repaid, or withdrawn from the pool, the interest rates are updated accordingly. Tokens can be supplied through protocol smart contracts or through a frontend such as the Aave Labs interface, by performing the following steps: Step 1: Connect Wallet To begin, press ‘Connect Wallet’ and select the Ethereum wallet provider corresponding to the wallet holding tokens intended to supply. Step 2: Select Token To Supply Once connected, navigate to the ‘Dashboard’ where you’ll find the ‘Assets To Supply’ table, which lists current token balances and asset parameters. More details on supply and borrow parameters can be found by selecting the individual token icon, which will navigate to the reserve details page. Step 3: Approve Token Transfer In order to transfer tokens on an Ethereum-based network, the Aave Pool smart contract must be granted an allowance to transfer tokens from the connected wallet address. Approvals can be performed through transaction (which will incur a network fee) or signature (which does not incur a network fee). After selecting a token to supply, a modal will appear which will prompt a transaction or message signature request in the connected wallet. Step 4: Perform Supply Transaction After approval, enter the amount you wish to supply and confirm, which will prompt a transaction in the connected wallet. Your supplied tokens are then added to the Aave liquidity pool, where they are made available for borrowers. The supplied tokens will start earning interest immediately, which can",
+              "score": 2.0190290983100923
+            },
+            {
+              "id": "DOC_BORROW_001",
+              "title": "Borrow Tokens | Aave",
+              "url": "https://aave.com/help/borrowing/borrow-tokens",
+              "collected_at": "2026-10-18T02:47:43.660415+00:00",
+              "source_sha256": "d35e7b9f13d1f23e78eef0c061d97f5b4a66c68cd4a79f23a2a02a159c5453e2",
+              "text": "interest on the borrowed tokens begins to accrue immediately and is dynamically adjusted based on the borrow utilization rate. Step 5: Monitor Health Factor Regularly monitor your health factor from the ‘Dashboard’ to verify that your collateral remains sufficient. If your health factor drops, consider supplying more collateral or repaying part of your borrow position to avoid liquidation. The health factor is a critical indicator of the safety of your borrow position, and maintaining it above the liquidation threshold is essential to prevent your collateral from being liquidated. Related Repay Tokens beginner Repay active borrow positions. 3 min read Efficiency Mode (E-mode) intermediate Borrowing in Efficiency Mode (E-mode). 3 min read Health Factor & Liquidations advanced Mechanics of Aave Protocol liquidations. 5 min read",
+              "score": 1.8947364126200539
+            },
+            {
+              "id": "DOC_SUPPLY_001",
+              "title": "Supply Tokens | Aave",
+              "url": "https://aave.com/help/supplying/supply-tokens",
+              "collected_at": "2026-10-18T02:47:43.333680+00:00",
+              "source_sha256": "071408472a646541670d782521e5864abeefd6baf637700c00af764942d133f2",
+              "text": "message signature request in the connected wallet. Step 4: Perform Supply Transaction After approval, enter the amount you wish to supply and confirm, which will prompt a transaction in the connected wallet. Your supplied tokens are then added to the Aave liquidity pool, where they are made available for borrowers. The supplied tokens will start earning interest immediately, which can be monitored from the ‘Dashboard’ tab. Related Withdraw Tokens beginner Withdraw tokens from the Aave Protocol. 4 min read Toggle Collateral Status intermediate Toggle collateral status of supply positions. 4 min read Isolation Mode beginner Supply isolated collateral assets. 3 min read",
+              "score": 1.7703644742877358
+            }
+          ]
+        },
+        "after": {
+          "sql": "",
+          "sql_result": null,
+          "answer": "Việc rút tài sản đã cung cấp phụ thuộc vào các điều kiện sau: (1) Phải có đủ thanh khoản trong pool - người cung cấp chỉ có thể rút tối đa số tiền có sẵn trong pool mà không được vay hiện tại; (2) Nếu tài sản KHÔNG được sử dụng làm tài sản thế chấp cho vị trí vay hoạt động, có thể tiến hành rút mà không có hạn chế; (3) Nếu tài sản ĐƯỢC sử dụng làm tài sản thế chấp, người dùng có thể cần phải hoàn trả một phần vị trí vay hoặc cung cấp thêm tài sản thế chấp để duy trì mức cân bằng lành mạnh (health factor) trước khi có thể rút; (4) Theo dõi thường xuyên health factor từ Dashboard để quản lý hiệu quả và tránh thanh lý tài sản thế chấp.",
+          "claims": [
+            {
+              "text": "Người cung cấp có thể rút tối đa số tiền có sẵn trong pool mà không được vay hiện tại",
+              "citations": [
+                "DOC_WITHDRAW_000"
+              ]
+            },
+            {
+              "text": "Nếu tài sản không được sử dụng làm tài sản thế chấp cho vị trí vay hoạt động, có thể tiến hành rút mà không có hạn chế",
+              "citations": [
+                "DOC_WITHDRAW_000"
+              ]
+            },
+            {
+              "text": "Nếu tài sản được sử dụng làm tài sản thế chấp, có thể cần phải hoàn trả một phần vị trí vay hoặc cung cấp thêm tài sản thế chấp để duy trì mức cân bằng lành mạnh trước khi rút",
+              "citations": [
+                "DOC_WITHDRAW_000"
+              ]
+            },
+            {
+              "text": "Phải theo dõi thường xuyên health factor từ Dashboard để quản lý hiệu quả và tránh thanh lý tài sản thế chấp",
+              "citations": [
+                "DOC_WITHDRAW_000"
+              ]
+            }
+          ],
+          "documents": [
+            {
+              "id": "DOC_WITHDRAW_000",
+              "title": "Withdraw Tokens | Aave",
+              "url": "https://aave.com/help/supplying/withdraw-tokens",
+              "collected_at": "2026-11-22T09:12:17.587025+00:00",
+              "source_sha256": "03e8aa2323f7b856e267363066a975fa7615c71e4abfa639a4abf71eaf59d460",
+              "text": "Back to Supplying Withdraw Tokens beginner Introduction Withdrawing tokens from the Aave Protocol transfers underlying supplied assets along with any accrued interest, provided there is sufficient liquidity in the pool. This means suppliers can withdraw up to the amount available in the pool that is not currently borrowed. The process varies slightly depending on the type of token and the withdrawal method, and can be performed through protocl smart contracts or a frontend such as the Aave Labs interface . Step 1: Connect Wallet To begin, press ‘Connect Wallet’ and select the Ethereum wallet provider corresponding to the wallet where the tokens are supplied. Step 2: Navigate to 'Your Supplies' Once connected, navigate to the ‘Dashboard’ and locate the ‘Your Supplies’ section. This table displays all tokens you have supplied to the Aave Protocol. Step 3: Select Token to Withdraw Choose the token you wish to withdraw from the list. Verify that there is enough available liquidity in the pool to support your withdrawal. If the token is not being used as collateral for an active borrow position, you can proceed to withdraw the desired amount. Step 4: Confirm Withdrawal Enter the amount you want to withdraw and confirm the transaction in your wallet. If you are withdrawing the same underlying token that you supplied (e.g., WETH to WETH), no additional approval transaction is needed. However, if you’re withdrawing to a network base token, such as ETH, the Aave Protocol stores these as wrapped tokens (e.g., WETH). In this case, the withdrawal process involves the WrappedTokenGateway contract, where the WETH is unwrapped and withdrawn in a single transaction. Step 5: Handling Collateralised Tokens If your supplied tokens are used as collateral, you may need to repay part of your borrow position or supply additional collateral to maintain a healthy balance before you can withdraw. Regularly monitoring your health factor will help you manage this effectively. Step 6: Withdrawing and Switching Tokens The Aave Labs interface also offers a feature to withdraw and switch to a different token in one action. This requires token approval for both the withdrawal and the switch. Ensure you review the necessary approvals in your wallet before proceeding. Related Supply Tokens beginner Supply tokens to the Aave Protocol. 4 min read Toggle Collateral Status intermediate Toggle collateral status of supply positions. 4 min read Isolation Mode beginner Supply isolated collateral assets. 3 min read",
+              "score": 5.6311152374866245
+            },
+            {
+              "id": "DOC_BORROW_000",
+              "title": "Borrow Tokens | Aave",
+              "url": "https://aave.com/help/borrowing/borrow-tokens",
+              "collected_at": "2026-10-18T02:47:43.660415+00:00",
+              "source_sha256": "d35e7b9f13d1f23e78eef0c061d97f5b4a66c68cd4a79f23a2a02a159c5453e2",
+              "text": "Back to Borrowing Borrow Tokens beginner Introduction Borrowing tokens from the Aave Protocol enables participants to access liquidity against supplied collateral tokens. This process requires maintaining sufficient collateral and understanding the associated risks, such as liquidation. Borrowers must maintain that their collateral remains adequate to cover the borrowed amount, as falling below the required collateralization level could lead to liquidation. The interest rates for borrowed tokens are dynamically determined by the protocol based on factors like the borrow utilization rate and governance parameters, which can change through community decisions. Borrowing can be performed through protocol smart contracts or through a frontend such as the Aave Labs interface by performing the following steps: Step 1: Connect Wallet To begin, press ‘Connect Wallet’ and select the Ethereum wallet provider corresponding to the wallet holding the collateralized tokens. Step 2: Select Token to Borrow Once connected, navigate to the ‘Dashboard’ and locate the ‘Assets to Borrow’ table. This table lists the available tokens for borrowing, along with key parameters such as available amount, interest rates, and your health factor. The interest rates displayed here are influenced by the borrow utilization rate, which measures the proportion of assets currently borrowed against the total supplied in the pool. As liquidity is borrowed or repaid, these rates are dynamically adjusted to reflect current market conditions. Select the token you wish to borrow. Step 3: Review Borrow Parameters Before proceeding, review the borrow parameters including the Loan-to-Value (LTV) ratio, Liquidation Threshold (LT) ratio, and your current health factor. These parameters are crucial for maintaining sufficient collateral and avoiding liquidation. If you are borrowing a network base asset (e.g., ETH), you will first need to approve the WrappedTokenGateway contract. This approval enables the contract to perform a credit delegation, which performs a borrow and unwraps to the base asset in a single transaction. Step 4: Confirm Borrow Transaction Enter the amount you wish to borrow and confirm the transaction in your wallet. Upon confirmation, the borrowed tokens will be transferred to your wallet. It's important to note that interest on the borrowed tokens begins to accrue immediately and is dynamically adjusted based on the borrow utilization rate. Step 5: Monitor Health Factor Regularly monitor your health factor from the ‘Dashboard’ to verify that your collateral remains sufficient. If your health factor drops, consider supplying more collateral or repaying part of your borrow position to avoid liquidation. The health",
+              "score": 3.322516508556586
+            },
+            {
+              "id": "DOC_LIQ_000",
+              "title": "Health Factor & Liquidations | Aave",
+              "url": "https://aave.com/help/borrowing/liquidations",
+              "collected_at": "2026-10-18T02:47:43.950779+00:00",
+              "source_sha256": "0a38b5c040f315f20d829ffdbfa5e73df3e175876fd6eb6a7519220404314057",
+              "text": "Back to Borrowing Health Factor & Liquidations advanced Health Factor The health factor is a critical metric within the Aave Protocol that measures the safety of a borrow position. It is calculated as: Health Factor = (Total Collateral Value * Weighted Average Liquidation Threshold) / Total Borrow Value This metric indicates the stability of a borrow position, with a health factor below 1 signaling the risk of liquidation. The liquidation threshold, set by Aave Governance for each collateral asset, determines the maximum percentage of value that can be borrowed against it. For example, if you supply $10,000 in ETH with an 80% liquidation threshold and borrow $6,000 in GHO, your health factor would be 1.333. Managing Health Factor Maintaining a health factor above 1 is crucial to avoid liquidation. Regular monitoring of this metric is essential, as it fluctuates with the value of both collateral and borrowed assets. To improve your health factor, you can either supply more collateral or repay part of your borrow position. The health factor is sensitive to market changes—if your collateral's value increases, so does your health factor; conversely, if it decreases, your health factor drops, heightening the risk of liquidation. There is no universally \"safe\" health factor, as this depends on the volatility and correlation of your assets. Generally, lower health factors may be acceptable for correlated assets, such as stablecoins or assets closely tied to ETH. Tools for Managing Health Factor (Use at your own risk): Simulate health factor changes: DeFi Simulator Auto-repay borrow position: DeFi Saver Liquidation Process A liquidation in the Aave Protocol occurs when a borrower's health factor falls below 1, indicating that their collateral no longer sufficiently covers the borrowed amount. This situation can happen when the value of the collateral decreases or the borrowed amount increases, pushing the position past the liquidation threshold. The amount that can be liquidated depends on the health factor and position size: Up to 50% of total debt can be liquidated when the health factor is above 0.95 AND both the collateral and debt values are at least $2,000 each. Up to 100% of debt can be liquidated when the health factor is 0.95 or below, OR when either the collateral or debt value is below $2,000. During liquidation, the liquidator repays debt on behalf of the borrower and receives an equivalent value plus a liquidation bonus from the borrower's collateral. To prevent",
+              "score": 2.4216798339538084
+            },
+            {
+              "id": "DOC_SUPPLY_001",
+              "title": "Supply Tokens | Aave",
+              "url": "https://aave.com/help/supplying/supply-tokens",
+              "collected_at": "2026-10-18T02:47:43.333680+00:00",
+              "source_sha256": "071408472a646541670d782521e5864abeefd6baf637700c00af764942d133f2",
+              "text": "message signature request in the connected wallet. Step 4: Perform Supply Transaction After approval, enter the amount you wish to supply and confirm, which will prompt a transaction in the connected wallet. Your supplied tokens are then added to the Aave liquidity pool, where they are made available for borrowers. The supplied tokens will start earning interest immediately, which can be monitored from the ‘Dashboard’ tab. Related Withdraw Tokens beginner Withdraw tokens from the Aave Protocol. 4 min read Toggle Collateral Status intermediate Toggle collateral status of supply positions. 4 min read Isolation Mode beginner Supply isolated collateral assets. 3 min read",
+              "score": 2.0511642162120847
+            },
+            {
+              "id": "DOC_WITHDRAW_001",
+              "title": "Withdraw Tokens | Aave",
+              "url": "https://aave.com/help/supplying/withdraw-tokens",
+              "collected_at": "2026-11-22T09:12:17.587025+00:00",
+              "source_sha256": "03e8aa2323f7b856e267363066a975fa7615c71e4abfa639a4abf71eaf59d460",
+              "text": "This requires token approval for both the withdrawal and the switch. Ensure you review the necessary approvals in your wallet before proceeding. Related Supply Tokens beginner Supply tokens to the Aave Protocol. 4 min read Toggle Collateral Status intermediate Toggle collateral status of supply positions. 4 min read Isolation Mode beginner Supply isolated collateral assets. 3 min read",
+              "score": 2.0243737903133643
+            }
+          ]
+        }
+      },
+      {
+        "event": "verification",
+        "repair": 1,
+        "issues": [],
+        "sql": "",
+        "answer": "Việc rút tài sản đã cung cấp phụ thuộc vào các điều kiện sau: (1) Phải có đủ thanh khoản trong pool - người cung cấp chỉ có thể rút tối đa số tiền có sẵn trong pool mà không được vay hiện tại; (2) Nếu tài sản KHÔNG được sử dụng làm tài sản thế chấp cho vị trí vay hoạt động, có thể tiến hành rút mà không có hạn chế; (3) Nếu tài sản ĐƯỢC sử dụng làm tài sản thế chấp, người dùng có thể cần phải hoàn trả một phần vị trí vay hoặc cung cấp thêm tài sản thế chấp để duy trì mức cân bằng lành mạnh (health factor) trước khi có thể rút; (4) Theo dõi thường xuyên health factor từ Dashboard để quản lý hiệu quả và tránh thanh lý tài sản thế chấp."
+      }
+    ],
+    "human": {
+      "answer_correctness": 1,
+      "faithfulness": 0,
+      "citation_quality": 0,
+      "observed_refusal": 0
+    },
+    "baseline_correct": true,
+    "P_correct": false
+  }
+}

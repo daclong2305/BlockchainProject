@@ -1,0 +1,407 @@
+{
+  "evidence": {
+    "question_roots": 6,
+    "scheduled": 12,
+    "target_code_hits": 3,
+    "target_code_candidates": [
+      {
+        "id": "EC01-A",
+        "expected": "contradiction",
+        "code_matched": true,
+        "issues": [
+          {
+            "code": "unsupported_claim",
+            "message": "Answer claims 'Lãi trên số token đã vay bắt đầu tích lũy từ ngày kế tiếp sau khi vay' (interest begins accruing the next day after borrowing). Source document DOC_BORROW_001 states 'interest on the borrowed tokens begins to accrue immediately', not on the next day. The answer contradicts the cited source.",
+            "action": "answer"
+          }
+        ]
+      },
+      {
+        "id": "EC02-B",
+        "expected": "missing_citation",
+        "code_matched": true,
+        "issues": [
+          {
+            "code": "citation_id",
+            "message": "Missing or invalid citation ID",
+            "action": "answer"
+          },
+          {
+            "code": "numeric_link",
+            "message": "Numeric claim points to invalid SQL result cell",
+            "action": "answer"
+          }
+        ]
+      },
+      {
+        "id": "EC03-A",
+        "expected": "scope",
+        "code_matched": false,
+        "issues": [
+          {
+            "code": "end_bound_mismatch",
+            "message": "SQL end bound is 2025-07-02 01:00:00+00:00 (exclusive), but question asks for comparison at exactly 2025-07-02 00:00:00 UTC. The end bound should be 2025-07-02 00:00:00+00:00 (exclusive) to capture only the two target hours (2025-07-01 00:00 and 2025-07-02 00:00). Current bound includes an extra hour (2025-07-02 00:00 to 01:00) unnecessarily.",
+            "action": "sql"
+          },
+          {
+            "code": "aggregation_semantic_error",
+            "message": "SQL uses max(supplied_usd) FILTER within a WHERE clause spanning 25 hours, but the question requests values at two specific UTC timestamps (2025-07-01 00:00 and 2025-07-02 00:00). The max() function is unnecessary and semantically incorrect for a stock metric at a point in time. Should use direct equality or simple selection at each target hour, not max() aggregation.",
+            "action": "sql"
+          },
+          {
+            "code": "date_mismatch",
+            "message": "Answer states '00:00 UTC ngày 03/07/2025' but question asks for '00:00 UTC ngày 02/07/2025'. SQL correctly queries 2025-07-02T00:00:00Z (ngày 02), but answer incorrectly reports the result as ngày 03.",
+            "action": "answer"
+          },
+          {
+            "code": "comparison_scope_mismatch",
+            "message": "Answer states comparison is 'ngày 03 trừ ngày 01' but question asks for 'ngày 02 trừ ngày 01'. SQL computes max(supplied_usd) at 2025-07-02T00:00:00Z minus max(supplied_usd) at 2025-07-01T00:00:00Z, which is the correct ngày 02 minus ngày 01 comparison requested.",
+            "action": "answer"
+          }
+        ]
+      },
+      {
+        "id": "EC04-B",
+        "expected": "irrelevant_source",
+        "code_matched": false,
+        "issues": [
+          {
+            "code": "unsupported_citation",
+            "message": "Claim 'Khi cung cấp, token được chuyển vào pool thanh khoản của Aave.' cites DOC_LIQ_001 (Health Factor & Liquidations), but that document discusses liquidation mechanics, not supply mechanics. The correct source is DOC_SUPPLY_000, which states: 'When tokens are supplied, they are transferred to the Aave liquidity pool, a system of smart contracts that facilitates overcollateralized borrowing of tokens.'",
+            "action": "answer"
+          }
+        ]
+      },
+      {
+        "id": "EC05-A",
+        "expected": "missing_citation",
+        "code_matched": true,
+        "issues": [
+          {
+            "code": "citation_id",
+            "message": "Missing or invalid citation ID",
+            "action": "answer"
+          },
+          {
+            "code": "unsupported_claim",
+            "message": "Claim 'Token vay được chuyển về ví của người vay khi giao dịch được xác nhận' has no citation. DOC_BORROW_000 states 'Upon confirmation, the borrowed tokens will be transferred to your wallet' but this citation is missing from the claims array.",
+            "action": "answer"
+          }
+        ]
+      },
+      {
+        "id": "EC06-B",
+        "expected": "asset_attribution",
+        "code_matched": false,
+        "issues": [
+          {
+            "code": "wrong_numeric_value",
+            "message": "Claim 2 states 'Dư nợ WETH là 138,329,185.78 USD' but SQL1 row 1 shows WETH borrowed_usd = 6886739720.828838 USD, not 138,329,185.78 USD (which is the DAI value from row 0). The answer incorrectly repeats the DAI figure for WETH.",
+            "action": "answer"
+          },
+          {
+            "code": "wrong_citation_mapping",
+            "message": "numeric_evidence claim_index 1 cites SQL1 row 0 column value (138329185.78459466), but this is the DAI value. For the WETH claim, the correct evidence should be SQL1 row 1 column value (6886739720.828838).",
+            "action": "answer"
+          }
+        ]
+      }
+    ],
+    "correct": {
+      "total": 6,
+      "fail": 1,
+      "pass": 5,
+      "insufficient": 0,
+      "timeout": 0,
+      "error": 0
+    },
+    "incorrect": {
+      "total": 6,
+      "fail": 6,
+      "pass": 0,
+      "insufficient": 0,
+      "timeout": 0,
+      "error": 0
+    },
+    "target_code_total": 6
+  },
+  "sql": {
+    "question_roots": 4,
+    "scheduled": 20,
+    "target_code_hits": 6,
+    "target_code_candidates": [
+      {
+        "id": "S011-A",
+        "expected": "metric",
+        "code_matched": true,
+        "issues": [
+          {
+            "code": "question_metric",
+            "message": "Original question requires supplied_usd; that column is missing from SQL",
+            "action": "sql"
+          },
+          {
+            "code": "metric_mismatch",
+            "message": "SQL queries borrowed_usd but requirements and question_anchors specify supplied_usd. Question asks for 'Giá trị tài sản cung cấp USDT' (supplied asset value), requirements.metric='supplied_usd', but SQL uses max(borrowed_usd). These are distinct stock fields in market_hourly.",
+            "action": "sql"
+          },
+          {
+            "code": "metric_mismatch",
+            "message": "SQL queries borrowed_usd but requirement specifies metric='supplied_usd'. The executed query SELECT max(borrowed_usd) measures debt stock, not supplied asset stock. These are distinct metrics in market_hourly.",
+            "action": "sql"
+          },
+          {
+            "code": "wrong_metric_in_answer",
+            "message": "Answer reports 7,433,240,190.38 USD as the maximum, citing SQL1 which computed max(borrowed_usd). The question asks for 'Giá trị tài sản cung cấp USDT' (supplied USDT asset value), which maps to supplied_usd, not borrowed_usd. The numeric value returned is the maximum borrowed debt, not maximum supplied collateral.",
+            "action": "sql"
+          }
+        ]
+      },
+      {
+        "id": "S012-B",
+        "expected": "aggregation",
+        "code_matched": true,
+        "issues": [
+          {
+            "code": "stock_sum",
+            "message": "Stock values must not be summed across hours",
+            "action": "sql"
+          },
+          {
+            "code": "aggregation_mismatch",
+            "message": "SQL uses SUM(supplied_usd) but requirements specify aggregation='max'. The question asks for 'giá trị tài sản cung cấp USDT lớn nhất' (maximum supplied asset value), not total. Dictionary states 'supplied_usd: USD stock at hour, never SUM over time'. Stock metrics must use MAX for a single maximum observation, not SUM across the year.",
+            "action": "sql"
+          },
+          {
+            "code": "aggregation_mismatch",
+            "message": "Yêu cầu: aggregation='max' (giá trị tài sản cung cấp USDT lớn nhất). SQL thực thi: SUM(supplied_usd) trả về tổng cộng 44,006,612,600,991.52 USD. Điều này là tổng của tất cả các quan sát giờ trong năm 2025, không phải giá trị lớn nhất trong một giờ đơn lẻ.",
+            "action": "sql"
+          },
+          {
+            "code": "answer_uses_wrong_statistic",
+            "message": "Câu trả lời '44,006,612,600,991.52 USD' là kết quả của SUM, nhưng câu hỏi yêu cầu giá trị lớn nhất (max). Để trả lời đúng, cần thực thi: SELECT MAX(supplied_usd) AS value FROM market_hourly WHERE asset='USDT' AND hour>=TIMESTAMPTZ '2025-01-01' AND hour<TIMESTAMPTZ '2026-01-01'",
+            "action": "sql"
+          }
+        ]
+      },
+      {
+        "id": "S013-A",
+        "expected": "filter",
+        "code_matched": true,
+        "issues": [
+          {
+            "code": "asset_filter",
+            "message": "Requested asset differs from market_hourly filter",
+            "action": "sql"
+          },
+          {
+            "code": "asset_mismatch",
+            "message": "SQL queries asset='USDe' but requirements and question_anchors specify USDT. Question asks for USDT supplied value (Giá trị tài sản cung cấp USDT), requirements list assets=['USDT'], but SQL WHERE clause filters WHERE asset='USDe'. market_sample confirms USDT has complete 8760 hourly rows for 2025-01-01 to 2026-01-01 with one_row_per_hour=true.",
+            "action": "sql"
+          },
+          {
+            "code": "asset_mismatch",
+            "message": "SQL queries asset='USDe' but requirements and question specify USDT. The executed SQL selected USDe (max supplied_usd = 2,099,807,877.71 USD), not USDT as requested.",
+            "action": "sql"
+          },
+          {
+            "code": "wrong_asset_in_answer",
+            "message": "Answer reports 2,099,807,877.71 USD as the maximum USDT supplied value, but this value comes from a query on USDe. The market_sample confirms USDT has 8,760 complete hourly observations in [2025-01-01, 2026-01-01), but the SQL result is from the wrong asset.",
+            "action": "sql"
+          }
+        ]
+      },
+      {
+        "id": "S014-B",
+        "expected": "unit",
+        "code_matched": false,
+        "issues": [
+          {
+            "code": "unit_conversion_error",
+            "message": "SQL divides supplied_usd by 1,000,000 (max(supplied_usd)/1000000), but supplied_usd is already in USD units per dictionary. Result 8543.33 USD is incorrect; correct maximum is 8,543,331.36 USD. The division introduces a 1-million-fold understatement.",
+            "action": "sql"
+          },
+          {
+            "code": "unit_mismatch",
+            "message": "SQL divides supplied_usd by 1,000,000 but the result is presented as USD without indicating the divisor. The cell value 8543.331357753432 represents millions of USD (8.543 billion USD), not 8,543 USD. The answer states '8,543.33 USD' which misrepresents the magnitude by a factor of one million.",
+            "action": "answer"
+          },
+          {
+            "code": "numeric_wording_error",
+            "message": "The question asks for 'giá trị tài sản cung cấp USDT lớn nhất' (maximum supplied USDT asset value). The SQL correctly computes max(supplied_usd)/1000000, yielding 8543.331357753432. However, the answer '8,543.33 USD' omits the unit scale. The correct statement is: the maximum supplied USDT value is approximately 8.543 billion USD (or 8,543.33 million USD), not 8,543.33 USD.",
+            "action": "answer"
+          }
+        ]
+      },
+      {
+        "id": "S015-A",
+        "expected": "join",
+        "code_matched": false,
+        "issues": [
+          {
+            "code": "asset_mismatch_in_join",
+            "message": "SQL joins USDT (m) with USDe (n) on hour, then computes max(m.supplied_usd) - min(n.supplied_usd). Question asks for range of USDT supplied_usd only. The JOIN filters to hours where both USDT and USDe exist; this excludes USDT-only hours and mixes two different assets' values. Correct logic: max and min must both reference m.supplied_usd (USDT only), not cross different assets.",
+            "action": "sql"
+          },
+          {
+            "code": "incorrect_range_calculation",
+            "message": "Range (max - min) requires both extrema from the same asset and metric. Current SQL computes max(USDT supplied_usd) - min(USDe supplied_usd), which is not a valid range within USDT. Should be: SELECT max(supplied_usd) - min(supplied_usd) FROM market_hourly WHERE asset='USDT' AND hour >= ... AND hour < ...",
+            "action": "sql"
+          },
+          {
+            "code": "asset_mismatch",
+            "message": "SQL joins USDT with USDe, but requirement specifies only USDT. The WHERE clause filters m.asset='USDT' AND n.asset='USDe', computing range across two different assets instead of the range within USDT alone.",
+            "action": "sql"
+          },
+          {
+            "code": "incorrect_aggregation",
+            "message": "SQL computes MAX(m.supplied_usd) - MIN(n.supplied_usd) across a join where m and n are independent rows from different assets. This subtracts the minimum USDe value from the maximum USDT value, not the range (max - min) within USDT. The correct query should compute MAX(supplied_usd) - MIN(supplied_usd) from a single asset filter WHERE asset='USDT'.",
+            "action": "sql"
+          }
+        ]
+      },
+      {
+        "id": "S016-B",
+        "expected": "metric",
+        "code_matched": true,
+        "issues": [
+          {
+            "code": "question_metric",
+            "message": "Original question requires supplied_usd; that column is missing from SQL",
+            "action": "sql"
+          },
+          {
+            "code": "metric_mismatch",
+            "message": "SQL queries borrowed_usd but requirements and question_anchors specify supplied_usd. Question asks 'Giá trị tài sản cung cấp DAI' (supplied asset value), requirements.metric='supplied_usd', but SQL SELECT max(borrowed_usd) retrieves debt stock instead of supply stock.",
+            "action": "sql"
+          },
+          {
+            "code": "metric_mismatch",
+            "message": "Question asks for 'giá trị tài sản cung cấp' (supplied asset value, metric=supplied_usd) but SQL queries 'borrowed_usd' (debt metric). The requirements specify metric='supplied_usd' but the executed SQL selects max(borrowed_usd). These are distinct stock metrics in market_hourly.",
+            "action": "sql"
+          }
+        ]
+      },
+      {
+        "id": "S017-A",
+        "expected": "aggregation",
+        "code_matched": true,
+        "issues": [
+          {
+            "code": "stock_sum",
+            "message": "Stock values must not be summed across hours",
+            "action": "sql"
+          },
+          {
+            "code": "aggregation_mismatch",
+            "message": "SQL uses SUM(supplied_usd) but requirements specify aggregation='max'. The question asks for 'giá trị tài sản cung cấp DAI lớn nhất' (maximum supplied asset value), not total. Dictionary states 'supplied_usd: USD stock at hour, never SUM over time'. Stock metrics must use MAX across hourly observations, not SUM.",
+            "action": "sql"
+          },
+          {
+            "code": "aggregation_mismatch",
+            "message": "Question requests MAX(supplied_usd) for DAI hourly observations in 2025, but SQL executes SUM(supplied_usd). The executed query sums all hourly supplied_usd values across the year (1,486,142,315,386.43 USD), not the maximum single hourly value. Per dictionary, supplied_usd is a stock metric where SUM over time is prohibited.",
+            "action": "sql"
+          },
+          {
+            "code": "answer_contradicts_sql",
+            "message": "The answer (1,486,142,315,386.43 USD) is presented as if it answers the max question, but it is the SUM result from the executed SQL. The numeric value matches the SUM output, not a maximum hourly supplied_usd for DAI in 2025.",
+            "action": "sql"
+          }
+        ]
+      },
+      {
+        "id": "S018-B",
+        "expected": "filter",
+        "code_matched": true,
+        "issues": [
+          {
+            "code": "asset_filter",
+            "message": "Requested asset differs from market_hourly filter",
+            "action": "sql"
+          },
+          {
+            "code": "asset_mismatch",
+            "message": "SQL queries asset='USDe' but requirements and question specify asset='DAI'. Question asks for DAI supplied value; SQL returns USDe maximum (2099807877.71 USD). market_sample confirms DAI has complete hourly coverage for 2025-01-01 to 2026-01-01 (8760 rows, one_row_per_hour=true), but SQL filtered wrong asset.",
+            "action": "sql"
+          },
+          {
+            "code": "asset_mismatch",
+            "message": "SQL queries asset='USDe' but requirements and question specify asset='DAI'. The executed SQL returned max(supplied_usd)=2,099,807,877.71 USD for USDe, not DAI. market_sample confirms DAI has 8760 rows with one_row_per_hour=true for [2025-01-01, 2026-01-01), so DAI data is available.",
+            "action": "sql"
+          },
+          {
+            "code": "unsupported_claim",
+            "message": "Answer claims '2,099,807,877.71 USD' as the maximum DAI supplied value, but the SQL result is for USDe. The numeric value cited from SQL1 does not support the stated asset.",
+            "action": "answer"
+          }
+        ]
+      },
+      {
+        "id": "S019-A",
+        "expected": "unit",
+        "code_matched": false,
+        "issues": [
+          {
+            "code": "unit_conversion_error",
+            "message": "SQL divides supplied_usd by 1,000,000 (SELECT max(supplied_usd)/1000000), yielding 190.57 USD. The dictionary defines supplied_usd as 'USD stock at hour', already in USD units. The requirement specifies unit='USD' with no conversion instruction. Dividing a USD value by 1,000,000 produces an incorrect result; the correct maximum should be ~190,574,906.70 USD (or the raw max value without division).",
+            "action": "sql"
+          },
+          {
+            "code": "unit_mismatch",
+            "message": "SQL divides supplied_usd by 1,000,000 (SELECT max(supplied_usd)/1000000), converting from a base unit to millions USD. The answer reports '190.57 USD' but the computed value 190.57490670241313 represents millions USD (190.57 million USD), not USD. The cell value and answer unit contradict.",
+            "action": "answer"
+          },
+          {
+            "code": "numeric_precision_mismatch",
+            "message": "Answer states '190.57 USD' (2 decimal places) but numeric_evidence cell_value is 190.57490670241313. The rounded answer loses precision without explicit rounding instruction in requirements. Claim should match cited evidence or note rounding.",
+            "action": "answer"
+          }
+        ]
+      },
+      {
+        "id": "S020-B",
+        "expected": "join",
+        "code_matched": false,
+        "issues": [
+          {
+            "code": "wrong_asset_in_join",
+            "message": "SQL joins market_hourly on m.hour=n.hour but filters m.asset='DAI' and n.asset='USDe'. The question asks for DAI supplied_usd range only. The JOIN with USDe creates a Cartesian product restricted to hours where both assets exist, computing max(DAI.supplied_usd) - min(USDe.supplied_usd) across mismatched assets. This is semantically incorrect; the range should be max(DAI.supplied_usd) - min(DAI.supplied_usd) within the same asset.",
+            "action": "sql"
+          },
+          {
+            "code": "cross_asset_metric_mismatch",
+            "message": "The SQL result 165832604.75 USD represents the difference between the maximum DAI supplied value and the minimum USDe supplied value, not the range within DAI alone. Requirements specify metric='supplied_usd' and assets=['DAI'] with aggregation='range', which requires max and min of the same asset, not a cross-asset subtraction.",
+            "action": "sql"
+          },
+          {
+            "code": "asset_mismatch",
+            "message": "SQL joins DAI with USDe (WHERE m.asset='DAI' AND n.asset='USDe'), but the question asks only for DAI. The executed query computes max(supplied_usd) from DAI rows and min(supplied_usd) from USDe rows, then subtracts them. This is a cross-asset range, not the DAI-only range requested.",
+            "action": "sql"
+          },
+          {
+            "code": "incorrect_aggregation",
+            "message": "The SQL computes max(m.supplied_usd) - min(n.supplied_usd) across two separate asset tables joined on hour. The correct DAI-only range should be max(supplied_usd) - min(supplied_usd) within a single asset filter WHERE asset='DAI', not a difference between two assets' extrema.",
+            "action": "sql"
+          }
+        ]
+      }
+    ],
+    "correct": {
+      "total": 10,
+      "fail": 0,
+      "pass": 10,
+      "insufficient": 0,
+      "timeout": 0,
+      "error": 0
+    },
+    "incorrect": {
+      "total": 10,
+      "fail": 10,
+      "pass": 0,
+      "insufficient": 0,
+      "timeout": 0,
+      "error": 0
+    },
+    "target_code_total": 10
+  }
+}
