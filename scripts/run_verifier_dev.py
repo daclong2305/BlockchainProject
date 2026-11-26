@@ -13,6 +13,24 @@ def restore(value):
     value['issues']=[Issue(**i) for i in value.get('issues',[])]
     return Draft(**value)
 
+def load_candidates(path):
+    if not path.exists():
+        return {}
+    rows = [json.loads(line) for line in path.read_text(encoding='utf-8').splitlines() if line.strip()]
+    candidates = {row['question_id']: row for row in rows}
+    if len(candidates) != len(rows):
+        raise ValueError('Duplicate candidate question IDs')
+    return candidates
+
+
+def candidate_sources(saved_path, source_path=None):
+    saved = load_candidates(saved_path)
+    source = load_candidates(source_path) if source_path else {}
+    for question_id in saved.keys() & source.keys():
+        if saved[question_id] != source[question_id]:
+            raise ValueError(f'Candidate changed for {question_id}')
+    return saved, {**source, **saved}
+
 def main():
     p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);p.add_argument('--candidates',type=Path)
     p.add_argument('--modes',nargs='+',default=['B0','B1','P']);p.add_argument('--limit',type=int,default=20)
@@ -32,14 +50,18 @@ def main():
     snapshot=out/'benchmark_snapshot.jsonl';serialized=''.join(json.dumps(r,ensure_ascii=False)+'\n' for r in records)
     if snapshot.exists() and snapshot.read_text(encoding='utf-8')!=serialized:raise ValueError('Benchmark snapshot changed')
     if not snapshot.exists():snapshot.write_text(serialized,encoding='utf-8')
-    candidates=out/'candidates.jsonl';source=args.candidates or candidates
-    existing={r['question_id']:r for r in [json.loads(s) for s in source.read_text(encoding='utf-8').splitlines()]} if source.exists() else {}
+    candidates=out/'candidates.jsonl'
+    saved, existing = candidate_sources(candidates, args.candidates)
     results=out/'results.jsonl';done={(r['question_id'],r['mode']) for r in [json.loads(s) for s in results.read_text(encoding='utf-8').splitlines()]} if results.exists() else set()
     for index,q in enumerate(records):
-        if q['id'] in existing:draft=restore(existing[q['id']]['draft'])
+        if q['id'] in existing:
+            row=existing[q['id']]
+            draft=restore(row['draft'])
         else:
             draft=a.make_draft(q['question']);row={'question_id':q['id'],'draft':asdict(draft)}
+        if q['id'] not in saved:
             with candidates.open('a',encoding='utf-8') as f:f.write(json.dumps(row,ensure_ascii=False,default=str)+'\n')
+            saved[q['id']]=row
         offset=index%len(args.modes) if args.rotate_modes else 0
         ordered_modes=args.modes[offset:]+args.modes[:offset]
         for mode in ordered_modes:

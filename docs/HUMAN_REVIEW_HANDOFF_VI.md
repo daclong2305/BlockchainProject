@@ -1,29 +1,43 @@
-# Bàn giao xác minh độc lập trước final
+# Bàn giao chấm độc lập G03
 
-Hiện bộ đáp án có 60 câu nháp, chưa có phê duyệt của người. Stress SQL có 20 ca nháp, cũng chưa được duyệt. Không chạy final hoặc dùng điểm dev làm kết quả nghiên cứu cuối.
+Hai người duyệt điền phiếu riêng bằng tên thật và giữ bản ban đầu trước khi trao đổi. Kiểm tra đáp án số liệu bằng SQL trên Aave DuckDB. Với câu cơ chế, chỉ rõ đoạn tài liệu hỗ trợ. Ghi yêu cầu sửa nếu ý hỏi, nguồn, thời gian, đơn vị hoặc đáp án chưa xác minh được. Phiếu dev-20 và phiếu chấm final đã được hai người có tên trong phiếu xác nhận theo thông tin bàn giao ngày 26/11/2026. Khi tái lập thí nghiệm, dùng đúng phiên bản phiếu và mã băm đi kèm.
 
-## Hai người cần làm ngay
+| Việc cần duyệt | Phiếu |
+|---|---|
+| Tham chiếu cho 20 câu dev và 40 câu test | `report/human-review/questions-v2/reviewer-1` và `reviewer-2`, gồm bản đọc Markdown và JSON điền kết quả |
+| Rubric qua 24 đầu ra dev được che tên cấu hình | `report/g03-final/review-rubric/reviewer-1` và `reviewer-2` |
+| Bản đúng/sai của checker | Quy trình và vị trí phiếu ở `report/g03-final/checker-review.md` |
 
-Mỗi người chỉ nhận bộ của mình, tự kiểm tra trước khi trao đổi bất đồng:
+Snapshot và hồ sơ khóa lưu metadata tại thời điểm chạy, gồm nhãn reviewer cũ. Xác nhận người duyệt được ghi nhận ngày 26/11/2026 áp dụng cho các phiếu hiện hành; khi tái lập, đối chiếu chúng với mã băm nguồn. Các bước dưới đây mô tả quy trình cho một phiên bản thí nghiệm mới.
 
-| Người | Benchmark | Stress SQL |
-|---|---|---|
-| 1 | data/benchmark/review/questions-v2/reviewer-1.md và .json | data/benchmark/review/stress-v1/reviewer-1.md và .json |
-| 2 | data/benchmark/review/questions-v2/reviewer-2.md và .json | data/benchmark/review/stress-v1/reviewer-2.md và .json |
+## Trước khi khóa
 
-Booklet có câu hỏi, nguồn, SQL và đáp án máy tạo. Người review phải kiểm tra độc lập bằng nguồn/SQL, không chỉ đọc và đồng ý với lời giải. Ghi tên thật trong reviewer_name. Mỗi item điền verdict, verified_answer, verified_sources, verified_scope và notes. Dùng changes_requested khi sai hoặc chưa rõ; không đánh dấu approved trước khi kiểm tra lại bản sửa. Không dùng questions-v1 vì đó là lịch sử trước bổ sung scope.
+Điền `approved` chỉ sau khi đã xác minh tham chiếu. Nếu cần sửa nội dung, xuất phiếu mới và xác minh lại phiên bản đã sửa. Khi chấm hiệu chuẩn, đọc rubric trong phiếu, điền điểm 0/1 và lý do, rồi đánh dấu `rubric_approved: true` khi đồng ý dùng phiên bản này. Nếu lệnh báo bất đồng, điền file phân xử được sinh ra và chạy lại với `--adjudication` trỏ đến file đó.
 
-Yêu cầu trực tiếp trong đề xuất: “Hai thành viên kiểm tra độc lập đáp án bằng tài liệu và SQL/mã tính, sau đó thống nhất các bất đồng.” Đây là công việc xác minh người, không phải một bước assistant có thể thay bằng tên giả hoặc nhãn máy.
-
-Khi cả hai hoàn tất, nhập hai bộ riêng:
+Phiếu benchmark v2 hiện có quyết định cho đủ 60 câu. Khi chuyển từ v1, 48 câu giữ nguyên mã băm nội dung; Q007–Q012, Q021–Q022, Q049–Q050 và Q053–Q054 được rà lại theo nội dung mới. Phiếu v1 được giữ tại `report/human-review/questions/`. Kho truy xuất đã bổ sung nguồn rút tài sản của Aave. Mã băm kho mới đã được cập nhật trong hồ sơ checker sau khi đối chiếu nội dung của đủ 32 bản nháp.
 
 ```powershell
-.\.venv\Scripts\python.exe -m aave_analyst.cli review-import data/benchmark/questions.jsonl data/benchmark/review/questions-v2/reviewer-1.json data/benchmark/review/questions-v2/reviewer-2.json
-.\.venv\Scripts\python.exe -m aave_analyst.cli review-import data/benchmark/stress.jsonl data/benchmark/review/stress-v1/reviewer-1.json data/benchmark/review/stress-v1/reviewer-2.json
+$g03Python = '.\.venv\Scripts\python.exe'
+& $g03Python -m aave_analyst.cli review-import data/benchmark/questions.jsonl report/human-review/questions-v2/reviewer-1.json report/human-review/questions-v2/reviewer-2.json
+& $g03Python -m aave_analyst.g03_report calibrate report/g03-final/review-rubric/reviewer-1.json report/g03-final/review-rubric/reviewer-2.json --adjudication report/g03-final/review-rubric/calibration-adjudication.json
 ```
 
-Nếu có bất đồng, giữ lịch sử, sửa nội dung và xuất bộ review mới; mọi người kiểm tra lại bản đã sửa. Công cụ kiểm tra hash để tránh dùng quyết định cho bản cũ. Chỉ sau khi hoàn thiện dev và review mới freeze rồi chạy 720 đầu ra. Quy trình đầy đủ ở REPRODUCE_PROPOSAL_VI.md.
+Hoàn tất duyệt checker theo hướng dẫn đi kèm. Giữ bộ ca ngoài lần sửa dev. Sau khi đạt hồi quy dev và hoàn tất các phiếu, đăng ký truy vết rồi khóa cấu hình.
 
-## Sau khi có đầu ra final
+```powershell
+& $g03Python -m aave_analyst.cli trace-register
+& $g03Python -m aave_analyst.cli freeze
+& $g03Python -m aave_analyst.cli run --split test --modes B0 B1 P --repeats 3 --final --out runs/g03-final
+```
 
-Hai người tiếp tục audit độc lập mẫu judge qua audit-export/audit-import; phiếu không hiện nhãn judge hay tên cấu hình. Điểm và Cohen kappa được tính từ nhãn thật. Đo truy vết theo 10 câu đăng ký, ghi giây thực. Stress final cần hai nhãn final_correct để đếm sửa đúng/làm sai; trạng thái checks_passed không phải gold.
+## Sau khi có 360 đầu ra
+
+Xuất phiếu chấm trước khi đối chiếu kết quả judge. Chỉ gửi thư mục phiếu cho hai người chấm vì log thô và file ánh xạ giữ tên cấu hình. Phiếu gộp các bản trả lời trùng cả nội dung và bằng chứng cho cùng một câu. Mỗi nhãn được ánh xạ về đầy đủ các lượt trong bảng kết quả. Người chấm đánh dấu `observed_refusal` theo nội dung câu trả lời cuối.
+
+```powershell
+& $g03Python -m aave_analyst.g03_report final-export runs/g03-final runs/g03-final/blind-review
+& $g03Python -m aave_analyst.cli score runs/g03-final --judge
+& $g03Python -m aave_analyst.g03_report final-import runs/g03-final runs/g03-final/blind-review/reviewer-1.json runs/g03-final/blind-review/reviewer-2.json
+```
+
+Nếu có bất đồng, hai người thống nhất điểm và lý do trong file phân xử do lệnh in đường dẫn. Chạy lại lệnh cuối với `--adjudication` trỏ đến file đã điền. Báo cáo được ghi vào `final-human-report.md`. File `final-human-summary.json` chứa các cặp B0 → P, B1 → P, độ trễ, chi phí, độ khớp với judge và case test được chọn cho slide. Đưa thêm bảng đánh giá checker độc lập vào report. Ghi riêng lỗi mới quan sát trên test để giữ nguyên cấu hình của đợt đánh giá.

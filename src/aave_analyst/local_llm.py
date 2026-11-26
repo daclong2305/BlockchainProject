@@ -93,7 +93,7 @@ class LocalQwenLLM:
                 'artifact_sha256': MODEL_SHA256,
                 'base_url': self.base_url, 'quantization': 'Q4_K_M',
                 'generation_temperature': .2, 'review_temperature': 0.,
-                'max_tokens': 4096, 'json_format_retries': 1, 'role_schema_version': 2, 'input_normalization': 'NFC', 'payload_serialization':'stage_payload_v2'}
+                'max_tokens': 4096, 'json_format_retries': 1, 'role_schema_version': 3, 'input_normalization': 'NFC', 'payload_serialization':'stage_payload_v2'}
 
 
 def configured_llm(provider=None):

@@ -10,7 +10,7 @@ def registration():
 def test_blank_trace_is_pending_not_zero_seconds_success():
     selected=registration()
     result=trace_report(trace_forms(selected),selected)
-    assert not result['complete'] and result['pending']==60
+    assert not result['complete'] and result['pending']==30
     assert result['per_mode']['P']['median_seconds'] is None
 
 

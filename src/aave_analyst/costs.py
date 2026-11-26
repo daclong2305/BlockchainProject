@@ -6,6 +6,12 @@ SOURCE='https://www-cdn.anthropic.com/files/4zrzovbb/website/3684c2faafb97418665
 
 
 def usage_cost(calls, config):
+    inputs=sum(call.get('input_tokens') or 0 for call in calls)
+    outputs=sum(call.get('output_tokens') or 0 for call in calls)
+    unknown=sum(bool(call.get('usage_unknown')) or call.get('input_tokens') is None or
+                call.get('output_tokens') is None or not (call.get('input_tokens') or call.get('output_tokens'))
+                for call in calls)
+    usage={'input_tokens':inputs,'output_tokens':outputs,'calls':len(calls),'calls_with_unknown_usage':unknown}
     model=config.get('model_id','')
     local=config.get('provider')=='llama.cpp'
     if local:
@@ -13,14 +19,10 @@ def usage_cost(calls, config):
     elif model=='us.anthropic.claude-haiku-4-5-20251001-v1:0' and config.get('region')=='us-east-1':
         input_rate,output_rate=Decimal('1.10'),Decimal('5.50')
     else:
-        return {'estimated_api_usd':None,'reason':'No verified rate for this model/profile/region'}
+        return {**usage,'estimated_api_usd':None,'reason':'No verified rate for this model/profile/region'}
     if any(call.get('cache_read_input_tokens',0) or call.get('cache_write_input_tokens',0) for call in calls):
-        return {'estimated_api_usd':None,'reason':'Cached tokens require separate rate accounting'}
-    inputs=sum(call.get('input_tokens',0) for call in calls)
-    outputs=sum(call.get('output_tokens',0) for call in calls)
-    unknown=sum(bool(call.get('error')) and not(call.get('input_tokens') or call.get('output_tokens')) for call in calls)
-    return {'estimated_api_usd':float((inputs*input_rate+outputs*output_rate)/Decimal(1000000)),
-            'input_tokens':inputs,'output_tokens':outputs,'calls':len(calls),'calls_with_unknown_usage':unknown,
+        return {**usage,'estimated_api_usd':None,'reason':'Cached tokens require separate rate accounting'}
+    return {**usage,'estimated_api_usd':float((inputs*input_rate+outputs*output_rate)/Decimal(1000000)),
             'input_usd_per_million':str(input_rate),'output_usd_per_million':str(output_rate),
             'source':None if local else SOURCE,'source_page':None if local else 6,'verified_on':'2026-10-29',
             'scope':'API fee only; local hardware/electricity excluded. Published standard geo cross-region rate, not account invoice/discount/tax. Missing usage may underestimate API cost.'}
@@ -30,7 +32,7 @@ def experiment_costs(results, judge_calls, config):
     physical=[];seen={};consistent=True
     for result in results:
         shared=result.get('shared_draft_id')
-        initial=result.get('draft',{}).get('usage',[])
+        initial=result.get('shared_usage',result.get('draft',{}).get('usage',[]))
         calls=result.get('usage',[])
         if not shared or calls[:len(initial)]!=initial:
             consistent=False;continue

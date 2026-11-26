@@ -4,22 +4,26 @@ from dataclasses import asdict
 import json,hashlib,statistics,random,time,math
 from .models import Draft,QuerySpec,RunResult
 from .pipeline import MODES
+from .protocol import FINAL_MODES
 from .benchmark import validate_benchmark
 from .evaluation import factual_score,citation_metrics,percentile
 
 
 def run_experiments(analyst,records,outdir,repeats=3,final=True,modes=None):
     validate_benchmark(records,final=final)
-    modes=modes or list(MODES)
+    modes=list(FINAL_MODES if final else MODES) if modes is None else modes
     if any(m not in MODES for m in modes):raise ValueError("Unknown experiment mode")
-    if len(set(modes)) != len(modes):raise ValueError("Duplicate experiment modes")
+    if not modes or len(set(modes)) != len(modes):raise ValueError("Empty or duplicate experiment modes")
+    if final and (set(modes)!=set(FINAL_MODES) or repeats!=3 or len(records)!=40 or any(q['split']!='test' for q in records)):
+        raise ValueError("Final protocol requires 40 test questions, B0/B1/P and three repeats")
     outdir=Path(outdir);outdir.mkdir(parents=True,exist_ok=True)
     output=outdir/"results.jsonl"
-    if output.exists():raise FileExistsError("Use a new run directory; results are immutable")
+    drafts=outdir/'initial_drafts.jsonl'
+    if output.exists() or drafts.exists():raise FileExistsError("Use a new run directory; results are immutable")
     results=[]
-    with output.open("w",encoding="utf-8") as f:
+    with output.open("x",encoding="utf-8") as f, drafts.open("x",encoding="utf-8") as initial:
         for repeat in range(repeats):
-            for question in records:
+            for index,question in enumerate(records):
                 started=time.monotonic()
                 try:
                     shared=analyst.make_draft(question["question"])
@@ -27,10 +31,16 @@ def run_experiments(analyst,records,outdir,repeats=3,final=True,modes=None):
                 except Exception as exc:
                     shared=Draft(question=question["question"],spec=QuerySpec(),answer="",elapsed=time.monotonic()-started)
                     draft_error=f"{type(exc).__name__}: {exc}"
-                for mode in modes:
+                draft_id=f"{question['id']}-R{repeat}"
+                initial.write(json.dumps(dict(shared_draft_id=draft_id,question_id=question['id'],repeat=repeat,
+                                              draft=asdict(shared),error=draft_error or shared.error),ensure_ascii=False,default=str)+'\n')
+                initial.flush()
+                offset=(index+repeat)%len(modes) if final else 0
+                for mode in modes[offset:]+modes[:offset]:
                     if draft_error:result=RunResult(mode,shared,"error",error=draft_error,elapsed=shared.elapsed)
                     else:result=analyst.continue_draft(shared,mode)
-                    row=dict(asdict(result),question_id=question["id"],category=question.get("category",""),repeat=repeat,shared_draft_id=f"{question['id']}-R{repeat}")
+                    row=dict(asdict(result),question_id=question["id"],category=question.get("category",""),repeat=repeat,
+                             shared_draft_id=draft_id,shared_usage=shared.usage)
                     results.append(row);f.write(json.dumps(row,ensure_ascii=False,default=str)+"\n");f.flush()
     return results
 
@@ -92,6 +102,7 @@ def summarize(scores):
     pairs={}
     for control in ['B0','B1','P-SQL','P-Evidence','P-Repair']:
         other={(r['question_id'],r['repeat']):r for r in scores if r['mode']==control}
+        if not other:continue
         matched=[(other[(r['question_id'],r['repeat'])],r) for r in scores if r['mode']=='P' and (r['question_id'],r['repeat']) in other]
         pairs[control]={'wrong_to_right':sum(a['correct'] is False and b['correct'] is True for a,b in matched),'right_to_wrong':sum(a['correct'] is True and b['correct'] is False for a,b in matched),'paired_scored':sum(a['correct'] is not None and b['correct'] is not None for a,b in matched)}
     return {'configurations':summary,'paired_P_vs':pairs,'unit':'question; repeated outputs are not independent questions'}

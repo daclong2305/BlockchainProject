@@ -108,6 +108,39 @@ proves complete event collection. A count of loaded transactions may be reported
 flag claims of guaranteed complete on-chain coverage only if the answer actually makes them.
 """
 
+for role in ('sql_review', 'claim_review'):
+    PROMPTS[role] += """
+Use interval_checks.market_hourly for the requested market asset, and liquidation_events
+only for event questions. A within_observed_bounds month may be queried as observed;
+gaps matter if the answer guarantees uninterrupted or full coverage. An observed average
+does not require proof of a value in every hour. If a different interval or asset was
+queried, identify the actual mismatch. Return {"issues":[]} when the checks succeed.
+Every actual issue has kind="defect", code, concrete evidence in message and an action.
+Keep successful checks out of issues. If you include a confirmation, mark kind="confirmation".
+market_sample is a fresh database query over the exact interval written in its fields.
+For each named asset it gives actual rows, distinct hour slots and whether every expected
+slot has exactly one row. A true one_row_per_hour settles a possible missing/duplicate-hour
+objection for that asset and interval. Use these loaded historical observations as the clock;
+never date them using the model's notion of "today". Check that the candidate SQL still selects
+the correct asset, metric and period; these counts say nothing about a different filter.
+"""
+
+PROMPTS['claim_review'] += """
+For a database statistic the source is SQL1: compare the claim with executed SQL, filters,
+and the cited cell in numeric_evidence. Protocol documentation supports conceptual claims.
+Check both sources when a question asks about both. Requiring the Aave guide to repeat
+a database aggregate is an error. Match completeness to what the user asked; extra
+background in a document does not make a sufficient answer incomplete.
+To report an omission, quote the specific request in the QUESTION and state which necessary
+part has no answer. A concise correct meaning stated in a cited sentence satisfies a
+"what does X mean?" question. E.g., for "What does a red warning light mean?", a supported
+"It indicates overheating" is sufficient; the physical causes, temperature thresholds and
+repair instructions are optional unless requested. For "What does it mean AND what action
+should I take?", that same answer misses the requested action. For a question asking how
+to achieve a goal, supported direct actions suffice unless an exhaustive list was asked for.
+Match the scope of each obligation to the question before consulting related source detail.
+"""
+
 
 def parse_json(text):
     text=text.strip()
