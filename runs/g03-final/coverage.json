@@ -1,0 +1,14 @@
+{
+  "complete": true,
+  "test_questions": 40,
+  "expected_outputs": 360,
+  "actual_outputs": 360,
+  "missing": [],
+  "unexpected": [],
+  "duplicates": [],
+  "inconsistent_shared_draft": [],
+  "missing_shared_draft_id": 0,
+  "reused_shared_draft_id": [],
+  "runtime_errors": 0,
+  "note": "Coverage includes errors and timeouts; it does not certify answer quality or human review."
+}

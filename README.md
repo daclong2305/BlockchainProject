@@ -2,7 +2,9 @@
 
 ## Kết quả G03 và công cụ đánh giá
 
-G03 đã chạy 360 đầu ra trên 40 câu test, ba lượt cho B0/B1/P. Kết quả và phiếu chấm ở `runs/g03-final/`; phép đo checker trên 32 bản nháp ở `runs/g03-heldout-checker-paced/`. Hai người có tên trong phiếu đã xác nhận phần chấm theo thông tin bàn giao ngày 26/11/2026. Xem `docs/HUMAN_REVIEW_HANDOFF_VI.md` và `docs/G03_RUBRIC_VI.md`.
+G03 đã chạy 360 đầu ra trên 40 câu test, ba lượt cho B0/B1/P. Xem [đầu ra benchmark](runs/g03-final/results.jsonl), [bảng điểm](runs/g03-final/final-human-summary.json) và [chi phí chạy](runs/g03-final/runtime_costs.json). Hai người có tên trong phiếu đã xác nhận phần chấm theo thông tin bàn giao ngày 26/11/2026. Xem [hướng dẫn bàn giao](docs/HUMAN_REVIEW_HANDOFF_VI.md) và [rubric](docs/G03_RUBRIC_VI.md).
+
+Checker phát hiện 16/16 bản sai và báo nhầm 1/16 bản đúng. Xem [tổng hợp checker](runs/g03-heldout-checker-paced/summary.json) và [log trên 32 bản nháp](runs/g03-heldout-checker-paced/replay.jsonl).
 
 Các lệnh bên dưới dùng cho thí nghiệm dev sáu cấu hình theo `docs/VERIFIER_PROTOCOL_VI.md`. Hướng dẫn tái lập giao thức final nằm trong `docs/REPRODUCE_PROPOSAL_VI.md`.
 
@@ -34,7 +36,7 @@ Bỏ `--score-only` để chạy thêm replay năm verifier. Sau khi replay hoà
 - Bốn trang Aave được lưu HTML gốc, ngày thu thập, mã băm và 8 đoạn nguồn. Đây là kho tài liệu nhỏ; đánh giá truy xuất trên tập phát triển trước khi mở rộng.
 - Benchmark gồm 60 câu và 20 trường hợp SQL ở `data/benchmark/`. Hồ sơ khóa, phiếu duyệt và snapshot của từng run được giữ để đối chiếu phiên bản dữ liệu.
 - Không bao gồm profitUSD, phí gas, APR hoặc thanh lý theo token vì chưa xác minh đầy đủ.
-- Cần cấu hình quyền AWS/Bedrock để gọi mô hình. Theo bảng chấm G03 hiện có, B0 đạt 75/120, B1 và P cùng đạt 48/120 đầu ra. Chi tiết ở `runs/g03-final/final-human-report.md`.
+- Cần cấu hình quyền AWS/Bedrock để gọi mô hình. Theo bảng chấm G03 hiện có, B0 đạt 75/120, B1 và P cùng đạt 48/120 đầu ra.
 
 ## Chạy ngay trên máy này
 
