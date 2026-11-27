@@ -1,0 +1,31 @@
+{
+  "judge": {
+    "provider": "bedrock",
+    "region": "us-east-1",
+    "profile": null,
+    "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "generation_temperature": 0.2,
+    "review_temperature": 0.0,
+    "max_tokens": 4096,
+    "json_format_retries": 1,
+    "input_normalization": "NFC"
+  },
+  "judge_prompt_sha256": "c7680506af0f45e3a9f5111d41f56644da8e42f77bf5c7f07f4148f47d53f555",
+  "inputs_sha256": {
+    "runs/g03-final/config.json": "942e4af745524a8c370aa2ef65adf93ea7c407fc816c820798b2f1a84b285ee2",
+    "runs/g03-final/integrity.json": "d10b538d43a0ae057265465229878c92f3cd47e4b1de0522a200f76eea8f1b6b",
+    "runs/g03-final/results.jsonl": "3c4f55885586dc0ddd240aff39a784b8af9986f4557b8112af33240992c2adc6",
+    "runs/g03-final/benchmark_snapshot.jsonl": "4979f27109233aa272c4ec93e610de59fc7257ef6138b2e7194e7ecfee5e5b57",
+    "runs/g03-final/initial_drafts.jsonl": "b4ba3dcf819ed1b413dcf133ea4b0f8ab2f1bcb2ef9f2d9ff5a245045f4eaee1",
+    "runs/g03-final/final-human-summary.json": "ddb8bda9063beb338b89a9baad2e9dcb4e0b69a5bc201c8f5d03878e1385097b",
+    "runs/g03-final/final-review-source.json": "662484005eb40d9804b5ac21040167fa79e35ced8c21e5701b99365ff5829838",
+    "runs/g03-final/blind-review/reviewer-1.json": "9ee107c8df534ed2f8da48f5fa379076eb971df50d50f481ad7428662f1d218c",
+    "runs/g03-final/blind-review/reviewer-2.json": "cd336103fe280b25e00726774c04166c6d56e91756934fca46d12ed83e363109",
+    "runs/g03-final/final-adjudication.json": "c0b3618576a8c85ef3b6558834c82d73ca4cc5844c73675ea5b487db3172aa68",
+    "runs/g03-final-llm-judge/frozen-rubric.md": "7ff3b1e135e0346c79db69383512196e2ebe4ef5a6aec575f122cd53b022a52c"
+  },
+  "review_cases": 248,
+  "benchmark_outputs": 360,
+  "runtime_failures": 0,
+  "method": "One model judgment per unique review context using the existing frozen judge prompt. Configuration, annotations, and adjudication are joined locally after inference."
+}
