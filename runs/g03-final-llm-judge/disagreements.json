@@ -1,0 +1,2871 @@
+[
+  {
+    "case_id": "A0003",
+    "outputs": [
+      [
+        "Q059",
+        2,
+        "B1"
+      ],
+      [
+        "Q059",
+        2,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        1,
+        0
+      ],
+      "citation_quality": [
+        1,
+        0
+      ]
+    },
+    "judge_explanation": "Câu hỏi yêu cầu dữ liệu 'ngay bây giờ' (real-time), nhưng bộ dữ liệu được cung cấp là lịch sử cố định với dữ liệu cuối cùng từ 2026-09-15T07:00:00+00:00. Theo POLICY, không có 'live data' hoặc 'dữ liệu trực tiếp'. Câu trả lời của hệ thống vi phạm giới hạn được nêu rõ trong reference_answer bằng cách cung cấp một con số cụ thể thay vì từ chối yêu cầu không thể trả lời. Dữ liệu được trả về là từ quá khứ (tháng 9 năm 2026), không phải 'ngay bây giờ'. Hệ thống không nên trình bày dữ liệu lịch sử như dữ liệu hiện tại."
+  },
+  {
+    "case_id": "A0004",
+    "outputs": [
+      [
+        "Q035",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly reports the numeric value (-1,725,488,668.29 USD) from SQL1 with proper citation and faithful representation of the data returned. However, the answer is fundamentally incorrect because it misinterprets the question. The question asks for 'Dư nợ USDT trung bình theo giờ quá II trừ quá I năm 2026' which, in Vietnamese context, most naturally reads as 'average hourly USDT borrowed balance for Q2 2026 minus Q1 2026' — requesting a single comparative metric. The SQL correctly computes AVG(Q2) - AVG(Q1) = -1,725,488,668.29 USD, which is mathematically valid. However, the metric scope is incorrect: the question's phrasing 'quá II trừ quá I' (Q2 minus Q1) is ambiguous but the natural interpretation is that it requests the Q2 metric with Q1 as a reference point for comparison, not that both quarters should be included in the calculation scope. The SQL includes data from 2026-01-01 (Q1 start) through 2026-07-01 (Q2 end), but the question only specifies Q2 2026 (2026-04-01 to 2026-07-01). The answer conflates 'difference between two averages' with 'average for Q2 minus average for Q1' — while the computation is correct, the metric being reported does not match what a straightforward reading of the question requests. The numeric value itself is accurate to the SQL result, but the metric scope error (including Q1 data when only Q2 was requested) makes the answer incorrect."
+  },
+  {
+    "case_id": "A0008",
+    "outputs": [
+      [
+        "Q049",
+        0,
+        "B0"
+      ],
+      [
+        "Q049",
+        0,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies 107 distinct liquidation transactions in August 2026 UTC on Aave V3 Ethereum, directly supported by SQL1. It accurately explains that liquidation events (158) differ from transactions (107) because multiple events can occur within a single transaction. SQL2 provides explicit confirmation: 107 transactions containing 158 total events, with 18 transactions containing multiple events. The answer properly cites DOC_LIQ_000 to explain the liquidation mechanism. The numeric scope is correct: the metric is count of distinct transactions (tx_hash), the aggregation is DISTINCT, the asset is liquidation transactions on Aave V3 Ethereum, the time interval is 2026-08-01 to 2026-09-01 UTC, and the unit is count (exact match required). The explanation of why transaction count ≠ event count is conceptually sound and supported by the data structure shown in SQL2."
+  },
+  {
+    "case_id": "A0009",
+    "outputs": [
+      [
+        "Q052",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời đúng và trung thực. Phần 1 (giá trị dư nợ): Trích xuất chính xác 3,042,883,324.32 USD từ SQL1 với độ chính xác đúng. Phần 2 (chứng minh nhân quả): Câu trả lời chính xác từ chối kết luận nhân quả từ dữ liệu hiện có, với lý do hợp lệ: (1) Chỉ có một snapshot tại một thời điểm, không có dữ liệu so sánh để tính sự thay đổi dư nợ; (2) Không thể phân tách đóng góp của lãi vay, vay mới, và trả nợ; (3) Thiếu dữ liệu về tỷ lệ lãi suất, tốc độ tích lũy, và giao dịch vay/trả nợ; (4) Tương quan thời gian không chứng minh nhân quả. Tài liệu DOC_BORROW_000 và DOC_BORROW_001 hỗ trợ các khẳng định về cơ chế lãi suất động và tích lũy lãi ngay lập tức, nhưng không cung cấp dữ liệu định lượng cần thiết. Câu trả lời tuân thủ nguyên tắc không suy luận nhân quả từ tương quan thời gian."
+  },
+  {
+    "case_id": "A0012",
+    "outputs": [
+      [
+        "Q038",
+        1,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        1,
+        0
+      ],
+      "citation_quality": [
+        1,
+        0
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies February 2026 (2026-02) as the month with the most liquidation transactions (2,647) within the specified UTC interval 2026-01-01 to before 2026-09-01. The numeric value is exact and matches the reference. However, the answer contains a critical formatting error: it states '2.647 giao dịch' (using period as thousands separator in Vietnamese context, which would mean 2.647 transactions—a decimal number), when it should state '2.647 giao dịch' or more clearly '2647 giao dịch' (2,647 transactions as a count). This is a presentation error rather than a factual error. The faithfulness score is 0 because the system_claims contain multiple unsupported numeric assertions (claims about transaction counts for months 1, 3-8) that are cited to SQL1 but SQL1 only returns one row (2026-02: 2647). The citation_quality is 0 because while the main answer cites SQL1, the supporting claims cite SQL1 for data (rows 0-7, columns) that are not present in the returned SQL1 result set—SQL1 explicitly returns only 1 row due to LIMIT 1. The candidate_sources documents (DOC_WITHDRAW_000, DOC_SUPPLY_000, DOC_BORROW_000, DOC_LIQ_000, DOC_SUPPLY_001) are about Aave protocol operations but do not contain liquidation transaction statistics and are not cited in the answer."
+  },
+  {
+    "case_id": "A0015",
+    "outputs": [
+      [
+        "Q049",
+        2,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies 107 distinct liquidation transactions in August 2026 UTC, supported by SQL1 which queries COUNT(DISTINCT tx_hash). The answer also correctly explains that liquidation events (158) and transactions (107) are not necessarily equal, using SQL2 data showing 18 transactions contained multiple events. The explanation is accurate: one transaction can emit multiple liquidation events, making the counts different. All numeric values are exact matches to source data. The answer properly addresses both parts of the question with appropriate citations."
+  },
+  {
+    "case_id": "A0017",
+    "outputs": [
+      [
+        "Q018",
+        1,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời của hệ thống cung cấp con số chính xác 307 giao dịch thanh lý cho tháng 2025-08 UTC trên Aave V3 Ethereum, được hỗ trợ trực tiếp bởi SQL1. Truy vấn sử dụng COUNT(DISTINCT tx_hash) để đếm các giao dịch riêng biệt trong khoảng thời gian chính xác (2025-08-01 đến 2025-09-01 UTC). Giá trị số 307 khớp hoàn toàn với tham chiếu (exact match, không có sai số). Hệ thống đã đúng cách xác định rằng dữ liệu nằm trong tương lai so với hiện tại và lưu ý về giới hạn xác minh đầy đủ, nhưng điều này không ảnh hưởng đến tính chính xác của câu trả lời dựa trên dữ liệu được cung cấp. Tất cả các yêu cầu về metric (count), aggregation (DISTINCT), asset (Aave V3 Ethereum), time interval (2025-08 UTC), và unit (count) đều được đáp ứng chính xác."
+  },
+  {
+    "case_id": "A0018",
+    "outputs": [
+      [
+        "Q058",
+        2,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The candidate answer correctly identifies that no liquidation events for WETH exist in July 2026 within the loaded dataset. The SQL query returns event_count=0 and total_liquidation_usd=NULL, which is the appropriate result for a SUM() aggregation over zero rows. The answer properly distinguishes between 'no events recorded' (a data absence) and 'data unavailable' (a system limitation). The reference answer's required point about unverified market-to-asset mapping is acknowledged implicitly through the data limitation statement. The answer does not invent missing data, does not claim causation, and correctly reports the NULL value as appropriate for the query result. The numeric scope is correct: the metric (total USD liquidation), aggregation (SUM), asset (WETH), time interval (July 2026 = 2026-07-01 to 2026-08-01 UTC), and unit (USD) all match the question requirements."
+  },
+  {
+    "case_id": "A0022",
+    "outputs": [
+      [
+        "Q019",
+        1,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời của hệ thống cung cấp con số chính xác 158 sự kiện thanh lý cho tháng 2026-08 UTC trên Aave V3 Ethereum, khớp hoàn toàn với kết quả SQL được cung cấp (SQL1). Phạm vi thời gian được xác định chính xác từ 2026-08-01 đến 2026-09-01 UTC. Đơn vị là 'count' (đếm) và giá trị là số nguyên chính xác. Mặc dù hệ thống đã thêm các cảnh báo về tính chất tương lai của dữ liệu (năm 2026), nhưng điều này không ảnh hưởng đến tính chính xác của câu trả lời so với dữ liệu nguồn được cung cấp. Câu trả lời tuân thủ chính sách numeric_policy yêu cầu độ chính xác tuyệt đối cho các giá trị đếm."
+  },
+  {
+    "case_id": "A0023",
+    "outputs": [
+      [
+        "Q060",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu hỏi yêu cầu một giá trị 'chắc chắn' (deterministic) cho dư nợ WETH vào tháng 12/2027. Đây là một yêu cầu dự báo tương lai vượt quá phạm vi dữ liệu lịch sử có sẵn. Hệ thống đã từ chối chính xác vì: (1) Dữ liệu lịch sử chỉ kéo dài đến 2026-09-15, trong khi tháng 12/2027 nằm ~15 tháng trong tương lai; (2) POLICY rõ ràng nêu không có 'forecasts' hoặc 'live data'; (3) Không có mô hình dự báo được cung cấp; (4) Tham chiếu (reference_answer) xác nhận rằng 'Bộ dữ liệu lịch sử cố định không cung cấp dữ liệu trực tiếp hoặc kết quả dự báo tương lai'. Câu trả lời của hệ thống phù hợp với giới hạn dữ liệu được nêu rõ ràng và từ chối thích hợp để không phát sinh dự báo không có cơ sở."
+  },
+  {
+    "case_id": "A0024",
+    "outputs": [
+      [
+        "Q012",
+        2,
+        "B1"
+      ],
+      [
+        "Q012",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời của hệ thống xác định chính xác hai điều kiện chính cho việc rút tài sản từ Aave Protocol và được hỗ trợ đầy đủ bởi DOC_WITHDRAW_000. Cả hai điểm yêu cầu đều được đề cập: (1) thanh khoản có sẵn trong pool và (2) yêu cầu về tài sản thế chấp. Các trích dẫn được cung cấp là chính xác và trực tiếp hỗ trợ từng khẳng định. Câu trả lời ngắn gọn, rõ ràng và trực tiếp trả lời câu hỏi bằng tiếng Việt."
+  },
+  {
+    "case_id": "A0025",
+    "outputs": [
+      [
+        "Q051",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        1,
+        0
+      ]
+    },
+    "judge_explanation": "Câu trả lời của hệ thống chứa nhiều lỗi nghiêm trọng: (1) Nó trích dẫn 'SQL1, row 24, column borrowed_usd_snapshot' nhưng SQL1 chỉ trả về 1 hàng duy nhất, không phải 24 hàng. Đây là lỗi trích dẫn cơ bản. (2) Hệ thống tuyên bố 'dữ liệu SQL cho thấy dư nợ USDC giảm từ 1997,976,897.90 USD (2026-08-14T23:00:00Z) xuống 1,993,676,848.03 USD (2026-08-15T00:00:00Z)' nhưng không trích dẫn nguồn cho dữ liệu này—nó xuất hiện trong kết quả SQL mở rộng (candidate_sources.sql.result) chứ không phải trong SQL1 được cung cấp. (3) Hệ thống không tuân thủ hướng dẫn: nó đưa ra kết luận nhân quả ('mâu thuẫn với giả thuyết lãi vay làm tăng dư nợ') từ một quan sát tương quan thời gian duy nhất, điều mà hướng dẫn rõ ràng cấm ('Không suy luận nhân quả từ tương quan thời gian'). (4) Câu trả lời không xác định rõ ràng giới hạn thực tế: nó nên nói rằng không thể trả lời câu hỏi về nhân quân vì dữ liệu không chứa lãi suất, tỷ lệ sử dụng dư nợ, hoặc chi tiết giao dịch—thay vào đó nó cố gắng suy luận từ dữ liệu không đủ. (5) Tài liệu được trích dẫn (DOC_BORROW_000, DOC_BORROW_001) chỉ xác nhận rằng lãi vay tích lũy động, nhưng không cung cấp bất kỳ dữ liệu cụ thể nào cho 2026-08-15 hoặc cơ chế tính toán—trích dẫn này không hỗ trợ kết luận về nguyên nhân. Giá trị số (1,993,676,848.03 USD) là chính xác theo SQL1, nhưng phần giải thích nhân quả vi phạm các nguyên tắc cơ bản của phân tích dữ liệu."
+  },
+  {
+    "case_id": "A0026",
+    "outputs": [
+      [
+        "Q050",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies 52 liquidation transactions in July 2026 UTC from SQL1, matching the numeric reference exactly. The answer properly explains that 63 liquidation events occurred across 52 distinct transactions (from SQL2), demonstrating that events and transactions are not equivalent—a single transaction can emit multiple events. The explanation is logically sound: SQL2 shows 5 transactions contained multiple events (event_count > 1), confirming the non-equivalence. The answer appropriately cites SQL1 for the transaction count and correctly references SQL2 data structure to explain the conceptual difference. The answer includes a proper caveat about dataset completeness. All required reference points are addressed: (1) one transaction can contain multiple liquidation events, (2) the counts differ (52 vs 63), and (3) the explanation correctly attributes this to the blockchain event log structure. No source documents directly address event vs transaction mechanics, but this is a technical fact about blockchain architecture that does not require citation from the provided Aave documentation."
+  },
+  {
+    "case_id": "A0028",
+    "outputs": [
+      [
+        "Q009",
+        2,
+        "B0"
+      ],
+      [
+        "Q009",
+        2,
+        "B1"
+      ],
+      [
+        "Q009",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        1,
+        0
+      ],
+      "citation_quality": [
+        1,
+        0
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the two required reference points about borrowing interest on Aave V3 in Vietnamese. However, it includes a fifth claim about health factor dropping below 1 leading to liquidation that cites DOC_LIQ_000, which was NOT provided in the source_data array. The source_data only contains DOC_BORROW_000 and DOC_BORROW_001. While DOC_LIQ_000 appears in candidate_sources, it was not in the supplied source documents for this evaluation. This violates the citation_quality requirement that citations must reference valid supplied sources. The first four claims are properly supported by DOC_BORROW_000 and DOC_BORROW_001, but the unauthorized citation of an external document fails the faithfulness and citation_quality criteria."
+  },
+  {
+    "case_id": "A0030",
+    "outputs": [
+      [
+        "Q011",
+        1,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies all required conditions for withdrawing supplied assets from Aave V3, matching the reference answer's key points. The answer is well-structured, comprehensive, and accurately reflects the source documentation. All four claims are properly supported by DOC_WITHDRAW_000, which explicitly covers: (1) liquidity availability constraints, (2) non-collateralized asset withdrawal, (3) collateralized asset handling requirements, and (4) health factor monitoring. The Vietnamese language is appropriate and accurate. No invented information or unsupported inferences are present."
+  },
+  {
+    "case_id": "A0032",
+    "outputs": [
+      [
+        "Q060",
+        0,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu hỏi yêu cầu dự báo dư nợ WETH cho tháng 12/2027 với độ chắc chắn tuyệt đối ('chắc chắn sẽ là'). Đây là yêu cầu không thể trả lời vì ba lý do chính: (1) Dữ liệu lịch sử cố định chỉ bao gồm quan sát từ 2023-01-27 đến 2026-09-15 UTC, tháng 12/2027 nằm ~15 tháng ngoài phạm vi này; (2) POLICY rõ ràng nêu 'không có dự báo hoặc dữ liệu trực tiếp'; (3) Không có mô hình dự báo, SQL được thực thi, hoặc tài liệu nào được cung cấp để hỗ trợ một giá trị tương lai. Câu trả lời của hệ thống chính xác từ chối yêu cầu này và xác định rõ ràng giới hạn thực tế của dữ liệu. Hệ thống cũng đề xuất hợp lý rằng nếu câu hỏi dự định hỏi về dữ liệu lịch sử (ví dụ: tháng 12/2023, 2024, 2025 hoặc 2026), cần phải làm rõ ngày tháng năm cụ thể."
+  },
+  {
+    "case_id": "A0036",
+    "outputs": [
+      [
+        "Q052",
+        0,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the WETH borrowed balance at 2026-07-15 00:00 UTC as 3,042,883,324.32 USD with proper citation to SQL1. The answer appropriately refuses to claim that interest accrual caused the debt increase, correctly identifying the fundamental limitation: a single snapshot provides no temporal comparison data needed to establish causation. The reasoning is sound—to prove interest caused an increase requires: (1) debt values at multiple time points, (2) transaction history (new borrows/repayments), and (3) specific interest accrual rates. The answer properly cites DOC_BORROW_000 for the facts that interest accrues immediately and rates are dynamically adjusted, but correctly notes these facts alone cannot establish causation without comparative data. The refusal is justified and well-explained."
+  },
+  {
+    "case_id": "A0040",
+    "outputs": [
+      [
+        "Q048",
+        1,
+        "B0"
+      ],
+      [
+        "Q048",
+        1,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies that July 2026 had 63 liquidation events from SQL1, with exact count match. The answer properly addresses the required point by explaining that this count does NOT prove all positions with health factor below 1 were liquidated. The explanation is well-supported: (1) it cites DOC_LIQ_000 for the mechanism that liquidation occurs when HF < 1, (2) it cites DOC_LIQ_001 for the permissionless and competitive nature of liquidations, explaining why not all eligible positions get liquidated, and (3) it correctly distinguishes between positions eligible for liquidation and actual liquidation events recorded. The answer appropriately refuses to claim complete coverage and identifies the actual limitation: recorded events reflect only executed liquidations, not all positions meeting liquidation criteria."
+  },
+  {
+    "case_id": "A0041",
+    "outputs": [
+      [
+        "Q052",
+        1,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the WETH borrowed amount at 2026-07-15 00:00 UTC as 3,042,883,324.32 USD (matching SQL1 row 2 with acceptable rounding to 2 decimals per numeric_policy). The answer properly refuses to claim that a single snapshot proves causation, citing the fundamental limitation that borrowed_usd is a stock measure reflecting net effects of multiple drivers (new borrows, repayments, interest accrual, price changes). The answer correctly cites DOC_BORROW_000/001 for the claim that interest accrues dynamically based on utilization rate. However, the answer does not analyze the extended time series data now available in candidate_sources SQL result, which shows non-monotonic movement (3019.26M → 3035.04M → 3042.88M peak → 3027.05M → 3005.85M decline). This pattern is material: the decline from 00:00 to 02:00 UTC contradicts pure interest accrual (which should be monotonic) and suggests net repayment or price movement dominated. The answer's reasoning is sound but incomplete—it identifies the correct limitation without leveraging the temporal pattern to strengthen the causation refusal. The answer appropriately identifies missing data (interest rate formula, utilization ratio, WETH/USD price, flow data) needed to operationalize the causation test. All numeric values are exact matches to reference; all citations are valid and supported by source text."
+  },
+  {
+    "case_id": "A0042",
+    "outputs": [
+      [
+        "Q037",
+        1,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies February 2025 (2025-02) as the month with the most liquidation transactions (2,188 transactions) within the UTC period 2025-01-01 to 2026-01-01. The SQL query properly filters the time range, counts distinct transaction hashes grouped by month, and orders by transaction count descending then month ascending to handle ties by selecting the earliest month. The numeric value 2,188 matches exactly the reference count requirement. The answer is faithful to the source data (SQL1) which returns the correct result row. However, the system answer contains a formatting error ('2.188' instead of '2188') and includes a confusing note about missing citations that appears to be a system artifact rather than a legitimate evaluation concern. The core factual claim and numeric answer are correct and properly supported by SQL1."
+  },
+  {
+    "case_id": "A0043",
+    "outputs": [
+      [
+        "Q053",
+        0,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời hệ thống trả lời chính xác cả hai phần của câu hỏi. Phần 1: Giá trị tài sản USDC cung cấp lúc 00:00 UTC 2026-08-15 là 1.997.694.271,60 USD được lấy trực tiếp từ SQL1 với độ chính xác số học đúng (sai số tương đối = 0, nằm trong dung sai 0.005). Phần 2: Câu trả lời đúng cách giải thích rằng số liệu này KHÔNG chứng minh tài sản không có rủi ro hoặc luôn rút ngay được. Nó xác định ba điều kiện rút tiền chính: (1) thanh khoản có sẵn trong pool, (2) liệu tài sản có được dùng làm tài sản thế chấp, (3) trạng thái health factor. Mỗi yêu cầu tham chiếu được đáp ứng: yêu cầu 1 được hỗ trợ bởi SQL1; yêu cầu 2 được hỗ trợ bởi DOC_WITHDRAW_000 (đoạn 'suppliers can withdraw up to the amount available in the pool that is not currently borrowed'); yêu cầu 3 được hỗ trợ bởi DOC_WITHDRAW_000 (đoạn 'If your supplied tokens are used as collateral...you may need to repay part of your borrow position') và DOC_LIQ_000 (health factor < 1 dẫn đến rủi ro thanh lý). Tất cả các tuyên bố đều có nguồn gốc từ tài liệu được cung cấp và không có suy luận nhân quả không chính đáng."
+  },
+  {
+    "case_id": "A0044",
+    "outputs": [
+      [
+        "Q052",
+        2,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời hệ thống chính xác và trung thực. Phần 1: Dư nợ WETH được trích dẫn chính xác từ SQL1 với giá trị 3,042,883,324.32 USD (làm tròn đúng từ 3042883324.3152447). Phần 2: Câu trả lời đúng cách từ chối kết luận rằng lãi vay là nguyên nhân tăng dư nợ. Lý do được giải thích rõ ràng: (1) Chỉ có một điểm dữ liệu tại một thời điểm, không có dữ liệu so sánh từ thời điểm trước; (2) Dư nợ có thể tăng do nhiều nguyên nhân (vay mới, không phải chỉ lãi); (3) Mặc dù DOC_BORROW_000 xác nhận lãi vay tích lũy động, nhưng để chứng minh lãi vay là nguyên nhân cần so sánh hai thời điểm và loại trừ các giao dịch vay/trả nợ. Đây là suy luận logic đúng đắn, không phải từ chối vô cơ sở. Tất cả các tuyên bố đều được hỗ trợ bởi dữ liệu nguồn hoặc là suy luận logic hợp lệ từ thiếu dữ liệu."
+  },
+  {
+    "case_id": "A0045",
+    "outputs": [
+      [
+        "Q008",
+        0,
+        "B0"
+      ],
+      [
+        "Q008",
+        0,
+        "B1"
+      ],
+      [
+        "Q008",
+        0,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời của hệ thống bao gồm đầy đủ các điểm yêu cầu từ reference_answer: (1) Health Factor dưới 1 khiến vị thế đủ điều kiện thanh lý, và (2) Người thanh lý hoàn trả nợ và nhận tài sản thế chấp kèm phần thưởng thanh lý, với mức độ hoàn trả phụ thuộc vào điều kiện vị thế. Tất cả các khẳng định đều được hỗ trợ bởi các nguồn được cung cấp. Công thức Health Factor, điều kiện thanh lý (HF < 1), quy tắc 50%/100%, và tính chất không cần phép của thanh lý đều được trích dẫn chính xác từ DOC_LIQ_000 và DOC_LIQ_001. Không có khẳng định nào được phát minh hoặc suy luận vượt quá dữ liệu nguồn."
+  },
+  {
+    "case_id": "A0047",
+    "outputs": [
+      [
+        "Q054",
+        2,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời của hệ thống chính xác và trung thực. Nó cung cấp giá trị số USD chính xác ($3,897,799,627.04) từ SQL1 với độ chính xác đúng (sai số tương đối = 0, nằm trong dung sai 0.005). Quan trọng hơn, câu trả lời đúng cách giải thích rằng số liệu này KHÔNG chứng minh tài sản không có rủi ro hoặc luôn rút ngay được. Nó xác định ba điều kiện chính từ tài liệu Aave: (1) phải có đủ thanh khoản trong pool, (2) nếu được dùng làm thế chấp phải duy trì health factor, (3) rủi ro thanh khoản tồn tại. Tất cả các yêu cầu từ reference_answer đều được đáp ứng. Các trích dẫn đều hợp lệ và hỗ trợ các tuyên bố tương ứng."
+  },
+  {
+    "case_id": "A0048",
+    "outputs": [
+      [
+        "Q049",
+        1,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies 107 distinct liquidation transactions in August 2026 (UTC) from SQL1, matching the numeric reference exactly. The answer also correctly states that 158 liquidation events exist (from SQL2) and properly explains that events and transactions are not necessarily equal because one transaction can contain multiple events. However, the answer fails on faithfulness and citation quality because: (1) The explanation that 'one transaction can contain multiple liquidation events from different smart contract calls' is logically sound but completely unsupported by any provided source document. DOC_LIQ_000 and DOC_LIQ_001 describe liquidation mechanics but contain no technical information about transaction structure, event batching, or the relationship between events and transactions. (2) The candidate sources (DOC_WITHDRAW_000, DOC_BORROW_000, DOC_SUPPLY_000, DOC_SUPPLY_001, DOC_BORROW_001) are irrelevant to liquidation event structure and provide no support. (3) SQL2 provides empirical evidence (18 transactions with multiple events, 158 total events vs 107 transactions) but the system answer does not cite SQL2 for this critical supporting data. The answer should have cited SQL2 to show that 18 of 107 transactions contained multiple events, proving the claim empirically rather than inferring it."
+  },
+  {
+    "case_id": "A0050",
+    "outputs": [
+      [
+        "Q040",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời xác định chính xác giá trị số học: 51,931,723.65 USD là chênh lệch giữa tổng USD thanh lý tháng 2026-06 (2026-06-01 đến 2026-07-01 UTC) trừ đi tổng USD từ 2026-05-01 đến trước 2026-06-01 UTC. Giá trị này khớp hoàn toàn với kết quả SQL được cung cấp (51931723.65202591), nằm trong dung sai USD tương đối ≤0.005. Câu trả lời đúng cách diễn giải câu hỏi tiếng Việt, áp dụng logic toán học chính xác (tháng 6 trừ tháng 5), và sử dụng ranh giới UTC thích hợp. Câu trả lời cũng thích hợp ghi nhận các hạn chế: (1) không có tài liệu nguồn được cung cấp để xác minh định nghĩa 'thanh lý', (2) không thể đảm bảo độ phủ dữ liệu đầy đủ cho khoảng thời gian này, (3) xác nhận rằng 2026-07-01 là ranh giới đúng cho tháng 6 (31 ngày). Những cảnh báo này phản ánh đúng các giới hạn của dữ liệu và không phải là lỗi."
+  },
+  {
+    "case_id": "A0053",
+    "outputs": [
+      [
+        "Q052",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        1,
+        0
+      ]
+    },
+    "judge_explanation": "The system answer contains multiple critical errors in reasoning and data interpretation. (1) NUMERIC VALUE: The stated value of 3,042,883,324.32 USD is correct and matches SQL1 row 24 (2026-07-15T00:00:00Z). However, the answer incorrectly claims 'Một điểm ảnh chụp duy nhất tại 00:00 UTC 2026-07-15 không cung cấp giá trị trước đó để so sánh' when the provided SQL result clearly contains 26 rows spanning 2026-07-14T00:00:00Z through 2026-07-15T01:00:00Z. Row 23 shows 2026-07-14T23:00:00Z with borrowed_usd = 3,035,035,667.85 USD, providing a direct prior comparison point. (2) CAUSATION ANALYSIS: The answer fails to address the core question. The observed change from 3,035,035,667.85 USD (23:00 UTC) to 3,042,883,324.32 USD (00:00 UTC) represents an increase of 7,847,656.47 USD in one hour (~0.26%). The answer should explain whether this magnitude is consistent with interest accrual alone or whether new borrows/repayments must have occurred. Instead, it asserts without evidence that 'dữ liệu giao dịch chi tiết (borrow mới, repay)' is required, conflating the inability to isolate interest as the sole cause with the inability to detect interest contribution at all. (3) CITATION FAILURES: The claim 'Một điểm ảnh chụp duy nhất không cung cấp đủ bằng chứng' lacks citation despite being a methodological assertion. The claim about needing transaction-level detail is unsupported by any source. DOC_BORROW_000 confirms interest accrues continuously but does not explain why hourly snapshots cannot measure this accrual. (4) INCOMPLETE REASONING: The answer does not explain the protocol mechanism that would prevent snapshot comparison from detecting interest contribution. It does not calculate whether the observed hourly change is plausible given typical borrow utilization rates and interest rate dynamics. (5) REFERENCE ANSWER ALIGNMENT: The reference answer states 'Biến động dư nợ USD không đủ kết luận nguyên nhân từ lãi vay hoặc hành vi người dùng' (Outstanding balance changes are insufficient to conclude causation from interest or user behavior). The system answer reaches a similar conclusion but through flawed reasoning—it claims a single snapshot exists when consecutive snapshots are available, and it does not properly distinguish between 'cannot isolate interest as sole cause' versus 'cannot detect interest contribution at all.'"
+  },
+  {
+    "case_id": "A0055",
+    "outputs": [
+      [
+        "Q019",
+        2,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời cung cấp con số chính xác 158 sự kiện thanh lý cho tháng 2026-08 UTC trên Aave V3 Ethereum. Khoảng thời gian được xác định chính xác từ 2026-08-01T00:00:00Z đến 2026-09-01T00:00:00Z. SQL query hợp lệ và trả về kết quả khớp với reference answer. Câu trả lời bao gồm cảnh báo thích hợp về tính đầy đủ của dữ liệu mà không phủ nhận kết quả. Giá trị số là count (đếm) nên yêu cầu chính xác tuyệt đối, và 158 = 158 đáp ứng tiêu chí này."
+  },
+  {
+    "case_id": "A0057",
+    "outputs": [
+      [
+        "Q054",
+        1,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the numeric value ($3,897,799,627.04 USD) from SQL1 and accurately addresses both parts of the question. Part 1 (numeric): The supplied_usd value is retrieved correctly from the market_hourly table at the specified timestamp with proper unit (USD) and precision. Part 2 (risk/withdrawal conditions): The answer properly explains that the supplied_usd metric alone does NOT prove risk-free status or immediate withdrawability, then systematically cites three key withdrawal constraints from DOC_WITHDRAW_000: (1) withdrawal limited to available pool liquidity not currently borrowed, (2) collateral requirements if tokens are used as collateral, and (3) liquidity risk if pool lacks sufficient WETH. All factual claims are directly supported by the provided sources. The answer correctly refuses to claim the metric proves safety, instead explaining actual withdrawal conditions. The numeric value matches the reference exactly (3897799627.0425687 USD, within 0.005 relative tolerance for USD values)."
+  },
+  {
+    "case_id": "A0058",
+    "outputs": [
+      [
+        "Q034",
+        1,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly computes and reports the difference between Q2 2026 and Q1 2026 average hourly DAI borrowed amounts. The SQL query (SQL1) calculates AVG(borrowed_usd for Q2) - AVG(borrowed_usd for Q1) = -12,133,324.43 USD, which directly answers the question 'Dư nợ DAI trung bình theo giờ quý II trừ quý I năm 2026' (average hourly DAI debt Q2 minus Q1 2026). The negative value correctly indicates that average hourly DAI borrowing decreased from Q1 to Q2. The numeric value matches the reference exactly (-12133324.429995105 USD, rounded to -12,133,324.43 USD with 2 decimals as specified). The interpretation that 'dư nợ DAI trung bình theo giờ đã giảm từ quý I sang quý II năm 2026' (average hourly DAI debt decreased from Q1 to Q2) is correct given the negative result. The question's phrasing 'quý II trừ quý I' unambiguously requests a subtraction of two quarterly aggregates, which the SQL executes correctly."
+  },
+  {
+    "case_id": "A0059",
+    "outputs": [
+      [
+        "Q017",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời cung cấp con số chính xác (107 giao dịch thanh lý) cho tháng 2026-08 UTC trên Aave V3 Ethereum, được hỗ trợ bởi SQL1. Truy vấn sử dụng COUNT(DISTINCT tx_hash) phù hợp để đếm các giao dịch riêng biệt trong khoảng thời gian chính xác (2026-08-01 đến 2026-09-01 UTC). Câu trả lời cũng thích hợp ghi nhận rằng dữ liệu nằm trong tương lai và không thể xác minh tính đầy đủ, tuân thủ hướng dẫn về không phát minh các quan sát bị thiếu. Giá trị số khớp chính xác với tham chiếu (107, đơn vị count, yêu cầu chính xác tuyệt đối)."
+  },
+  {
+    "case_id": "A0060",
+    "outputs": [
+      [
+        "Q019",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies 158 liquidation events on Aave V3 Ethereum during August 2026 UTC (2026-08-01 to 2026-09-01). The SQL query properly targets the requested month with correct timestamp boundaries. The numeric value matches the reference exactly (158 count, exact match required). The answer is faithful to the source data, properly cites SQL1, and correctly addresses the Vietnamese question about liquidation events in August 2026. The system appropriately notes the temporal context while confirming the data is within observed bounds."
+  },
+  {
+    "case_id": "A0061",
+    "outputs": [
+      [
+        "Q050",
+        1,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies 52 distinct liquidation transactions in July 2026 UTC (from SQL1: COUNT DISTINCT tx_hash) and accurately explains that liquidation events (63) and transactions (52) are not necessarily equal because one transaction can contain multiple liquidation events. The numeric values are exact matches to the reference (52 transactions). The SQL query correctly filters the UTC interval [2026-07-01, 2026-08-01). However, citation_quality fails because the explanation that 'one transaction can contain multiple liquidation events' is not directly supported by the provided source documents. DOC_LIQ_000 and DOC_LIQ_001 discuss liquidation mechanics but do not explicitly address the technical possibility of multiple liquidation events within a single transaction. SQL2 provides empirical evidence (63 events across 52 transactions with 5 transactions containing multiple events), but SQL2 is not cited in the system answer. The answer's logical reasoning is sound and the data interpretation is correct, but the citation to DOC_LIQ_000 for the multi-event explanation is unsupported—that document does not contain this information."
+  },
+  {
+    "case_id": "A0063",
+    "outputs": [
+      [
+        "Q035",
+        1,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly interprets the Vietnamese question 'Dư nợ USDT trung bình theo giờ quý II trừ quý I năm 2026' as asking for the difference (Q2 minus Q1) in average hourly USDT borrowed amounts for 2026. The SQL query provided calculates exactly this: avg(borrowed_usd for Q2 2026) - avg(borrowed_usd for Q1 2026) = -1,725,488,668.29 USD. The numeric result matches the reference value within tolerance (exact match: -1725488668.2893205 USD). The answer correctly identifies that Q2 2026 average borrowed USDT (2,286,878,458.77 USD) is lower than Q1 2026 (4,012,367,127.06 USD), resulting in a negative difference. The SQL query correctly filters for USDT asset, covers the full 2026 H1 period (2026-01-01 to 2026-07-01), and uses the CASE WHEN logic to separate Q1 and Q2 calculations. The answer is complete, addresses the specific metric requested (average hourly borrowed amount difference), and provides proper context for the negative result."
+  },
+  {
+    "case_id": "A0065",
+    "outputs": [
+      [
+        "Q021",
+        1,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời của hệ thống cung cấp giá trị số chính xác (6.604.733,08 USD) từ SQL1, khớp với numeric_reference được cung cấp trong phạm vi sai số cho phép (USD_relative_tolerance: 0.005). Truy vấn SQL được thực hiện đúng với khoảng thời gian UTC chính xác (2026-08-01 đến 2026-09-01). Câu trả lời đúng cách lưu ý rằng con số này đại diện cho các sự kiện thanh lý được ghi nhận trong tập dữ liệu được tải và không đảm bảo bao phủ hoàn toàn trên chuỗi (proves_complete_collection: false). Khoảng thời gian yêu cầu nằm trong phạm vi quan sát được của bộ dữ liệu (first_event_utc: 2023-01-30T19:11:47Z, last_event_utc: 2026-09-15T05:53:59Z). Mặc dù không có tài liệu hỗ trợ được cung cấp để xác minh định nghĩa khái niệm 'thanh lý' trên Aave V3, nhưng câu hỏi yêu cầu một giá trị số cụ thể từ bộ dữ liệu được cung cấp, và câu trả lời đã cung cấp chính xác giá trị đó với các cảnh báo thích hợp về hạn chế dữ liệu."
+  },
+  {
+    "case_id": "A0069",
+    "outputs": [
+      [
+        "Q042",
+        0,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the requested metric (difference between August 2026 liquidation total and May-July 2026 liquidation total), applies the correct time intervals with proper UTC exclusive upper bounds, and returns the exact numeric result from the verified SQL source. The answer is presented in Vietnamese as required. The calculation is mathematically sound: 6,604,733.08 USD (August) minus 330,867,783.39 USD (May-July) equals -324,263,050.31 USD. The numeric value matches the reference exactly within the USD relative tolerance of 0.005 (0% error). All factual claims are supported by SQL1, which correctly filters liquidation_events for the specified time periods and computes the difference. The answer appropriately contextualizes the negative result as indicating August liquidations were substantially lower than the May-July period."
+  },
+  {
+    "case_id": "A0071",
+    "outputs": [
+      [
+        "Q060",
+        1,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu hỏi yêu cầu dự báo dư nợ WETH cho tháng 12/2027 với độ chắc chắn tuyệt đối. Đây là yêu cầu không thể trả lời vì ba lý do chính: (1) Dữ liệu lịch sử cố định chỉ kéo dài đến 2026-09-15, trong khi tháng 12/2027 nằm ngoài phạm vi này (~15 tháng sau điểm cuối); (2) Chính sách dữ liệu rõ ràng nêu không có dự báo hoặc dữ liệu tương lai; (3) Dư nợ là chỉ số động phụ thuộc vào hành vi người dùng, điều kiện thị trường và thay đổi giao thức—không thể dự đoán chắc chắn. Câu trả lời hệ thống đã xác định đúng giới hạn này và từ chối trả lời một cách thích hợp."
+  },
+  {
+    "case_id": "A0073",
+    "outputs": [
+      [
+        "Q050",
+        2,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies 52 distinct liquidation transactions in July 2026 UTC on Aave V3 Ethereum, matching SQL1 exactly. It accurately explains the distinction between liquidation events (63) and transactions (52) using SQL2 data, demonstrating that one transaction can contain multiple liquidation events. The answer properly cites SQL1 for the transaction count and correctly references the conceptual distinction supported by SQL2 results showing 5 transactions with multiple events. The explanation aligns with blockchain mechanics where a single transaction can emit multiple independent events. All numeric values are exact matches to source data."
+  },
+  {
+    "case_id": "A0074",
+    "outputs": [
+      [
+        "Q051",
+        0,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the USDC outstanding debt at 2026-08-15 00:00 UTC as 1,993,676,848.03 USD with proper citation to SQL1. The numeric value matches the reference exactly (1993676848.0321777 USD, within tolerance). Critically, the answer properly refuses to claim that interest accrual caused the debt increase, correctly identifying the logical limitation: a single snapshot provides no temporal comparison data to establish causation. The answer accurately cites DOC_BORROW_000 and DOC_BORROW_001 to establish that interest accrues dynamically, but appropriately notes this documentation does not provide the specific accrued interest amount or comparative debt figures needed to prove causation. The reasoning correctly distinguishes between: (1) what the protocol documentation says interest does (accrue dynamically), (2) what data would be needed to prove it caused this specific debt level (comparative snapshots), and (3) what alternative explanations exist (new borrowing). The answer adheres to the instruction not to infer causation from temporal correlations and does not invent missing observations."
+  },
+  {
+    "case_id": "A0076",
+    "outputs": [
+      [
+        "Q010",
+        0,
+        "P"
+      ],
+      [
+        "Q010",
+        0,
+        "B0"
+      ],
+      [
+        "Q010",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời của hệ thống bao gồm đầy đủ cả hai điểm yêu cầu từ reference_answer: (1) lãi bắt đầu tích lũy ngay khi vay token, và (2) lãi suất vay thay đổi theo mức sử dụng vốn và tham số giao thức. Ngoài ra, hệ thống còn cung cấp thông tin bổ sung về Health Factor và thanh lý, điều này phù hợp với câu hỏi về những điều cần lưu ý. Tất cả các khẳng định đều được hỗ trợ bởi các tài liệu nguồn được cung cấp."
+  },
+  {
+    "case_id": "A0078",
+    "outputs": [
+      [
+        "Q041",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the final numeric result (-325,072,291.77 USD) which matches the reference value exactly. The SQL query in SQL1 properly computes the difference between July 2026 liquidations and May-June 2026 liquidations using CASE WHEN logic. The candidate's decomposed SQL also correctly calculates the intermediate components (July: 2,897,745.81 USD; May-June: 327,970,037.58 USD) and their difference. All three numeric claims are supported by the provided source data. The interpretation that the May-June total exceeds July by ~325M USD is accurate. The answer correctly addresses the Vietnamese question asking for the difference ('bằng bao nhiêu'). No invented observations or unsupported inferences are present."
+  },
+  {
+    "case_id": "A0079",
+    "outputs": [
+      [
+        "Q008",
+        1,
+        "B1"
+      ],
+      [
+        "Q008",
+        1,
+        "P"
+      ],
+      [
+        "Q008",
+        1,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời của hệ thống bao gồm đầy đủ các điểm yêu cầu trong reference_answer: (1) Health Factor dưới 1 khiến vị thế đủ điều kiện thanh lý, và (2) Người thanh lý hoàn trả nợ và nhận tài sản thế chấp kèm phần thưởng thanh lý, với mức độ hoàn trả phụ thuộc vào điều kiện vị thế. Tất cả các tuyên bố thực tế đều được hỗ trợ bởi các nguồn được cung cấp (DOC_LIQ_000 và DOC_LIQ_001). Các chi tiết bổ sung về ngưỡng 0.95, giới hạn $2,000, và tính chất permissionless của thanh lý đều có trong tài liệu nguồn. Trích dẫn được áp dụng chính xác cho từng tuyên bố."
+  },
+  {
+    "case_id": "A0080",
+    "outputs": [
+      [
+        "Q022",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời cung cấp giá trị số chính xác 28.132.234,04 USD từ SQL1, khớp hoàn toàn với numeric_reference (28132234.04010158 USD, làm tròn đến 2 chữ số thập phân theo yêu cầu). Phạm vi thời gian được chỉ định chính xác (2025-08-01 UTC đến 2025-09-01 UTC). Câu trả lời đúng cách thừa nhận hạn chế quan trọng: không có đảm bảo phủ sóng hoàn chỉnh trên chuỗi Ethereum, vì dữ liệu được tải chỉ đại diện cho các sự kiện trong dataset, không phải toàn bộ hoạt động thanh lý trên chuỗi. Điều này là thích hợp vì không có tài liệu nguồn được cung cấp để xác minh tính đầy đủ của bộ sưu tập dữ liệu. Tất cả các khiếu nại được hỗ trợ bởi SQL1 hoặc được xác định rõ ràng là không thể xác minh. Sai số tương đối USD = |28132234.04 - 28132234.04010158| / 28132234.04010158 ≈ 0,00000004 << 0,005 (nằm trong dung sai)."
+  },
+  {
+    "case_id": "A0081",
+    "outputs": [
+      [
+        "Q053",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly addresses both parts of the Vietnamese question. Part 1 (numeric): The supplied USDC value of 1,997,694,271.60 USD at 2026-08-15 00:00 UTC is accurately retrieved from SQL1 and matches the reference value exactly (1997694271.598428 USD, within tolerance). Part 2 (risk/withdrawal conditions): The answer correctly explains that the supplied_usd metric alone does NOT prove risk-free status or immediate withdrawability, and properly cites DOC_WITHDRAW_000 and DOC_LIQ_000 to support three key conditions: (1) withdrawal limited by available pool liquidity not currently borrowed, (2) if used as collateral, health factor must stay above 1 to avoid liquidation, and (3) liquidation risk exists if health factor falls below 1. All factual claims are supported by the provided source documents. The answer appropriately distinguishes between the data point (supplied value) and the risk assessment (which requires document evidence). No invented conclusions or unsupported inferences are present."
+  },
+  {
+    "case_id": "A0087",
+    "outputs": [
+      [
+        "Q011",
+        2,
+        "B0"
+      ],
+      [
+        "Q011",
+        2,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the two main conditions for withdrawing supplied assets from Aave Protocol, both of which are explicitly stated in DOC_WITHDRAW_000. The answer accurately captures: (1) the liquidity requirement - suppliers can only withdraw amounts available in the pool that are not currently borrowed, and (2) the collateral constraint - if supplied tokens are used as collateral for active borrows, users must maintain sufficient collateral by either repaying part of the borrow or supplying additional collateral. All claims are directly supported by the source document with appropriate citations."
+  },
+  {
+    "case_id": "A0088",
+    "outputs": [
+      [
+        "Q020",
+        2,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời cung cấp con số chính xác 307 sự kiện thanh lý cho tháng 2025-08 UTC trên Aave V3 Ethereum, được hỗ trợ trực tiếp bởi SQL1. Truy vấn SQL chính xác xác định khoảng thời gian (2025-08-01 đến 2025-09-01 UTC), phù hợp với yêu cầu tháng 8/2025. Giá trị số đếm là chính xác (307 = 307, không có sai số). Câu trả lời đúng cách ghi nhận các hạn chế về độ phủ dữ liệu và bản chất quan sát được của dữ liệu, nhưng không từ chối trả lời vì dữ liệu được cung cấp rõ ràng. Mỗi tuyên bố thực tế được trích dẫn từ nguồn được xác minh (SQL1)."
+  },
+  {
+    "case_id": "A0091",
+    "outputs": [
+      [
+        "Q019",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời cung cấp con số chính xác 158 sự kiện thanh lý cho tháng 2026-08 UTC trên Aave V3 Ethereum. Giá trị này khớp hoàn toàn với kết quả SQL tham chiếu (SQL1) và numeric_reference. Khoảng thời gian truy vấn (2026-08-01 đến 2026-09-01 UTC) được xác định chính xác. Câu trả lời cũng thích hợp ghi nhận giới hạn về xác minh tính đầy đủ của dữ liệu, mặc dù không có khoảng trống được xác định trong dữ liệu được cung cấp. Metric (count), aggregation (tổng), asset (Aave V3 Ethereum), time interval (2026-08 UTC), và unit (count) đều chính xác."
+  },
+  {
+    "case_id": "A0093",
+    "outputs": [
+      [
+        "Q017",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời của hệ thống báo cáo chính xác 107 giao dịch thanh lý riêng biệt (COUNT DISTINCT tx_hash) cho tháng 2026-08 UTC trên Aave V3 Ethereum. Giá trị số này khớp chính xác với tham chiếu (107, unit: count, yêu cầu exact match). Truy vấn SQL được cung cấp (SQL1) đúng về mặt logic - nó lọc các sự kiện thanh lý trong khoảng thời gian [2026-08-01, 2026-09-01) UTC và đếm các tx_hash riêng biệt. Mặc dù hệ thống đã thêm một cảnh báo về giới hạn dữ liệu (lưu ý rằng không có interval_checks cụ thể được cung cấp để xác minh phạm vi quan sát), nhưng cảnh báo này không làm sai lệch câu trả lời chính - nó chỉ là một tuyên bố về hạn chế xác minh. Câu trả lời chính (107 giao dịch) vẫn được hỗ trợ đầy đủ bởi SQL1 và khớp với reference_answer."
+  },
+  {
+    "case_id": "A0095",
+    "outputs": [
+      [
+        "Q048",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời của hệ thống chính xác và trung thực. Nó cung cấp con số 63 sự kiện thanh lý cho tháng 2026-07 từ SQL1, và quan trọng hơn, nó giải thích rõ ràng tại sao con số này KHÔNG chứng minh rằng mọi vị thế có health factor dưới 1 đều đã được thanh lý. Giải thích bao gồm ba lý do hợp lệ: (1) sự kiện thanh lý chỉ ghi lại các vị thế thực sự được thanh lý, (2) người vay có thể tự sửa chữa vị thế bằng cách cung cấp thêm tài sản thế chấp hoặc trả lại khoản vay (được hỗ trợ bởi DOC_LIQ_000), và (3) bộ dữ liệu hiện có có thể không bao gồm toàn bộ dữ liệu trên chuỗi. Tất cả các khẳng định được hỗ trợ bởi các nguồn được cung cấp."
+  },
+  {
+    "case_id": "A0096",
+    "outputs": [
+      [
+        "Q060",
+        1,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu hỏi yêu cầu dự báo chắc chắn dư nợ WETH cho tháng 12/2027. Đây là một yêu cầu dự báo tương lai vượt xa phạm vi dữ liệu lịch sử có sẵn (kết thúc 2026-09-15). Hệ thống đã từ chối chính xác vì: (1) Dữ liệu chỉ bao gồm quan sát lịch sử từ 2023-01-27 đến 2026-09-15, không có dữ liệu tương lai; (2) POLICY rõ ràng nêu không có 'forecasts'; (3) Tháng 12/2027 nằm ~15 tháng sau điểm cuối dữ liệu; (4) Dư nợ là chỉ số động phụ thuộc vào hành vi người dùng và điều kiện thị trường, không thể dự đoán chắc chắn. Câu trả lời phù hợp với reference_answer yêu cầu xác nhận rằng 'Bộ dữ liệu lịch sử cố định không cung cấp dữ liệu trực tiếp hoặc kết quả dự báo tương lai'."
+  },
+  {
+    "case_id": "A0098",
+    "outputs": [
+      [
+        "Q020",
+        0,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời cung cấp con số chính xác 307 sự kiện thanh lý cho tháng 2025-08 UTC, được hỗ trợ trực tiếp bởi SQL1 truy vấn. Khoảng thời gian được chỉ định chính xác (2025-08-01T00:00:00Z đến 2025-09-01T00:00:00Z) khớp với yêu cầu. Giá trị số là chính xác (307 = 307, lỗi tương đối 0%, nằm trong chính sách count='exact'). Câu trả lời thích hợp thừa nhận rằng dữ liệu được tải không đảm bảo phủ sóng hoàn chỉnh trên chuỗi—đây là một tuyên bố chính xác về giới hạn dữ liệu được hỗ trợ bởi interval_checks.liquidation_events cho biết 'proves_complete_collection: false'. Ranh giới quan sát (2023-01-30 đến 2026-09-15) bao gồm khoảng thời gian yêu cầu, vì vậy không có mâu thuẫn về thời gian. Tất cả các yêu cầu về số liệu được đáp ứng: metric (count), aggregation (count), asset (Aave V3 Ethereum liquidation_events), time (2025-08 UTC), unit (count)."
+  },
+  {
+    "case_id": "A0099",
+    "outputs": [
+      [
+        "Q050",
+        0,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly answers all three components of the question: (1) identifies 52 liquidation transactions in July 2026 UTC on Aave V3 Ethereum, (2) confirms that liquidation events and liquidation transactions are not necessarily equal, and (3) provides accurate explanation that one transaction (tx_hash) can contain multiple liquidation events. The numeric answer (52 transactions) matches SQL1 exactly and is properly scoped to the requested interval [2026-07-01, 2026-08-01) UTC. The explanation is supported by SQL2, which shows 63 total events across 52 transactions with 5 transactions containing multiple events. All factual claims are grounded in provided source data."
+  },
+  {
+    "case_id": "A0101",
+    "outputs": [
+      [
+        "Q038",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        1,
+        0
+      ],
+      "citation_quality": [
+        1,
+        0
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies February 2026 (2026-02) as the month with the most liquidation transactions (2,647) within the specified UTC time range [2026-01-01, 2026-09-01). The numeric value is exact and matches the reference. However, the answer contains a critical formatting error: it states '2.647 giao dịch' (using period as thousands separator in Vietnamese context), which is ambiguous and potentially misleading—the correct Vietnamese format should be '2.647' or '2647' transactions. More importantly, the citation quality fails because the system claims cite SQL1 but then reference non-existent data points (rows 0-7 with specific transaction counts for each month) that do not appear in the actual SQL1 result set, which only returns a single row for 2026-02 with value 2647. The system fabricated detailed monthly breakdowns (1.207 for January, 226 for March, etc.) that are not supported by SQL1. These claims should cite the candidate_sources.sql result instead, which contains the full monthly breakdown. The answer itself is correct, but the citation structure is fundamentally broken."
+  },
+  {
+    "case_id": "A0102",
+    "outputs": [
+      [
+        "Q048",
+        0,
+        "P"
+      ],
+      [
+        "Q048",
+        0,
+        "B0"
+      ],
+      [
+        "Q048",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies that July 2026 had 63 liquidation events [SQL1] and properly explains why this count does not prove that all positions with health factor below 1 were liquidated. The answer accurately cites DOC_LIQ_000 for the definition that liquidation occurs when health factor falls below 1, and DOC_LIQ_001 for the explanation that liquidations are permissionless but highly competitive, requiring automated bots. The answer also references DOC_BORROW_000 (though labeled as DOC_BORROW_000 in the system answer but the source data shows this document exists) to explain that borrowers can proactively repay or supply additional collateral to avoid liquidation. The numeric value of 63 is exact and matches the SQL result. The explanation correctly distinguishes between observed liquidation events and the complete universe of positions with health factor < 1, addressing the key limitation stated in the reference answer."
+  },
+  {
+    "case_id": "A0106",
+    "outputs": [
+      [
+        "Q020",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies 307 liquidation events in August 2025 UTC on Aave V3 Ethereum. The SQL query properly filters for the exact UTC month range (2025-08-01 to 2025-09-01). The numeric value matches the reference exactly (307 count, exact match required). The answer appropriately cites SQL1 as the source. However, the system answer includes unnecessary caveats about data completeness and timestamp verification that are not supported by the evaluation criteria—the source data directly answers the question asked, and the instruction states 'Do not invent missing observations.' The core factual claim (307 events) is correct and properly cited."
+  },
+  {
+    "case_id": "A0108",
+    "outputs": [
+      [
+        "Q041",
+        1,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời chính xác trả lời câu hỏi yêu cầu: tính hiệu số giữa tổng USD thanh lý tháng 7/2026 và tổng USD thanh lý từ 2026-05-01 đến trước 2026-07-01 UTC. Giá trị -325,072,291.77 USD được trích xuất trực tiếp từ SQL1 và khớp hoàn toàn với numeric_reference. Hệ thống đã xác định chính xác các khoảng thời gian: (1) tháng 7/2026 = 2026-07-01 đến 2026-08-01, (2) khoảng 5/1 đến trước 7/1 = 2026-05-01 đến 2026-07-01. Phép tính hiệu số được thực hiện đúng: 2,897,745.81 - 327,970,037.58 = -325,072,291.77 USD. Hệ thống cũng đã thích hợp ghi nhận giới hạn về tính đầy đủ dữ liệu mà không phủ định kết quả. Tất cả các yêu cầu về metric (USD), aggregation (sum), asset (liquidation), time intervals (UTC), unit (USD), và value (chính xác đến 2 chữ số thập phân) đều được đáp ứng."
+  },
+  {
+    "case_id": "A0110",
+    "outputs": [
+      [
+        "Q018",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời cung cấp con số chính xác 307 giao dịch thanh lý cho tháng 2025-08 UTC trên Aave V3 Ethereum, được hỗ trợ trực tiếp bởi SQL1. Truy vấn sử dụng COUNT(DISTINCT tx_hash) để đếm các giao dịch riêng biệt trong khoảng thời gian chính xác (2025-08-01 đến 2025-09-01 UTC). Giá trị số 307 khớp hoàn toàn với tham chiếu số (exact match, không có sai số). Câu trả lời cũng đúng cách ghi nhận các hạn chế về xác minh dữ liệu đầy đủ cho khoảng thời gian này, mặc dù điều này không ảnh hưởng đến tính chính xác của con số được báo cáo từ nguồn dữ liệu được cung cấp."
+  },
+  {
+    "case_id": "A0118",
+    "outputs": [
+      [
+        "Q021",
+        1,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the total liquidation value for August 2026 (UTC) on Aave V3 Ethereum as 6,604,733.08 USD. The SQL query properly filters for the exact UTC month range (2026-08-01 to 2026-09-01), and the numeric value matches the reference with appropriate rounding to 2 decimal places (USD relative error = 0, well within 0.5% tolerance). The answer is properly cited to SQL1, which is the authoritative source provided. The system appropriately acknowledges data limitations without inventing conclusions. All required metric components are present: correct asset (Aave V3 Ethereum liquidations), correct time period (August 2026 UTC), correct unit (USD), and correct aggregation (sum)."
+  },
+  {
+    "case_id": "A0121",
+    "outputs": [
+      [
+        "Q021",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời cung cấp giá trị số chính xác 6,604,733.08 USD khớp với SQL1 result (6604733.083234468 USD, làm tròn đến 2 chữ số thập phân theo numeric_reference). Khoảng thời gian UTC được chỉ định chính xác (2026-08-01 đến 2026-09-01). Tuy nhiên, câu trả lời có vấn đề về tính trung thực: nó thừa nhận 'không có bằng chứng cụ thể rằng dữ liệu tháng 8 năm 2026 đã được thu thập đầy đủ' nhưng vẫn báo cáo con số này như một tổng hợp lệ. Điều này tạo ra mâu thuẫn - nếu coverage không đầy đủ được xác nhận, câu trả lời nên rõ ràng hơn rằng đây là tổng từ dữ liệu có sẵn, không phải tổng thực tế của tháng. Tuy nhiên, về mặt kỹ thuật, câu trả lời không sai - nó trả lời đúng câu hỏi dựa trên dữ liệu được cung cấp (SQL1) và công khai những hạn chế. Metric (tổng giá trị thanh lý), aggregation (SUM), asset (Aave V3 Ethereum), time interval (tháng 2026-08 UTC), và unit (USD) đều chính xác."
+  },
+  {
+    "case_id": "A0122",
+    "outputs": [
+      [
+        "Q021",
+        0,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly reports the observed SQL result (6,604,733.08 USD) with proper citation to SQL1 and accurately identifies the critical limitation: the dataset completeness cannot be verified. However, the answer conflates two distinct questions: (1) 'What liquidation value is observed in the dataset for August 2026?' (answerable: 6,604,733.08 USD) versus (2) 'What is the total liquidation value on Aave V3 Ethereum in August 2026?' (unanswerable without data completeness verification). The original question asks for the actual total on-chain value, not the partial observed value. The answer states 'không có bằng chứ xác nhận' (no evidence confirming) dataset completeness, then proceeds to report the observed sum as if it answers the original question. This is a category error: reporting an observed partial sum when the question requires the complete total. The numeric value is correct relative to the SQL result, the time interval is correct (2026-08-01 to 2026-09-01 UTC), and the unit is correct (USD). The answer should either: (a) refuse to answer due to unverifiable completeness, or (b) explicitly reframe as 'observed in available dataset' rather than 'total on Aave V3 Ethereum'. The provided documents contain only protocol mechanics documentation, not data verification or completeness attestation."
+  },
+  {
+    "case_id": "A0125",
+    "outputs": [
+      [
+        "Q047",
+        2,
+        "B0"
+      ],
+      [
+        "Q047",
+        2,
+        "B1"
+      ],
+      [
+        "Q047",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies 158 liquidation events in August 2026 from SQL1 and properly explains why this count does not prove all positions with health factor < 1 were liquidated. The answer distinguishes between: (1) recorded liquidation events (actual on-chain transactions), (2) the universe of positions with health factor < 1 (which may be larger and not all liquidated), and (3) the permissionless but competitive nature of liquidations meaning not all eligible positions are immediately liquidated. All three supporting claims are properly cited to DOC_LIQ_000 which documents that liquidations occur when health factor falls below 1 but does not claim all such positions are automatically liquidated. The numeric value 158 is exact and matches the SQL result. The answer directly addresses the required point about why the event count does not prove complete liquidation of all at-risk positions."
+  },
+  {
+    "case_id": "A0126",
+    "outputs": [
+      [
+        "Q054",
+        2,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the numeric value ($3,897,799,627.04 USD) from SQL1 at the requested timestamp (2026-07-15 00:00:00 UTC) for WETH supplied assets. The answer properly addresses the second part of the question by explicitly stating that this metric does NOT prove risk-free status or immediate withdrawal capability. Three key withdrawal conditions are accurately cited from DOC_WITHDRAW_000: (1) sufficient pool liquidity requirement, (2) collateral status constraints requiring potential debt repayment or additional collateral, and (3) dynamic interest rate effects. The answer appropriately qualifies the limitations of the data point and explains the actual conditions governing withdrawal. All factual claims are supported by provided source documents. The numeric value matches the reference exactly (3897799627.0425687 USD, within tolerance). The answer correctly interprets 'supplied_usd' as a stock measure at a point in time, not a cumulative metric."
+  },
+  {
+    "case_id": "A0127",
+    "outputs": [
+      [
+        "Q049",
+        1,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies 107 distinct liquidation transactions in August 2026 (UTC) on Aave V3 Ethereum, directly supported by SQL1. The answer accurately explains that liquidation events (158) and liquidation transactions (107) are not necessarily equal because one transaction can contain multiple liquidation events. This distinction is well-founded: SQL2 explicitly shows 158 total events across 107 transactions, with 18 transactions containing multiple events (event_count > 1). The numeric value 107 is exact and matches the reference. The explanation about transaction-to-event multiplicity is logically sound and addresses both parts of the question. The candidate sources provided (withdrawal, borrowing, supply documentation) are not directly cited in the answer, which is appropriate since the answer relies on SQL results and the liquidation documentation (DOC_LIQ_000, DOC_LIQ_001) that explain liquidation mechanics. The answer does not cite DOC_LIQ_000/001 for the conceptual explanation, but this is acceptable since the core claim about transaction-event relationships is directly evidenced by the SQL results themselves."
+  },
+  {
+    "case_id": "A0128",
+    "outputs": [
+      [
+        "Q034",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the difference in average hourly DAI borrowed amount between Q2 2026 and Q1 2026 as -12,133,324.43 USD. The SQL query properly calculates hourly averages for each quarter (Q1: 116,764,031.44 USD; Q2: 104,630,707.01 USD) and the difference matches the reference value -12,133,324.429995105 USD within the 0.5% USD tolerance (actual relative error ≈ 0.00000004). The answer correctly interprets 'Quý II trừ Quý I' (Q2 minus Q1) as requested. All numeric components are present and accurate. The SQL query uses correct date boundaries (2026-01-01 to 2026-04-01 for Q1; 2026-04-01 to 2026-07-01 for Q2) and correctly filters for DAI asset. The provided documents are contextual background on Aave protocol mechanics and do not contradict the data-driven answer. No evidence of data gaps or anomalies in the requested interval."
+  },
+  {
+    "case_id": "A0130",
+    "outputs": [
+      [
+        "Q051",
+        1,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the USDC outstanding debt at 2026-08-15 00:00 UTC as 1,993,676,848.03 USD from SQL1. It properly refuses to claim that a single snapshot proves interest caused the increase in debt. The answer correctly applies the instruction 'Do not infer causation from temporal correlations' by explicitly stating that one observation cannot establish causation. It identifies the actual limitation: proving causation requires (1) multiple time points, (2) exclusion of new borrows and repayments, and (3) attribution to accrual rate. The answer acknowledges that DOC_BORROW_001 describes the interest accrual mechanism but correctly notes this mechanism description does not constitute evidence of causation in the observed data. The numeric value matches the reference exactly (1993676848.0321777 USD, within 0.005 relative tolerance for USD). The answer appropriately distinguishes between: (a) what the protocol documentation says interest does (accrue dynamically), and (b) what the data can prove about why this specific debt value exists at this specific time (insufficient evidence)."
+  },
+  {
+    "case_id": "A0133",
+    "outputs": [
+      [
+        "Q054",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời của hệ thống chính xác và đầy đủ. Nó cung cấp giá trị số USD chính xác ($3,897,799,627.04) từ SQL1 với sai số trong dung sai (0.005 tương đối). Câu trả lời đúng giải thích rằng giá trị này KHÔNG chứng minh tài sản không có rủi ro hoặc luôn có thể rút ngay được. Nó trích dẫn chính xác ba điều kiện rút tiền từ DOC_WITHDRAW_000: (1) phải có đủ thanh khoản trong pool, (2) nếu không được dùng làm tài sản thế chấp có thể rút ngay, (3) nếu được dùng làm tài sản thế chấp phải duy trì health factor. Tất cả các tuyên bố đều được hỗ trợ bởi các nguồn được cung cấp. Câu trả lời tuân thủ yêu cầu trả lời bằng tiếng Việt và không phát minh ra thông tin."
+  },
+  {
+    "case_id": "A0134",
+    "outputs": [
+      [
+        "Q022",
+        0,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly reports the total liquidation value for August 2025 (UTC) as 28,132,234.04 USD, derived from SQL1 which queried the liquidation_events table for the exact requested interval (2025-08-01 to 2025-09-01 UTC). The numeric value matches the reference exactly (28132234.04010158 USD, rounded to 2 decimals = 28,132,234.04 USD). The metric (total liquidation value), aggregation (sum), asset (USD), time interval (August 2025 UTC), and unit are all correct. The answer appropriately cites SQL1 as the source. The answer includes a reasonable caveat about dataset completeness ('không đảm bảo phủ sóng hoàn toàn trên chuỗi' / no guarantee of complete on-chain coverage), which is appropriate given that interval_checks.liquidation_events shows proves_complete_collection=false. The additional details (307 events, first event timestamp 2025-08-01T00:12:23Z, last event 2025-08-31T23:41:11Z) are all supported by the SQL result and add helpful context. The retrieved documents (DOC_SUPPLY_000, DOC_WITHDRAW_000, DOC_BORROW_000, DOC_SUPPLY_001, DOC_WITHDRAW_001) do not address liquidation mechanics, but this is not a citation quality failure since the answer correctly cites SQL1, not these documents. The answer distinguishes between 'loaded dataset total' and unverified on-chain completeness appropriately."
+  },
+  {
+    "case_id": "A0135",
+    "outputs": [
+      [
+        "Q022",
+        1,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời của hệ thống cung cấp giá trị số chính xác (28.132.234,04 USD) được trích xuất trực tiếp từ SQL1, khớp hoàn toàn với numeric_reference. Truy vấn SQL đúng cách lọc dữ liệu cho khoảng thời gian UTC 2025-08-01 đến 2025-09-01. Giá trị được định dạng đúng với 2 chữ số thập phân theo yêu cầu USD. Phần cảnh báo của hệ thống về tính khả dụng dữ liệu tương lai là một nhận xét bổ sung hợp lý nhưng không ảnh hưởng đến tính chính xác của câu trả lời số học. Metric (tổng giá trị thanh lý), aggregation (SUM), asset (Ethereum), time interval (2025-08 UTC), và unit (USD) đều được xác định chính xác."
+  },
+  {
+    "case_id": "A0138",
+    "outputs": [
+      [
+        "Q054",
+        1,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời hệ thống đúng và đầy đủ trên cả hai phần của câu hỏi. Phần 1: Giá trị tài sản WETH cung cấp lúc 00:00 UTC 2026-07-15 là $3,897,799,627.04 USD được trích xuất chính xác từ SQL1 với làm tròn đúng đến 2 chữ số thập phân (3,897,799,627.0425687 → 3,897,799,627.04). Phần 2: Câu trả lệ chính xác khẳng định rằng số liệu này KHÔNG chứng minh tài sản không có rủi ro và luôn rút ngay được. Ba điều kiện rút tiền được trích dẫn từ DOC_WITHDRAW_000: (1) thanh khoản pool phải đủ - người dùng chỉ rút được số tiền chưa bị vay mượn; (2) nếu tài sản là collateral, phải duy trì health factor trên 1 hoặc trả bớt nợ/thêm collateral; (3) rủi ro thanh khoản tồn tại nếu pool không có đủ WETH khả dụng. Tất cả các yêu cầu trong reference_answer đều được đáp ứng. Không có phát biểu nào được phát minh, không có suy luận nhân quả không chính đáng, không có lời khuyên đầu tư. Các trích dẫn đều hợp lệ và thực sự hỗ trợ các tuyên bố."
+  },
+  {
+    "case_id": "A0140",
+    "outputs": [
+      [
+        "Q060",
+        0,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu hỏi yêu cầu dự báo dư nợ WETH cho tháng 12/2027 với độ chắc chắn tuyệt đối. Đây là yêu cầu không thể trả lời vì: (1) Bộ dữ liệu lịch sử cố định chỉ chứa dữ liệu từ 2023-01-27 đến 2026-09-15 UTC, không bao gồm tháng 12/2027; (2) POLICY rõ ràng nêu không có dữ liệu dự báo ('no forecasts'); (3) Dự báo giá trị tương lai yêu cầu mô hình dự đoán, không phải dữ liệu lịch sử. Câu trả lời của hệ thống chính xác xác định giới hạn này và từ chối cung cấp một giá trị 'chắc chắn' không thể hỗ trợ. Không có tài liệu hoặc kết quả SQL được cung cấp để hỗ trợ dự báo, điều này phù hợp với yêu cầu."
+  },
+  {
+    "case_id": "A0143",
+    "outputs": [
+      [
+        "Q053",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the USDC supplied value (1,997,694,271.60 USD) from SQL1 and properly addresses both parts of the question. It accurately distinguishes between: (1) the snapshot metric from the database, (2) the absence of a risk-free guarantee, and (3) withdrawal conditions. All factual claims are supported by provided sources. The answer correctly cites DOC_WITHDRAW_000 for pool liquidity constraints and collateral blocking conditions, and DOC_LIQ_000 for health factor requirements. The numeric value matches the reference exactly (1997694271.598428 USD, within 0.005 relative tolerance). The answer appropriately explains that the supplied value is merely a point-in-time metric that does not prove risk-free status or immediate withdrawability, and correctly outlines the three key withdrawal conditions: (1) available pool liquidity, (2) collateral status, and (3) health factor maintenance. No claims are invented or unsupported."
+  },
+  {
+    "case_id": "A0144",
+    "outputs": [
+      [
+        "Q041",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời của hệ thống chính xác và trung thực. Nó cung cấp giá trị số chính xác (-325,072,291.77 USD) khớp với tham chiếu (sai số tương đối = 0, nằm trong dung sai 0.005). SQL logic được xác minh: tính tổng USD thanh lý cho tháng 2026-07 (2026-07-01 đến 2026-08-01) trừ tổng USD từ 2026-05-01 đến 2026-07-01. Câu trả lời diễn giải chính xác ý nghĩa của giá trị âm (khoảng 2026-05-01 đến 2026-07-01 có tổng thanh lý lớn hơn tháng 2026-07). Hệ thống cũng thích hợp ghi nhận hạn chế về coverage của dữ liệu (không đảm bảo gap-free) mà không phủ nhận kết quả. Không có suy luận nhân quả hoặc lời khuyên đầu tư. Tất cả các yêu cầu về định dạng tiếng Việt được tuân thủ."
+  },
+  {
+    "case_id": "A0145",
+    "outputs": [
+      [
+        "Q057",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        1,
+        0
+      ]
+    },
+    "judge_explanation": "Câu hỏi yêu cầu số lượng giao dịch thanh lý riêng USDC trong tháng 8/2026. Tài liệu nguồn cung cấp (POLICY) chỉ nêu rõ: 'Available fields: hourly supplied_usd/borrowed_usd and liquidation events. No gas, profit, verified token mapping, live data, forecasts or wallet health factors.' Điều này xác nhận rằng không có ánh xạ token được xác minh (no verified token mapping). Câu trả lời hệ thống báo cáo 0 giao dịch nhưng dựa trên một truy vấn SQL lọc chỉ trên cột 'market' mà không xác nhận được cấu trúc lược đồ thực tế của bảng liquidation_events. Truy vấn không kiểm tra các cột collateral_asset hoặc debt_asset riêng biệt (nếu tồn tại), do đó không thể xác định liệu USDC có xuất hiện dưới các định danh khác (ví dụ: 'USDC.e', địa chỉ hợp đồng). Tài liệu DOC_LIQ_000 mô tả quy trình thanh lý nhưng không cung cấp dữ liệu cụ thể về giao dịch USDC tháng 8/2026. Kết quả SQL (0 giao dịch) không thể phân biệt giữa: (a) không có sự kiện thanh lý USDC nào xảy ra, hoặc (b) các sự kiện thanh lý USDC tồn tại nhưng bộ lọc 'market' không khớp với các định danh được ghi lại. Tham chiếu (reference_answer) chính xác xác định giới hạn này: 'Chưa xác minh ánh xạ market sang tài sản thanh lý; không thể kết luận theo token.' Câu trả lệ hệ thống không tuân theo giới hạn này mà thay vào đó báo cáo một con số (0) mà không thể xác minh được."
+  },
+  {
+    "case_id": "A0147",
+    "outputs": [
+      [
+        "Q017",
+        1,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời cung cấp con số chính xác (107 giao dịch thanh lý) cho tháng 2026-08 UTC trên Aave V3 Ethereum, được hỗ trợ bởi kết quả SQL1. Truy vấn SQL sử dụng COUNT(DISTINCT tx_hash) để đếm các giao dịch riêng biệt trong khoảng thời gian chính xác (2026-08-01 đến 2026-09-01 UTC), khớp với yêu cầu về metric (count), aggregation (distinct), asset (Ethereum), time interval (2026-08 UTC) và unit (count). Giá trị số 107 khớp chính xác với numeric_reference và tuân thủ chính sách count='exact'. Hệ thống trả lời cũng thích hợp ghi nhận các hạn chế về độ phủ dữ liệu (dữ liệu nằm trong tương lai, không đảm bảo đầy đủ) mà không phủ nhận kết quả truy vấn. Không có tài liệu nguồn được cung cấp, nhưng điều này không ảnh hưởng đến tính chính xác của câu trả lời dựa trên dữ liệu SQL được cung cấp."
+  },
+  {
+    "case_id": "A0150",
+    "outputs": [
+      [
+        "Q058",
+        1,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu hỏi yêu cầu tổng USD thanh lý riêng WETH tháng 7/2026. Hệ thống trả lời chính xác bằng cách từ chối kết luận với lý do hợp lệ: (1) Ánh xạ market sang tài sản thanh lý chưa được xác minh theo POLICY; (2) Truy vấn SQL trả về NULL, không phải vì không có dữ liệu mà vì không thể xác minh định danh 'WETH' trong nguồn dữ liệu; (3) Hệ thống đúng cách xác định rằng đây là hạn chế thực tế của dữ liệu, không phải kết luận sai. Câu trả lời tuân thủ chính sách không phát minh quan sát thiếu và không suy luận từ dữ liệu không đủ."
+  },
+  {
+    "case_id": "A0151",
+    "outputs": [
+      [
+        "Q038",
+        0,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        1,
+        0
+      ],
+      "citation_quality": [
+        1,
+        0
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies February 2026 (2026-02) as the month with the most liquidation transactions (2,647) within the specified UTC time range (2026-01-01 to before 2026-09-01). The numeric value is exact and matches the reference. However, the answer contains a critical faithfulness and citation quality failure: it claims 'Tháng 1 năm 2026 có 1.207 giao dịch thanh lý' and provides similar claims for months 3-8, citing SQL1 as evidence. The SQL1 source data provided contains only ONE row with month='2026-02' and value=2647—it does NOT contain data for the other months (January, March-August). The candidate_sources SQL result shows all 8 months of data, but this is separate runtime verification data, not the supplied source_data. The system answer fabricated claims about months 1, 3-8 without valid evidence from the actual source_data (SQL1). The core answer to the question is correct, but the supporting claims are unsupported by the provided sources."
+  },
+  {
+    "case_id": "A0153",
+    "outputs": [
+      [
+        "Q060",
+        1,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu hỏi yêu cầu dự báo dư nợ WETH cho tháng 12/2027 với độ chắc chắn tuyệt đối. Đây là một yêu cầu không thể trả lời vì ba lý do chính: (1) Dữ liệu lịch sử có sẵn chỉ kéo dài đến 2026-09-15, trong khi tháng 12/2027 nằm ngoài phạm vi này (~15 tháng trong tương lai); (2) Chính sách dữ liệu rõ ràng nêu không có dự báo hoặc dữ liệu tương lai; (3) Dư nợ WETH là chỉ số thị trường động phụ thuộc vào hành vi người dùng, điều kiện thị trường và các thay đổi giao thức—không thể xác định 'chắc chắn' giá trị tương lai. Câu trả lời hệ thống đã xác định chính xác những hạn chế này và từ chối trả lời một cách thích hợp."
+  },
+  {
+    "case_id": "A0154",
+    "outputs": [
+      [
+        "Q040",
+        1,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời xác định chính xác chênh lệch USD thanh lý giữa hai khoảng thời gian. SQL logic tính toán đúng: tổng amount_usd cho tháng 2026-06 (2026-06-01 đến 2026-07-01) trừ tổng amount_usd cho khoảng 2026-05-01 đến trước 2026-06-01. Giá trị số 51,931,723.65 USD khớp hoàn toàn với reference_answer và nằm trong tolerance USD (sai số tương đối ≤ 0.005). Câu trả lời được hỗ trợ bởi SQL1 với kết quả xác minh. Mặc dù hệ thống lưu ý về giới hạn coverage gap-free, đây là cảnh báo thích hợp về metadata availability chứ không phải lỗi trong tính toán. Không có tài liệu nguồn được cung cấp, nhưng SQL result là bằng chứng đủ cho câu hỏi định lượng này."
+  },
+  {
+    "case_id": "A0156",
+    "outputs": [
+      [
+        "Q017",
+        0,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời của hệ thống báo cáo chính xác 107 giao dịch thanh lý riêng biệt (COUNT DISTINCT tx_hash) cho tháng 2026-08 UTC trên Aave V3 Ethereum. Giá trị số này khớp chính xác với tham chiếu (107, unit: count, yêu cầu exact match). Truy vấn SQL được cung cấp (SQL1) đúng về mặt phạm vi thời gian [2026-08-01T00:00:00Z, 2026-09-01T00:00:00Z) và trả về kết quả 107. Mặc dù hệ thống có ghi chú về giới hạn xác minh (dữ liệu nằm ngoài phạm vi quan sát thông thường, proves_complete_collection: false), nhưng điều này không làm sai lệch câu trả lời chính - nó chỉ là một cảnh báo về độ tin cậy của dữ liệu. Câu trả lời trực tiếp trả lời câu hỏi được đặt ra bằng tiếng Việt với con số chính xác được hỗ trợ bởi nguồn SQL được cung cấp."
+  },
+  {
+    "case_id": "A0157",
+    "outputs": [
+      [
+        "Q059",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        1,
+        0
+      ]
+    },
+    "judge_explanation": "Câu hỏi yêu cầu dữ liệu 'ngay bây giờ' (real-time). Câu trả lời của hệ thống cung cấp một giá trị số từ bộ dữ liệu được tải, nhưng: (1) Dữ liệu có timestamp 2026-09-15T07:00:00+00:00, là một ngày tương lai, cho thấy đây là dữ liệu tổng hợp/kiểm tra, không phải dữ liệu hiện tại; (2) POLICY rõ ràng nêu 'No...live data, forecasts'; (3) Reference answer yêu cầu phải xác nhận rằng 'Bộ dữ liệu lịch sử cố định không cung cấp dữ liệu trực tiếp'; (4) Hệ thống thừa nhận đây không phải 'giá trị thời gian thực tại thời điểm hiện tại' nhưng vẫn cung cấp con số như câu trả lời chính, thay vì từ chối hoặc làm rõ hạn chế. Câu trả lời nên từ chối trực tiếp vì không có dữ liệu trực tiếp/hiện tại khả dụng."
+  },
+  {
+    "case_id": "A0158",
+    "outputs": [
+      [
+        "Q051",
+        2,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lệ hệ thống xác định chính xác dư nợ USDC lúc 00:00 UTC 2026-08-15 là 1,993,676,848.03 USD từ SQL1 (row 2, column borrowed_usd_snapshot = 1993676848.0321777). Giá trị này nằm trong dung sai USD (sai số tương đối ≤ 0.005). Câu trả lời đúng kết luận rằng dữ liệu KHÔNG đủ để chứng minh lãi vay là nguyên nhân làm tăng dư nợ, vì: (1) dư nợ thực tế GIẢM 4.3M USD (từ 1,997,976,897.90 USD lúc 23:00 UTC 2026-08-14 xuống 1,993,676,848.03 USD lúc 00:00 UTC 2026-08-15), không phải tăng; (2) các tài liệu DOC_BORROW_000 và DOC_BORROW_001 xác nhận lãi vay được tích lũy động dựa trên borrow utilization rate, nhưng không cung cấp tỷ lệ lãi suất theo giờ, APY, hoặc khối lượng giao dịch vay/trả nợ để tách biệt thành phần lãi từ thay đổi vốn gốc. Kết luận này tuân thủ yêu cầu tham khảo: không thể chứng minh nhân quả từ dữ liệu hiện có là một phát hiện hợp lệ được hỗ trợ bởi sự vắng mặt của bằng chứng, không phải từ chối."
+  },
+  {
+    "case_id": "A0160",
+    "outputs": [
+      [
+        "Q040",
+        2,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời xác định chính xác chênh lệch USD thanh lý giữa hai khoảng thời gian. SQL1 tính toán đúng: SUM(amount_usd) cho 2026-06-01 đến 2026-07-01 trừ SUM(amount_usd) cho 2026-05-01 đến 2026-06-01. Kết quả 51,931,723.65 USD khớp với giá trị tham chiếu (51931723.65202591) trong phạm vi độ chính xác USD (sai số tương đối ≤ 0.005). Câu trả lời được trích dẫn đúng từ SQL1. Mặc dù có lưu ý về giới hạn coverage metadata, điều này không ảnh hưởng đến tính chính xác của kết quả được trả về từ dữ liệu hiện có."
+  },
+  {
+    "case_id": "A0161",
+    "outputs": [
+      [
+        "Q058",
+        0,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu hỏi yêu cầu tổng USD thanh lý riêng WETH tháng 7/2026. Câu trả lời hệ thống chính xác xác định rằng không có dữ liệu (NULL) cho khoảng thời gian này. Điều này phù hợp với tài liệu tham khảo được cung cấp, tài liệu này nêu rõ rằng 'Chưa xác minh ánh xạ market sang tài sản thanh lý; không thể kết luận theo token.' Câu trả lệ hệ thống không phát minh ra kết luận mà thay vào đó chính xác xác định giới hạn dữ liệu. Truy vấn SQL được cấu trúc đúng để lọc theo thời gian (tháng 7/2026) và market (WETH), và kết quả NULL là chính xác phản ánh sự vắng mặt của dữ liệu thanh lý cho thời kỳ này."
+  },
+  {
+    "case_id": "A0165",
+    "outputs": [
+      [
+        "Q021",
+        2,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời cung cấp giá trị số chính xác cho tổng giá trị thanh lý trên Aave V3 Ethereum trong tháng 2026-08 (UTC). Giá trị 6,604,733.08 USD được làm tròn chính xác từ kết quả SQL 6,604,733.083234468 đến 2 chữ số thập phân theo yêu cầu. Truy vấn SQL đúng về cú pháp, lọc đúng khoảng thời gian [2026-08-01T00:00:00Z, 2026-09-01T00:00:00Z), và tính tổng amount_usd từ bảng liquidation_events. Kết quả không bị cắt ngắn (truncated: false) và không phải NULL. Sai số tương đối USD = |6604733.08 - 6604733.083234468| / 6604733.083234468 ≈ 0.00000049 < 0.005 (nằm trong dung sai cho phép). Câu trả lời đã trích dẫn đúng nguồn SQL1 và cung cấp bối cảnh hợp lý về giới hạn dữ liệu."
+  },
+  {
+    "case_id": "A0166",
+    "outputs": [
+      [
+        "Q040",
+        1,
+        "P"
+      ],
+      [
+        "Q040",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the numeric result as 51,931,723.65 USD, which matches the reference value within the specified USD relative tolerance (0.005). The SQL query properly calculates the difference between June 2026 liquidations [2026-06-01, 2026-07-01) and May 2026 liquidations [2026-05-01, 2026-06-01), directly answering the question's request for the difference between these two calendar months. The answer is properly cited to SQL1, which is the supplied source data. The metric (USD liquidation difference), aggregation (sum), assets (liquidation_events), time intervals (June 2026 vs May 2026 UTC), and unit (USD) all match the question requirements. The numeric value rounds correctly to 2 decimals as specified in the reference. The system appropriately notes the minor inconsistency in requirements documentation but correctly prioritizes the explicit question wording."
+  },
+  {
+    "case_id": "A0168",
+    "outputs": [
+      [
+        "Q054",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly addresses both parts of the Vietnamese question: (1) reports the WETH supplied asset value at 2026-07-15 00:00 UTC as $3,897,799,627.04 USD from SQL1, properly formatted to 2 decimals within USD tolerance (relative error = 0.0); (2) explicitly and correctly states that this metric does NOT prove assets are risk-free or instantly withdrawable; (3) identifies three specific withdrawal conditions from DOC_WITHDRAW_000: liquidity availability constraint, collateral constraint if used as collateral (requiring health factor maintenance), and the existence of liquidity risk. All factual claims are properly cited to verified sources. The numeric value matches SQL1 exactly (3897799627.0425687 rounded to 3897799627.04 USD). The answer correctly interprets the logical structure of the question—it rejects the premise that a snapshot value constitutes proof of risk-free status—and provides evidence-based reasoning for why withdrawal is conditional. No invented observations, causal inferences, or unsupported claims detected."
+  },
+  {
+    "case_id": "A0171",
+    "outputs": [
+      [
+        "Q050",
+        1,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies 52 distinct liquidation transactions in July 2026 UTC using SQL1 (COUNT DISTINCT tx_hash). It accurately explains that liquidation events (63) and liquidation transactions (52) are not necessarily equal because one transaction can contain multiple liquidation events. SQL2 provides supporting evidence: 52 transactions containing 63 total events, with 5 transactions containing multiple events. The answer directly addresses both parts of the question with proper citations and accurate numeric values. The explanation is faithful to the source data and correctly distinguishes between event counting and transaction counting methodologies."
+  },
+  {
+    "case_id": "A0172",
+    "outputs": [
+      [
+        "Q017",
+        2,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời cung cấp con số chính xác 107 giao dịch thanh lý riêng biệt cho tháng 2026-08 UTC trên Aave V3 Ethereum, khớp hoàn toàn với kết quả SQL được cung cấp. Truy vấn SQL chính xác lọc theo khoảng thời gian UTC (2026-08-01 đến 2026-09-01) và sử dụng COUNT(DISTINCT tx_hash) để đếm giao dịch riêng biệt. Câu trả lời thích hợp thừa nhận các hạn chế về xác minh độ phủ dữ liệu và tính chất tương lai của dữ liệu, nhưng vẫn cung cấp câu trả lời trực tiếp cho câu hỏi. Metric (count), aggregation (DISTINCT), asset (Aave V3 Ethereum), time interval (2026-08 UTC), và unit (count) đều chính xác. Giá trị số 107 là exact match với numeric_reference và tuân thủ chính sách count=exact."
+  },
+  {
+    "case_id": "A0173",
+    "outputs": [
+      [
+        "Q039",
+        0,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        1,
+        0
+      ],
+      "citation_quality": [
+        1,
+        0
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies February 2026 (2026-02) as the month with the most liquidation transactions (2,647) in the specified UTC interval. The numeric value is exact and matches the reference. However, faithfulness and citation_quality fail because: (1) The system answer contains a formatting error ('2.647' instead of '2647' - using period as thousands separator in Vietnamese context is non-standard for count data), (2) The system claims cite SQL1 but then reference additional claims about November 2025 (1,325 transactions) and July 2025 (97 transactions) that are NOT present in the SQL1 result rows provided - SQL1 only returns 1 row with month='2026-02' and value=2647. These additional claims appear to be fabricated or sourced from the candidate_sources result which was not supplied as a verified source document. The candidate SQL query and its full result set were provided for evaluation purposes but cannot serve as evidence for the system answer's claims."
+  },
+  {
+    "case_id": "A0175",
+    "outputs": [
+      [
+        "Q042",
+        2,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the numeric result (-324,263,050.31 USD) matching the reference value within tolerance (relative error = 0.0000003%, well below 0.5% threshold). The SQL query properly implements the requested calculation: August 2026 liquidations minus May-August 2026 liquidations, with correct UTC timestamp boundaries (2026-08-01 to 2026-09-01 for August; 2026-05-01 to 2026-08-01 for the prior period). The interpretation that the negative value indicates larger liquidations in the May-August period than in August alone is logically sound. The answer appropriately acknowledges data completeness limitations without inventing conclusions. All numeric scope requirements are met: correct metric (liquidation USD difference), correct aggregation (sum), correct time intervals (UTC-bounded), correct unit (USD), and correct value."
+  },
+  {
+    "case_id": "A0177",
+    "outputs": [
+      [
+        "Q011",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies and explains the two main conditions for withdrawing supplied assets from Aave Protocol, both of which are directly supported by DOC_WITHDRAW_000. The answer accurately conveys: (1) liquidity availability constraint - suppliers can only withdraw amounts not currently borrowed; (2) collateral constraint - if supplied tokens serve as collateral for active borrows, users must maintain sufficient collateral by either repaying debt or supplying additional collateral. All claims are properly cited to the source document, and the explanation is faithful to the source material without adding unsupported inferences."
+  },
+  {
+    "case_id": "A0179",
+    "outputs": [
+      [
+        "Q037",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        1,
+        0
+      ],
+      "citation_quality": [
+        1,
+        0
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies February 2025 (2025-02) as the month with the highest number of liquidation transactions (2,188) within the specified UTC interval 2025-01-01 to 2026-01-01. The numeric value is exact and matches the reference. However, the answer contains a critical faithfulness error: it states '2.188 giao dịch' (using European decimal notation with period as thousands separator), which is misleading formatting for a count value that should be presented as '2,188' or '2188'. More importantly, the system_claims contain three unsupported numeric assertions (claims about January, March, and April transaction counts) that cite SQL1 but reference rows and columns that do not exist in the provided SQL1 result set. SQL1 only returns one row (February 2025 with 2,188 transactions), not four rows. The candidate_sources SQL query and result table provide the complete monthly breakdown, but the system_claims incorrectly attribute data from the candidate result to SQL1. The answer itself is correct regarding the core question, but the supporting claims are fabricated citations."
+  },
+  {
+    "case_id": "A0181",
+    "outputs": [
+      [
+        "Q034",
+        0,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the requested metric: the difference between average hourly DAI borrowed in Q2 2026 minus Q1 2026. The SQL query provided (SQL1) directly computes this difference using conditional aggregation: AVG(borrowed_usd) for Q2 (2026-04-01 onwards) minus AVG(borrowed_usd) for Q1 (before 2026-04-01). The result -12,133,324.43 USD matches the reference value exactly (within floating-point precision: -12133324.429995105). The answer correctly interprets the Vietnamese question 'Dư nợ DAI trung bình theo giờ quý II trừ quý I năm 2026' as requesting the difference (Q2 minus Q1), not just Q2 alone. The supporting context (Q2 average = 104,630,707.01 USD; Q1 average = 116,764,031.44 USD) is accurate and helps validate the difference calculation. All numeric values are properly cited to SQL1 and fall within the USD relative tolerance of 0.005 (exact match achieved). The answer provides complete information with proper temporal boundaries and unit specification."
+  },
+  {
+    "case_id": "A0184",
+    "outputs": [
+      [
+        "Q042",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly interprets the Vietnamese question as requesting: (sum of liquidation USD for August 2026: 2026-08-01 to 2026-09-01) minus (sum of liquidation USD from 2026-05-01 to 2026-08-01). The SQL query in SQL1 implements exactly this calculation using CASE logic to partition the interval [2026-05-01, 2026-09-01) into two periods and compute their difference. The numeric result -324,263,050.30990607 USD matches the reference value exactly within the 0.5% USD tolerance policy. The answer correctly reports the value in Vietnamese with proper currency formatting (-324,263,050.31 USD). The interpretation that the negative value indicates larger liquidations in the May-August period than in August alone is a valid logical inference from the arithmetic. The answer appropriately cites SQL1 as the source. No document sources were needed for this purely data-retrieval question. The temporal scope (August 2026 vs May-August 2026) is correctly bounded and the unit (USD) is explicit."
+  },
+  {
+    "case_id": "A0185",
+    "outputs": [
+      [
+        "Q051",
+        0,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        1,
+        0
+      ],
+      "faithfulness": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the USDC outstanding debt value (1,993,676,848.03 USD) and correctly concludes that a single snapshot cannot prove causation. However, it fails on citation_quality because the explanation of WHY a snapshot is insufficient lacks supporting evidence from the provided sources. The answer states 'Một điểm ảnh chụp duy nhất không đủ để chứng minh nguyên nhân thay đổi dư nợ' but provides no citation for this logical principle. More critically, the answer does not adequately explain the mechanism by which interest increases debt. The documents (DOC_BORROW_001, DOC_SUPPLY_000) explicitly state that 'interest on the borrowed tokens begins to accrue immediately' and 'Supplied tokens automatically accumulate interest by updating in balance at the current market supply rate,' but the answer does not cite these to explain HOW interest mechanically increases the debt stock. The answer correctly identifies that causation requires temporal comparison and exclusion of alternative causes (new borrows), but this reasoning is presented without citation to any source. The question asks 'Giải thích căn cứ' (Explain the basis/evidence), requiring both (1) the snapshot value and (2) explanation of why it does/does not prove interest caused the increase. The first part is answered with proper citation [SQL1]. The second part identifies the logical deficiency but fails to cite sources explaining the interest accrual mechanism or the epistemological requirement for causal inference."
+  },
+  {
+    "case_id": "A0186",
+    "outputs": [
+      [
+        "Q051",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        1,
+        0
+      ]
+    },
+    "judge_explanation": "The system answer contains critical factual errors that contradict supplied source evidence. While the numeric value (1,993,676,848.03 USD) is correct and properly cited from SQL1, the answer makes false claims about documentation gaps that directly contradict DOC_SUPPLY_000 and DOC_BORROW_000. Specifically: (1) The answer claims 'Tài liệu Aave không cung cấp công thức tách riêng hoặc cơ chế kế toán chi tiết về cách lãi vay được ghi nhận trong metric borrowed_usd' but DOC_SUPPLY_000 explicitly states 'Supplied tokens automatically accumulate interest by updating in balance at the current market supply rate. This interest accrual happens dynamically as the balance of your supplied tokens increases linearly over time' and DOC_BORROW_000 states 'interest on the borrowed tokens begins to accrue immediately and is dynamically adjusted based on the borrow utilization rate.' These passages directly confirm that interest accrual updates the balance metric. (2) The answer correctly identifies that a single snapshot cannot prove causation of changes over time, which aligns with the reference answer requirement. However, the reasoning conflates 'insufficient for proving causation from this snapshot' with 'documentation lacks detail,' when the documentation actually provides the mechanism. (3) The answer's core conclusion—that the snapshot alone is insufficient to prove interest is the cause of increases—is sound and matches the reference answer's required point, but the supporting evidence is undermined by false claims about missing documentation."
+  },
+  {
+    "case_id": "A0187",
+    "outputs": [
+      [
+        "Q060",
+        2,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu hỏi yêu cầu dự báo dư nợ WETH cho tháng 12/2027. Hệ thống đã từ chối chính xác vì: (1) Dữ liệu lịch sử chỉ kéo dài đến 2026-09-15, nằm ngoài phạm vi yêu cầu; (2) POLICY rõ ràng nêu 'không có dự báo hoặc dữ liệu trực tiếp'; (3) Không có mô hình dự báo, SQL hoặc tài liệu được cung cấp để hỗ trợ dự báo. Câu trả lời tuân thủ hướng dẫn 'Unanswerable must identify actual limitation, not invent a conclusion' bằng cách xác định rõ ràng giới hạn dữ liệu và thiếu công cụ dự báo."
+  },
+  {
+    "case_id": "A0188",
+    "outputs": [
+      [
+        "Q018",
+        2,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the numeric result (307 liquidation transactions for August 2025 UTC on Aave V3 Ethereum) and the SQL query is syntactically sound with proper time range filtering and COUNT(DISTINCT tx_hash) aggregation. However, faithfulness and citation_quality fail because: (1) The supplied documents (DOC_SUPPLY_000, DOC_WITHDRAW_000, DOC_BORROW_000, DOC_SUPPLY_001, DOC_WITHDRAW_001) describe supply, withdraw, and borrow operations only—none address liquidation events, transaction counts, or data availability. (2) The system cites SQL1 for the numeric claim, which is valid, but then cites SQL1 again for the data completeness caveat, which is inappropriate since SQL1 contains only a query result, not metadata proving or disproving complete collection. (3) The answer appropriately flags uncertainty about data completeness (the interval is in the future relative to typical collection dates, and metadata shows last_event_utc as 2026-09-15, creating inconsistency), but this caveat is not supported by the supplied documents or verifiable metadata. The numeric scope is correct: the query requests count aggregation for the exact UTC interval 2025-08-01 to 2025-09-01, the unit is count (exact match required), and the result 307 matches the reference value exactly."
+  },
+  {
+    "case_id": "A0192",
+    "outputs": [
+      [
+        "Q040",
+        0,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời của hệ thống chính xác và trung thành với dữ liệu nguồn. Câu hỏi yêu cầu tính chênh lệch giữa tổng USD thanh lý trong tháng 6/2026 (2026-06-01 đến 2026-07-01 UTC) trừ đi tổng USD thanh lý từ 2026-05-01 đến trước 2026-06-01 UTC. SQL1 thực hiện chính xác phép tính này bằng cách: (1) tính tổng amount_usd cho khoảng thời gian >= 2026-06-01, (2) trừ đi tổng amount_usd cho khoảng thời gian < 2026-06-01, trong phạm vi dữ liệu từ 2026-05-01 đến 2026-07-01. Kết quả 51,931,723.65 USD được trả về chính xác từ SQL1. Giá trị số học nằm trong phạm vi chính xác (sai số tương đối USD <= 0.005). Câu trả lời được trích dẫn đúng từ SQL1 và không phát minh ra thông tin nào."
+  },
+  {
+    "case_id": "A0194",
+    "outputs": [
+      [
+        "Q011",
+        0,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies and explains the two main conditions for withdrawing supplied assets from Aave Protocol, with all required points from the reference answer present and accurately represented. Each claim is properly supported by DOC_WITHDRAW_000, which is the authoritative source document on withdrawal mechanics."
+  },
+  {
+    "case_id": "A0196",
+    "outputs": [
+      [
+        "Q051",
+        1,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The candidate answer correctly identifies the USDC outstanding debt at 2026-08-15 00:00:00 UTC as 1,993,676,848.03 USD from SQL1, matching the numeric reference exactly (1,993,676,848.0321777 rounded to 2 decimals). The answer properly addresses both parts of the question: (1) provides the specific numeric value with correct citation, and (2) correctly concludes that a single snapshot is insufficient to prove causation between interest accrual and debt changes. The reasoning is sound: temporal correlation alone does not establish causation per the system instructions. The answer appropriately notes that the data shows a debt *decrease* (not increase) from 2026-08-14T23:00 to 2026-08-15T00:00, which further undermines any claim that interest caused debt growth during this period. The citation to DOC_BORROW_000 is valid—it confirms interest accrues dynamically but does not provide transaction-level or interest rate data needed to isolate interest's contribution. The answer correctly identifies the fundamental limitation: stock-level snapshots cannot decompose debt changes into components (new borrows, repayments, interest accrual, liquidations). All factual claims are supported by supplied sources."
+  },
+  {
+    "case_id": "A0198",
+    "outputs": [
+      [
+        "Q049",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        1,
+        0
+      ]
+    },
+    "judge_explanation": "The system answer fails on multiple critical dimensions: (1) It does not directly answer the yes/no question 'Số sự kiện thanh lý và số giao dịch thanh lý có nhất thiết bằng nhau không?' (Must the number of liquidation events and transactions be equal?). The reference answer explicitly requires stating that they are NOT necessarily equal because one transaction can contain multiple liquidation events. The system answer reports numbers and ratios but never states 'No, they are not necessarily equal' or provides the required logical explanation. (2) The system answer makes an unsupported negative claim: 'các tài liệu cung cấp không chứa giải thích về cơ chế kỹ thuật tại sao một giao dịch Ethereum có thể phát ra nhiều sự kiện thanh lý' without citation. This violates the instruction to never invent missing observations or assert document absence without grounding. (3) The numeric values are correct (107 transactions, 158 events), and SQL2 provides direct evidence that 18 transactions contain multiple events, which directly supports the required explanation. However, the system answer fails to leverage SQL2 or cite it to explain the mechanism. (4) The reference answer requires two specific points: (a) one transaction can contain multiple liquidation events, and (b) the grouped data shows transactions with multiple events exist. The system answer does not explicitly state either required point with proper citation to SQL2."
+  },
+  {
+    "case_id": "A0199",
+    "outputs": [
+      [
+        "Q060",
+        2,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu hỏi yêu cầu dự báo xác định ('chắc chắn sẽ là bao nhiêu') dư nợ WETH cho tháng 12/2027. Đây là yêu cầu không thể trả lời vì ba lý do chính: (1) Dữ liệu lịch sử cố định chỉ bao gồm quan sát từ 2023-01-27 đến 2026-09-15, tháng 12/2027 nằm ~15 tháng ngoài phạm vi; (2) POLICY rõ ràng nêu 'No forecasts'; (3) Không có mô hình dự báo, tham số, hoặc phương pháp được cung cấp. Câu trả lời hệ thống chính xác từ chối và giải thích đúng giới hạn. Tuy nhiên, citation_quality thất bại vì các claim không được trích dẫn từ source_data được cung cấp - 'availability' không phải là ID nguồn hợp lệ trong source_data (chỉ có 'POLICY'). Mặc dù lý do từ chối là chính đáng, các trích dẫn không được xác minh từ nguồn được cung cấp."
+  },
+  {
+    "case_id": "A0200",
+    "outputs": [
+      [
+        "Q052",
+        1,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời hệ thống chính xác và trung thực. Phần 1: Dư nợ WETH được trích dẫn chính xác từ SQL1 với giá trị 3,042,883,324.32 USD (làm tròn đúng từ 3042883324.3152447, sai số tương đối = 0, nằm trong dung sai USD 0.005). Phần 2: Câu trả lời đúng cách từ chối kết luận nhân quả từ một snapshot duy nhất. Lý do được giải thích rõ ràng: (1) Thiếu dữ liệu so sánh từ thời điểm trước để quan sát sự thay đổi; (2) Cần loại trừ các yếu tố khác (vay mới, trả nợ, thay đổi giá); (3) Tài liệu Aave chỉ mô tả cơ chế lãi suất động nhưng không cung cấp dữ liệu cụ thể về tác động tại thời điểm này. Trích dẫn DOC_BORROW_000 hỗ trợ đúng khẳng định về lãi suất vay động. Câu trả lời tuân thủ hướng dẫn: không phỏng đoán nhân quả từ tương quan thời gian, chỉ sử dụng dữ liệu nguồn, xác định giới hạn thực tế của dữ liệu."
+  },
+  {
+    "case_id": "A0201",
+    "outputs": [
+      [
+        "Q035",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly interprets the SQL query result. The query computes (Q2_avg - Q1_avg) for USDT borrowed_usd, yielding -1,725,488,668.29 USD. The negative value correctly indicates that average hourly borrowed USDT in Q2 2026 (Apr-Jun) was approximately 1.73 billion USD lower than in Q1 2026 (Jan-Mar). The date ranges are accurate: Q1 spans 2026-01-01 to 2026-04-01; Q2 spans 2026-04-01 to 2026-07-01. The SQL structure properly filters for USDT asset and computes separate averages for each quarter before subtraction. The numeric value matches the reference exactly (-1,725,488,668.2893205 USD, rounded to -1,725,488,668.29 USD with 2 decimals as specified). The answer's interpretation that Q2 average is lower than Q1 average is mathematically sound and clearly stated. No invented data or unsupported claims are present. The provided documents (DOC_SUPPLY_*, DOC_BORROW_*, DOC_LIQ_*) describe Aave protocol mechanics but do not contain historical USDT borrowed data, which is appropriate—the answer relies entirely on the SQL query from the market_hourly table, which is the correct source for this metric."
+  },
+  {
+    "case_id": "A0205",
+    "outputs": [
+      [
+        "Q035",
+        2,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        1,
+        0
+      ],
+      "citation_quality": [
+        1,
+        0
+      ]
+    },
+    "judge_explanation": "The question asks for the difference in average hourly USDT borrowed between Q2 2026 and Q1 2026 (Q2 minus Q1). The reference SQL correctly computes this difference: avg(Q2) - avg(Q1) = -1,725,488,668.29 USD. However, the system answer reports only the Q2 2026 average (2,286,878,458.77 USD) without computing the required difference. The candidate SQL also only computes Q2 average, not the difference. The system answer completely misses the metric requirement (difference) and instead provides a single quarterly average, which is a fundamental aggregation error."
+  },
+  {
+    "case_id": "A0206",
+    "outputs": [
+      [
+        "Q020",
+        1,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies 307 liquidation events on Aave V3 Ethereum for August 2025 UTC (2025-08-01 to 2025-09-01). The SQL query is syntactically and logically correct, filtering the liquidation_events table by the exact requested time interval. The numeric value matches the reference exactly (307 count, exact match required). The answer appropriately acknowledges data limitations regarding gap-free coverage and the absence of supporting source documents, demonstrating proper epistemic caution. The Vietnamese response directly answers the question posed."
+  },
+  {
+    "case_id": "A0209",
+    "outputs": [
+      [
+        "Q058",
+        1,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu hỏi yêu cầu tổng USD thanh lý riêng WETH tháng 7/2026. Câu trả lời hệ thống chính xác xác định rằng không có dữ liệu khả dụng cho khoảng thời gian này. Điều này phù hợp với reference_answer được cung cấp, cả hai đều chỉ ra hạn chế dữ liệu thực tế. Câu trả lời không phát minh ra kết luận mà thay vào đó xác định rõ ràng rằng truy vấn SQL trả về NULL. Mặc dù POLICY không đề cập đến 'verified token mapping', reference_answer đã ghi nhận hạn chế này. Câu trả lệ hệ thống tuân thủ hướng dẫn bằng cách không phát minh dữ liệu và thừa nhận giới hạn thực tế của bộ dữ liệu."
+  },
+  {
+    "case_id": "A0210",
+    "outputs": [
+      [
+        "Q050",
+        0,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies 52 liquidation transactions in July 2026 UTC on Aave V3 Ethereum, directly supported by SQL1. The answer properly explains that liquidation events (63) and liquidation transactions (52) are not necessarily equal because one transaction (tx_hash) can emit multiple liquidation events. SQL2 provides definitive evidence: 52 distinct transactions generated 63 total events, with 5 transactions containing multiple events. The explanation accurately reflects blockchain mechanics where a single smart contract call can emit multiple event logs. All numeric values are exact matches to source data. The answer addresses both parts of the question comprehensively and cites appropriate SQL sources."
+  },
+  {
+    "case_id": "A0215",
+    "outputs": [
+      [
+        "Q054",
+        0,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời của hệ thống chính xác và trung thực. Nó cung cấp giá trị số USD chính xác ($3,897,799,627.04) từ SQL1 với độ chính xác đúng (làm tròn đến 2 chữ số thập phân theo chính sách). Quan trọng hơn, câu trả lời đúng cách trả lời phần thứ hai của câu hỏi bằng cách rõ ràng nêu rằng số liệu KHÔNG chứng minh tài sản không có rủi ro hoặc luôn rút ngay được. Nó giải thích ba điều kiện rút tiền chính từ DOC_WITHDRAW_000: (1) phụ thuộc vào thanh khoản có sẵn trong pool, (2) nếu được dùng làm tài sản đảm bảo thì phải duy trì health factor, và (3) rủi ro thanh khoản tồn tại. Tất cả các tuyên bố đều được hỗ trợ bởi các nguồn được cung cấp. Câu trả lời cũng chính xác xác định rằng snapshot chỉ phản ánh một thời điểm và không đảm bảo khả năng rút ngay được."
+  },
+  {
+    "case_id": "A0216",
+    "outputs": [
+      [
+        "Q022",
+        2,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly reports the total liquidation value of 28,132,234.04 USD for August 2025 (UTC) on Aave V3 Ethereum. The numeric value matches the SQL query result exactly within the required tolerance (USD relative tolerance ≤0.005). The time interval is correctly specified as 2025-08-01 to 2025-09-01 UTC, matching the requested month. The answer appropriately cites SQL1 as the source. The system appropriately flags data limitations (future timestamp, observed bounds not guaranteeing gap-free coverage, lack of source documents) without inventing conclusions. The metric (total liquidation value), aggregation (sum), asset (Aave V3 Ethereum), time period (August 2025 UTC), and unit (USD) are all correctly identified and reported."
+  },
+  {
+    "case_id": "A0217",
+    "outputs": [
+      [
+        "Q017",
+        1,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly reports 107 distinct liquidation transactions for August 2026 UTC, matching the SQL1 result exactly. The numeric value is exact (count metric requires exact match per policy). The answer appropriately cites SQL1 as the source. However, the system answer includes extensive caveats about data coverage, market filtering, and availability that go beyond what the evaluation criteria require. The core factual claim—that 107 transactions were recorded in the specified time period—is accurate and properly supported. The answer does not invent missing observations; it acknowledges limitations transparently. The Vietnamese language requirement is met."
+  },
+  {
+    "case_id": "A0223",
+    "outputs": [
+      [
+        "Q042",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly computes the requested metric: (August 2026 liquidation USD sum) minus (May 1 through July 31, 2026 liquidation USD sum). The SQL query properly implements the time boundaries with inclusive start (>=) and exclusive end (<) for both intervals. The returned value -324,263,050.31 USD matches the reference value within the USD relative tolerance of 0.005 (exact match at 2 decimal places). The negative result is correctly interpreted as indicating that liquidations from 2026-05-01 to 2026-08-01 exceeded those in August 2026 alone. The answer appropriately qualifies the result as 'trong bộ dữ liệu hiện có' (in the current dataset) and acknowledges data completeness limitations without inventing missing observations. The numeric value is mathematically valid and the unit (USD) is correct."
+  },
+  {
+    "case_id": "A0224",
+    "outputs": [
+      [
+        "Q052",
+        2,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        1,
+        0
+      ],
+      "faithfulness": [
+        1,
+        0
+      ]
+    },
+    "judge_explanation": "Câu trả lời của hệ thống chứa nhiều lỗi nghiêm trọng về logic, dữ liệu và trích dẫn. (1) LỖI DỮ LIỆU CƠNG BẢN: Hệ thống trích dẫn 'SQL1, row 48' nhưng SQL1 chỉ trả về 1 hàng duy nhất (row 0). Dữ liệu thực tế từ candidate_sources.sql cho thấy 49 hàng (rows 0-48), với row 48 là 2026-07-15T00:00:00. Hệ thống nhầm lẫn giữa SQL1 (query đơn giản) và candidate_sources.sql (query phức tạp hơn). (2) LỖI TÍNH TOÁN: Hệ thống tuyên bố dư nợ 2026-07-14T00:00 là 2,853,967,490.15 USD từ 'SQL1, row 24', nhưng SQL1 không có row 24. Giá trị này xuất hiện ở row 24 của candidate_sources.sql (2,853,967,490.152833 USD). (3) LỖI TRÍCH DẪN: Hệ thống trích dẫn DOC_BORROW_001 cho khẳng định về lãi tích lũy, nhưng DOC_BORROW_001 chỉ là đoạn trích từ tài liệu gốc DOC_BORROW_000. Cả hai đều xác nhận lãi tích lũy, nhưng hệ thống không phân biệt rõ. (4) LỖI LOGIC NHÂN QUẢ: Hệ thống đúng khi nói snapshot không chứng minh nhân quả, nhưng sau đó lại tuyên bố 'Tương quan thời gian không chứng minh nhân quả' - điều này là đúng nhưng không phải là lý do chính để từ chối. Lý do chính là: dữ liệu không cung cấp thành phần lãi tích lũy riêng biệt, chỉ cung cấp tổng dư nợ. (5) THIẾU PHÂN TÍCH: Hệ thống không nhận ra rằng dữ liệu hourly borrowed_usd có thể đã bao gồm lãi tích lũy, nhưng không thể tách biệt được bao nhiêu là lãi vs bao nhiêu là vay mới ròng. (6) KHÔNG ĐỦ CHỨNG CỨ: Hệ thống không trích dẫn bất kỳ nguồn nào cho khẳng định 'Snapshot dữ liệu tại một thời điểm không cung cấp chi tiết giao dịch' - đây là suy luận logic, không phải từ dữ liệu được cung cấp."
+  },
+  {
+    "case_id": "A0225",
+    "outputs": [
+      [
+        "Q052",
+        0,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        1,
+        0
+      ]
+    },
+    "judge_explanation": "The system answer contains a critical logical flaw and makes an unsupported causal claim. (1) NUMERIC CLAIM: The first part correctly states WETH borrowed balance at 2026-07-15 00:00 UTC is 3,042,883,324.32 USD, supported by SQL1 with proper rounding to 2 decimals. This portion is correct. (2) CAUSATION ANALYSIS: The answer claims 'Không, số liệu này KHÔNG đủ để chứng minh lãi vay là nguyên nhân làm tăng dư nợ' (No, this data is insufficient to prove interest caused debt increase). However, this conclusion is logically unfounded because: (a) The question asks whether the supplied data suffices to prove interest is the cause of debt *increase*. To answer this, one must first establish whether debt increased at all. The SQL result provides only a single snapshot at 2026-07-15T00:00:00Z with no prior observation. Without a baseline, no change can be detected—neither increase nor decrease. (b) The answer conflates 'insufficient data to prove causation' with 'proof that causation cannot be shown.' These are epistemically different. The correct response should be: 'The data does not permit any conclusion about whether debt increased or decreased, therefore causation cannot be assessed.' (c) The answer then lists conditions needed to prove causation (prior snapshot, hourly interest rate, transaction data), which is reasonable, but this does not constitute evidence that interest did NOT cause an increase—only that the current data cannot prove it did. (3) CITATION QUALITY FAILURE: The final claim 'Không thể chứng minh lãi vay là nguyên nhân làm tăng dư nợ vì thiếu...' (Cannot prove interest caused debt increase due to missing...) is cited with an empty citations array [], violating the requirement that every factual claim requiring evidence must cite a source. (4) MISCHARACTERIZATION OF SOURCES: The answer states DOC_BORROW_000 and DOC_BORROW_001 provide only 'qualitative description' of interest mechanisms. However, DOC_BORROW_001 explicitly states 'interest on the borrowed tokens begins to accrue immediately and is dynamically adjusted based on the borrow utilization rate'—this is a causal mechanism, not merely qualitative description. The answer fails to distinguish between 'the documents do not provide hourly WETH interest rates for 2026-07-15' (true and relevant) and 'the documents provide no causal link between interest and debt' (false). (5) REFERENCE ANSWER ALIGNMENT: The reference answer requires the point 'Biến động dư nợ USD không đủ kết luận nguyên nhân từ lãi vay hoặc hành vi người dùng' (Debt movement alone is insufficient to conclude causation from interest or user behavior). The system answer attempts this but fails because it does not establish that debt movement occurred—it only has one data point. The correct reasoning should be: 'No prior snapshot exists; therefore, no movement can be detected; therefore, no causation can be inferred.' The answer instead assumes movement occurred and then argues causation cannot be proven, which is a logical error."
+  },
+  {
+    "case_id": "A0226",
+    "outputs": [
+      [
+        "Q039",
+        0,
+        "B0"
+      ],
+      [
+        "Q039",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies February 2026 (2026-02) as the month with the most liquidation transactions in the specified UTC interval (2025-07-01 to 2026-07-01). The numeric value of 2,647 transactions is exact and matches the reference data. The SQL query properly filters the time range, counts distinct transaction hashes, groups by month, and orders by count descending then month ascending to handle ties. The answer directly addresses the Vietnamese question asking which month had the most liquidation transactions and how many. The citation to SQL1 is valid and the source data supports the claim. The formatting of the month as '2026-02' is correctly interpreted as February 2026."
+  },
+  {
+    "case_id": "A0227",
+    "outputs": [
+      [
+        "Q052",
+        1,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the WETH borrowed USD value at 2026-07-15 00:00 UTC as 3,042,883,324.32 USD, properly cited to SQL1. The numeric value matches the reference exactly (3042883324.3152447 USD, within USD tolerance of 0.005 relative error). The answer appropriately refuses to claim that a single snapshot proves interest accrual caused the debt increase, correctly identifying this as a causal inference problem that cannot be resolved from one data point. The explanation properly cites DOC_BORROW_000 for the statement that interest accrues immediately and is dynamically adjusted. The answer correctly identifies the fundamental limitation: causation requires temporal comparison across multiple snapshots, isolation of interest from new borrows/repayments, and comparison to calculated interest—none of which are available from the provided data. The answer does not invent missing observations or claim to have benchmark reference answers. All factual claims are supported by supplied sources."
+  },
+  {
+    "case_id": "A0229",
+    "outputs": [
+      [
+        "Q051",
+        1,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies the USDC outstanding debt at 2026-08-15 00:00 UTC as 1,993,676,848.03 USD from SQL1, matching the numeric reference exactly (relative error = 0). The answer properly refuses to claim causation from a single data point, correctly noting that one snapshot cannot prove interest accrual caused the debt increase. The answer appropriately cites DOC_BORROW_001 to establish that interest does accrue dynamically on borrowed tokens, but correctly distinguishes between: (1) what the protocol documentation says happens (interest accrues), and (2) what the data can prove about actual debt changes (nothing, from one point in time). The answer identifies the actual limitation: temporal comparison across multiple points is required to attribute debt growth to interest versus new borrowing or repayment behavior. This reasoning aligns with the reference answer requirement that 'biến động dư nợ USD không đủ kết luận nguyên nhân từ lãi vay hoặc hành vi người dùng' (debt movement alone is insufficient to conclude causation from interest or user behavior)."
+  },
+  {
+    "case_id": "A0231",
+    "outputs": [
+      [
+        "Q041",
+        0,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly interprets the Vietnamese question as asking for July 2026 liquidations (2026-07-01 to 2026-08-01) minus May 2026 liquidations (2026-05-01 to 2026-07-01). The SQL query in SQL1 implements this calculation correctly using conditional aggregation. The numeric result -325,072,291.77 USD matches the reference value exactly (within the 0.5% USD tolerance policy). The answer properly explains that the negative value indicates May 2026 liquidations exceeded July 2026 liquidations. The Vietnamese translation and interpretation are accurate."
+  },
+  {
+    "case_id": "A0232",
+    "outputs": [
+      [
+        "Q041",
+        1,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly computes the requested difference: July 2026 liquidation USD minus May 1 to June 30, 2026 liquidation USD equals -325,072,291.77 USD. The SQL query properly partitions the data into two periods using CASE statements (July: [2026-07-01, 2026-08-01); May-June: [2026-05-01, 2026-07-01)) and computes their difference. The numeric result matches the reference exactly (-325,072,291.77 USD with 2 decimal places). All three component values are correctly derived from SQL1 and properly cited. The interpretation that May-June liquidations exceeded July liquidations by this amount is accurate. The answer addresses the question directly in Vietnamese without inventing missing data or unsupported inferences."
+  },
+  {
+    "case_id": "A0235",
+    "outputs": [
+      [
+        "Q041",
+        2,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly calculates the requested metric: total USD liquidations in July 2026 minus total USD liquidations from 2026-05-01 to before 2026-07-01 UTC, yielding -325,072,291.77 USD. The SQL query (SQL1) properly implements the calculation using CASE WHEN conditions to separate the two time periods and compute their difference. The numeric result matches the reference value exactly (-325,072,291.77 USD) within the required tolerance (USD relative tolerance ≤0.005). The answer is presented in Vietnamese as required. The system appropriately notes data limitations (future dates, incomplete coverage verification) without inventing conclusions. The candidate SQL provides transparent intermediate calculations (july_2026_liquidation_usd: 2,897,745.81 USD; may_to_june_liquidation_usd: 327,970,037.58 USD) that correctly sum to the final difference."
+  },
+  {
+    "case_id": "A0237",
+    "outputs": [
+      [
+        "Q042",
+        1,
+        "P"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly computes the requested difference: August 2026 liquidations (6,604,733.08 USD) minus May–July 2026 liquidations (330,867,783.39 USD) = -324,263,050.31 USD. The SQL query properly partitions the data into two disjoint periods using CASE statements with correct UTC timestamp boundaries: [2026-08-01, 2026-09-01) for August and [2026-05-01, 2026-08-01) for May–July. The numeric result matches the reference value within tolerance (exact match: -324263050.30990607 USD, rounded to -324,263,050.31 USD with 2 decimals). The answer correctly interprets the Vietnamese question 'tháng 2026-08' as August 2026 only and 'từ 2026-05-01 đến trước 2026-08-01' as the period before August 1. The system appropriately notes the data limitation (cannot fully verify without access to the underlying liquidation_events table) but provides the computed result from the supplied SQL source. All three component claims are supported by SQL1 with correct numeric values and proper unit specification."
+  },
+  {
+    "case_id": "A0240",
+    "outputs": [
+      [
+        "Q058",
+        2,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời đúng cách xác định rằng không có dữ liệu thanh lý WETH cho tháng 7/2026. Hệ thống trả lời phù hợp với tài liệu chính sách (POLICY) và câu trả lời tham chiếu. Tài liệu chính sách rõ ràng nêu rõ 'Chưa xác minh ánh xạ market sang tài sản thanh lý; không thể kết luận theo token', điều này giải thích tại sao không thể xác định tổng USD thanh lý riêng WETH. Truy vấn SQL trả về NULL, cho thấy không có sự kiện thanh lý nào được ghi nhận cho WETH trong khoảng thời gian được yêu cầu (2026-07-01 đến 2026-08-01). Mặc dù dữ liệu thanh lý có sẵn từ 2023-01-30 đến 2026-09-15, nhưng khoảng thời gian cụ thể này không chứa bất kỳ sự kiện thanh lý WETH nào. Hệ thống không phát minh ra kết luận và tuân thủ hạn chế được nêu trong chính sách."
+  },
+  {
+    "case_id": "A0241",
+    "outputs": [
+      [
+        "Q012",
+        2,
+        "B0"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu trả lời của hệ thống xác định chính xác hai điều kiện chính phụ thuộc vào việc rút tài sản: (1) Phải có đủ thanh khoản trong pool chưa được vay, và (2) Nếu tài sản được dùng làm thế chấp, phải duy trì health factor lành mạnh bằng cách trả bớt nợ hoặc thêm tài sản thế chấp. Cả hai điều kiện này đều được hỗ trợ trực tiếp bởi DOC_WITHDRAW_000. Câu trả lời ngắn gọn, rõ ràng và trích dẫn đúng nguồn."
+  },
+  {
+    "case_id": "A0243",
+    "outputs": [
+      [
+        "Q049",
+        0,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "answer_correctness": [
+        0,
+        1
+      ],
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "The system answer correctly identifies 107 distinct liquidation transactions in August 2026 UTC from SQL1. It properly distinguishes between 158 liquidation events and 107 transactions using SQL2 data, explaining that one transaction can contain multiple events. The answer accurately cites DOC_LIQ_000 to explain the liquidation mechanics (liquidator repays debt and receives collateral plus bonus), which contextualizes why multiple events can occur in a single transaction. All numeric claims are exact matches to query results. The explanation addresses both parts of the user's question: the transaction count and the conceptual distinction between events and transactions. No unsupported inferences or causal claims are made."
+  },
+  {
+    "case_id": "A0245",
+    "outputs": [
+      [
+        "Q060",
+        2,
+        "B1"
+      ]
+    ],
+    "reference_then_judge": {
+      "faithfulness": [
+        0,
+        1
+      ],
+      "citation_quality": [
+        0,
+        1
+      ]
+    },
+    "judge_explanation": "Câu hỏi yêu cầu dự báo dư nợ WETH cho tháng 12/2027 ('chắc chắn sẽ là bao nhiêu USD'). Đây là yêu cầu dự báo tương lai. Theo POLICY, bộ dữ liệu chỉ cung cấp 'hourly supplied_usd/borrowed_usd' từ lịch sử và không có 'forecasts'. Dữ liệu lịch sử kết thúc vào 2026-09-15, trong khi tháng 12/2027 nằm hơn 15 tháng trong tương lai. Không có mô hình dự báo, tài liệu hoặc SQL được cung cấp để hỗ trợ dự báo này. Câu trả lời hệ thống chính xác từ chối trả lời và xác định rõ ràng giới hạn thực tế: (1) dữ liệu lịch sử không bao gồm tháng 12/2027, (2) không có khả năng dự báo trong bộ dữ liệu, (3) không có tài liệu hoặc kết quả SQL hỗ trợ. Điều này tuân thủ hướng dẫn 'Unanswerable must identify actual limitation, not invent a conclusion'."
+  }
+]

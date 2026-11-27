@@ -1,0 +1,63 @@
+{
+  "judge": {
+    "provider": "bedrock",
+    "region": "us-east-1",
+    "profile": null,
+    "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "generation_temperature": 0.2,
+    "review_temperature": 0.0,
+    "max_tokens": 4096,
+    "json_format_retries": 1,
+    "input_normalization": "NFC"
+  },
+  "unique_cases_with_judgment": 248,
+  "unique_cases_total": 248,
+  "complete": true,
+  "benchmark_outputs_total": 360,
+  "outputs_covered": 360,
+  "pending": [],
+  "judge_errors": {},
+  "agreement": {
+    "answer_correctness": {
+      "matches": 185,
+      "n": 248,
+      "human_0_judge_1": 54,
+      "human_1_judge_0": 9,
+      "both_0": 52,
+      "both_1": 133,
+      "cohen_kappa": 0.45148153349248704
+    },
+    "faithfulness": {
+      "matches": 140,
+      "n": 248,
+      "human_0_judge_1": 99,
+      "human_1_judge_0": 9,
+      "both_0": 58,
+      "both_1": 82,
+      "cohen_kappa": 0.223967085820247
+    },
+    "citation_quality": {
+      "matches": 135,
+      "n": 248,
+      "human_0_judge_1": 105,
+      "human_1_judge_0": 8,
+      "both_0": 62,
+      "both_1": 73,
+      "cohen_kappa": 0.20827212114363203
+    }
+  },
+  "cases_with_disagreement": 126,
+  "usage": {
+    "input_tokens": 879646,
+    "output_tokens": 187586,
+    "calls": 303,
+    "calls_with_unknown_usage": 45,
+    "estimated_api_usd": 1.9993336,
+    "input_usd_per_million": "1.10",
+    "output_usd_per_million": "5.50",
+    "source": "https://www-cdn.anthropic.com/files/4zrzovbb/website/3684c2faafb97418665782cea0001f439f74b1d2.pdf",
+    "source_page": 6,
+    "verified_on": "2026-10-29",
+    "scope": "API fee only; local hardware/electricity excluded. Published standard geo cross-region rate, not account invoice/discount/tax. Missing usage may underestimate API cost."
+  }
+}
